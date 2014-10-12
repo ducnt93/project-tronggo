@@ -1,0 +1,450 @@
+html {
+	overflow: -moz-scrollbars-vertical;
+	margin: 0;
+	padding: 0;
+}
+* {
+	font-family: Arial, Helvetica, sans-serif;
+}
+body {
+	margin: 0px;
+	padding: 0px;
+	background:url('../image/br.png');
+	text-align: center;
+}
+body, td, th, input, textarea, select {
+	font-size: 12px;
+}
+form {
+	padding: 0;
+	margin: 0;
+	display: inline;
+}
+input, textarea, select {
+	margin: 3px 0px;
+}
+a, a:visited {
+	color: #0D2CCD;
+	text-decoration: none;
+	cursor: pointer;
+	font-size:medium;
+}
+a:hover {
+	text-decoration: none;
+	color: #E90F07;
+}
+a img {
+	border: none;
+}
+p {
+	margin: 2px 0px 2px;
+}
+/* layout */
+
+#breadcrumb {
+	float:left;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left:20px;
+	color: #666;
+	background:url(../image/navbit-home.png) no-repeat 5px 7px;
+}
+#breadcrumb  a{
+color:#666;
+font-size:11px;
+padding:0px 3px;
+font-weight:bold;
+}
+#breadcrumb  a:hover{
+color:#000;
+}
+#container {
+	width: 960px;
+	margin-left: auto;
+	margin-right: auto;
+	padding:10px;
+	text-align: left;
+	background:#FFF;
+	-moz-box-shadow: 0 0 10px 5px #f7f7f7;
+	-webkit-box-shadow: 0 0 10px 5px#f7f7f7;
+	box-shadow: 0 0 10px 5px #f7f7f7;
+}
+
+#header .div2 {
+	width:100%;
+}
+#header .div2 .center {
+	height:130px;
+}
+#header .div1 {
+	width:100%;
+	height:34px;
+    background:url(../image/bg_menu.png) repeat-x left center;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+}
+#header .div1 .menu {
+	float:left;
+	overflow:hidden;
+	}
+#header .div1 .menu ul {
+	list-style-type:none;
+	margin:0px;
+	padding:0px;
+}
+#header .div1 .menu ul  li {
+	float:left;
+	line-height:34px;
+	}	
+#header .div1 .menu ul li a {
+	color:#FFFFFF;
+	font-size:12px;
+	font-weight:Bold;
+	text-transform: uppercase;
+	display:block;
+	padding-left:20px;
+	padding-right:20px;
+}
+#header .div1 .menu ul li a:hover {
+color:#000;
+	
+}
+#header .div1 .menu .selected {
+	color: #000;
+	z-index: 3;
+}
+#header .div1 #search{
+overflow:hidden;
+float:right;
+padding-top:1px;
+margin-right:1px;
+}
+#filter_keyword {
+	background:#f7f7f7;
+	margin-top:0px;
+	margin-left:20px;
+	height:22px;
+	width:200px; 
+	border:1px solid #333;
+	color:#888;	
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+#header .div1 #search .button_search{
+background:url(../image/search.png) repeat-x;
+cursor: pointer;
+float:right;
+margin-top:0px;
+color:#FFF;
+font-weight:bold;
+height:26px;
+padding-right:10px;
+border:1px solid #333;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius:5px;
+}
+#slideshow {
+	background:#ddd;
+	padding:5px;
+	height:300px;
+	margin-bottom:10px;
+	margin-top:8px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+}
+#column_right {
+	float: right;
+	width: 160px;
+	margin-left: 10px;
+	clear: right;
+}
+#column_left {
+	float: left;
+	width: 200px;
+	margin-right: 10px;
+	clear: left;
+}
+#content {
+	margin-left: 210px;
+	margin-right: 170px;
+}
+#content .top .left {
+	width:33px;
+	height:35px;
+	float:left;
+	background: url('../image/icon-left.png') no-repeat left center;
+	-moz-border-radius: 5px 0 0 0;
+	-webkit-border-radius: 5px 0 0 0;
+	border-radius:5px 0 0 0;
+}
+#content .top .center {
+	background: url('../image/content_top_right.png') repeat-x left center;
+	display: block;
+	-moz-border-radius: 6px 5px 0 0;
+	-webkit-border-radius: 6px 5px 0 0;
+	border-radius:6px 5px 0 0;
+}
+#content .top  h1 {
+	padding: 10px 30px 10px 0px;
+	display: inline-block;
+	background: url('../image/content_top.png') repeat-x left center;
+}
+#content h1, .heading {
+	color: #FFF;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	margin: 0px;
+}
+.heading {
+	padding-bottom: 3px;
+	margin-bottom: 10px;
+	color: #000;
+}
+#content .middle {
+	padding: 10px 10px 1px 10px;
+	min-height: 380px;
+	background: #E5E5E5;
+	margin-bottom:10px;
+	-moz-border-radius: 0 0 5px 5px;
+	-webkit-border-radius: 0 0 5px 5px;
+	border-radius: 0 0 5px 5px;
+}
+#content .middle img{max-width:560px;}
+#column_left .box {
+	background: url('../image/box_top_right.png') repeat-x;
+}
+#column_right .box {
+	background: url('../image/box_top_left.png') repeat-x;
+}
+.box {
+	margin-bottom: 10px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+.box .top {
+	padding:9px 0px 9px 0px;
+	color: #FFF;
+	font-size: 12px;
+	font-family: Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	text-transform: uppercase;
+	text-align:center;
+}
+.box .top img {
+	float: left;
+	margin-right: 5px;
+}
+.box .middle {
+	background: #E5E5E5;
+	padding: 5px;
+	color:#000;
+	-moz-border-radius: 0px 0px 5px 5px;
+	-webkit-border-radius: 0px 0px 5px 5px;
+	border-radius:0px 0px 5px 5px;
+}
+#column_right .box .middle img{max-width:150px;}
+#column_left .box .middle img{max-width:190px;}
+.error {
+	color: #FF0000;
+	display: block;
+}
+.help {
+	cursor: pointer;
+}
+
+.clear { /* generic container (i.e. div) for floating buttons */
+	overflow: hidden;
+	width: 100%;
+}
+.button {
+	padding: 4px 10px 4px;
+	margin-right: 5px;
+	background: url('../image/search.png') center left repeat-x;
+	text-decoration: none;
+	color:#FFF;
+	border:1px solid #000;
+	font-weight:bold;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+}
+a.button:hover{color:#000;}
+.buttons {
+	background: #F8F8F8;
+	padding: 5px;
+	margin-bottom: 10px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+.buttons input {
+	padding: 0px;
+	margin: 0px;
+}
+.buttons table {
+	width: 100%;
+	border-collapse: collapse;
+}
+.buttons table td {
+	vertical-align: middle;
+}
+.content {
+	background: #F7F7F7;
+	padding: 10px;
+	margin-top: 3px;
+	margin-bottom: 10px;
+}
+.list {
+	margin-bottom: 10px;
+	width: 100%;
+}
+.list td {
+	text-align: center;
+	vertical-align: top;
+	padding:10px;
+	background:#FFFFFF;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+.sort {
+	margin-bottom: 10px;
+	background: #F8F8F8;
+	height: 30px;
+	width: 100%;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+.sort .div1 {
+	float: right;
+	margin-left: 5px;
+	padding-top: 6px;
+	padding-right: 9px;
+}
+.sort .div2 {
+	text-align: right;
+	padding-top: 9px;
+}
+.sort select {
+	font-size: 11px;
+	margin: 0;
+	padding: 0;
+}
+.pagination {
+	display: inline-block;
+	width: 100%;
+	background: #F8F8F8;
+	margin-bottom: 10px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius:5px;
+}
+.pagination .links, .pagination .results {
+	padding: 7px;
+}
+.pagination .links {
+	float: left;
+}
+.pagination .links a {
+	border: 1px solid #CCCCCC;
+	padding: 4px 7px;
+	text-decoration: none;
+	color: #000000;
+}
+.pagination .links b {
+	border: 1px solid #CCCCCC;
+	padding: 4px 7px;
+	text-decoration: none;
+	color: #000000;
+	background: #FFFFFF;
+}
+.pagination .results {
+	float: right;
+}
+
+#footer {
+	width: 100%;
+	background: #E5E5E5;
+	clear: both;
+	min-height:100px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px;
+	border-radius:5px;
+}
+#footer .hotkeyword {
+	background:#fff;
+	margin-bottom:10px;
+	padding:5px;
+}
+#footer .hotkeyword  img {
+	margin:2px;
+}
+#footer  .pageview{
+	padding:5px;
+	float:right;
+	padding:5px;
+	width:180px;
+	color:#000;
+	text-align:right;
+}	
+#footer .copyright {
+padding:10px;
+text-align:left;
+color:#000;
+float:left;
+}
+
+#category ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 5px;
+	padding-left: 10px;
+	list-style: url('../image/icon-chitiet.png');
+}
+#category li {
+	padding:7px 0px 7px;
+	background:url('../image/border.png') no-repeat bottom center;
+}
+#category li  a{
+	padding:0px 1px 0px 0px;
+	font-size:12px;
+	font-weight:bold;
+	color:#000;
+}
+#category li  a:hover{color:#F00;}
+#category li  a span.select{color:#F00;}
+#information ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style: none;
+}
+#information li {
+	padding:3px 0 3px 10px;
+	background:url('../image/icon-chitiet.png') no-repeat left center;
+	font-size:12px;
+}
+#other ul {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	margin-left: 0px;
+	padding-left: 0px;
+	list-style: none;
+}
+#other li  {
+	padding:2px 0px 2px;
+	border-bottom:1px solid #ddd;
+}
+#other ul  a{
+	font-size:11px;
+}
+
