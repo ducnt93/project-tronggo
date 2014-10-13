@@ -20,15 +20,6 @@ GO
 use WebTapHoa
 go
 
-Create table DanhMucAnh
-(
-	DanhMucAnhID int identity(1,1),
-	TenAnh nvarchar(100) not null,
-	TrangThaiXoa bit not null default 0,
-	NgayXoa date not null,
-	constraint PK_DmAnh primary key(DanhMucAnhID)
-)
-go
 
 Create table NhaCungCap
 (
@@ -75,7 +66,6 @@ Create table SanPham
 	Gia float not null,
 	TrangThai nvarchar(20) not null,	
 	Model nvarchar(10) not null,
-	DanhMucAnhID int not null,
 	MieuTaNgan nvarchar(500) not null,
 	MieuTaChiTiet nvarchar(max) not null,
 	TrangThaiXoa bit not null default 0,
@@ -83,7 +73,20 @@ Create table SanPham
 	SoLuong int,
 	constraint PK_SanPham PRIMARY KEY(SanPhamID),
 	constraint FK_SanPham_LoaiSp foreign key (LoaiSpID) references LoaiSanPham(LoaiSpID),
-	constraint FK_SanPham_DanhMucAnh foreign key (DanhMucAnhID) references DanhMucAnh(DanhMucAnhID)
+	
+)
+go
+
+
+Create table DanhMucAnh
+(
+	DanhMucAnhID int identity(1,1),
+	SanPhamID nvarchar(5) not null,
+	TenAnh nvarchar(100) not null,
+	TrangThaiXoa bit not null default 0,
+	NgayXoa date not null,
+	constraint PK_DmAnh primary key(DanhMucAnhID),
+	constraint FK_DmAnh_SanPham foreign key (SanPhamID) references SanPham(SanPhamID)
 )
 go
  
