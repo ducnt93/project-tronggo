@@ -133,6 +133,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MenuPartialController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -374,6 +377,15 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\MenuPartial\MenuTrongRuou.cshtml" />
+    <Content Include="Views\MenuPartial\MenuService.cshtml" />
+    <Content Include="Views\MenuPartial\MenuQuanAo.cshtml" />
+    <Content Include="Views\MenuPartial\MenuSua.cshtml" />
+    <Content Include="Views\MenuPartial\ProductFeatured.cshtml" />
+    <Content Include="Views\MenuPartial\MenuFooter.cshtml" />
+    <Content Include="Views\Product\All.cshtml" />
+    <Content Include="Views\Product\Details.cshtml" />
+    <Content Include="Views\News\AllNews.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

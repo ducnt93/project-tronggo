@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers
 {
@@ -13,7 +14,9 @@ namespace ShopTrongGo.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var dbTapHoa = new WebBanTapHoaEntities();
+            var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa).Take(3).ToList();
+            return View(list);
         }
 
     }

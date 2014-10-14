@@ -1,4 +1,30 @@
-﻿@{
+﻿@model IEnumerable<ShopTrongGo.Models.SanPham>
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="top">
+    <div class="left"></div>
+    <div class="center">
+        <h1>Sản phẩm mới</h1>
+    </div>
+</div>
+<div class="middle" style="padding:0px;">
+    <div class="list">
+        @if (Model != null)
+        {
+            foreach (var pro in Model)
+            {
+                <div class="sanpham">
+                    <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                    <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
+                    <div class="giasp">Giá bán: @pro.Gia</div>
+                    <div class="dathang">
+                        <a href="../Product/Details/@pro.SanPhamID">Chi tiết</a>
+                        <input id="Button1" type="button" value="Đặt hàng" />
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
