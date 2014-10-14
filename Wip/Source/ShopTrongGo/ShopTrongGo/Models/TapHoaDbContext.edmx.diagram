@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="9994fed6ab9941e98915a9c23269a5fe" Name="Diagram1">
+        <EntityTypeShape EntityType="WebTapHoaModel.ChiTietHoaDon" Width="1.5" PointX="9.75" PointY="2.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.DanhMuc" Width="1.5" PointX="3" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.DanhMucAnh" Width="1.5" PointX="9.75" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.DichVu" Width="1.5" PointX="9.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.DoiTac" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.HoaDon" Width="1.5" PointX="7.5" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.LoaiSanPham" Width="1.5" PointX="5.25" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.LoaiTaiKhoan" Width="1.5" PointX="3" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.NhaCungCap" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.SanPham" Width="1.5" PointX="7.5" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.TaiKhoan" Width="1.5" PointX="5.25" PointY="7.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebTapHoaModel.ThongTinCongTy" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <AssociationConnector Association="WebTapHoaModel.FK_CtHoaDon_HoaDon" ManuallyRouted="false" />
+        <AssociationConnector Association="WebTapHoaModel.FK_CtHoaDon_SamPham" ManuallyRouted="false" />
+        <AssociationConnector Association="WebTapHoaModel.FK_DanhMuc_NhaCc" ManuallyRouted="false" />
+        <AssociationConnector Association="WebTapHoaModel.FK_LoaiSp_DanhMuc" ManuallyRouted="false" />
+        <AssociationConnector Association="WebTapHoaModel.FK_DmAnh_SanPham" ManuallyRouted="false" />
+        <AssociationConnector Association="WebTapHoaModel.FK_HoaDon_TaiKhoan" ManuallyRouted="false" />
+        <AssociationConnector Association="WebTapHoaModel.FK_SanPham_LoaiSp" ManuallyRouted="false" />
+        <AssociationConnector Association="WebTapHoaModel.FK_TaiKhoan_LoaiTk" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

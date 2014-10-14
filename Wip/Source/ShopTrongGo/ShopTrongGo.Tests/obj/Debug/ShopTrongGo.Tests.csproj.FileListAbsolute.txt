@@ -33,3 +33,5 @@ C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\bin\
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\obj\Debug\ShopTrongGo.Tests.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\obj\Debug\ShopTrongGo.Tests.dll
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\obj\Debug\ShopTrongGo.Tests.pdb
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\bin\Debug\EntityFramework.dll
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\bin\Debug\EntityFramework.xml

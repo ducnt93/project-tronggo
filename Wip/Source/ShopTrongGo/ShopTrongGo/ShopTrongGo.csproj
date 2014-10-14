@@ -44,6 +44,8 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -134,6 +136,57 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\ChiTietHoaDon.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMuc.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMucAnh.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DichVu.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DoiTac.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\HoaDon.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiSanPham.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LoaiTaiKhoan.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NhaCungCap.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\SanPham.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TaiKhoan.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TapHoaDbContext.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TapHoaDbContext.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TapHoaDbContext.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\TapHoaDbContext.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TapHoaDbContext.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ThongTinCongTy.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +273,23 @@
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <EntityDeploy Include="Models\TapHoaDbContext.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>TapHoaDbContext.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\TapHoaDbContext.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TapHoaDbContext.edmx</DependentUpon>
+      <LastGenOutput>TapHoaDbContext.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\TapHoaDbContext.edmx.diagram">
+      <DependentUpon>TapHoaDbContext.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\TapHoaDbContext.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>TapHoaDbContext.edmx</DependentUpon>
+      <LastGenOutput>TapHoaDbContext.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="image\cache\data\Quay_bar\quay bar tu bep 01-150x150.jpg" />
     <Content Include="image\cache\data\Quay_bar\quay bar tu bep 02-150x150.jpg" />
@@ -307,10 +377,12 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
