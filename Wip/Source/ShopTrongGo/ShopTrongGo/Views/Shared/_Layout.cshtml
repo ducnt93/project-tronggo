@@ -8,8 +8,8 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
     <link href="~/image/data/logo.png" rel="icon" />
     <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/default/stylesheet/stylesheet.css" />
     <!--[if lt IE 7]>
-    <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/default/stylesheet/ie6.css" />
-    <script type="text/javascript" src="~/Content/catalog/view/javascript/unitpngfix/unitpngfix.js"></script>
+        <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/default/stylesheet/ie6.css" />
+        <script type="text/javascript" src="~/Content/catalog/view/javascript/unitpngfix/unitpngfix.js"></script>
     <![endif]-->
     <script type="text/javascript" src="~/Content/catalog/view/javascript/jquery/jquery-1.3.2.min.js"></script>
     <script type="text/javascript" src="~/Content/catalog/view/javascript/jquery/thickbox/thickbox-compressed.js"></script>
@@ -34,7 +34,7 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
                 i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
                     (i[r].q = i[r].q || []).push(arguments)
                 }, i[r].l = 1 * new Date(); a = s.createElement(o),
-                m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+                    m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
             })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
             ga('create', 'UA-41702406-1', 'thunggo.com');
@@ -42,10 +42,74 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
 
         </script>
     </a>
+    <script>
+        $(document).ready(function () {
+            $('a.login-window').click(function () {
+
+                //Getting the variable's value from a link
+                var loginBox = $(this).attr('href');
+
+                //Fade in the Popup
+                $(loginBox).fadeIn(300);
+
+                //Set the center alignment padding + border see css style
+                var popMargTop = ($(loginBox).height() + 24) / 2;
+                var popMargLeft = ($(loginBox).width() + 24) / 2;
+
+                $(loginBox).css({
+                    'margin-top': -popMargTop,
+                    'margin-left': -popMargLeft
+                });
+
+                // Add the mask to body
+                $('body').append('<div id="mask"></div>');
+                $('#mask').fadeIn(300);
+
+                return false;
+            });
+
+            // When clicking on the button close or the mask layer the popup closed
+            $('a.close, #mask').live('click', function () {
+                $('#mask , .login-popup').fadeOut(300, function () {
+                    $('#mask').remove();
+                });
+                return false;
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="container">
         <div id="header">
+            <div class="login">
+                <ul>
+                    <li><a>Đăng ký</a></li>
+                    <li><a href="#">|</a></li>
+                    <li><a href="#login-box" class="login-window">Đăng nhập</a></li>
+                </ul>
+            </div>
+
+            <div id="login-box" class="login-popup">
+                @*<a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>*@
+                <form method="post" class="signin" action="#">
+                    <fieldset class="textbox">
+                        <label class="username">
+                            <span>Tài khoản hoặc email</span>
+                            <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Tài khoản">
+                        </label>
+                        <label class="password">
+                            <span>Mật khẩu</span>
+                            <input id="password" name="password" value="" type="password" placeholder="Mật khẩu">
+                        </label>
+                        <button class="submit button" type="button">Đăng nhập</button>
+                        <p>
+                            <a class="forgot" href="#">Quên mật khẩu?</a>
+                        </p>
+                    </fieldset>
+                </form>
+            </div>
+
+
             <div class="div2">
                 <div class="center">
                     <div style="float:left;width:1%;"><a href="~/"><img alt="" height="120" src="~/image/data/logo.png" /> </a></div>
@@ -97,36 +161,36 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
                     </table>
                 </div>
             </div>
-            <div style="clear: both;"></div>
+            @*<div style="clear: both;"></div>*@
         </div>
         <script type="text/javascript">
 <!--
-$('#search input').keydown(function(e) {
-	if (e.keyCode == 13) {
-		moduleSearch();
-	}
-});
+            $('#search input').keydown(function(e) {
+                if (e.keyCode == 13) {
+                    moduleSearch();
+                }
+            });
 
-function moduleSearch() {
-	pathArray = location.pathname.split( '/' );
+            function moduleSearch() {
+                pathArray = location.pathname.split( '/' );
 
 
-	url = 'search';
+                url = 'search';
 
-	var filter_keyword = $('#filter_keyword').attr('value')
+                var filter_keyword = $('#filter_keyword').attr('value')
 
-	if (filter_keyword) {
-		url += '&keyword=' + encodeURIComponent(filter_keyword).replace(/%20/gi, "+");
-	}
+                if (filter_keyword) {
+                    url += '&keyword=' + encodeURIComponent(filter_keyword).replace(/%20/gi, "+");
+                }
 
-	var filter_category_id = $('#filter_category_id').attr('value');
+                var filter_category_id = $('#filter_category_id').attr('value');
 
-	if (filter_category_id) {
-		url += '&category_id=' + filter_category_id;
-	}
+                if (filter_category_id) {
+                    url += '&category_id=' + filter_category_id;
+                }
 
-	location = url;
-}
+                location = url;
+            }
 //--></script><div id="slideshow">
             <div id='makeMeScrollable'>
                 <div class='scrollingHotSpotLeft'></div>
@@ -149,7 +213,28 @@ function moduleSearch() {
         <div id="column_left">
             <div class="box">
                 <div class="top">Sản phẩm</div>
-                <div id="category" class="middle"><ul><li><a href="#">Thiết kế nội thất</a></li><li><a href="#">Trống rượu</a></li><li><a href="#">Th&ugrave;ng rượu</a></li><li><a href="#">Trống đựng rượu</a></li><li><a href="~/Trong-go-bom-chan/">Trống gỗ bom ch&acirc;n</a></li><li><a href="~/Trong-ruou-xe-ngua/">Trống rượu xe ngựa</a></li><li><a href="~/Ngua-keo-bom-ruou/">Ngựa k&eacute;o bom rượu</a></li><li><a href="~/Thung-go-trang-tri/">Th&ugrave;ng gỗ trang tr&iacute;</a></li><li><a href="~/Thung-ruou-go-soi/">Th&ugrave;ng rượu gỗ sồi</a></li><li><a href="~/Hop-go-dung-ruou/">Hộp gỗ đựng rượu</a></li><li><a href="~/Phu-kien-ruou/">Phụ kiện rượu</a></li><li><a href="~/Ban-thung-ruou/">B&agrave;n th&ugrave;ng rượu</a></li><li><a href="~/Trong-go-mit-moi/">Trống gỗ m&iacute;t mới</a></li><li><a href="~/Tu-ruou-dep/">Tủ rượu đẹp</a></li><li><a href="~/Bon-tam-go/">Bồn tắm gỗ</a></li><li><a href="~/Chau-ngam-chan/">Chậu ng&acirc;m ch&acirc;n</a></li><li><a href="~/Quay-bar/">Quầy bar</a></li><li><a href="~/Go-dong-hang/">Gỗ đ&oacute;ng h&agrave;ng</a></li></ul></div>
+                <div id="category" class="middle">
+                    <ul>
+                        <li><a href="#">Thiết kế nội thất</a></li>
+                        <li><a href="#">Trống rượu</a></li>
+                        <li><a href="#">Th&ugrave;ng rượu</a></li>
+                        <li><a href="#">Trống đựng rượu</a></li>
+                        <li><a href="~/Trong-go-bom-chan/">Trống gỗ bom ch&acirc;n</a></li>
+                        <li><a href="~/Trong-ruou-xe-ngua/">Trống rượu xe ngựa</a></li>
+                        <li><a href="~/Ngua-keo-bom-ruou/">Ngựa k&eacute;o bom rượu</a></li>
+                        <li><a href="~/Thung-go-trang-tri/">Th&ugrave;ng gỗ trang tr&iacute;</a></li>
+                        <li><a href="~/Thung-ruou-go-soi/">Th&ugrave;ng rượu gỗ sồi</a></li>
+                        <li><a href="~/Hop-go-dung-ruou/">Hộp gỗ đựng rượu</a></li>
+                        <li><a href="~/Phu-kien-ruou/">Phụ kiện rượu</a></li>
+                        <li><a href="~/Ban-thung-ruou/">B&agrave;n th&ugrave;ng rượu</a></li>
+                        <li><a href="~/Trong-go-mit-moi/">Trống gỗ m&iacute;t mới</a></li>
+                        <li><a href="~/Tu-ruou-dep/">Tủ rượu đẹp</a></li>
+                        <li><a href="~/Bon-tam-go/">Bồn tắm gỗ</a></li>
+                        <li><a href="~/Chau-ngam-chan/">Chậu ng&acirc;m ch&acirc;n</a></li>
+                        <li><a href="~/Quay-bar/">Quầy bar</a></li>
+                        <li><a href="~/Go-dong-hang/">Gỗ đ&oacute;ng h&agrave;ng</a></li>
+                    </ul>
+                </div>
             </div>
             <div class="box">
                 <div class="top">Dịch vụ</div>
@@ -179,7 +264,8 @@ function moduleSearch() {
                         <li><a href="~/Trong-cai.html">Trống c&aacute;i</a></li>
                     </ul>
                 </div>
-            </div>    <div class="box">
+            </div>
+            <div class="box">
                 <div class="top">Đối tác liên kết</div>
                 <div class="middle">
                     <p>
@@ -187,7 +273,7 @@ function moduleSearch() {
                     </p>
                     <p>
                         <a href="~/Thung-ruou/">
-                            <img alt="" height="265" src="~/image/data/thung-ruou/thung-ruou-go-soi-t62014.jpg" width="400" /><br />
+                            <img alt="" height="265" src="~/image/data/thung-ruou/thung-ruou-go-soi-t62014.jpg" width="390" /><br />
                         </a>
                     </p>
                     <p>
@@ -224,45 +310,26 @@ function moduleSearch() {
         </div>
         <div id="column_right">
             <div class="box">
-                <div class="top">Hỗ trợ trực tuyến</div>
-                <div class="middle" style="padding:0px;background:#FFF;border:1px solid #DDDDDD;border-top:none;">
-                    <table align="center" border="0" cellpadding="0" cellspacing="0" style="width: 100%;">
-                        <tbody>
-                            <tr>
-                                <td align="left" style="padding-top:12px;padding-left:5px;"><b>Giao H&agrave;ng</b></td>
-                            </tr>
-                            <tr>
-                                <td align="right"><span style="color:#F00;font-weight:bold;padding-right:5px;"> 0466874066</span></td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="2" style="border-bottom:1px solid #ddd;padding-bottom:5px;padding-left:5px;">
-                                    <a href="ymsgr:sendIM?htc_kenvil"><img align="left" src="http://opi.yahoo.com/online?u=htc_kenvil&m=g&t=2" width="112" /></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" style="padding-top:12px;padding-left:5px;"><b>Kinh doanh 2</b></td>
-                            </tr>
-                            <tr>
-                                <td align="right"><span style="color:#F00;font-weight:bold;padding-right:5px;">0974.84.91.93</span></td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="2" style="border-bottom:1px solid #ddd;padding-bottom:5px;padding-left:5px;">
-                                    <a href="ymsgr:sendIM?khaogiavn"><img align="left" src="http://opi.yahoo.com/online?u=khaogiavn&m=g&t=2" width="112" /></a>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td align="left" style="padding-top:12px;padding-left:5px;"><b>Tư vấn 24h</b></td>
-                            </tr>
-                            <tr>
-                                <td align="right"><span style="color:#F00;font-weight:bold;padding-right:5px;">0963.844.445</span></td>
-                            </tr>
-                            <tr>
-                                <td align="left" colspan="2" style="border-bottom:1px solid #ddd;padding-bottom:5px;padding-left:5px;">
-                                    <a href="ymsgr:sendIM? "><img align="left" src="http://opi.yahoo.com/online?u= &m=g&t=2" width="112" /></a>
-                                </td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="top">Thời Trang</div>
+                <div id="category" class="middle">
+                    <ul>
+                        <li><a href="#">Quần Nam</a></li>
+                        <li><a href="#">Quần Nữ</a></li>
+                        <li><a href="#">Áo Nam</a></li>
+                        <li><a href="#">Áo Nữ</a></li>
+                        <li><a href="#">Váy Đầm</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box">
+                <div class="top">Sữa</div>
+                <div id="category" class="middle">
+                    <ul>
+                        <li><a href="#">Sữa trẻ em</a></li>
+                        <li><a href="#">Sữa cho người cao tuổi</a></li>
+                        <li><a href="#">Sữa nội</a></li>
+                        <li><a href="#">Sữa ngoại</a></li>
+                    </ul>
                 </div>
             </div>
             <div class="box">
@@ -319,42 +386,6 @@ function moduleSearch() {
                         </tr>
                         <tr>
                             <td align="center">
-                                <a href="~/431-Ngua-go-keo-trong.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/thung-ruou-trang-tri/ngua-go-keo-trong-128x128.jpg" title="Ngựa gỗ k&eacute;o trống" alt="Ngựa gỗ k&eacute;o trống" /></a><br />
-                                <a href="~/431-Ngua-go-keo-trong.html">Ngựa gỗ k&eacute;o trống</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/430-Thung-go-trang-tri-TT02.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/thung-ruou-trang-tri/thunggo-cofice-128x128.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT02" alt="Th&ugrave;ng gỗ trang tr&iacute; TT02" /></a><br />
-                                <a href="~/430-Thung-go-trang-tri-TT02.html">Th&ugrave;ng gỗ trang tr&iacute; TT02</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/429-Thung-go-trang-tri-TT01.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/thung-ruou-trang-tri/thunggotrangtri01-128x128.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT01" alt="Th&ugrave;ng gỗ trang tr&iacute; TT01" /></a><br />
-                                <a href="~/429-Thung-go-trang-tri-TT01.html">Th&ugrave;ng gỗ trang tr&iacute; TT01</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/428-Tu-ruou-dep-08.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-08-128x128.jpg" title="Tủ rượu đẹp 08" alt="Tủ rượu đẹp 08" /></a><br />
-                                <a href="~/428-Tu-ruou-dep-08.html">Tủ rượu đẹp 08</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/427-Tu-ruou-08.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-dep-03-128x128.jpg" title="Tủ rượu 08" alt="Tủ rượu 08" /></a><br />
-                                <a href="~/427-Tu-ruou-08.html">Tủ rượu 08</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/426-Tu-ruou-07.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-dep-02-128x128.jpg" title="Tủ rượu 07" alt="Tủ rượu 07" /></a><br />
-                                <a href="~/426-Tu-ruou-07.html">Tủ rượu 07</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
                                 <a href="~/425-Tu-ruou-06.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-dep-01-128x128.jpg" title="Tủ rượu 06" alt="Tủ rượu 06" /></a><br />
                                 <a href="~/425-Tu-ruou-06.html">Tủ rượu 06</a><br />
                             </td>
@@ -371,24 +402,67 @@ function moduleSearch() {
                                 <a href="~/423-Tu-ruou-04.html">Tủ rượu 04</a><br />
                             </td>
                         </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/422-Bo-ban-ghe-thung-ruou.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/ban-thung-ruou-vang-t616-128x128.jpg" title="Bộ b&agrave;n ghế th&ugrave;ng rượu" alt="Bộ b&agrave;n ghế th&ugrave;ng rượu" /></a><br />
-                                <a href="~/422-Bo-ban-ghe-thung-ruou.html">Bộ b&agrave;n ghế th&ugrave;ng rượu</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/421-Tu-ruou-03.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-hg03a-128x128.jpg" title="Tủ rượu 03" alt="Tủ rượu 03" /></a><br />
-                                <a href="~/421-Tu-ruou-03.html">Tủ rượu 03</a><br />
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="center">
-                                <a href="~/420-Tu-ruou-02.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu ruou/tu-ruou-dep-antuong-128x128.jpg" title="Tủ rượu 02" alt="Tủ rượu 02" /></a><br />
-                                <a href="~/420-Tu-ruou-02.html">Tủ rượu 02</a><br />
-                            </td>
-                        </tr>
+
+                        <div>
+                            @*<tr>
+
+                                        <tr>
+                                            <td align="center">
+                                                <a href="~/425-Tu-ruou-06.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-dep-01-128x128.jpg" title="Tủ rượu 06" alt="Tủ rượu 06" /></a><br />
+                                                <a href="~/425-Tu-ruou-06.html">Tủ rượu 06</a><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="~/424-Tu-ruou-05.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-dep-05-128x128.jpg" title="Tủ rượu 05" alt="Tủ rượu 05" /></a><br />
+                                                <a href="~/424-Tu-ruou-05.html">Tủ rượu 05</a><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="~/423-Tu-ruou-04.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-dep-04-128x128.jpg" title="Tủ rượu 04" alt="Tủ rượu 04" /></a><br />
+                                                <a href="~/423-Tu-ruou-04.html">Tủ rượu 04</a><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="~/422-Bo-ban-ghe-thung-ruou.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/ban-thung-ruou-vang-t616-128x128.jpg" title="Bộ b&agrave;n ghế th&ugrave;ng rượu" alt="Bộ b&agrave;n ghế th&ugrave;ng rượu" /></a><br />
+                                                <a href="~/422-Bo-ban-ghe-thung-ruou.html">Bộ b&agrave;n ghế th&ugrave;ng rượu</a><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="~/421-Tu-ruou-03.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/tu-ruou-hg03a-128x128.jpg" title="Tủ rượu 03" alt="Tủ rượu 03" /></a><br />
+                                                <a href="~/421-Tu-ruou-03.html">Tủ rượu 03</a><br />
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td align="center">
+                                                <a href="~/420-Tu-ruou-02.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu ruou/tu-ruou-dep-antuong-128x128.jpg" title="Tủ rượu 02" alt="Tủ rượu 02" /></a><br />
+                                                <a href="~/420-Tu-ruou-02.html">Tủ rượu 02</a><br />
+                                            </td>
+                                        </tr>
+                                         <tr>
+                                    <td align="center">
+                                        <a href="~/431-Ngua-go-keo-trong.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/thung-ruou-trang-tri/ngua-go-keo-trong-128x128.jpg" title="Ngựa gỗ k&eacute;o trống" alt="Ngựa gỗ k&eacute;o trống" /></a><br />
+                                        <a href="~/431-Ngua-go-keo-trong.html">Ngựa gỗ k&eacute;o trống</a><br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <a href="~/430-Thung-go-trang-tri-TT02.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/thung-ruou-trang-tri/thunggo-cofice-128x128.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT02" alt="Th&ugrave;ng gỗ trang tr&iacute; TT02" /></a><br />
+                                        <a href="~/430-Thung-go-trang-tri-TT02.html">Th&ugrave;ng gỗ trang tr&iacute; TT02</a><br />
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td align="center">
+                                        <a href="~/429-Thung-go-trang-tri-TT01.html"><img style="border:1px solid #ddd;" src="~/image/cache/data/thung-ruou-trang-tri/thunggotrangtri01-128x128.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT01" alt="Th&ugrave;ng gỗ trang tr&iacute; TT01" /></a><br />
+                                        <a href="~/429-Thung-go-trang-tri-TT01.html">Th&ugrave;ng gỗ trang tr&iacute; TT01</a><br />
+                                    </td>
+                                </tr>
+                            *@
+                        </div>
+
                     </table>
                 </div>
             </div>
@@ -405,184 +479,352 @@ function moduleSearch() {
                 <table class="list" cellpadding="0" cellspacing="10">
                     <tr>
                         <td style="width: 33.33%;">
-                            <a href="~/449-Thiet-ke-quay-bar-tu-bep-dep-M2.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M2" alt="Thiết kế quầy bar tủ bếp đẹp M2" /></a><br />
-                            <a href="~/449-Thiet-ke-quay-bar-tu-bep-dep-M2.html">Thiết kế quầy bar tủ bếp đẹp M2</a> <br />
+                            <div class="sanpham">
+                                <a href="~/449-Thiet-ke-quay-bar-tu-bep-dep-M2.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M2" alt="Thiết kế quầy bar tủ bếp đẹp M2" /></a><br />
+                                <a href="~/449-Thiet-ke-quay-bar-tu-bep-dep-M2.html">Thiết kế quầy bar tủ bếp đẹp M2</a> <br />
+                            </div>
 
-
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 1-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M1" alt="Thiết kế quầy bar tủ bếp đẹp M1" /></a><br />
-                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html">Thiết kế quầy bar tủ bếp đẹp M1</a> <br />
-
-
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/447-Quay-bar-tu-bep-07.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 07-150x150.jpg" title="Quầy bar tủ bếp 07" alt="Quầy bar tủ bếp 07" /></a><br />
-                            <a href="~/447-Quay-bar-tu-bep-07.html">Quầy bar tủ bếp 07</a> <br />
-
-
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 33.33%;">
-                            <a href="~/446-Quay-bar-tu-bep-06.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 06-150x150.jpg" title="Quầy bar tủ bếp 06" alt="Quầy bar tủ bếp 06" /></a><br />
-                            <a href="~/446-Quay-bar-tu-bep-06.html">Quầy bar tủ bếp 06</a> <br />
-
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/445-Quay-bar-tu-bep-05.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 05-150x150.jpg" title="Quầy bar tủ bếp 05" alt="Quầy bar tủ bếp 05" /></a><br />
-                            <a href="~/445-Quay-bar-tu-bep-05.html">Quầy bar tủ bếp 05</a> <br />
-
+                            <div class="sanpham">
+                                <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 1-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M1" alt="Thiết kế quầy bar tủ bếp đẹp M1" /></a><br />
+                                <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html">Thiết kế quầy bar tủ bếp đẹp M1</a> <br />
+                            </div>
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#" @*style="font-size: 15px; color: #808080; margin-left: 10px;*@ "> Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/444-Quay-bar-tu-bep-04.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 04-150x150.jpg" title="Quầy bar tủ bếp 04" alt="Quầy bar tủ bếp 04" /></a><br />
-                            <a href="~/444-Quay-bar-tu-bep-04.html">Quầy bar tủ bếp 04</a> <br />
+                            <div class="sanpham">
+                                <a href="~/447-Quay-bar-tu-bep-07.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 07-150x150.jpg" title="Quầy bar tủ bếp 07" alt="Quầy bar tủ bếp 07" /></a><br />
+                                <a href="~/447-Quay-bar-tu-bep-07.html">Quầy bar tủ bếp 07</a> <br />
+                            </div>
 
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 33.33%;">
-                            <a href="~/443-Quay-bar-tu-bep-03.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 03-150x150.jpg" title="Quầy bar tủ bếp 03" alt="Quầy bar tủ bếp 03" /></a><br />
-                            <a href="~/443-Quay-bar-tu-bep-03.html">Quầy bar tủ bếp 03</a> <br />
+                            <div class="sanpham">
+                                <a href="~/446-Quay-bar-tu-bep-06.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 06-150x150.jpg" title="Quầy bar tủ bếp 06" alt="Quầy bar tủ bếp 06" /></a><br />
+                                <a href="~/446-Quay-bar-tu-bep-06.html">Quầy bar tủ bếp 06</a> <br />
+                            </div>
 
 
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/442-Quay-bar-tu-bep-02.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 02-150x150.jpg" title="Quầy bar tủ bếp 02" alt="Quầy bar tủ bếp 02" /></a><br />
-                            <a href="~/442-Quay-bar-tu-bep-02.html">Quầy bar tủ bếp 02</a> <br />
-
-
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/441-Quay-bar-tu-bep-01.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 01-150x150.jpg" title="Quầy bar tủ bếp 01" alt="Quầy bar tủ bếp 01" /></a><br />
-                            <a href="~/441-Quay-bar-tu-bep-01.html">Quầy bar tủ bếp 01</a> <br />
-
-
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 33.33%;">
-                            <a href="~/440-Tu-ruou-15A.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/turuou-hg-150x150.jpg" title="Tủ rượu 15A" alt="Tủ rượu 15A" /></a><br />
-                            <a href="~/440-Tu-ruou-15A.html">Tủ rượu 15A</a> <br />
-
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/439-Tu-ruou-H01.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/ham-ruou-giadinh-150x150.jpg" title="Tủ rượu H01" alt="Tủ rượu H01" /></a><br />
-                            <a href="~/439-Tu-ruou-H01.html">Tủ rượu H01</a> <br />
+                            <div class="sanpham">
+                                <a href="~/445-Quay-bar-tu-bep-05.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 05-150x150.jpg" title="Quầy bar tủ bếp 05" alt="Quầy bar tủ bếp 05" /></a><br />
+                                <a href="~/445-Quay-bar-tu-bep-05.html">Quầy bar tủ bếp 05</a> <br />
+                            </div>
 
-
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/438-Ban-thung-go-trang-tri-12.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thung-ruou-112tt-150x150.jpg" title="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 12" alt="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 12" /></a><br />
-                            <a href="~/438-Ban-thung-go-trang-tri-12.html">B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 12</a> <br />
-
-
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 33.33%;">
-                            <a href="~/437-Ban-thung-go-trang-tri-11.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thung-ruou-tt11-150x150.jpg" title="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 11" alt="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 11" /></a><br />
-                            <a href="~/437-Ban-thung-go-trang-tri-11.html">B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 11</a> <br />
-
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/436-Tu-ruou-12.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou-dep/tu-ruou-14-150x150.jpg" title="Tủ rượu 12" alt="Tủ rượu 12" /></a><br />
-                            <a href="~/436-Tu-ruou-12.html">Tủ rượu 12</a> <br />
+                            <div class="sanpham">
+                                <a href="~/444-Quay-bar-tu-bep-04.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 04-150x150.jpg" title="Quầy bar tủ bếp 04" alt="Quầy bar tủ bếp 04" /></a><br />
+                                <a href="~/444-Quay-bar-tu-bep-04.html">Quầy bar tủ bếp 04</a> <br />
+                            </div>
 
-
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/435-Tu-ruou-11.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou-dep/tu-ruou-11-150x150.jpg" title="Tủ rượu 11" alt="Tủ rượu 11" /></a><br />
-                            <a href="~/435-Tu-ruou-11.html">Tủ rượu 11</a> <br />
-
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 33.33%;">
-                            <a href="~/433-Tu-ruou-10.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou-dep/tu-ruou-10-150x150.jpg" title="Tủ rượu 10" alt="Tủ rượu 10" /></a><br />
-                            <a href="~/433-Tu-ruou-10.html">Tủ rượu 10</a> <br />
+                            <div class="sanpham">
+                                <a href="~/443-Quay-bar-tu-bep-03.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 03-150x150.jpg" title="Quầy bar tủ bếp 03" alt="Quầy bar tủ bếp 03" /></a><br />
+                                <a href="~/443-Quay-bar-tu-bep-03.html">Quầy bar tủ bếp 03</a> <br />
+                            </div>
 
-
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/432-Thung-go-trang-tri-TT03-.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/ban-thung-ruou-vang-t616-150x150.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT03 " alt="Th&ugrave;ng gỗ trang tr&iacute; TT03 " /></a><br />
-                            <a href="~/432-Thung-go-trang-tri-TT03-.html">Th&ugrave;ng gỗ trang tr&iacute; TT03 </a> <br />
-
-
-
-                        </td>
-                        <td style="width: 33.33%;">
-                            <a href="~/431-Ngua-go-keo-trong.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/ngua-go-keo-trong-150x150.jpg" title="Ngựa gỗ k&eacute;o trống" alt="Ngựa gỗ k&eacute;o trống" /></a><br />
-                            <a href="~/431-Ngua-go-keo-trong.html">Ngựa gỗ k&eacute;o trống</a> <br />
-
-
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td style="width: 33.33%;">
-                            <a href="~/430-Thung-go-trang-tri-TT02.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thunggo-cofice-150x150.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT02" alt="Th&ugrave;ng gỗ trang tr&iacute; TT02" /></a><br />
-                            <a href="~/430-Thung-go-trang-tri-TT02.html">Th&ugrave;ng gỗ trang tr&iacute; TT02</a> <br />
-
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/429-Thung-go-trang-tri-TT01.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thunggotrangtri01-150x150.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT01" alt="Th&ugrave;ng gỗ trang tr&iacute; TT01" /></a><br />
-                            <a href="~/429-Thung-go-trang-tri-TT01.html">Th&ugrave;ng gỗ trang tr&iacute; TT01</a> <br />
+                            <div class="sanpham">
+                                <a href="~/442-Quay-bar-tu-bep-02.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 02-150x150.jpg" title="Quầy bar tủ bếp 02" alt="Quầy bar tủ bếp 02" /></a><br />
+                                <a href="~/442-Quay-bar-tu-bep-02.html">Quầy bar tủ bếp 02</a> <br />
+                            </div>
 
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/428-Tu-ruou-dep-08.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-08-150x150.jpg" title="Tủ rượu đẹp 08" alt="Tủ rượu đẹp 08" /></a><br />
-                            <a href="~/428-Tu-ruou-dep-08.html">Tủ rượu đẹp 08</a> <br />
+                            <div class="sanpham">
+                                <a href="~/441-Quay-bar-tu-bep-01.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 01-150x150.jpg" title="Quầy bar tủ bếp 01" alt="Quầy bar tủ bếp 01" /></a><br />
+                                <a href="~/441-Quay-bar-tu-bep-01.html">Quầy bar tủ bếp 01</a> <br />
+                            </div>
 
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                     </tr>
                     <tr>
                         <td style="width: 33.33%;">
-                            <a href="~/427-Tu-ruou-08.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-dep-03-150x150.jpg" title="Tủ rượu 08" alt="Tủ rượu 08" /></a><br />
-                            <a href="~/427-Tu-ruou-08.html">Tủ rượu 08</a> <br />
+                            <div class="sanpham">
+                                <a href="~/440-Tu-ruou-15A.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/turuou-hg-150x150.jpg" title="Tủ rượu 15A" alt="Tủ rượu 15A" /></a><br />
+                                <a href="~/440-Tu-ruou-15A.html">Tủ rượu 15A</a> <br />
+                            </div>
 
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/426-Tu-ruou-07.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-dep-02-150x150.jpg" title="Tủ rượu 07" alt="Tủ rượu 07" /></a><br />
-                            <a href="~/426-Tu-ruou-07.html">Tủ rượu 07</a> <br />
+                            <div class="sanpham">
+                                <a href="~/439-Tu-ruou-H01.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/ham-ruou-giadinh-150x150.jpg" title="Tủ rượu H01" alt="Tủ rượu H01" /></a><br />
+                                <a href="~/439-Tu-ruou-H01.html">Tủ rượu H01</a> <br />
+                            </div>
 
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
                         <td style="width: 33.33%;">
-                            <a href="~/425-Tu-ruou-06.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-dep-01-150x150.jpg" title="Tủ rượu 06" alt="Tủ rượu 06" /></a><br />
-                            <a href="~/425-Tu-ruou-06.html">Tủ rượu 06</a> <br />
+                            <div class="sanpham">
+                                <a href="~/438-Ban-thung-go-trang-tri-12.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thung-ruou-112tt-150x150.jpg" title="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 12" alt="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 12" /></a><br />
+                                <a href="~/438-Ban-thung-go-trang-tri-12.html">B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 12</a> <br />
+                            </div>
 
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/437-Ban-thung-go-trang-tri-11.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thung-ruou-tt11-150x150.jpg" title="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 11" alt="B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 11" /></a><br />
+                                <a href="~/437-Ban-thung-go-trang-tri-11.html">B&agrave;n th&ugrave;ng gỗ trang tr&iacute; 11</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/436-Tu-ruou-12.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou-dep/tu-ruou-14-150x150.jpg" title="Tủ rượu 12" alt="Tủ rượu 12" /></a><br />
+                                <a href="~/436-Tu-ruou-12.html">Tủ rượu 12</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/435-Tu-ruou-11.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou-dep/tu-ruou-11-150x150.jpg" title="Tủ rượu 11" alt="Tủ rượu 11" /></a><br />
+                                <a href="~/435-Tu-ruou-11.html">Tủ rượu 11</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/433-Tu-ruou-10.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou-dep/tu-ruou-10-150x150.jpg" title="Tủ rượu 10" alt="Tủ rượu 10" /></a><br />
+                                <a href="~/433-Tu-ruou-10.html">Tủ rượu 10</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/432-Thung-go-trang-tri-TT03-.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/ban-thung-ruou-vang-t616-150x150.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT03 " alt="Th&ugrave;ng gỗ trang tr&iacute; TT03 " /></a><br />
+                                <a href="~/432-Thung-go-trang-tri-TT03-.html">Th&ugrave;ng gỗ trang tr&iacute; TT03 </a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/431-Ngua-go-keo-trong.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/ngua-go-keo-trong-150x150.jpg" title="Ngựa gỗ k&eacute;o trống" alt="Ngựa gỗ k&eacute;o trống" /></a><br />
+                                <a href="~/431-Ngua-go-keo-trong.html">Ngựa gỗ k&eacute;o trống</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/430-Thung-go-trang-tri-TT02.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thunggo-cofice-150x150.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT02" alt="Th&ugrave;ng gỗ trang tr&iacute; TT02" /></a><br />
+                                <a href="~/430-Thung-go-trang-tri-TT02.html">Th&ugrave;ng gỗ trang tr&iacute; TT02</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/429-Thung-go-trang-tri-TT01.html"><img width="160" height="160" src="~/image/cache/data/thung-ruou-trang-tri/thunggotrangtri01-150x150.jpg" title="Th&ugrave;ng gỗ trang tr&iacute; TT01" alt="Th&ugrave;ng gỗ trang tr&iacute; TT01" /></a><br />
+                                <a href="~/429-Thung-go-trang-tri-TT01.html">Th&ugrave;ng gỗ trang tr&iacute; TT01</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/428-Tu-ruou-dep-08.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-08-150x150.jpg" title="Tủ rượu đẹp 08" alt="Tủ rượu đẹp 08" /></a><br />
+                                <a href="~/428-Tu-ruou-dep-08.html">Tủ rượu đẹp 08</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/427-Tu-ruou-08.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-dep-03-150x150.jpg" title="Tủ rượu 08" alt="Tủ rượu 08" /></a><br />
+                                <a href="~/427-Tu-ruou-08.html">Tủ rượu 08</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/426-Tu-ruou-07.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-dep-02-150x150.jpg" title="Tủ rượu 07" alt="Tủ rượu 07" /></a><br />
+                                <a href="~/426-Tu-ruou-07.html">Tủ rượu 07</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
+
+
+                        </td>
+                        <td style="width: 33.33%;">
+                            <div class="sanpham">
+                                <a href="~/425-Tu-ruou-06.html"><img width="160" height="160" src="~/image/cache/data/tu-ruou/tu-ruou-dep-01-150x150.jpg" title="Tủ rượu 06" alt="Tủ rượu 06" /></a><br />
+                                <a href="~/425-Tu-ruou-06.html">Tủ rượu 06</a> <br />
+                            </div>
+
+                            <div class="giasp">Giá bán: 3.000.000</div>
+                            <div class="dathang">
+                                <a href="#">Chi tiết</a>
+                                <input id="Button1" type="button" value="Đặt hàng" />
+                            </div>
 
 
                         </td>
@@ -593,17 +835,21 @@ function moduleSearch() {
         <div id="footer">
 
             <div class="copyright">
-                Copyright &copy; 2014 <a href=""><b>Th&ugrave;ng gỗ đựng rượu, th&ugrave;ng gỗ pallet , th&ugrave;ng rượu gỗ sồi, Trống gỗ, Trống rượu, Nội Thất Ho&agrave;ng Gia</b></a><p>
+                Copyright © 2014
+                <a href="#" style="font-size: 12px;">Thùng gỗ đựng rượu, thùng gỗ pallet, thùng rượu gỗ sồi, Trống gỗ, Trống rượu, Nội Thất Hoàng Gia</a>
+                <p>
                     <span style="font-size:12px;">
+
                         <span style="color:#000080;">
-                            <font face="arial"><b><i>Văn Ph&ograve;ng: P.801 - Chung Cư CTM 299 Cầu Giấy - Cầu Giấy - H&agrave; Nội</i></b></font><br style="font-family: Arial, Helvetica, sans-serif; " />
+                            <font face="arial"><b><i>Văn Phòng: P.801 - Chung Cư CTM 299 Cầu Giấy - Cầu Giấy - Hà Nội</i></b></font><br style="font-family: Arial, Helvetica, sans-serif; ">
                         </span> <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; "><strong><span style="color: rgb(0, 0, 205); "><span style="font-family: Arial, Helvetica, sans-serif; ">Home:<span _fck_bookmark="1" style="display: none;">&nbsp;</span></span> </span></strong></span>
-                    </span><span style="font-size:12px;">
+                    </span>
+                    <span style="font-size:12px;">
                         <span style="color: rgb(0, 0, 0); font-family: Arial, Helvetica, sans-serif; ">
                             <strong>
                                 <span style="color: rgb(0, 0, 205); ">
                                     <span style="font-family: Arial, Helvetica, sans-serif; ">
-                                        04 6687.4066 - Hotline: 0963.844.445<br />
+                                        04 6687.4066 - Hotline: 0963.844.445<br>
                                     </span>
                                 </span>
                             </strong><strong style="font-family: Arial, Helvetica, sans-serif; ">Email: noithat@hoanggiagroup.vn </strong>
@@ -611,12 +857,14 @@ function moduleSearch() {
                     </span>
                 </p>
                 <p>
-                    <em><strong>Website: &nbsp;<a href="#">www.thunggo.com</a></strong></em>
+                    <em><strong>Website: &nbsp;<a href="http://www.thunggo.com">www.thunggo.com</a></strong></em>
                 </p>
 
             </div>
+
+
             <div class="pageview">
-                <table width="100%">
+                <table width="100%" style="margin-bottom: 10px;">
                     <tr>
                         <td><b>Tổng lượng truy cập : </b></td>
                         <td>
@@ -636,26 +884,26 @@ function moduleSearch() {
                         </td>
                     </tr>
                 </table>
+                <a href="http://thietkewebchuanseo.vn" style="font-size: 14px;">Thiết kế Cell Web bởi HoangGiaGroup.vn</a>                  
             </div>
-            <div style="width:100%; float:right; text-align:right; color:#393a3a; position:relative; right:5px;">
-                <a href="http://thietkewebchuanseo.vn" style="color:#fd0000;">Thi&#7871;t k&#7871; web seo</a> b&#7903;i <a href="http://hoanggiagroup.vn" style="color:#fd0000;">HoangGiaGroup.vn</a>
-            </div>
+
         </div>
+
+        <head>
+            <script type="text/javascript">
+
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-34188607-1']);
+                _gaq.push(['_trackPageview']);
+
+                (function () {
+                    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+                })();
+
+            </script>
+        </head>
     </div>
-    <head>
-        <script type="text/javascript">
-
-            var _gaq = _gaq || [];
-            _gaq.push(['_setAccount', 'UA-34188607-1']);
-            _gaq.push(['_trackPageview']);
-
-            (function () {
-                var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-                ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-                var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-            })();
-
-        </script>
-    </head>
 </body>
 </html>
