@@ -1,0 +1,53 @@
+﻿@using ShopTrongGo.Models
+@model ShopTrongGo.Models.SanPham
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="top">
+    <div class="left"></div>
+    <div class="center">
+        <h1>Chi tiết sản phẩm</h1>
+    </div>
+</div>
+<div class="middle" style="padding:0px;">
+    <div class="list">
+        @if (Model != null)
+        {
+            <div class="sanpham">
+                <a href="../Product/Details/@Model.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@Model.TenSp" alt="@Model.TenSp" /></a><br />
+                <a href="../Product/Details/@Model.SanPhamID">@Model.TenSp</a> <br />
+                <div class="giasp">Giá bán: @Model.Gia</div>
+                <div class="dathang">
+                    <a href="#">Chi tiết</a>
+                    <input id="Button1" type="button" value="Đặt hàng" />
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<hr/>
+<h1>Danh sách sản phẩm khác</h1>
+<div class="middle" style="padding:0px;">
+    <div class="list">
+        @{
+            var list = ((List<SanPham>)ViewBag.ListProduct);
+            if (list != null)
+            {
+                foreach (var sanPham in list)
+                {
+                    <div class="sanpham">
+                        <a href="../Product/Details/@sanPham.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@sanPham.TenSp" alt="@sanPham.TenSp" /></a><br />
+                        <a href="../Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a> <br />
+                        <div class="giasp">Giá bán: @sanPham.Gia</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" />
+                        </div>
+                    </div>
+                }
+            }
+        }
+
+    </div>
+</div>

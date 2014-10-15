@@ -1,0 +1,19 @@
+﻿@using ShopTrongGo.Models
+
+<div class="box">
+    <div class="top">Thời Trang</div>
+    <div id="category" class="middle">
+        <ul>
+            @{
+                var list = ((List<LoaiSanPham>)ViewBag.MenuQuanAo);
+                if (list != null)
+                {
+                    foreach (var item in list)
+                    {
+                        <li><a href="~/Product/All/@item.LoaiSpID">@item.TenLoaiSp</a></li>
+                    }
+                }
+            }
+        </ul>
+    </div>
+</div>

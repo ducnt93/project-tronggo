@@ -1,0 +1,13 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=CONTENT_005CCATALOG_005CVIEW_005CJAVASCRIPT_005CUNITPNGFIX/@EntryIndexedValue">Content\catalog\view\javascript\unitpngfix</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=CONTENT_005CCATALOG_005CVIEW_005CTHEME_005CDEFAULT_005CSTYLESHEET_005CIE6_002ECSS/@EntryIndexedValue">Content\catalog\view\theme\default\stylesheet\ie6.css</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=HOME/@EntryIndexedValue">Home</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=PRODUCT/@EntryIndexedValue">Product</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPRODUCT_005CALL/@EntryIndexedValue">Views\Product\All</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPRODUCT_005CDETAILS/@EntryIndexedValue">Views\Product\Details</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONTENT_005CCATALOG_005CVIEW_005CJAVASCRIPT_005CUNITPNGFIX/@EntryIndexedValue">Content\catalog\view\javascript\unitpngfix</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONTENT_005CCATALOG_005CVIEW_005CTHEME_005CDEFAULT_005CSTYLESHEET_005CIE6_002ECSS/@EntryIndexedValue">Content\catalog\view\theme\default\stylesheet\ie6.css</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=HOME/@EntryIndexedValue">Home</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PRODUCT/@EntryIndexedValue">Product</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CPRODUCT_005CALL/@EntryIndexedValue">Views\Product\All</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CPRODUCT_005CDETAILS/@EntryIndexedValue">Views\Product\Details</s:String></wpf:ResourceDictionary>
