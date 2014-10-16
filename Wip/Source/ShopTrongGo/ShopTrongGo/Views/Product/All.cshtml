@@ -1,4 +1,5 @@
-﻿@using PagedList.Mvc;
+﻿@using Microsoft.Ajax.Utilities
+@using PagedList.Mvc;
 @model PagedList.IPagedList<ShopTrongGo.Models.SanPham>
 @{
     ViewBag.Title = "All";
@@ -27,10 +28,9 @@
 <div id="ajaxUpdate">
     @using (Ajax.BeginForm(new AjaxOptions() { UpdateTargetId = "ajaxUpdate", OnBegin = "BeginClient" }))
     {
-        if (Model != null)
+        if (Model !=null)
         {
             <div class="middle" style="padding: 0px;">
-
                 <div class="list">
                     @foreach (var pro in Model)
                     {
@@ -40,7 +40,6 @@
                             <div class="giasp">Giá bán: @pro.Gia</div>
                             <div class="dathang">
                                 <a href="~/Product/Details/@pro.SanPhamID">Chi tiết</a>
-                                @*<input id="Button1" type="button" value="Đặt hàng" onclick="AddToCart(@pro.SanPhamID)" />*@
                                 <a onclick="Addtocart(@pro.SanPhamID) " href="#">Đặt hàng</a>
                             </div>
                         </div>
@@ -55,9 +54,9 @@
         {
             <div class="middle" style="padding: 0px;">
                 <div class="list">
-                    <p>Không có sản phẩm nào!</p>
+                    @Html.Raw("<p>Không có sản phẩm nào!</p>")
                 </div>
             </div>
         }
     }
-</div>
+    </div>
