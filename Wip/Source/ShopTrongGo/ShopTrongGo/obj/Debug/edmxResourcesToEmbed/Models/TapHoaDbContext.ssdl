@@ -111,6 +111,7 @@
     <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
     <Property Name="NgayXoa" Type="date" />
     <Property Name="SoLuong" Type="int" />
+    <Property Name="NgayCapNhat" Type="date" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>

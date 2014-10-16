@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShopTrongGo.Models.SanPham>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ShopTrongGo.Models.SanPham>
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -21,10 +22,14 @@
                     <div class="giasp">Giá bán: @pro.Gia</div>
                     <div class="dathang">
                         <a href="../Product/Details/@pro.SanPhamID">Chi tiết</a>
-                        <input id="Button1" type="button" value="Đặt hàng" />
+                        @*<input id="Button1" type="button" value="Đặt hàng" onclick="AddToCart(@pro.SanPhamID)" />*@
+                        <a href="#" onclick="AddToCart(@pro.SanPhamID)">Đặt hàng</a>
                     </div>
                 </div>
             }
         }
     </div>
+    <p>
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+    </p>
 </div>

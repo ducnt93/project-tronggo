@@ -34,3 +34,7 @@ C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\bin\System
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\obj\Debug\ShopTrongGo.csprojResolveAssemblyReference.cache
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\obj\Debug\ShopTrongGo.dll
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\obj\Debug\ShopTrongGo.pdb
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\bin\PagedList.dll
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\bin\PagedList.Mvc.dll
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\bin\PagedList.xml
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo\bin\PagedList.Mvc.xml

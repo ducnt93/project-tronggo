@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers
@@ -12,11 +13,13 @@ namespace ShopTrongGo.Controllers
         //
         // GET: /Home/
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var dbTapHoa = new WebBanTapHoaEntities();
-            var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa).Take(3).ToList();
-            return View(list);
+            const int pageSize = 9;
+            int pageNum = page ?? 1;
+            var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderBy(p => p.SanPhamID);
+            return View(list.ToPagedList(pageNum,pageSize));
         }
 
     }

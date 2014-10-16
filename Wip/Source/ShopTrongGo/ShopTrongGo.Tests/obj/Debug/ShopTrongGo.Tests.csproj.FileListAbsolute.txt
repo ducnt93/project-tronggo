@@ -35,3 +35,5 @@ C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\obj\
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\obj\Debug\ShopTrongGo.Tests.pdb
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\bin\Debug\EntityFramework.dll
 C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\bin\Debug\EntityFramework.xml
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\bin\Debug\PagedList.dll
+C:\Users\Admin\Desktop\ShopTrongGo\Wip\Source\ShopTrongGo\ShopTrongGo.Tests\bin\Debug\PagedList.xml

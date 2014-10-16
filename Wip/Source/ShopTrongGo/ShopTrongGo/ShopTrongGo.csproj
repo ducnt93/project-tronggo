@@ -29,6 +29,31 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="1">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bAttachDbFilename=|DataDirectory|\aspnet-ShopTrongGo-20141012231021.mdf%3bInitial Catalog=aspnet-ShopTrongGo-20141012231021%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\DefaultConnection-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="WebTapHoaEntities-Deployment" Order="2">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=PC\TRUNGDUC2%3bInitial Catalog=WebTapHoa%3bIntegrated Security=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\WebTapHoaEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="WebBanTapHoaEntities-Deployment" Order="3">
+          <Destination Path="" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=PC\TRUNGDUC2%3bInitial Catalog=WebTapHoa%3bIntegrated Security=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Debug\AutoScripts\WebBanTapHoaEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -37,9 +62,41 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>AllFilesInTheProject</FilesToIncludeForPublish>
+    <PublishDatabaseSettings>
+      <Objects>
+        <ObjectGroup Name="DefaultConnection-Deployment" Order="1">
+          <Destination Path="workstation id=Webtaphoa.mssql.somee.com%3bpacket size=4096%3buser id=trungduc%3bpwd=anhduc123%3bdata source=Webtaphoa.mssql.somee.com%3bpersist security info=False%3binitial catalog=Webtaphoa" />
+          <Object Type="DbFullSql" Enabled="True">
+            <PreSource Path="Data Source=%28LocalDb%29\v11.0%3bAttachDbFilename=|DataDirectory|\aspnet-ShopTrongGo-20141012231021.mdf%3bInitial Catalog=aspnet-ShopTrongGo-20141012231021%3bIntegrated Security=True" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\DefaultConnection-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="WebTapHoaEntities-Deployment" Order="2" Enabled="False">
+          <Destination Path="workstation id=Webtaphoa.mssql.somee.com%3bpacket size=4096%3buser id=trungduc%3bpwd=anhduc123%3bdata source=Webtaphoa.mssql.somee.com%3bpersist security info=False%3binitial catalog=Webtaphoa" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=PC\TRUNGDUC2%3bInitial Catalog=WebTapHoa%3bIntegrated Security=True%3bApplication Name=EntityFramework" ScriptSchema="True" ScriptData="False" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\WebTapHoaEntities-Deployment_SchemaOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+        <ObjectGroup Name="WebBanTapHoaEntities-Deployment" Order="3">
+          <Destination Path="workstation id=Webtaphoa.mssql.somee.com%3bpacket size=4096%3buser id=trungduc%3bpwd=anhduc123%3bdata source=Webtaphoa.mssql.somee.com%3bpersist security info=False%3binitial catalog=Webtaphoa" />
+          <Object Type="DbFullSql">
+            <PreSource Path="Data Source=Webtaphoa%3bInitial Catalog=Webtaphoa%3bIntegrated Security=True%3bMultipleActiveResultSets=True%3bApplication Name=EntityFramework" ScriptSchema="False" ScriptData="True" CopyAllFullTextCatalogs="False" DriDefaults="True" />
+            <Source Path="obj\Release\AutoScripts\WebBanTapHoaEntities-Deployment_DataOnly.sql" Transacted="True" />
+          </Object>
+        </ObjectGroup>
+      </Objects>
+    </PublishDatabaseSettings>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PagedList">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+    </Reference>
+    <Reference Include="PagedList.Mvc">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Data.Entity" />
@@ -136,6 +193,7 @@
     <Compile Include="Controllers\MenuPartialController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -169,6 +227,8 @@
     <Compile Include="Models\SanPham.cs">
       <DependentUpon>TapHoaDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\ShoppingCartModels.cs" />
     <Compile Include="Models\TaiKhoan.cs">
       <DependentUpon>TapHoaDbContext.tt</DependentUpon>
     </Compile>
@@ -193,6 +253,10 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\WebTapHoa.mdf" />
+    <Content Include="App_Data\WebTapHoa_log.ldf">
+      <DependentUpon>WebTapHoa.mdf</DependentUpon>
+    </Content>
     <Content Include="Content\catalog\view\javascript\jquery\jquery-1.3.2.min.js" />
     <Content Include="Content\catalog\view\javascript\jquery\tab.js" />
     <Content Include="Content\catalog\view\javascript\jquery\thickbox\loadingAnimation.gif" />
@@ -220,6 +284,7 @@
     <Content Include="Content\catalog\view\theme\default\stylesheet\images\cursors\cursor_arrow_right.cur.html" />
     <Content Include="Content\catalog\view\theme\default\stylesheet\stylesheet.css" />
     <Content Include="Content\catalog\view\theme\default\stylesheet\style_home.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
@@ -386,10 +451,9 @@
     <Content Include="Views\Product\All.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Views\News\AllNews.cshtml" />
+    <Content Include="Views\ShoppingCart\Cart.cshtml" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
   </ItemGroup>

@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShopTrongGo.Models.SanPham>
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<ShopTrongGo.Models.SanPham>
 @{
     ViewBag.Title = "All";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -9,29 +10,54 @@
         <h1>Danh sách sản phẩm</h1>
     </div>
 </div>
-<div class="middle" style="padding:0px;">
-    @if (Model != null)
-    {
-        <div class="list">
-            @foreach (var pro in Model)
-            {
-                <div class="sanpham">
-                    <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
-                    <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
-                    <div class="giasp">Giá bán: @pro.Gia</div>
-                    <div class="dathang">
-                        <a href="~/Product/Details/@pro.SanPhamID">Chi tiết</a>
-                        <input id="Button1" type="button" value="Đặt hàng" />
-                    </div>
-                </div>
+<script type="text/javascript">
+    $(function () {
+        $('#form0').submit(function () {
+            if ($(this).valid()) {
+                $.ajax({
+                    url: this.action, type: this.method, data: $(this).serialize(), success: function (result) {
+                        $('#ajaxUpdate').html(result);
+                    }
+                });
             }
-        </div>
-    }
-    else
+        });
+        return false;
+    });
+</script>
+<div id="ajaxUpdate">
+    @using (Ajax.BeginForm(new AjaxOptions() { UpdateTargetId = "ajaxUpdate", OnBegin = "BeginClient" }))
     {
-        <div class="list">
-            <div><i>Không có sản phẩm nào</i></div>
-        </div>
-    }
+        if (Model != null)
+        {
+            <div class="middle" style="padding: 0px;">
 
+                <div class="list">
+                    @foreach (var pro in Model)
+                    {
+                        <div class="sanpham">
+                            <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                            <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
+                            <div class="giasp">Giá bán: @pro.Gia</div>
+                            <div class="dathang">
+                                <a href="~/Product/Details/@pro.SanPhamID">Chi tiết</a>
+                                @*<input id="Button1" type="button" value="Đặt hàng" onclick="AddToCart(@pro.SanPhamID)" />*@
+                                <a onclick="Addtocart(@pro.SanPhamID) " href="#">Đặt hàng</a>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <p>
+                    @Html.PagedListPager(Model, page => Url.Action("All", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                </p>
+            </div>
+        }
+        else
+        {
+            <div class="middle" style="padding: 0px;">
+                <div class="list">
+                    <p>Không có sản phẩm nào!</p>
+                </div>
+            </div>
+        }
+    }
 </div>

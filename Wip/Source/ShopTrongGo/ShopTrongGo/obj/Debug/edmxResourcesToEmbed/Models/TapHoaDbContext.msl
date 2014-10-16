@@ -107,6 +107,7 @@
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="WebTapHoaModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
           <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
           <ScalarProperty Name="TenSp" ColumnName="TenSp" />
           <ScalarProperty Name="LoaiSpID" ColumnName="LoaiSpID" />

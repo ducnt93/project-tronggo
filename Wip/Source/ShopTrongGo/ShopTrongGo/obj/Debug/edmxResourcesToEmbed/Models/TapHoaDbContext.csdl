@@ -125,6 +125,7 @@
     <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_CtHoaDon_SamPham" FromRole="SanPham" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="DanhMucAnhs" Relationship="Self.FK_DmAnh_SanPham" FromRole="SanPham" ToRole="DanhMucAnh" />
     <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_SanPham_LoaiSp" FromRole="SanPham" ToRole="LoaiSanPham" />
+    <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>
