@@ -1,0 +1,50 @@
+﻿@model IEnumerable<DemoManagerPage.Models.SanPham>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+        <h2>Index</h2>
+
+        <p>
+            @Html.ActionLink("Create New", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>Loại sản phẩm</th>
+                <th>Tên sản phẩm</th>
+                <th>Ảnh đại diện</th>
+                <th>Giá</th>
+                <th>Trạng thái</th>
+                <th>Model</th>                                            
+                <th>Miêu tả ngắn</th>
+                <th>Miêu tả chi tiết</th>
+                <th>Trạng thái tồn tại</th>
+                <th>Ngày xóa</th>
+                <th>Số lượng</th>
+                <th>Chức năng</th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.TenSp)</td>
+                    <td>@Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSp)</td>
+                    <td>@Html.DisplayFor(modelItem => item.AnhDaiDien)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Gia)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                    <td>@Html.DisplayFor(modelItem => item.MieuTaNgan)</td>
+                    <td>@Html.Raw(item.MieuTaChiTiet)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TrangThaiXoa)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NgayXoa)</td>
+                    <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SanPhamID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SanPhamID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SanPhamID })
+                    </td>
+                </tr>
+            }
+
+        </table>

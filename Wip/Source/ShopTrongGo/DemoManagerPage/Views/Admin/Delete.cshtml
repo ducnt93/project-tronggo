@@ -1,0 +1,96 @@
+﻿@model DemoManagerPage.Models.SanPham
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>SanPham</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenSp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenSp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LoaiSanPham.TenLoaiSp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoaiSanPham.TenLoaiSp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AnhDaiDien)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AnhDaiDien)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThai)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThai)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Model)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Model)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MieuTaNgan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaNgan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MieuTaChiTiet)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaChiTiet)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThaiXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SoLuong)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SoLuong)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

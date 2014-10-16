@@ -1,0 +1,74 @@
+﻿@model DemoManagerPage.Models.SanPham
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Thông tin chi tiết sản phẩm</legend>
+
+    <div class="display-label">Tên sản phẩm</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenSp)
+    </div>
+
+    <div class="display-label">Tên loại sản phẩm</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoaiSanPham.TenLoaiSp)
+    </div>
+    <div class="display-label">Ảnh đại diện</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AnhDaiDien)
+    </div>
+
+    <div class="display-label">Giá</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gia)
+    </div>
+
+    <div class="display-label">Trạng thái</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThai)
+    </div>
+
+    <div class="display-label">Model</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Model)
+    </div>
+
+    <div class="display-label">Miêu tả ngắn
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaNgan)
+    </div>
+
+    <div class="display-label">Miêu tả chi tiết
+    </div>
+    <div class="display-field">
+        @Html.Raw(Model.MieuTaChiTiet)
+    </div>
+
+    <div class="display-label">Trạng thái xóa
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">Ngày xóa
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+
+    <div class="display-label">Số lượng
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SoLuong)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.SanPhamID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

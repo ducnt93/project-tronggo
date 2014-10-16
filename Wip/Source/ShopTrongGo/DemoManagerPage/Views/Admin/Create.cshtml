@@ -1,0 +1,117 @@
+﻿@using System.Web.Mvc.Html
+@model DemoManagerPage.Models.SanPham
+
+@{
+    ViewBag.Title = "Create";
+    <script src="~/Content/ckeditor/ckeditor.js"></script>
+    <script src="~/Content/ckfinder/ckfinder.js"></script>
+    <script src="~/Scripts/jquery-1.8.2.min.js"></script>
+}       
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Thêm sản phẩm</legend>
+        <div class="editor-label">Tên sản phẩm</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.TenSp, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.TenSp)
+        </div>
+
+        <div class="editor-label">Loại sản phẩm</div>
+        <div class="editor-field">
+            @Html.DropDownList("LoaiSpID", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "drl" })
+            <div class="drl">@Html.ValidationMessageFor(model => model.LoaiSpID)</div>
+        </div>
+
+        <div class="editor-label">Ảnh đại diện</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.AnhDaiDien, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.AnhDaiDien)
+        </div>
+
+        <div class="editor-label"></div>
+        <div class="editor-field">
+            <input type="button" id="btnBrowserImage" value="Browser" />
+        </div>
+
+        <div class="editor-label">Giá</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Gia, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.Gia)
+        </div>
+
+        <div class="editor-label">Trạng thái</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.TrangThai, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.TrangThai)
+        </div>
+
+        <div class="editor-label">Model</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Model, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.Model)
+        </div>
+
+        <div class="editor-label">Miêu tả ngắn</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.MieuTaNgan, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.MieuTaNgan)
+        </div>
+
+        <div class="editor-label">Miêu tả chi tiết</div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.MieuTaChiTiet, new { @id = "ckeContent" })
+            <script language="javascript" type="text/javascript">
+                CKEDITOR.replace("ckeContent");
+            </script>
+            @Html.ValidationMessageFor(model => model.MieuTaChiTiet)
+        </div>
+
+        <div class="editor-label">Trạng thái xóa</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.TrangThaiXoa, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.TrangThaiXoa)
+        </div>
+
+        <div class="editor-label">Ngày xóa</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.NgayXoa, new {type = "date", @class = "txt" })
+            @Html.ValidationMessageFor(model => model.NgayXoa)
+        </div>
+
+        <div class="editor-label">Số lượng</div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.SoLuong, new {type = "number", @class = "txt" })
+            @Html.ValidationMessageFor(model => model.SoLuong)
+        </div>
+
+        <div class="editor-label"></div>
+        <div class="editor-field">
+            <p>
+                <input type="submit" value="Create" />
+            </p>
+        </div>
+</fieldset>
+}
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $("#btnBrowserImage").click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $("#AnhDaiDien").val(fileUrl);
+            };
+            ckfinder.popup();
+        });
+    });
+</script>
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

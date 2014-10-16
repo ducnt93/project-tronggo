@@ -1,0 +1,92 @@
+﻿body {
+    font-size: .85em;
+    font-family: "Segoe UI", Verdana, Helvetica, Sans-Serif;
+    color: #232323;
+    background-color: #fff;
+}
+
+header, footer, nav, section {
+    display: block;
+}
+
+
+/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #ddd;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+}
+
+legend {
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+textarea {
+    min-height: 75px;
+}
+
+.editor-label {
+    float: left;
+    width: 30%;
+    margin: 10px 0 0 0;
+}
+
+.editor-field {
+    float: left;
+    margin: 10px 0 0 0;
+    width: 70%;
+}
+.editor-field .txt {
+    float: left;
+    width: 60%;
+}
+
+.editor-field .drl {
+    float: left;
+    width: 60%;
+}
+
+.display-label {
+    float: left;
+    width: 20%;
+    padding-left: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+.display-field {
+    float: left;
+    width: 80%;
+    margin: 10px 0px 0px 0px;
+}
+
+
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+.table{ border: 1px;}
+.table .tr{ height: 50px;width: 100%;overflow: hidden;}
