@@ -1,6 +1,6 @@
 ﻿@using ShopTrongGo.Models
 <div class="box">
-    <div class="top"><a href="~/Product/ProductFeatured">Sản phẩm nổi bật</a></div>
+    <div class="top"><a href="~/Product/ProductFeatured" class="top">Sản phẩm nổi bật</a></div>
     <div class="middle" style="padding:0px;">
         @{
             var list = (List<SanPham>)ViewBag.ProductFeatured;
@@ -12,7 +12,11 @@
                         <a href="~/Product/Details/@sanPham.SanPhamID"><img style="border:1px solid #ddd;" src="~/image/cache/data/tu-ruou/turuou-hg-128x128.jpg" title="@sanPham.TenSp" alt="@sanPham.TenSp" /></a><br />
                         <a href="~/Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a><br />
                     </div>
+                   
                 }
+                 <div style=" width: 80px; margin: auto;">
+                     <input id="Button1" type="button" value="Xem thêm" class="btnCart" />
+                    </div>
             }
         }
     </div>
