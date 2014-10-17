@@ -4,51 +4,278 @@
 @{
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    
 }
+<link href="~/image/Detail/flexslider.css" rel="stylesheet" />
+<link href="~/image/Detail/font-awesome.css" rel="stylesheet" />
+<link href="~/image/Detail/font-awesome.min.css" rel="stylesheet" />
 <div class="top">
     <div class="left"></div>
     <div class="center">
         <h1>Chi tiết sản phẩm</h1>
     </div>
 </div>
+
 <div class="middle" style="padding:0px;">
     <div class="list">
-        @if (Model != null)
-        {
-            <div class="sanpham">
-                <a href="../Product/Details/@Model.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@Model.TenSp" alt="@Model.TenSp" /></a><br />
-                <a href="../Product/Details/@Model.SanPhamID">@Model.TenSp</a> <br />
-                <div class="giasp">Giá bán: @Model.Gia</div>
-                <div class="dathang">
-                    <a href="#">Chi tiết</a>
-                    <a href="#" onclick="AddToCart('@Model.SanPhamID');">Đặt hàng</a>
+        <div class="anhSP">
+            <img src="~/image/Detail/N%e1%bb%99i%20th%e1%ba%a5t%20nh%c3%a0%20h%c3%a0ng%20NH10.jpg" />
+            <div class="product_detail">
+                <div class="left_detail">
+                    <b>TÊN SẢN PHẨM</b> : Nội thất nhà hàng NH10 <br />
+                    <b>GIÁ</b> : Liên hệ <br />
+                    <b>TRẠNG THÁI</b> : Đang có hàng <br />
+                    <b>MODEL</b> : NH10 <br />
+                    <input id="Button1" type="button" value="Đặt hàng" class="btnCart" />
                 </div>
             </div>
-        }
-    </div>
-</div>
-<hr/>
-<h1>Danh sách sản phẩm khác</h1>
-<div class="middle" style="padding:0px;">
-    <div class="list">
-        @{
-            var list = ((List<SanPham>)ViewBag.ListProduct);
-            if (list != null)
-            {
-                foreach (var sanPham in list)
-                {
-                    <div class="sanpham">
-                        <a href="../Product/Details/@sanPham.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@sanPham.TenSp" alt="@sanPham.TenSp" /></a><br />
-                        <a href="../Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a> <br />
-                        <div class="giasp">Giá bán: @sanPham.Gia</div>
+
+            @*slider san pham*@
+            <div class="product_detail">
+                <b>CHI TIẾT SẢN PHẨM<br /></b>
+                <div class="slider">
+                    <section class="slider;" style="float: left;">
+                        <div class="left_slider">
+                            <div class="flexslider">
+                                <ul class="slides">
+                                    <li>
+                                        <img src="~/image/Detail/Slider1.png" />
+                                    </li>
+                                    <li>
+                                        <img src="~/image/Detail/Slider2.png" />
+                                    </li>
+                                    <li>
+
+                                        <img src="~/image/Detail/Slider3.png" />
+                                    </li>
+                                    <li>
+                                        <img src="~/image/Detail/noi-that-nha-hang-14_0.jpg" class="image" />
+                                    </li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </section>
+                    <!-- jQuery -->
+                    <script src="~/Scripts/jquery-2.1.1.min.js"></script>
+                    <script>window.jQuery || document.write('<script src="js/libs/jquery-1.7.min.js">\x3C/script>')</script>
+
+                    <!-- FlexSlider -->
+                    <script src="~/Scripts/jquery.flexslider.js"></script>
+
+                    <script type="text/javascript">
+                        $(function () {
+                            //    //SyntaxHighlighter.all();
+                        });
+                        $(window).load(function () {
+                            $('.flexslider').flexslider({
+                                animation: "slide",
+                                controlNav: false,
+                            });
+                        });
+                    </script>
+                </div>
+
+                <div class="thongtinSP" style="margin-top: 20px;">
+                    <p>
+                        Có thể bạn từng ăn pizza ở một không gian sang trọng, hiện đại và năng động như KFC,
+                        Lotteria hoặc Jollibee nhưng có lẽ bạn chưa bao giờ ngồi ăn pizza trong một cửa hàng với
+                        ánh sáng đèn lồng lung linh, bàn ghế gỗ mộc mạc và cái cảm giác như đang ở trong một hầm rượu
+                        vang của Pháp. Hoàng Gia xin giới thiệu đến bạn đọc ý tưởng độc đáo của Thiết kế nội thất tại
+                        Hoàng Gia.Mọi thông tin chi tiết xin vui lòng liên hệ Hotline: 0974.84.91.93- 0466874066
+                    </p>
+                </div>
+
+
+            </div>
+            <div class="product_detail">
+                <b>CÁC SẢN PHẨM KHÁC <br /></b>
+                <div class="list">
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/Views/Shared/_Detail.cshtml"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M2" alt="Thiết kế quầy bar tủ bếp đẹp M2" /></a><br />
+                            <a href="~/Views/Shared/_Detail.cshtml">Thiết kế quầy bar tủ bếp đẹp M2</a> <br />
+                        </div>
+                        <div class="giasp">Giá bán: 3.000.000</div>
                         <div class="dathang">
                             <a href="#">Chi tiết</a>
-                            <a onclick="AddToCart('@sanPham.SanPhamID');" href="#">Đặt hàng</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart"/>
                         </div>
                     </div>
-                }
-            }
-        }
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 1-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M1" alt="Thiết kế quầy bar tủ bếp đẹp M1" /></a><br />
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html">Thiết kế quầy bar tủ bếp đẹp M1</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart "/>
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class=" NewProduct">
+                            <a href="~/447-Quay-bar-tu-bep-07.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 07-150x150.jpg" title="Quầy bar tủ bếp 07" alt="Quầy bar tủ bếp 07" /></a><br />
+                            <a href="~/447-Quay-bar-tu-bep-07.html">Quầy bar tủ bếp 07</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart "/>
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/Views/Shared/_Detail.cshtml"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M2" alt="Thiết kế quầy bar tủ bếp đẹp M2" /></a><br />
+                            <a href="~/Views/Shared/_Detail.cshtml">Thiết kế quầy bar tủ bếp đẹp M2</a> <br />
+                        </div>
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart "/>
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 1-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M1" alt="Thiết kế quầy bar tủ bếp đẹp M1" /></a><br />
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html">Thiết kế quầy bar tủ bếp đẹp M1</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart "/>
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class=" NewProduct">
+                            <a href="~/447-Quay-bar-tu-bep-07.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 07-150x150.jpg" title="Quầy bar tủ bếp 07" alt="Quầy bar tủ bếp 07" /></a><br />
+                            <a href="~/447-Quay-bar-tu-bep-07.html">Quầy bar tủ bếp 07</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" />
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/Views/Shared/_Detail.cshtml"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M2" alt="Thiết kế quầy bar tủ bếp đẹp M2" /></a><br />
+                            <a href="~/Views/Shared/_Detail.cshtml">Thiết kế quầy bar tủ bếp đẹp M2</a> <br />
+                        </div>
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart "/>
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 1-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M1" alt="Thiết kế quầy bar tủ bếp đẹp M1" /></a><br />
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html">Thiết kế quầy bar tủ bếp đẹp M1</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart "/>
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class=" NewProduct">
+                            <a href="~/447-Quay-bar-tu-bep-07.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 07-150x150.jpg" title="Quầy bar tủ bếp 07" alt="Quầy bar tủ bếp 07" /></a><br />
+                            <a href="~/447-Quay-bar-tu-bep-07.html">Quầy bar tủ bếp 07</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart "/>
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/Views/Shared/_Detail.cshtml"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M2" alt="Thiết kế quầy bar tủ bếp đẹp M2" /></a><br />
+                            <a href="~/Views/Shared/_Detail.cshtml">Thiết kế quầy bar tủ bếp đẹp M2</a> <br />
+                        </div>
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart" />
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class="NewProduct">
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 1-150x150.jpg" title="Thiết kế quầy bar tủ bếp đẹp M1" alt="Thiết kế quầy bar tủ bếp đẹp M1" /></a><br />
+                            <a href="~/448-Thiet-ke-quay-bar-tu-bep-dep-M1.html">Thiết kế quầy bar tủ bếp đẹp M1</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart" />
+                        </div>
+                    </div>
+                    <div class="sanphamkhac">
+                        <div class=" NewProduct">
+                            <a href="~/447-Quay-bar-tu-bep-07.html"><img width="160" height="160" src="~/image/cache/data/Quay_bar/quay bar tu bep 07-150x150.jpg" title="Quầy bar tủ bếp 07" alt="Quầy bar tủ bếp 07" /></a><br />
+                            <a href="~/447-Quay-bar-tu-bep-07.html">Quầy bar tủ bếp 07</a> <br />
+                        </div>
+
+                        <div class="giasp">Giá bán: 3.000.000</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <input id="Button1" type="button" value="Đặt hàng" class="btnCart" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
     </div>
 </div>
+
+    @*<div class="middle" style="padding:0px;">
+            <div class="list">
+                @if (Model != null)
+                {
+                    <div class="sanpham">
+                        <a href="../Product/Details/@Model.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@Model.TenSp" alt="@Model.TenSp" /></a><br />
+                        <a href="../Product/Details/@Model.SanPhamID">@Model.TenSp</a> <br />
+                        <div class="giasp">Giá bán: @Model.Gia</div>
+                        <div class="dathang">
+                            <a href="#">Chi tiết</a>
+                            <a href="#" onclick="AddToCart('@Model.SanPhamID');">Đặt hàng</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>*@
+    <hr />
+    @*<h1>Danh sách sản phẩm khác</h1>
+        <div class="middle" style="padding:0px;">
+            <div class="list">
+                @{
+                    var list = ((List<SanPham>)ViewBag.ListProduct);
+                    if (list != null)
+                    {
+                        foreach (var sanPham in list)
+                        {
+                            <div class="sanpham">
+                                <a href="../Product/Details/@sanPham.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@sanPham.TenSp" alt="@sanPham.TenSp" /></a><br />
+                                <a href="../Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a> <br />
+                                <div class="giasp">Giá bán: @sanPham.Gia</div>
+                                <div class="dathang">
+                                    <a href="#">Chi tiết</a>
+                                    <a onclick="AddToCart('@sanPham.SanPhamID');" href="#">Đặt hàng</a>
+                                </div>
+                            </div>
+                        }
+                    }
+                }
+
+            </div>
+        </div>*@
