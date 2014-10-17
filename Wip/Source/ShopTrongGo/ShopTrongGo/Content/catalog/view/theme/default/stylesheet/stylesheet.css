@@ -816,14 +816,9 @@ a.button:hover {
     font-size: 15px;
 }
 
-input {
-    width: 80px;
-    height: 27px;
-    font-size: 15px;
-}
 
-.buttonDatHang {
-    width: 80px;
+.btnCart {
+    width: 75px;
     height: 27px;
     font-size: 15px;
 }
