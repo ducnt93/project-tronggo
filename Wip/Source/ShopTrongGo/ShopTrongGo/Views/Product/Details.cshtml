@@ -21,8 +21,7 @@
                 <div class="giasp">Giá bán: @Model.Gia</div>
                 <div class="dathang">
                     <a href="#">Chi tiết</a>
-                    @*<input id="Button1" type="button" value="Đặt hàng" onclick="AddToCart(@pro.SanPhamID)" />*@
-                    <a onclick="AddToCart(@Model.SanPhamID)" href="#">Đặt hàng</a>
+                    <a href="#" onclick="AddToCart('@Model.SanPhamID');">Đặt hàng</a>
                 </div>
             </div>
         }
@@ -44,8 +43,7 @@
                         <div class="giasp">Giá bán: @sanPham.Gia</div>
                         <div class="dathang">
                             <a href="#">Chi tiết</a>
-                            @*<input id="Button1" type="button" value="Đặt hàng" onclick="AddToCart(@pro.SanPhamID)" />*@
-                            <a onclick="AddToCart(@sanPham.SanPhamID)" href="#">Đặt hàng</a>
+                            <a onclick="AddToCart('@sanPham.SanPhamID');" href="#">Đặt hàng</a>
                         </div>
                     </div>
                 }

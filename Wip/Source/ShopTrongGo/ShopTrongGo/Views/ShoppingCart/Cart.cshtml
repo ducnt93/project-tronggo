@@ -35,7 +35,7 @@
 
 @if (Model != null && Model.Cart != null)
 {
-    <table width="99%" border="0" cellspacing="1" cellpadding="0" class="table-cart" align="center">
+    <table width="100%" border="0" cellspacing="1" cellpadding="0" class="table-cart" align="center">
         <tr valign="middle" class="title-cart">
             <td width="45%">Sản Phẩm</td>
             <td width="7%">Xoá </td>
@@ -47,16 +47,16 @@
             <tr>
                 <td>
                     <div>
-                        <img src="~/Images/@item.ProductImage" style="float:left; margin-right: 15px; margin-left: 10px; max-width: 150px; max-height: 200px;" />
+                        <img src="~/images/cache/data/tu-ruou/@item.ProductImage" style="float:left; margin-right: 15px; margin-left: 10px; max-width: 50px; max-height: 60px;" />
                         <div class="itm-cartDetails">
                             <strong>@item.ProductName</strong>
                             <h3><a style="text-decoration:none;text-transform:uppercase;font-weight:normal" href="~/Procduct/Details/@item.ProductId">@item.ProductName</a></h3>
                         </div>
                     </div>
                 </td>
-                <td align="center"><img src="/images/icon-del.png" onclick="return RemoveFromCart(@item.ProductId);" /></td>
+                <td align="center"><img src="~/images/icon-del.png" onclick="return RemoveFromCart('@item.ProductId');" /></td>
                 <td align="center">
-                    <select id="quantity_@item.ProductID" title="Số lượng" name="thanh toan" class="" onchange="return UpdateQuantity(@item.ProductId,this.value);">
+                    <select id="quantity_@item.ProductId" title="Số lượng" name="thanh toan" class="" onchange="return UpdateQuantity('@item.ProductId',this.value);">
                         <option>1</option>
                         <option>2</option>
                         <option>3</option>
@@ -69,7 +69,7 @@
                         <option>10</option>
                     </select>
                     <script type="text/javascript">
-                        $('#quantity_@item.ProductID').val('@item.Quantity');
+                        $('#quantity_@item.ProductId').val('@item.Quantity');
                     </script>
                 </td>
                 <td align="center"><b>@item.Total.ToString("N0") VND</b></td>

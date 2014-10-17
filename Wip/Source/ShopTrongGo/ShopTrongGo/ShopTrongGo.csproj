@@ -198,6 +198,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Banner.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ChiTietHoaDon.cs">
       <DependentUpon>TapHoaDbContext.tt</DependentUpon>
     </Compile>
@@ -346,6 +349,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>TapHoaDbContext.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="image\icon-del.png" />
     <Content Include="Models\TapHoaDbContext.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>TapHoaDbContext.edmx</DependentUpon>
@@ -454,6 +458,7 @@
     <Content Include="Views\News\AllNews.cshtml" />
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
+    <Content Include="Views\AdProduct\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

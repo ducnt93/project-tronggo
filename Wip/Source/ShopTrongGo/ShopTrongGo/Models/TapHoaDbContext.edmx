@@ -5,6 +5,16 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="WebTapHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="IDSanPham" Type="nvarchar" MaxLength="5" Nullable="false" />
+          <Property Name="ThuTuShow" Type="int" />
+          <Property Name="MoTa" Type="nchar" MaxLength="10" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="SanPhamID" />
@@ -117,6 +127,8 @@
           <Property Name="NgayXoa" Type="date" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="NgayCapNhat" Type="date" />
+          <Property Name="LuotView" Type="varchar" MaxLength="50" />
+          <Property Name="LuotBan" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -240,6 +252,7 @@
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="WebTapHoaModelStoreContainer">
+          <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMucAnh" EntityType="Self.DanhMucAnh" Schema="dbo" store:Type="Tables" />
@@ -415,6 +428,8 @@
           <NavigationProperty Name="DanhMucAnhs" Relationship="Self.FK_DmAnh_SanPham" FromRole="SanPham" ToRole="DanhMucAnh" />
           <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_SanPham_LoaiSp" FromRole="SanPham" ToRole="LoaiSanPham" />
           <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
+          <Property Name="LuotView" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LuotBan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -584,7 +599,18 @@
             <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
           </AssociationSet>
+          <EntitySet Name="Banners" EntityType="WebTapHoaModel.Banner" />
         </EntityContainer>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDSanPham" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ThuTuShow" Type="Int32" />
+          <Property Name="MoTa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -697,6 +723,8 @@
           <EntitySetMapping Name="SanPhams">
             <EntityTypeMapping TypeName="WebTapHoaModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="LuotBan" ColumnName="LuotBan" />
+                <ScalarProperty Name="LuotView" ColumnName="LuotView" />
                 <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
                 <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
                 <ScalarProperty Name="TenSp" ColumnName="TenSp" />
@@ -737,6 +765,17 @@
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Banners">
+            <EntityTypeMapping TypeName="WebTapHoaModel.Banner">
+              <MappingFragment StoreEntitySet="Banner">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="ThuTuShow" ColumnName="ThuTuShow" />
+                <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

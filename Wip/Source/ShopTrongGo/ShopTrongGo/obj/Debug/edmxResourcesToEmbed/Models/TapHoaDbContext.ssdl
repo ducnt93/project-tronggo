@@ -1,5 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Schema Namespace="WebTapHoaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" Nullable="false" />
+    <Property Name="IDSanPham" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="ThuTuShow" Type="int" />
+    <Property Name="MoTa" Type="nchar" MaxLength="10" />
+    <Property Name="TrangThai" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="ChiTietHoaDon">
     <Key>
       <PropertyRef Name="SanPhamID" />
@@ -112,6 +122,8 @@
     <Property Name="NgayXoa" Type="date" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="NgayCapNhat" Type="date" />
+    <Property Name="LuotView" Type="varchar" MaxLength="50" />
+    <Property Name="LuotBan" Type="varchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>
@@ -235,6 +247,7 @@
     </ReferentialConstraint>
   </Association>
   <EntityContainer Name="WebTapHoaModelStoreContainer">
+    <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DanhMucAnh" EntityType="Self.DanhMucAnh" Schema="dbo" store:Type="Tables" />

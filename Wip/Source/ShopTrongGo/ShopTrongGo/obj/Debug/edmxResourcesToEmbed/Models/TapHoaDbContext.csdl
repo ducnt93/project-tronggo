@@ -126,6 +126,8 @@
     <NavigationProperty Name="DanhMucAnhs" Relationship="Self.FK_DmAnh_SanPham" FromRole="SanPham" ToRole="DanhMucAnh" />
     <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_SanPham_LoaiSp" FromRole="SanPham" ToRole="LoaiSanPham" />
     <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
+    <Property Name="LuotView" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LuotBan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>
@@ -295,5 +297,16 @@
       <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
       <End Role="TaiKhoan" EntitySet="TaiKhoans" />
     </AssociationSet>
+    <EntitySet Name="Banners" EntityType="WebTapHoaModel.Banner" />
   </EntityContainer>
+  <EntityType Name="Banner">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" />
+    <Property Name="IDSanPham" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+    <Property Name="ThuTuShow" Type="Int32" />
+    <Property Name="MoTa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+    <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+  </EntityType>
 </Schema>

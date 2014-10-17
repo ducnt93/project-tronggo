@@ -107,6 +107,8 @@
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="WebTapHoaModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="LuotBan" ColumnName="LuotBan" />
+          <ScalarProperty Name="LuotView" ColumnName="LuotView" />
           <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
           <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
           <ScalarProperty Name="TenSp" ColumnName="TenSp" />
@@ -147,6 +149,17 @@
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="Email" ColumnName="Email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Banners">
+      <EntityTypeMapping TypeName="WebTapHoaModel.Banner">
+        <MappingFragment StoreEntitySet="Banner">
+          <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+          <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+          <ScalarProperty Name="ThuTuShow" ColumnName="ThuTuShow" />
+          <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

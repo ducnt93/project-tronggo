@@ -2,12 +2,22 @@
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=CONTENT_005CCATALOG_005CVIEW_005CJAVASCRIPT_005CUNITPNGFIX/@EntryIndexedValue">Content\catalog\view\javascript\unitpngfix</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=CONTENT_005CCATALOG_005CVIEW_005CTHEME_005CDEFAULT_005CSTYLESHEET_005CIE6_002ECSS/@EntryIndexedValue">Content\catalog\view\theme\default\stylesheet\ie6.css</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=HOME/@EntryIndexedValue">Home</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=IMAGES_005CCACHE/@EntryIndexedValue">images\cache</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=IMAGES_005CICON_002DDEL_002EPNG/@EntryIndexedValue">images\icon-del.png</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=PROCDUCT/@EntryIndexedValue">Procduct</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=PRODUCT/@EntryIndexedValue">Product</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=SHOPPINGCART/@EntryIndexedValue">ShoppingCart</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPRODUCT_005CALL/@EntryIndexedValue">Views\Product\All</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPRODUCT_005CDETAILS/@EntryIndexedValue">Views\Product\Details</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CSHOPPINGCART_005CCART/@EntryIndexedValue">Views\ShoppingCart\Cart</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONTENT_005CCATALOG_005CVIEW_005CJAVASCRIPT_005CUNITPNGFIX/@EntryIndexedValue">Content\catalog\view\javascript\unitpngfix</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONTENT_005CCATALOG_005CVIEW_005CTHEME_005CDEFAULT_005CSTYLESHEET_005CIE6_002ECSS/@EntryIndexedValue">Content\catalog\view\theme\default\stylesheet\ie6.css</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=HOME/@EntryIndexedValue">Home</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=IMAGES_005CCACHE/@EntryIndexedValue">images\cache</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=IMAGES_005CICON_002DDEL_002EPNG/@EntryIndexedValue">images\icon-del.png</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PROCDUCT/@EntryIndexedValue">Procduct</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PRODUCT/@EntryIndexedValue">Product</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=SHOPPINGCART/@EntryIndexedValue">ShoppingCart</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CPRODUCT_005CALL/@EntryIndexedValue">Views\Product\All</s:String>
-	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CPRODUCT_005CDETAILS/@EntryIndexedValue">Views\Product\Details</s:String></wpf:ResourceDictionary>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CPRODUCT_005CDETAILS/@EntryIndexedValue">Views\Product\Details</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CSHOPPINGCART_005CCART/@EntryIndexedValue">Views\ShoppingCart\Cart</s:String></wpf:ResourceDictionary>

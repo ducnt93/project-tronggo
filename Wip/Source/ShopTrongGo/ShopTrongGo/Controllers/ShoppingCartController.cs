@@ -30,11 +30,7 @@ namespace ShopTrongGo.Controllers
             SanPham objProduct = GetProductById(id);
             if (objProduct != null)
             {
-                var objCart = (ShoppingCart)Session["Cart"];
-                if (objCart == null)
-                {
-                    objCart = new ShoppingCart();
-                }
+                var objCart = (ShoppingCart)Session["Cart"] ?? new ShoppingCart();
 
                 var item = new ShoppingCartItem()
                 {

@@ -18,6 +18,11 @@ namespace ShopTrongGo
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+            routes.MapRoute(
+                name: "Seconds",
+                url: "{controller}/{action}/{id}",
+                defaults: new { controller = "ShoppingCart", action = "AddToCart", id = UrlParameter.Optional }
+            );
         }
     }
 }
