@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,7 +13,7 @@ namespace ShopTrongGo.Controllers
     {
         //
         // GET: /Product/
-        [HttpGet]
+        //[HttpGet]
         public ActionResult All(int id, int? page)
         {
             var dbTapHoa = new WebBanTapHoaEntities();
@@ -27,9 +28,24 @@ namespace ShopTrongGo.Controllers
             var dbTapHoa = new WebBanTapHoaEntities();
             const int pageSize = 3;
             int pageNum = page ?? 1;
+            var sanPham = dbTapHoa.SanPhams.SingleOrDefault(sp => sp.SanPhamID == id);
+            if (sanPham != null)
+            {
+                double luotView =  Convert.ToDouble(sanPham.LuotView);
+                luotView += 1;
+                sanPham.LuotView = luotView.ToString(CultureInfo.InvariantCulture);
+                dbTapHoa.SaveChanges();
+            }
             var pro = dbTapHoa.SanPhams.SingleOrDefault(sp => !sp.TrangThaiXoa & sp.SanPhamID == id);
             ViewBag.ListProduct = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == pro.LoaiSpID);
             return View(pro);
+        }
+
+        public ActionResult ProductFeatured()
+        {
+            var dbEntities = new WebBanTapHoaEntities();
+            var listProductFeatured = dbEntities.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderByDescending(p => Double.Parse(p.LuotView)).Take(20).ToList();
+            return View(listProductFeatured);
         }
     }
 }

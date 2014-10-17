@@ -29,69 +29,75 @@
     }
 </script>
 
-
-
-<h2>Giỏ hàng của bạn</h2>
-
-@if (Model != null && Model.Cart != null)
-{
-    <table width="100%" border="0" cellspacing="1" cellpadding="0" class="table-cart" align="center">
-        <tr valign="middle" class="title-cart">
-            <td width="45%">Sản Phẩm</td>
-            <td width="7%">Xoá </td>
-            <td width="12%">Số lượng</td>
-            <td width="15%">Tổng cộng</td>
-        </tr>
-        @foreach (var item in Model.Cart.ListItem)
+<div class="top">
+    <div class="left"></div>
+    <div class="center">
+        <h1>Giỏ hàng của bạn</h1>
+    </div>
+</div>
+<div class="middle" style="padding-bottom: 50px;">
+    <div class="list">
+        @if (Model != null && Model.Cart != null)
         {
-            <tr>
-                <td>
-                    <div>
-                        <img src="~/images/cache/data/tu-ruou/@item.ProductImage" style="float:left; margin-right: 15px; margin-left: 10px; max-width: 50px; max-height: 60px;" />
-                        <div class="itm-cartDetails">
-                            <strong>@item.ProductName</strong>
-                            <h3><a style="text-decoration:none;text-transform:uppercase;font-weight:normal" href="~/Procduct/Details/@item.ProductId">@item.ProductName</a></h3>
-                        </div>
-                    </div>
-                </td>
-                <td align="center"><img src="~/images/icon-del.png" onclick="return RemoveFromCart('@item.ProductId');" /></td>
-                <td align="center">
-                    <select id="quantity_@item.ProductId" title="Số lượng" name="thanh toan" class="" onchange="return UpdateQuantity('@item.ProductId',this.value);">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>6</option>
-                        <option>7</option>
-                        <option>8</option>
-                        <option>9</option>
-                        <option>10</option>
-                    </select>
-                    <script type="text/javascript">
-                        $('#quantity_@item.ProductId').val('@item.Quantity');
-                    </script>
-                </td>
-                <td align="center"><b>@item.Total.ToString("N0") VND</b></td>
-            </tr>
+            <table width="100%" border="0" cellspacing="1" cellpadding="0" class="table-cart" style="align-content: center">
+                <tr valign="middle" class="title-cart">
+                    <td width="60%">Sản Phẩm</td>
+                    <td width="10%">Xoá </td>
+                    <td width="12%">Số lượng</td>
+                    <td width="18%">Tổng cộng</td>
+                </tr>
+                @foreach (var item in Model.Cart.ListItem)
+                {
+                    <tr>
+                        <td>
+                            <div>
+                                <img src="~/image/cache/data/Quay_bar/@item.ProductImage" style="float:left; margin-right: 15px; margin-left: 10px; max-width: 70px; max-height: 90px;" />
+                                <div class="itm-cartDetails">
+                                    <strong>@item.ProductName</strong>
+                                    <h3><a style="text-decoration:none;text-transform:uppercase;font-weight:normal" href="~/Procduct/Details/@item.ProductId">@item.ProductName</a></h3>
+                                </div>
+                            </div>
+                        </td>
+                        <td align="center"><img src="~/image/icon-del.png" onclick="return RemoveFromCart('@item.ProductId');" /></td>
+                        <td align="center">
+                            <select id="quantity_@item.ProductId" title="Số lượng" name="thanh toan" class="" onchange="return UpdateQuantity('@item.ProductId',this.value);">
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                                <option>6</option>
+                                <option>7</option>
+                                <option>8</option>
+                                <option>9</option>
+                                <option>10</option>
+                            </select>
+                            <script type="text/javascript">
+                                $('#quantity_@item.ProductId').val('@item.Quantity');
+                            </script>
+                        </td>
+                        <td align="center"><b>@item.Total.ToString("N0") VND</b></td>
+                    </tr>
+                }
+                <tr>
+                    <td colspan="4" align="center"><b>TỔNG THÀNH TIỀN</b></td>
+                    <td>
+                        @if (Model != null && @Model.Cart != null)
+                        {
+                            <strong>@Model.Cart.GetTotal().ToString("N0") VND</strong>
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="4" align="center"><b>THANH TOÁN</b></td>
+                    <td>
+                        @if (Model != null && @Model.Cart != null)
+                        {
+                            <strong>@Model.Cart.GetTotal().ToString("N0") VND</strong>
+                        }
+                    </td>
+                </tr>
+            </table>
         }
-        <tr>
-            <td colspan="4" align="center"><b>TỔNG THÀNH TIỀN</b></td>
-            <td>
-                @if (Model != null && @Model.Cart != null)
-                {
-                    <strong>@Model.Cart.GetTotal().ToString("N0") VND</strong>
-                }
-            </td>
-        </tr>
-        <tr>
-            <td colspan="4" align="center"><b>THANH TOÁN</b></td>
-            <td>
-                @if (Model != null && @Model.Cart != null)
-                {
-                    <strong>@Model.Cart.GetTotal().ToString("N0") VND</strong>
-                }
-            </td>
-        </tr>
-    </table>
-}
+    </div>
+</div>

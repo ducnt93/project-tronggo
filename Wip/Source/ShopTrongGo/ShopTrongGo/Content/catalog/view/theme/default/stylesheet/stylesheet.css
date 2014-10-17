@@ -24,12 +24,14 @@
     top: 50%;
     left: 50%;
     z-index: 99999;
+    -ms-box-shadow: 0px 0px 20px #999;
     box-shadow: 0px 0px 20px #999;
     /* CSS3 */
     -moz-box-shadow: 0px 0px 20px #999;
     /* Firefox */
     -webkit-box-shadow: 0px 0px 20px #999;
     /* Safari, Chrome */
+    -ms-border-radius: 3px 3px 3px 3px;
     border-radius: 3px 3px 3px 3px;
     -moz-border-radius: 3px;
     /* Firefox */
@@ -79,11 +81,13 @@ form.signin .textbox input {
 
 form.signin input:-moz-placeholder {
     color: #bbb;
+    -ms-text-shadow: 0 0 2px #000;
     text-shadow: 0 0 2px #000;
 }
 
 form.signin input::-webkit-input-placeholder {
     color: #bbb;
+    -ms-text-shadow: 0 0 2px #000;
     text-shadow: 0 0 2px #000;
 }
 
@@ -91,9 +95,13 @@ form.signin input::-webkit-input-placeholder {
     background: -moz-linear-gradient(center top, #f3f3f3, #dddddd);
     background: -webkit-gradient(linear, left top, left bottom, from(#f3f3f3), to(#dddddd));
     background: -o-linear-gradient(top, #f3f3f3, #dddddd);
+    -webkit-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+    -moz-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
+    -o-filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
     filter: progid:DXImageTransform.Microsoft.gradient(startColorStr='#f3f3f3', EndColorStr='#dddddd');
     border-color: #000;
     border-width: 1px;
+    -ms-border-radius: 4px 4px 4px 4px;
     border-radius: 4px 4px 4px 4px;
     -moz-border-radius: 4px;
     -webkit-border-radius: 4px;
@@ -194,6 +202,7 @@ p {
     background: #FFF;
     -moz-box-shadow: 0 0 10px 5px #f7f7f7;
     -webkit-box-shadow: 0 0 10px 5px#f7f7f7;
+    -ms-box-shadow: 0 0 10px 5px #f7f7f7;
     box-shadow: 0 0 10px 5px #f7f7f7;
 }
 
@@ -232,6 +241,7 @@ p {
     background: url(../image/bg_menu.png) repeat-x left center;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -323,6 +333,7 @@ color:#000;
     color: #888;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -338,6 +349,7 @@ color:#000;
     border: 1px solid #333;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -349,6 +361,7 @@ color:#000;
     margin-top: 8px;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
     border-radius: 5px;
 }
 
@@ -378,6 +391,7 @@ color:#000;
         background: url('../image/icon-left.png') no-repeat left center;
         -moz-border-radius: 5px 0 0 0;
         -webkit-border-radius: 5px 0 0 0;
+        -ms-border-radius: 5px 0 0 0;
         border-radius: 5px 0 0 0;
     }
 
@@ -386,6 +400,7 @@ color:#000;
         display: block;
         -moz-border-radius: 6px 5px 0 0;
         -webkit-border-radius: 6px 5px 0 0;
+        -ms-border-radius: 6px 5px 0 0;
         border-radius: 6px 5px 0 0;
     }
 
@@ -416,14 +431,16 @@ color:#000;
     margin-bottom: 10px;
     -moz-border-radius: 0 0 5px 5px;
     -webkit-border-radius: 0 0 5px 5px;
+    -ms-border-radius: 0 0 5px 5px;
     border-radius: 0 0 5px 5px;
 }
 
 .spNoiBat {
     width: 130px;
-    height: 170px;
+    height: 150px;
     margin: auto;
     text-align: center;
+    padding-top: 15px;
 }
 
 .anhSPNoiBat {
@@ -594,16 +611,16 @@ a.button:hover {
     margin-left: 8px;
 }
 
-.dathang a {
-    font-size: 15px;
-    color: #888888;
-    margin-left: 10px;
-    padding-right: 10px;
-}
+    .dathang a {
+        font-size: 15px;
+        color: #888888;
+        margin-left: 10px;
+        padding-right: 10px;
+    }
 
- .dathang a:hover {
-    color: #e90f07;
-}
+        .dathang a:hover {
+            color: #e90f07;
+        }
 
 .sort {
     margin-bottom: 10px;
@@ -781,6 +798,7 @@ a.button:hover {
     padding: 5px;
     text-align: initial;
     background: #fff;
+    -ms-border-radius: 5px;
     border-radius: 5px;
 }
 
