@@ -1,0 +1,77 @@
+﻿@model  ShopTrongGo.Models.TaiKhoan
+@{
+    ViewBag.Title = "InformationAccount";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Information Account</h2>
+<fieldset>
+    <legend>Thông tin tài khoản của bạn !</legend>
+
+    <div class="display-label">
+        Loại tài khoản
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoaiTaiKhoan.TenLoai)
+    </div>
+
+    <div class="display-label">
+        Tên người dùng
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenNguoiDung)
+    </div>
+
+    <div class="display-label">
+        Email đăng ký
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+        Tên đăng nhập
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenDangNhap)
+    </div>
+
+    <div class="display-label">
+        Mật khẩu
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MatKhau)
+    </div>
+
+    <div class="display-label">
+        Phone
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">
+        Địa chỉ
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DiaChi)
+    </div>
+
+    <div class="display-label">
+        Trạng thái xóa
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+        Ngày xóa
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+</fieldset>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.TaiKhoanID }) |*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
