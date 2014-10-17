@@ -18,7 +18,7 @@ namespace ShopTrongGo.Controllers
             var dbTapHoa = new WebBanTapHoaEntities();
             const int pageSize = 9;
             int pageNum = page ?? 1;
-            var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderBy(p => p.SanPhamID);
+            var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderByDescending(p => p.NgayCapNhat);
             return View(list.ToPagedList(pageNum,pageSize));
         }
 

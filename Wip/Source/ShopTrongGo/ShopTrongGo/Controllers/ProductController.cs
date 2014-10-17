@@ -33,18 +33,18 @@ namespace ShopTrongGo.Controllers
             {
                 double luotView =  Convert.ToDouble(sanPham.LuotView);
                 luotView += 1;
-                sanPham.LuotView = luotView.ToString(CultureInfo.InvariantCulture);
+                sanPham.LuotView = luotView;
                 dbTapHoa.SaveChanges();
             }
-            var pro = dbTapHoa.SanPhams.SingleOrDefault(sp => !sp.TrangThaiXoa & sp.SanPhamID == id);
-            ViewBag.ListProduct = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == pro.LoaiSpID);
-            return View(pro);
+            ViewBag.ListProduct = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == sanPham.LoaiSpID).ToList();
+            ViewBag.ListImage = dbTapHoa.DanhMucAnhs.Where(a => !a.TrangThaiXoa & a.SanPhamID == id).ToList();
+            return View(sanPham);
         }
 
         public ActionResult ProductFeatured()
         {
             var dbEntities = new WebBanTapHoaEntities();
-            var listProductFeatured = dbEntities.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderByDescending(p => Double.Parse(p.LuotView)).Take(20).ToList();
+            var listProductFeatured = dbEntities.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderByDescending(p => p.LuotView).Take(20).ToList();
             return View(listProductFeatured);
         }
     }

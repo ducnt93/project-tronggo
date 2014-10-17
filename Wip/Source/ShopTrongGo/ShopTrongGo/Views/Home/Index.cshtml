@@ -21,11 +21,10 @@
                         <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
                         <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
                     </div>                   
-                    <div class="giasp">Giá bán: @pro.Gia</div>
+                    <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                     <div class="dathang">
                         <a href="../Product/Details/@pro.SanPhamID">Chi tiết</a>
                         <input id="Button1" type="button" value="Đặt hàng" class="btnCart" onclick="AddToCart('@pro.SanPhamID');" />
-                        @*<a href="#" onclick="AddToCart('@pro.SanPhamID');" class="image">Đặt hàng</a>*@
                     </div>
                 </div>
             }

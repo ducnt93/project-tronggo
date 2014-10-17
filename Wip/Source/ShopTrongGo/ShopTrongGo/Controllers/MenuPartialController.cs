@@ -49,7 +49,7 @@ namespace ShopTrongGo.Controllers
         public ActionResult ProductFeatured()
         {
             var dbEntities = new WebBanTapHoaEntities();
-            ViewBag.ProductFeatured = dbEntities.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderByDescending(p => Double.Parse(p.LuotView)).Take(5).ToList();
+            ViewBag.ProductFeatured = dbEntities.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderByDescending(p => p.LuotView).Take(5).ToList();
             return PartialView();
         }
 

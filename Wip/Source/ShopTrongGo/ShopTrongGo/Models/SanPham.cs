@@ -24,7 +24,7 @@ namespace ShopTrongGo.Models
         public string TenSp { get; set; }
         public int LoaiSpID { get; set; }
         public string AnhDaiDien { get; set; }
-        public double Gia { get; set; }
+        public decimal Gia { get; set; }
         public string TrangThai { get; set; }
         public string Model { get; set; }
         public string MieuTaNgan { get; set; }
@@ -33,8 +33,8 @@ namespace ShopTrongGo.Models
         public Nullable<System.DateTime> NgayXoa { get; set; }
         public Nullable<int> SoLuong { get; set; }
         public Nullable<System.DateTime> NgayCapNhat { get; set; }
-        public string LuotView { get; set; }
-        public string LuotBan { get; set; }
+        public Nullable<double> LuotView { get; set; }
+        public Nullable<double> LuotBan { get; set; }
     
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual ICollection<DanhMucAnh> DanhMucAnhs { get; set; }

@@ -118,7 +118,7 @@
           <Property Name="TenSp" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="LoaiSpID" Type="int" Nullable="false" />
           <Property Name="AnhDaiDien" Type="nvarchar" MaxLength="200" Nullable="false" />
-          <Property Name="Gia" Type="float" Nullable="false" />
+          <Property Name="Gia" Type="money" Nullable="false" />
           <Property Name="TrangThai" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Model" Type="nvarchar" MaxLength="10" Nullable="false" />
           <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" Nullable="false" />
@@ -127,8 +127,8 @@
           <Property Name="NgayXoa" Type="date" />
           <Property Name="SoLuong" Type="int" />
           <Property Name="NgayCapNhat" Type="date" />
-          <Property Name="LuotView" Type="varchar" MaxLength="50" />
-          <Property Name="LuotBan" Type="varchar" MaxLength="50" />
+          <Property Name="LuotView" Type="float" />
+          <Property Name="LuotBan" Type="float" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -302,42 +302,99 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="WebTapHoaModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="WebBanTapHoaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Banners" EntityType="WebTapHoaModel.Banner" />
+          <EntitySet Name="ChiTietHoaDons" EntityType="WebTapHoaModel.ChiTietHoaDon" />
+          <EntitySet Name="DanhMucs" EntityType="WebTapHoaModel.DanhMuc" />
+          <EntitySet Name="DanhMucAnhs" EntityType="WebTapHoaModel.DanhMucAnh" />
+          <EntitySet Name="DichVus" EntityType="WebTapHoaModel.DichVu" />
+          <EntitySet Name="DoiTacs" EntityType="WebTapHoaModel.DoiTac" />
+          <EntitySet Name="HoaDons" EntityType="WebTapHoaModel.HoaDon" />
+          <EntitySet Name="LoaiSanPhams" EntityType="WebTapHoaModel.LoaiSanPham" />
+          <EntitySet Name="LoaiTaiKhoans" EntityType="WebTapHoaModel.LoaiTaiKhoan" />
+          <EntitySet Name="NhaCungCaps" EntityType="WebTapHoaModel.NhaCungCap" />
+          <EntitySet Name="SanPhams" EntityType="WebTapHoaModel.SanPham" />
+          <EntitySet Name="TaiKhoans" EntityType="WebTapHoaModel.TaiKhoan" />
+          <EntitySet Name="ThongTinCongTies" EntityType="WebTapHoaModel.ThongTinCongTy" />
+          <AssociationSet Name="FK_CtHoaDon_HoaDon" Association="WebTapHoaModel.FK_CtHoaDon_HoaDon">
+            <End Role="HoaDon" EntitySet="HoaDons" />
+            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_CtHoaDon_SamPham" Association="WebTapHoaModel.FK_CtHoaDon_SamPham">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DanhMuc_NhaCc" Association="WebTapHoaModel.FK_DanhMuc_NhaCc">
+            <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+            <End Role="DanhMuc" EntitySet="DanhMucs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_LoaiSp_DanhMuc" Association="WebTapHoaModel.FK_LoaiSp_DanhMuc">
+            <End Role="DanhMuc" EntitySet="DanhMucs" />
+            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_DmAnh_SanPham" Association="WebTapHoaModel.FK_DmAnh_SanPham">
+            <End Role="SanPham" EntitySet="SanPhams" />
+            <End Role="DanhMucAnh" EntitySet="DanhMucAnhs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_HoaDon_TaiKhoan" Association="WebTapHoaModel.FK_HoaDon_TaiKhoan">
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+            <End Role="HoaDon" EntitySet="HoaDons" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanPham_LoaiSp" Association="WebTapHoaModel.FK_SanPham_LoaiSp">
+            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
+            <End Role="SanPham" EntitySet="SanPhams" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TaiKhoan_LoaiTk" Association="WebTapHoaModel.FK_TaiKhoan_LoaiTk">
+            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
+            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Banner">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="IDSanPham" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="ThuTuShow" Type="Int32" />
+          <Property Name="MoTa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+        </EntityType>
         <EntityType Name="ChiTietHoaDon">
           <Key>
             <PropertyRef Name="SanPhamID" />
             <PropertyRef Name="HoaDonID" />
           </Key>
-          <Property Name="SanPhamID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SanPhamID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
           <Property Name="HoaDonID" Type="Int32" Nullable="false" />
           <Property Name="SoLuongMua" Type="Int32" Nullable="false" />
           <Property Name="Gia" Type="Double" Nullable="false" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="HoaDon" Relationship="Self.FK_CtHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK_CtHoaDon_SamPham" FromRole="ChiTietHoaDon" ToRole="SanPham" />
+          <NavigationProperty Name="HoaDon" Relationship="WebTapHoaModel.FK_CtHoaDon_HoaDon" FromRole="ChiTietHoaDon" ToRole="HoaDon" />
+          <NavigationProperty Name="SanPham" Relationship="WebTapHoaModel.FK_CtHoaDon_SamPham" FromRole="ChiTietHoaDon" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="DanhMuc">
           <Key>
             <PropertyRef Name="DanhMucID" />
           </Key>
           <Property Name="DanhMucID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenDanhMuc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenDanhMuc" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NhaCungCapID" Type="Int32" Nullable="false" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="NhaCungCap" Relationship="Self.FK_DanhMuc_NhaCc" FromRole="DanhMuc" ToRole="NhaCungCap" />
-          <NavigationProperty Name="LoaiSanPhams" Relationship="Self.FK_LoaiSp_DanhMuc" FromRole="DanhMuc" ToRole="LoaiSanPham" />
+          <NavigationProperty Name="NhaCungCap" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCc" FromRole="DanhMuc" ToRole="NhaCungCap" />
+          <NavigationProperty Name="LoaiSanPhams" Relationship="WebTapHoaModel.FK_LoaiSp_DanhMuc" FromRole="DanhMuc" ToRole="LoaiSanPham" />
         </EntityType>
         <EntityType Name="DanhMucAnh">
           <Key>
             <PropertyRef Name="DanhMucAnhID" />
           </Key>
           <Property Name="DanhMucAnhID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="SanPhamID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TenAnh" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SanPhamID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="TenAnh" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="SanPham" Relationship="Self.FK_DmAnh_SanPham" FromRole="DanhMucAnh" ToRole="SanPham" />
+          <NavigationProperty Name="SanPham" Relationship="WebTapHoaModel.FK_DmAnh_SanPham" FromRole="DanhMucAnh" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="DichVu">
           <Key>
@@ -345,7 +402,7 @@
           </Key>
           <Property Name="DichVuID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NgayDang" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="NguoiDang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NguoiDang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
         </EntityType>
@@ -354,11 +411,11 @@
             <PropertyRef Name="DoiTacID" />
           </Key>
           <Property Name="DoiTacID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenDoiTac" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenDoiTac" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MieuTaNgan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="NguoiDang" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoiDung" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MieuTaNgan" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="NguoiDang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
         </EntityType>
@@ -371,65 +428,65 @@
           <Property Name="TaiKhoanID" Type="Int32" Nullable="false" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_CtHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
-          <NavigationProperty Name="TaiKhoan" Relationship="Self.FK_HoaDon_TaiKhoan" FromRole="HoaDon" ToRole="TaiKhoan" />
+          <NavigationProperty Name="ChiTietHoaDons" Relationship="WebTapHoaModel.FK_CtHoaDon_HoaDon" FromRole="HoaDon" ToRole="ChiTietHoaDon" />
+          <NavigationProperty Name="TaiKhoan" Relationship="WebTapHoaModel.FK_HoaDon_TaiKhoan" FromRole="HoaDon" ToRole="TaiKhoan" />
         </EntityType>
         <EntityType Name="LoaiSanPham">
           <Key>
             <PropertyRef Name="LoaiSpID" />
           </Key>
           <Property Name="LoaiSpID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenLoaiSp" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenLoaiSp" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
           <Property Name="DanhMucID" Type="Int32" Nullable="false" />
-          <NavigationProperty Name="DanhMuc" Relationship="Self.FK_LoaiSp_DanhMuc" FromRole="LoaiSanPham" ToRole="DanhMuc" />
-          <NavigationProperty Name="SanPhams" Relationship="Self.FK_SanPham_LoaiSp" FromRole="LoaiSanPham" ToRole="SanPham" />
+          <NavigationProperty Name="DanhMuc" Relationship="WebTapHoaModel.FK_LoaiSp_DanhMuc" FromRole="LoaiSanPham" ToRole="DanhMuc" />
+          <NavigationProperty Name="SanPhams" Relationship="WebTapHoaModel.FK_SanPham_LoaiSp" FromRole="LoaiSanPham" ToRole="SanPham" />
         </EntityType>
         <EntityType Name="LoaiTaiKhoan">
           <Key>
             <PropertyRef Name="LoaiTaiKhoanID" />
           </Key>
           <Property Name="LoaiTaiKhoanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenLoai" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenLoai" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="TaiKhoans" Relationship="Self.FK_TaiKhoan_LoaiTk" FromRole="LoaiTaiKhoan" ToRole="TaiKhoan" />
+          <NavigationProperty Name="TaiKhoans" Relationship="WebTapHoaModel.FK_TaiKhoan_LoaiTk" FromRole="LoaiTaiKhoan" ToRole="TaiKhoan" />
         </EntityType>
         <EntityType Name="NhaCungCap">
           <Key>
             <PropertyRef Name="NhaCungCapID" />
           </Key>
           <Property Name="NhaCungCapID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenNcc" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNcc" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="DanhMuc" Relationship="Self.FK_DanhMuc_NhaCc" FromRole="NhaCungCap" ToRole="DanhMuc" />
+          <NavigationProperty Name="DanhMuc" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCc" FromRole="NhaCungCap" ToRole="DanhMuc" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
             <PropertyRef Name="SanPhamID" />
           </Key>
-          <Property Name="SanPhamID" Type="String" MaxLength="5" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TenSp" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SanPhamID" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
+          <Property Name="TenSp" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="LoaiSpID" Type="Int32" Nullable="false" />
-          <Property Name="AnhDaiDien" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Gia" Type="Double" Nullable="false" />
-          <Property Name="TrangThai" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Model" Type="String" MaxLength="10" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MieuTaNgan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MieuTaChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AnhDaiDien" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Gia" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="TrangThai" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Model" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="MieuTaNgan" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MieuTaChiTiet" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
           <Property Name="SoLuong" Type="Int32" />
-          <NavigationProperty Name="ChiTietHoaDons" Relationship="Self.FK_CtHoaDon_SamPham" FromRole="SanPham" ToRole="ChiTietHoaDon" />
-          <NavigationProperty Name="DanhMucAnhs" Relationship="Self.FK_DmAnh_SanPham" FromRole="SanPham" ToRole="DanhMucAnh" />
-          <NavigationProperty Name="LoaiSanPham" Relationship="Self.FK_SanPham_LoaiSp" FromRole="SanPham" ToRole="LoaiSanPham" />
           <Property Name="NgayCapNhat" Type="DateTime" Precision="0" />
-          <Property Name="LuotView" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-          <Property Name="LuotBan" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="LuotView" Type="Double" />
+          <Property Name="LuotBan" Type="Double" />
+          <NavigationProperty Name="ChiTietHoaDons" Relationship="WebTapHoaModel.FK_CtHoaDon_SamPham" FromRole="SanPham" ToRole="ChiTietHoaDon" />
+          <NavigationProperty Name="DanhMucAnhs" Relationship="WebTapHoaModel.FK_DmAnh_SanPham" FromRole="SanPham" ToRole="DanhMucAnh" />
+          <NavigationProperty Name="LoaiSanPham" Relationship="WebTapHoaModel.FK_SanPham_LoaiSp" FromRole="SanPham" ToRole="LoaiSanPham" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -437,30 +494,30 @@
           </Key>
           <Property Name="TaiKhoanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="LoaiTaiKhoanID" Type="Int32" Nullable="false" />
-          <Property Name="TenNguoiDung" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="TenDangNhap" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="MatKhau" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenNguoiDung" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="TenDangNhap" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MatKhau" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
-          <NavigationProperty Name="HoaDons" Relationship="Self.FK_HoaDon_TaiKhoan" FromRole="TaiKhoan" ToRole="HoaDon" />
-          <NavigationProperty Name="LoaiTaiKhoan" Relationship="Self.FK_TaiKhoan_LoaiTk" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
+          <NavigationProperty Name="HoaDons" Relationship="WebTapHoaModel.FK_HoaDon_TaiKhoan" FromRole="TaiKhoan" ToRole="HoaDon" />
+          <NavigationProperty Name="LoaiTaiKhoan" Relationship="WebTapHoaModel.FK_TaiKhoan_LoaiTk" FromRole="TaiKhoan" ToRole="LoaiTaiKhoan" />
         </EntityType>
         <EntityType Name="ThongTinCongTy">
           <Key>
             <PropertyRef Name="CongTyID" />
           </Key>
           <Property Name="CongTyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="TenCongTy" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="DiaChi" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Phone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="TenCongTy" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CtHoaDon_HoaDon">
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
-          <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
+          <End Type="WebTapHoaModel.HoaDon" Role="HoaDon" Multiplicity="1" />
+          <End Type="WebTapHoaModel.ChiTietHoaDon" Role="ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="HoaDon">
               <PropertyRef Name="HoaDonID" />
@@ -471,8 +528,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_CtHoaDon_SamPham">
-          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
-          <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
+          <End Type="WebTapHoaModel.SanPham" Role="SanPham" Multiplicity="1" />
+          <End Type="WebTapHoaModel.ChiTietHoaDon" Role="ChiTietHoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SanPham">
               <PropertyRef Name="SanPhamID" />
@@ -483,8 +540,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DanhMuc_NhaCc">
-          <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="1" />
-          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+          <End Type="WebTapHoaModel.NhaCungCap" Role="NhaCungCap" Multiplicity="1" />
+          <End Type="WebTapHoaModel.DanhMuc" Role="DanhMuc" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="NhaCungCap">
               <PropertyRef Name="NhaCungCapID" />
@@ -495,8 +552,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_LoaiSp_DanhMuc">
-          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="1" />
-          <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="*" />
+          <End Type="WebTapHoaModel.DanhMuc" Role="DanhMuc" Multiplicity="1" />
+          <End Type="WebTapHoaModel.LoaiSanPham" Role="LoaiSanPham" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="DanhMuc">
               <PropertyRef Name="DanhMucID" />
@@ -507,8 +564,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_DmAnh_SanPham">
-          <End Role="SanPham" Type="Self.SanPham" Multiplicity="1" />
-          <End Role="DanhMucAnh" Type="Self.DanhMucAnh" Multiplicity="*" />
+          <End Type="WebTapHoaModel.SanPham" Role="SanPham" Multiplicity="1" />
+          <End Type="WebTapHoaModel.DanhMucAnh" Role="DanhMucAnh" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="SanPham">
               <PropertyRef Name="SanPhamID" />
@@ -519,8 +576,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_HoaDon_TaiKhoan">
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="1" />
-          <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="*" />
+          <End Type="WebTapHoaModel.TaiKhoan" Role="TaiKhoan" Multiplicity="1" />
+          <End Type="WebTapHoaModel.HoaDon" Role="HoaDon" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="TaiKhoan">
               <PropertyRef Name="TaiKhoanID" />
@@ -531,8 +588,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_SanPham_LoaiSp">
-          <End Role="LoaiSanPham" Type="Self.LoaiSanPham" Multiplicity="1" />
-          <End Role="SanPham" Type="Self.SanPham" Multiplicity="*" />
+          <End Type="WebTapHoaModel.LoaiSanPham" Role="LoaiSanPham" Multiplicity="1" />
+          <End Type="WebTapHoaModel.SanPham" Role="SanPham" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LoaiSanPham">
               <PropertyRef Name="LoaiSpID" />
@@ -543,8 +600,8 @@
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_TaiKhoan_LoaiTk">
-          <End Role="LoaiTaiKhoan" Type="Self.LoaiTaiKhoan" Multiplicity="1" />
-          <End Role="TaiKhoan" Type="Self.TaiKhoan" Multiplicity="*" />
+          <End Type="WebTapHoaModel.LoaiTaiKhoan" Role="LoaiTaiKhoan" Multiplicity="1" />
+          <End Type="WebTapHoaModel.TaiKhoan" Role="TaiKhoan" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="LoaiTaiKhoan">
               <PropertyRef Name="LoaiTaiKhoanID" />
@@ -554,169 +611,123 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="WebBanTapHoaEntities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="ChiTietHoaDons" EntityType="Self.ChiTietHoaDon" />
-          <EntitySet Name="DanhMucs" EntityType="Self.DanhMuc" />
-          <EntitySet Name="DanhMucAnhs" EntityType="Self.DanhMucAnh" />
-          <EntitySet Name="DichVus" EntityType="Self.DichVu" />
-          <EntitySet Name="DoiTacs" EntityType="Self.DoiTac" />
-          <EntitySet Name="HoaDons" EntityType="Self.HoaDon" />
-          <EntitySet Name="LoaiSanPhams" EntityType="Self.LoaiSanPham" />
-          <EntitySet Name="LoaiTaiKhoans" EntityType="Self.LoaiTaiKhoan" />
-          <EntitySet Name="NhaCungCaps" EntityType="Self.NhaCungCap" />
-          <EntitySet Name="SanPhams" EntityType="Self.SanPham" />
-          <EntitySet Name="TaiKhoans" EntityType="Self.TaiKhoan" />
-          <EntitySet Name="ThongTinCongTies" EntityType="Self.ThongTinCongTy" />
-          <AssociationSet Name="FK_CtHoaDon_HoaDon" Association="Self.FK_CtHoaDon_HoaDon">
-            <End Role="HoaDon" EntitySet="HoaDons" />
-            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_CtHoaDon_SamPham" Association="Self.FK_CtHoaDon_SamPham">
-            <End Role="SanPham" EntitySet="SanPhams" />
-            <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DanhMuc_NhaCc" Association="Self.FK_DanhMuc_NhaCc">
-            <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
-            <End Role="DanhMuc" EntitySet="DanhMucs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_LoaiSp_DanhMuc" Association="Self.FK_LoaiSp_DanhMuc">
-            <End Role="DanhMuc" EntitySet="DanhMucs" />
-            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
-          </AssociationSet>
-          <AssociationSet Name="FK_DmAnh_SanPham" Association="Self.FK_DmAnh_SanPham">
-            <End Role="SanPham" EntitySet="SanPhams" />
-            <End Role="DanhMucAnh" EntitySet="DanhMucAnhs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_HoaDon_TaiKhoan" Association="Self.FK_HoaDon_TaiKhoan">
-            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
-            <End Role="HoaDon" EntitySet="HoaDons" />
-          </AssociationSet>
-          <AssociationSet Name="FK_SanPham_LoaiSp" Association="Self.FK_SanPham_LoaiSp">
-            <End Role="LoaiSanPham" EntitySet="LoaiSanPhams" />
-            <End Role="SanPham" EntitySet="SanPhams" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TaiKhoan_LoaiTk" Association="Self.FK_TaiKhoan_LoaiTk">
-            <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
-            <End Role="TaiKhoan" EntitySet="TaiKhoans" />
-          </AssociationSet>
-          <EntitySet Name="Banners" EntityType="WebTapHoaModel.Banner" />
-        </EntityContainer>
-        <EntityType Name="Banner">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" />
-          <Property Name="IDSanPham" Type="String" Nullable="false" MaxLength="5" FixedLength="false" Unicode="true" />
-          <Property Name="ThuTuShow" Type="Int32" />
-          <Property Name="MoTa" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="WebTapHoaModelStoreContainer" CdmEntityContainer="WebBanTapHoaEntities">
+          <EntitySetMapping Name="Banners">
+            <EntityTypeMapping TypeName="WebTapHoaModel.Banner">
+              <MappingFragment StoreEntitySet="Banner">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="ThuTuShow" ColumnName="ThuTuShow" />
+                <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="ChiTietHoaDons">
             <EntityTypeMapping TypeName="WebTapHoaModel.ChiTietHoaDon">
               <MappingFragment StoreEntitySet="ChiTietHoaDon">
-                <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
-                <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
-                <ScalarProperty Name="SoLuongMua" ColumnName="SoLuongMua" />
-                <ScalarProperty Name="Gia" ColumnName="Gia" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="SoLuongMua" ColumnName="SoLuongMua" />
+                <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
+                <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DanhMucs">
             <EntityTypeMapping TypeName="WebTapHoaModel.DanhMuc">
               <MappingFragment StoreEntitySet="DanhMuc">
-                <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
-                <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
-                <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
+                <ScalarProperty Name="TenDanhMuc" ColumnName="TenDanhMuc" />
+                <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DanhMucAnhs">
             <EntityTypeMapping TypeName="WebTapHoaModel.DanhMucAnh">
               <MappingFragment StoreEntitySet="DanhMucAnh">
-                <ScalarProperty Name="DanhMucAnhID" ColumnName="DanhMucAnhID" />
-                <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
-                <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="TenAnh" ColumnName="TenAnh" />
+                <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
+                <ScalarProperty Name="DanhMucAnhID" ColumnName="DanhMucAnhID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DichVus">
             <EntityTypeMapping TypeName="WebTapHoaModel.DichVu">
               <MappingFragment StoreEntitySet="DichVu">
-                <ScalarProperty Name="DichVuID" ColumnName="DichVuID" />
-                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
-                <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
+                <ScalarProperty Name="NgayDang" ColumnName="NgayDang" />
+                <ScalarProperty Name="DichVuID" ColumnName="DichVuID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="DoiTacs">
             <EntityTypeMapping TypeName="WebTapHoaModel.DoiTac">
               <MappingFragment StoreEntitySet="DoiTac">
-                <ScalarProperty Name="DoiTacID" ColumnName="DoiTacID" />
-                <ScalarProperty Name="TenDoiTac" ColumnName="TenDoiTac" />
-                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-                <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
-                <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
+                <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
+                <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+                <ScalarProperty Name="TenDoiTac" ColumnName="TenDoiTac" />
+                <ScalarProperty Name="DoiTacID" ColumnName="DoiTacID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="HoaDons">
             <EntityTypeMapping TypeName="WebTapHoaModel.HoaDon">
               <MappingFragment StoreEntitySet="HoaDon">
-                <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
-                <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
-                <ScalarProperty Name="TaiKhoanID" ColumnName="TaiKhoanID" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="TaiKhoanID" ColumnName="TaiKhoanID" />
+                <ScalarProperty Name="NgayMua" ColumnName="NgayMua" />
+                <ScalarProperty Name="HoaDonID" ColumnName="HoaDonID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiSanPhams">
             <EntityTypeMapping TypeName="WebTapHoaModel.LoaiSanPham">
               <MappingFragment StoreEntitySet="LoaiSanPham">
-                <ScalarProperty Name="LoaiSpID" ColumnName="LoaiSpID" />
-                <ScalarProperty Name="TenLoaiSp" ColumnName="TenLoaiSp" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
-                <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
                 <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
+                <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="TenLoaiSp" ColumnName="TenLoaiSp" />
+                <ScalarProperty Name="LoaiSpID" ColumnName="LoaiSpID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="LoaiTaiKhoans">
             <EntityTypeMapping TypeName="WebTapHoaModel.LoaiTaiKhoan">
               <MappingFragment StoreEntitySet="LoaiTaiKhoan">
-                <ScalarProperty Name="LoaiTaiKhoanID" ColumnName="LoaiTaiKhoanID" />
-                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="TenLoai" ColumnName="TenLoai" />
+                <ScalarProperty Name="LoaiTaiKhoanID" ColumnName="LoaiTaiKhoanID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="NhaCungCaps">
             <EntityTypeMapping TypeName="WebTapHoaModel.NhaCungCap">
               <MappingFragment StoreEntitySet="NhaCungCap">
-                <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
-                <ScalarProperty Name="TenNcc" ColumnName="TenNcc" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="TenNcc" ColumnName="TenNcc" />
+                <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -726,56 +737,45 @@
                 <ScalarProperty Name="LuotBan" ColumnName="LuotBan" />
                 <ScalarProperty Name="LuotView" ColumnName="LuotView" />
                 <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
-                <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
-                <ScalarProperty Name="TenSp" ColumnName="TenSp" />
-                <ScalarProperty Name="LoaiSpID" ColumnName="LoaiSpID" />
-                <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
-                <ScalarProperty Name="Gia" ColumnName="Gia" />
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-                <ScalarProperty Name="Model" ColumnName="Model" />
-                <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
-                <ScalarProperty Name="MieuTaChiTiet" ColumnName="MieuTaChiTiet" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
-                <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
                 <ScalarProperty Name="SoLuong" ColumnName="SoLuong" />
+                <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="MieuTaChiTiet" ColumnName="MieuTaChiTiet" />
+                <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="Gia" ColumnName="Gia" />
+                <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
+                <ScalarProperty Name="LoaiSpID" ColumnName="LoaiSpID" />
+                <ScalarProperty Name="TenSp" ColumnName="TenSp" />
+                <ScalarProperty Name="SanPhamID" ColumnName="SanPhamID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TaiKhoans">
             <EntityTypeMapping TypeName="WebTapHoaModel.TaiKhoan">
               <MappingFragment StoreEntitySet="TaiKhoan">
-                <ScalarProperty Name="TaiKhoanID" ColumnName="TaiKhoanID" />
-                <ScalarProperty Name="LoaiTaiKhoanID" ColumnName="LoaiTaiKhoanID" />
-                <ScalarProperty Name="TenNguoiDung" ColumnName="TenNguoiDung" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
-                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
+                <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
+                <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="TenNguoiDung" ColumnName="TenNguoiDung" />
+                <ScalarProperty Name="LoaiTaiKhoanID" ColumnName="LoaiTaiKhoanID" />
+                <ScalarProperty Name="TaiKhoanID" ColumnName="TaiKhoanID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="ThongTinCongTies">
             <EntityTypeMapping TypeName="WebTapHoaModel.ThongTinCongTy">
               <MappingFragment StoreEntitySet="ThongTinCongTy">
-                <ScalarProperty Name="CongTyID" ColumnName="CongTyID" />
-                <ScalarProperty Name="TenCongTy" ColumnName="TenCongTy" />
-                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
-                <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Banners">
-            <EntityTypeMapping TypeName="WebTapHoaModel.Banner">
-              <MappingFragment StoreEntitySet="Banner">
-                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
-                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
-                <ScalarProperty Name="ThuTuShow" ColumnName="ThuTuShow" />
-                <ScalarProperty Name="IDSanPham" ColumnName="IDSanPham" />
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
+                <ScalarProperty Name="TenCongTy" ColumnName="TenCongTy" />
+                <ScalarProperty Name="CongTyID" ColumnName="CongTyID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

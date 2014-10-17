@@ -25,6 +25,7 @@ namespace ShopTrongGo.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Banner> Banners { get; set; }
         public DbSet<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public DbSet<DanhMuc> DanhMucs { get; set; }
         public DbSet<DanhMucAnh> DanhMucAnhs { get; set; }
@@ -37,6 +38,5 @@ namespace ShopTrongGo.Models
         public DbSet<SanPham> SanPhams { get; set; }
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
         public DbSet<ThongTinCongTy> ThongTinCongTies { get; set; }
-        public DbSet<Banner> Banners { get; set; }
     }
 }
