@@ -2,12 +2,142 @@
 
 <html>
 <head>
+    <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
+    @Styles.Render("~/Content/css/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/css/animate.css" rel="stylesheet" />
+    <link href="~/Content/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/Content/css/font-awesome.min.css" rel="stylesheet" />
+    <link href="~/Content/css/main.css" rel="stylesheet" />
+    <link href="~/Content/css/prettyPhoto.css" rel="stylesheet" />
+    <link href="~/Content/css/price-range.css" rel="stylesheet" />
+    <link href="~/Content/css/responsive.css" rel="stylesheet" />
+    <link href="~/Content/css/style.css" rel="stylesheet" />
+    <!--/head-->
 </head>
 <body>
-    <div>
-        @RenderBody()
-    </div>
+    <!--header-->
+    <header>
+        <div class="header_top">
+            <!--header_top-->
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="contactinfo">
+                            <ul class="nav nav-pills">
+                                <li>@Html.ActionLink(Session["LogedFullName"].ToString(),"InformationAccount","AdProduct")</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="social-icons pull-right">
+                            <ul class="nav navbar-nav">
+                                <li>@Html.ActionLink("Đổi mật khẩu", "ChangePassword", "AdProduct")</li>
+                                <li>@Html.ActionLink("Thông tin tài khoản", "InformationAccount", "AdProduct")</li>
+                                <li>@Html.ActionLink("Đăng xuất", "Logout", "AdProduct")</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!--/header_top-->
+
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-3">
+                        <div class="left-sidebar">
+                            <h2>Quản lý</h2>
+                            <div class="panel-group category-products" id="accordian">
+                                <!--category-productsr-->
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordian" href="#sportswear">
+                                                <span class="badge pull-right"></span>
+                                                Quản lý sản phẩm
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="sportswear" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>@Html.ActionLink("Thêm sản phẩm","AddProduct","AdProduct")</li>
+                                                <li>@Html.ActionLink("Danh sách sản phẩm", "ListProduct", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Danh sách đặt hàng", "Index", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Đối tác cung cấp","Index","AdProduct")</li>
+                                                <li>@Html.ActionLink("Loại sản phẩm", "Index", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Nhà cung cấp", "Index", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Thống kê", "Index", "AdProduct")</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordian" href="#mens">
+                                                <span class="badge pull-right"></span>
+                                                Quản lý khách hàng
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="mens" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>@Html.ActionLink("Thêm khách hàng mới", "Index", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Danh sách khách hàng", "Index", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Thống kê", "Index", "AdProduct")</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordian" href="#conf">
+                                                <span class="badge pull-right"></span>
+                                                Quản lý cấu hình
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="conf" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li><a href="#">Banner</a></li>
+                                                <li><a href="#">Image</a></li>
+                                                <li><a href="#">System</a></li>
+                                                <li><a href="#">Restore</a></li>
+                                                <li><a href="#">Back up</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><!--/category-products-->
+                        </div>
+                    </div>
+                    <div class="col-sm-9 padding-right">
+                        @RenderBody()
+                        @Scripts.Render("~/bundles/jquery")
+                        @RenderSection("scripts", required: false)
+                    </div>
+                </div>
+            </div>
+
+
+        </section>
+        <footer></footer>
+        <script src="~/Scripts/js/bootstrap.min.js"></script>
+        <script src="~/Scripts/js/contact.js"></script>
+        <script src="~/Scripts/js/gmaps.js"></script>
+        <script src="~/Scripts/js/html5shiv.js"></script>
+        <script src="~/Scripts/js/jquery.js"></script>
+        <script src="~/Scripts/js/jquery.prettyPhoto.js"></script>
+        <script src="~/Scripts/js/jquery.scrollUp.min.js"></script>
+        <script src="~/Scripts/js/main.js"></script>
+        <script src="~/Scripts/js/price-range.js"></script>
+    </header>
 </body>
 </html>
