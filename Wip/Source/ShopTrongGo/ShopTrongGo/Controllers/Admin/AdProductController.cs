@@ -11,6 +11,7 @@ namespace ShopTrongGo.Controllers.Admin
 {
     public class AdProductController : Controller
     {
+        #region Login
         //
         // GET: /AdProduct/
 
@@ -30,6 +31,7 @@ namespace ShopTrongGo.Controllers.Admin
         {
             return View();
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(TaiKhoan user)
@@ -57,7 +59,9 @@ namespace ShopTrongGo.Controllers.Admin
             FormsAuthentication.SignOut();
             return RedirectToAction("Index", "Home");
         }
+        #endregion
 
+        #region My Account
         public ActionResult InformationAccount()
         {           
             if (Session["LogedName"] != null)
@@ -96,6 +100,113 @@ namespace ShopTrongGo.Controllers.Admin
             {
                 return RedirectToAction("Login");
             }                                          
+        }          
+        #endregion
+
+        #region Manage Product
+        private WebBanTapHoaEntities db = new WebBanTapHoaEntities();
+        public ActionResult ListProduct()
+        {
+            if (Session["LogedName"] != null)
+            {
+                var sanphams = db.SanPhams.Include("LoaiSanPham");
+                return View(sanphams.ToList());
+            }
+            return RedirectToAction("Login");
         }
+
+        public ActionResult AddProduct()
+        {
+            if (Session["LogedName"] != null)
+            {
+                ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp");
+                return View();
+            }
+            return RedirectToAction("Login");
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult AddProduct(SanPham sanpham)
+        {
+            if (ModelState.IsValid)
+            {
+                db.SanPhams.Add(sanpham);
+                db.SaveChanges();
+                return RedirectToAction("ListProduct");
+            }
+
+            ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp", sanpham.LoaiSpID);
+            return View(sanpham);
+        }
+
+        public ActionResult EditProduct(string id = null)
+        {
+            SanPham sanpham = db.SanPhams.Find(id);
+            if (sanpham == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp", sanpham.LoaiSpID);
+            return View(sanpham);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
+        public ActionResult EditProduct(SanPham sanpham)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(sanpham).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp", sanpham.LoaiSpID);
+            return View(sanpham);
+        }
+
+        public ActionResult DetailsProduct(string id = null)
+        {
+            if (Session["LogedName"] != null)
+            {
+                SanPham sanpham = db.SanPhams.Find(id);
+                if (sanpham == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(sanpham);
+            }
+            return RedirectToAction("Login");
+        }
+
+        public ActionResult DeleteProduct(string id = null)
+        {
+            if (Session["LogedName"] != null)
+            {
+                SanPham sanpham = db.SanPhams.Find(id);
+                if (sanpham == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(sanpham);
+            }
+            return RedirectToAction("Login");
+        }
+
+        //
+        // POST: /MngProduct/Delete/5
+
+        [HttpPost, ActionName("DeleteProduct")]
+        [ValidateAntiForgeryToken]                
+        public ActionResult DeleteConfirmed(string id)
+        {
+            SanPham sanpham = db.SanPhams.Find(id);
+            db.SanPhams.Remove(sanpham);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        #endregion
     }
 }
