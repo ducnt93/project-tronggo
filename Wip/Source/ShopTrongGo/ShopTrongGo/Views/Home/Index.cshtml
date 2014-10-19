@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<ShopTrongGo.Models.SanPham>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Trang chủ";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
@@ -18,7 +18,7 @@
             {
                 <div class="sanpham">
                     <div class="NewProduct">
-                        <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                        <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
                         <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
                     </div>                   
                     <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>

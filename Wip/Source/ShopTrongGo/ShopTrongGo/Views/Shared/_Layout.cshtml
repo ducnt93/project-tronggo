@@ -1,7 +1,7 @@
 ﻿<!DOCTYPE html>
 <html>
 <head>
-    <title>ViewBag.Title</title>
+    <title>@ViewBag.Title</title>
     <meta name="description" content="Th&ugrave;ng gỗ đựng rượu, Nội Thất Ho&agrave;ng Gia, th&ugrave;ng rượu gỗ sồi, Trống rượu, Trống  Ho&agrave;ng Gia,trống gỗ,
 trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượu vang, bom trống đựng rượu vang cao cấp, Thương hiệu Trống Ho&agrave;ng Gia" />
     <base href="#" />
@@ -34,7 +34,7 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
         <script>
             (function (i, s, o, g, r, a, m) {
                 i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
+                    (i[r].q = i[r].q || []).push(arguments);
                 }, i[r].l = 1 * new Date(); a = s.createElement(o),
                     m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
             })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
@@ -145,44 +145,12 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
             <div class="div1">
                 @{
                     Html.RenderAction("MenuBanner", "MenuPartial");
+                    Html.RenderAction("MenuSearch", "MenuPartial");
                 }
-                <div id="search">
-                    <table border="0">
-                        <tr>
-                            <td>
-                                <input class="text" name="seach" value="Nhập từ khóa" id="filter_keyword" onblur="if(this.value=='') this.value='Nhập từ khóa';" onfocus="if(this.value=='Nhập từ khóa') this.value='';" />
-
-                            </td>
-                            <td><a onclick="moduleSearch();"><input class="button_search" type="submit" value="Tìm kiếm" /></a></td>
-                        </tr>
-                    </table>
-                </div>
+               
             </div>
             @*<div style="clear: both;"></div>*@
         </div>
-        <script type="text/javascript">
-<!--
-            $('#search input').keydown(function(e) {
-                if (e.keyCode == 13) {
-                    moduleSearch();
-                }
-            });
-
-            function moduleSearch() {
-                pathArray = location.pathname.split( '/' );
-                url = 'search';
-                var filter_keyword = $('#filter_keyword').attr('value')
-                if (filter_keyword) {
-                    url += '&keyword=' + encodeURIComponent(filter_keyword).replace(/%20/gi, "+");
-                }
-                var filter_category_id = $('#filter_category_id').attr('value');
-
-                if (filter_category_id) {
-                    url += '&category_id=' + filter_category_id;
-                }
-                location = url;
-            }
-//--></script>
         <div id="slideshow">
             <div id='makeMeScrollable'>
                 @*<div class='scrollingHotSpotLeft'></div>
@@ -211,8 +179,6 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
         </div>
         <div id="column_right">
             @{
-                //Html.RenderAction("MenuQuanAo", "MenuPartial");
-                //Html.RenderAction("MenuSua", "MenuPartial");
                 Html.RenderAction("MenuRight", "MenuPartial");
                 Html.RenderAction("ProductFeatured", "MenuPartial");
             }

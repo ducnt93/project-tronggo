@@ -8,7 +8,8 @@
         <h1>Đăng ký thông tin tài khoản</h1>
     </div>
 </div>
-@Html.BeginForm("Register","Account",FormMethod.Post){
+@using(Html.BeginForm("Register","Account",FormMethod.Post))
+{
 <div class="middle" style="padding:0px;">
     <div class="list">
         <table>

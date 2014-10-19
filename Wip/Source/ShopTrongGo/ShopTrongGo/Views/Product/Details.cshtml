@@ -1,4 +1,5 @@
-﻿@using ShopTrongGo.Models
+﻿@using PagedList
+@using ShopTrongGo.Models
 @using PagedList.Mvc;
 @model ShopTrongGo.Models.SanPham
 @{
@@ -19,7 +20,7 @@
 <div class="middle" style="padding:0px;">
     <div class="list">
         <div class="anhSP">
-            <img src="~/image/cache/data/Quay_bar/@Model.AnhDaiDien" />
+            <img src="~/image/cache/data/@Model.AnhDaiDien" />
             <div class="product_detail">
                 <div class="left_detail">
                     <b>TÊN SẢN PHẨM</b> : @Model.TenSp <br />
@@ -45,7 +46,7 @@
                                             @foreach (var image in listImage)
                                             {
                                                 <li>
-                                                    <img src="~/image/cache/data/Quay_bar/@image.TenAnh" />
+                                                    <img src="~/image/cache/data/@image.TenAnh" />
                                                 </li>
                                             }
 
@@ -88,14 +89,14 @@
                 <b>CÁC SẢN PHẨM KHÁC <br /></b>
                 <div class="list">
                     @{
-                        var list = (List<SanPham>)ViewBag.ListProduct;
+                        var list = (IPagedList<SanPham>)ViewBag.ListProduct;
                         if (list != null)
                         {
                             foreach (var sanPham in list)
                             {
                                 <div class="sanphamkhac">
                                     <div class="NewProduct">
-                                        <a href="~/Product/Details/@sanPham.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/@sanPham.AnhDaiDien" title="@sanPham.MieuTaNgan" alt="@sanPham.TenSp" /></a><br />
+                                        <a href="~/Product/Details/@sanPham.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@sanPham.AnhDaiDien" title="@sanPham.MieuTaNgan" alt="@sanPham.TenSp" /></a><br />
                                         <a href="~/Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a> <br />
                                     </div>
                                     <div class="giasp">Giá bán: @sanPham.Gia.ToString("N0") <b>VNĐ</b></div>
@@ -108,6 +109,7 @@
                         }
                     }
                 </div>
+                @Html.PagedListPager(list, page => Url.Action("Details", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
             </div>
         </div>
 

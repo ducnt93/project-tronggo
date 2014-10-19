@@ -1,13 +1,13 @@
 ﻿@using PagedList.Mvc
-@model IEnumerable<ShopTrongGo.Models.SanPham>
+@model PagedList.IPagedList<ShopTrongGo.Models.SanPham>
 @{
-    ViewBag.Title = "ProductFeatured";
+    ViewBag.Title = "Danh sách các sản phẩm tìm được";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
     <div class="left"></div>
     <div class="center">
-        <h1>Danh sách sản phẩm nổi bật</h1>
+        <h1>Danh sách sản phẩm tìm được</h1>
     </div>
 </div>
 <div class="middle" style="padding:0px;">
@@ -17,8 +17,10 @@
             foreach (var pro in Model)
             {
                 <div class="sanpham">
-                    <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
-                    <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
+                    <div class="NewProduct">
+                        <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                        <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
+                    </div>
                     <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                     <div class="dathang">
                         <a href="../Product/Details/@pro.SanPhamID">Chi tiết</a>
@@ -27,6 +29,7 @@
                 </div>
             }
         }
+        @Html.PagedListPager(Model, page => Url.Action("SearchProducts", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
 
 </div>

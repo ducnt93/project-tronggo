@@ -35,7 +35,7 @@
                     @foreach (var pro in Model)
                     {
                         <div class="sanpham">
-                            <a href="~/Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                            <a href="~/Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
                             <a href="~/Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
                             <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                             <div class="dathang">

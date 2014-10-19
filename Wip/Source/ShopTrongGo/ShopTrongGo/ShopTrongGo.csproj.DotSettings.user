@@ -1,23 +1,35 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=ACCOUNT/@EntryIndexedValue">Account</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=CONTENT_005CCATALOG_005CVIEW_005CJAVASCRIPT_005CUNITPNGFIX/@EntryIndexedValue">Content\catalog\view\javascript\unitpngfix</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=CONTENT_005CCATALOG_005CVIEW_005CTHEME_005CDEFAULT_005CSTYLESHEET_005CIE6_002ECSS/@EntryIndexedValue">Content\catalog\view\theme\default\stylesheet\ie6.css</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=HOME/@EntryIndexedValue">Home</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=IMAGES_005CCACHE/@EntryIndexedValue">images\cache</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=IMAGES_005CICON_002DDEL_002EPNG/@EntryIndexedValue">images\icon-del.png</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=NEWS_005CDETAILNEWS/@EntryIndexedValue">News\DetailNews</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=NEWS_005CDETAILS/@EntryIndexedValue">News\Details</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=NEWS_005CDETAILSERVICES/@EntryIndexedValue">News\DetailServices</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=PROCDUCT/@EntryIndexedValue">Procduct</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=PRODUCT/@EntryIndexedValue">Product</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=SHOPPINGCART/@EntryIndexedValue">ShoppingCart</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CIMAGE/@EntryIndexedValue">Views\image</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CIMAGES/@EntryIndexedValue">Views\images</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPRODUCT_005CALL/@EntryIndexedValue">Views\Product\All</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CPRODUCT_005CDETAILS/@EntryIndexedValue">Views\Product\Details</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/IgnoredPaths/=VIEWS_005CSHOPPINGCART_005CCART/@EntryIndexedValue">Views\ShoppingCart\Cart</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=ACCOUNT/@EntryIndexedValue">Account</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONTENT_005CCATALOG_005CVIEW_005CJAVASCRIPT_005CUNITPNGFIX/@EntryIndexedValue">Content\catalog\view\javascript\unitpngfix</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=CONTENT_005CCATALOG_005CVIEW_005CTHEME_005CDEFAULT_005CSTYLESHEET_005CIE6_002ECSS/@EntryIndexedValue">Content\catalog\view\theme\default\stylesheet\ie6.css</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=HOME/@EntryIndexedValue">Home</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=IMAGES_005CCACHE/@EntryIndexedValue">images\cache</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=IMAGES_005CICON_002DDEL_002EPNG/@EntryIndexedValue">images\icon-del.png</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=NEWS_005CDETAILNEWS/@EntryIndexedValue">News\DetailNews</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=NEWS_005CDETAILS/@EntryIndexedValue">News\Details</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=NEWS_005CDETAILSERVICES/@EntryIndexedValue">News\DetailServices</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PROCDUCT/@EntryIndexedValue">Procduct</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=PRODUCT/@EntryIndexedValue">Product</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=SHOPPINGCART/@EntryIndexedValue">ShoppingCart</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CIMAGE/@EntryIndexedValue">Views\image</s:String>
+	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CIMAGES/@EntryIndexedValue">Views\images</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CPRODUCT_005CALL/@EntryIndexedValue">Views\Product\All</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CPRODUCT_005CDETAILS/@EntryIndexedValue">Views\Product\Details</s:String>
 	<s:String x:Key="/Default/CodeInspection/WebPathMapping/PathsInCorrectCasing/=VIEWS_005CSHOPPINGCART_005CCART/@EntryIndexedValue">Views\ShoppingCart\Cart</s:String></wpf:ResourceDictionary>

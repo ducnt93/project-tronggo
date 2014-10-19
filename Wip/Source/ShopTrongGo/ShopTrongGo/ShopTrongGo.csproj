@@ -189,6 +189,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\Admin\AdProductController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MenuPartialController.cs" />
@@ -208,6 +209,9 @@
       <DependentUpon>TapHoaDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DanhMucAnh.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DanhMucTin.cs">
       <DependentUpon>TapHoaDbContext.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DichVu.cs">
@@ -254,6 +258,9 @@
     <Compile Include="Models\ThongTinCongTy.cs">
       <DependentUpon>TapHoaDbContext.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\TinTuc.cs">
+      <DependentUpon>TapHoaDbContext.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +295,16 @@
     <Content Include="Content\catalog\view\theme\default\stylesheet\images\cursors\cursor_arrow_right.cur.html" />
     <Content Include="Content\catalog\view\theme\default\stylesheet\stylesheet.css" />
     <Content Include="Content\catalog\view\theme\default\stylesheet\style_home.css" />
+    <Content Include="Content\Detail\flexslider.css" />
+    <Content Include="Content\Detail\font-awesome.css" />
+    <Content Include="Content\Detail\font-awesome.min.css" />
+    <Content Include="Content\Detail\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\Detail\noi-that-nha-hang-14_0.jpg" />
+    <Content Include="Content\Detail\Nội thất nhà hàng NH10.jpg" />
+    <Content Include="Content\Detail\Slider1.png" />
+    <Content Include="Content\Detail\Slider2.png" />
+    <Content Include="Content\Detail\Slider3.png" />
+    <Content Include="Content\Detail\Slider4.png" />
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -363,6 +380,36 @@
       <DependentUpon>TapHoaDbContext.edmx</DependentUpon>
       <LastGenOutput>TapHoaDbContext.cs</LastGenOutput>
     </Content>
+    <Content Include="Content\Detail\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\Detail\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\Detail\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\Detail\fonts\FontAwesome.otf" />
+    <Content Include="Content\Detail\less\bordered-pulled.less" />
+    <Content Include="Content\Detail\less\core.less" />
+    <Content Include="Content\Detail\less\fixed-width.less" />
+    <Content Include="Content\Detail\less\font-awesome.less" />
+    <Content Include="Content\Detail\less\icons.less" />
+    <Content Include="Content\Detail\less\larger.less" />
+    <Content Include="Content\Detail\less\list.less" />
+    <Content Include="Content\Detail\less\mixins.less" />
+    <Content Include="Content\Detail\less\path.less" />
+    <Content Include="Content\Detail\less\rotated-flipped.less" />
+    <Content Include="Content\Detail\less\spinning.less" />
+    <Content Include="Content\Detail\less\stacked.less" />
+    <Content Include="Content\Detail\less\variables.less" />
+    <Content Include="Content\Detail\scss\font-awesome.scss" />
+    <Content Include="Content\Detail\scss\_bordered-pulled.scss" />
+    <Content Include="Content\Detail\scss\_core.scss" />
+    <Content Include="Content\Detail\scss\_fixed-width.scss" />
+    <Content Include="Content\Detail\scss\_icons.scss" />
+    <Content Include="Content\Detail\scss\_larger.scss" />
+    <Content Include="Content\Detail\scss\_list.scss" />
+    <Content Include="Content\Detail\scss\_mixins.scss" />
+    <Content Include="Content\Detail\scss\_path.scss" />
+    <Content Include="Content\Detail\scss\_rotated-flipped.scss" />
+    <Content Include="Content\Detail\scss\_spinning.scss" />
+    <Content Include="Content\Detail\scss\_stacked.scss" />
+    <Content Include="Content\Detail\scss\_variables.scss" />
     <None Include="Scripts\jquery-1.8.2.intellisense.js" />
     <Content Include="image\cache\data\Quay_bar\quay bar tu bep 01-150x150.jpg" />
     <Content Include="image\cache\data\Quay_bar\quay bar tu bep 02-150x150.jpg" />
@@ -419,8 +466,10 @@
     <Content Include="Scripts\jquery-1.8.2.js" />
     <Content Include="Scripts\jquery-1.8.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.js" />
     <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.flexslider.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
     <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
@@ -459,6 +508,18 @@
     <Content Include="Views\ShoppingCart\Cart.cshtml" />
     <Content Include="Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Views\AdProduct\Index.cshtml" />
+    <Content Include="Views\Product\ProductFeatured.cshtml" />
+    <Content Include="Views\AdProduct\ChangePassword.cshtml" />
+    <Content Include="Views\AdProduct\InformationAccount.cshtml" />
+    <Content Include="Views\AdProduct\Login.cshtml" />
+    <Content Include="Views\MenuPartial\MenuBanner.cshtml" />
+    <Content Include="Views\MenuPartial\MenuRight.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
+    <Content Include="Views\News\DetailNews.cshtml" />
+    <Content Include="Views\News\AllServices.cshtml" />
+    <Content Include="Views\News\DetailServices.cshtml" />
+    <Content Include="Views\Product\SearchProducts.cshtml" />
+    <Content Include="Views\MenuPartial\MenuSearch.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

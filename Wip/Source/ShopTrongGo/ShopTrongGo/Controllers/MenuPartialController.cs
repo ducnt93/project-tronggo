@@ -10,7 +10,7 @@ namespace ShopTrongGo.Controllers
     public class MenuPartialController : Controller
     {
         WebBanTapHoaEntities dbEntities = new WebBanTapHoaEntities();
-        [HttpGet]
+
         [ChildActionOnly]
         public ActionResult MenuTrongRuou()
         {
@@ -18,14 +18,14 @@ namespace ShopTrongGo.Controllers
             return PartialView();
         }
 
-        [HttpGet]
+
         [ChildActionOnly]
         public ActionResult MenuService()
         {
             ViewBag.MenuService = dbEntities.LoaiSanPhams.ToList();
             return PartialView();
         }
-        [HttpGet]
+
         [ChildActionOnly]
         public ActionResult MenuQuanAo()
         {
@@ -33,7 +33,7 @@ namespace ShopTrongGo.Controllers
             return PartialView();
         }
 
-        [HttpGet]
+
         [ChildActionOnly]
         public ActionResult MenuSua()
         {
@@ -47,7 +47,7 @@ namespace ShopTrongGo.Controllers
             return PartialView();
         }
 
-        [HttpGet]
+
         [ChildActionOnly]
         public ActionResult MenuFooter()
         {
@@ -66,6 +66,12 @@ namespace ShopTrongGo.Controllers
         {
             List<DanhMuc> danhMucs = dbEntities.DanhMucs.Where(lSp => !lSp.TrangThaiXoa & lSp.DanhMucID != 1).ToList();
             return PartialView(danhMucs);
+        }
+
+        [ChildActionOnly]
+        public ActionResult MenuSearch()
+        {
+            return PartialView();
         }
     }
 }
