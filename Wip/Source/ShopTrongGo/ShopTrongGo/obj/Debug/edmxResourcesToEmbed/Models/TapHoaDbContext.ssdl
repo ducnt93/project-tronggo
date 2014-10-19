@@ -42,6 +42,15 @@
     <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
     <Property Name="NgayXoa" Type="date" />
   </EntityType>
+  <EntityType Name="DanhMucTin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="TenDMTin" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
+    <Property Name="TrangThai" Type="bit" Nullable="false" />
+  </EntityType>
   <EntityType Name="DichVu">
     <Key>
       <PropertyRef Name="DichVuID" />
@@ -51,6 +60,10 @@
     <Property Name="NguoiDang" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
     <Property Name="NgayXoa" Type="date" />
+    <Property Name="TenDichVu" Type="nvarchar" MaxLength="200" Nullable="false" />
+    <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" />
+    <Property Name="MieuTaChiTiet" Type="nvarchar(max)" />
+    <Property Name="AnhDaiDien" Type="nchar" MaxLength="100" />
   </EntityType>
   <EntityType Name="DoiTac">
     <Key>
@@ -113,7 +126,7 @@
     <Property Name="TenSp" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="LoaiSpID" Type="int" Nullable="false" />
     <Property Name="AnhDaiDien" Type="nvarchar" MaxLength="200" Nullable="false" />
-    <Property Name="Gia" Type="float" Nullable="false" />
+    <Property Name="Gia" Type="money" Nullable="false" />
     <Property Name="TrangThai" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="Model" Type="nvarchar" MaxLength="10" Nullable="false" />
     <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" Nullable="false" />
@@ -122,8 +135,8 @@
     <Property Name="NgayXoa" Type="date" />
     <Property Name="SoLuong" Type="int" />
     <Property Name="NgayCapNhat" Type="date" />
-    <Property Name="LuotView" Type="varchar" MaxLength="50" />
-    <Property Name="LuotBan" Type="varchar" MaxLength="50" />
+    <Property Name="LuotView" Type="float" />
+    <Property Name="LuotBan" Type="float" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>
@@ -149,6 +162,21 @@
     <Property Name="DiaChi" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TinTuc">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" Nullable="false" />
+    <Property Name="LoaiDMTin" Type="int" Nullable="false" />
+    <Property Name="TenTin" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" />
+    <Property Name="MieuTaChiTiet" Type="nvarchar(max)" />
+    <Property Name="TrangThai" Type="bit" Nullable="false" />
+    <Property Name="NgayXoaTin" Type="date" />
+    <Property Name="NgayCapNhat" Type="date" Nullable="false" />
+    <Property Name="NguoiDang" Type="nvarchar" MaxLength="50" />
+    <Property Name="AnhDaiDien" Type="nchar" MaxLength="200" />
   </EntityType>
   <Association Name="FK_CtHoaDon_HoaDon">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -246,11 +274,24 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_TinTuc_DanhMucTin">
+    <End Role="DanhMucTin" Type="Self.DanhMucTin" Multiplicity="1" />
+    <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DanhMucTin">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="TinTuc">
+        <PropertyRef Name="LoaiDMTin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <EntityContainer Name="WebTapHoaModelStoreContainer">
     <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DanhMucAnh" EntityType="Self.DanhMucAnh" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="DanhMucTin" EntityType="Self.DanhMucTin" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DichVu" EntityType="Self.DichVu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="DoiTac" EntityType="Self.DoiTac" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -260,6 +301,7 @@
     <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ThongTinCongTy" EntityType="Self.ThongTinCongTy" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="TinTuc" EntityType="Self.TinTuc" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_CtHoaDon_HoaDon" Association="Self.FK_CtHoaDon_HoaDon">
       <End Role="HoaDon" EntitySet="HoaDon" />
       <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
@@ -291,6 +333,10 @@
     <AssociationSet Name="FK_TaiKhoan_LoaiTk" Association="Self.FK_TaiKhoan_LoaiTk">
       <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoan" />
       <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+    </AssociationSet>
+    <AssociationSet Name="FK_TinTuc_DanhMucTin" Association="Self.FK_TinTuc_DanhMucTin">
+      <End Role="DanhMucTin" EntitySet="DanhMucTin" />
+      <End Role="TinTuc" EntitySet="TinTuc" />
     </AssociationSet>
   </EntityContainer>
 </Schema>

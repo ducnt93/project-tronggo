@@ -12,16 +12,19 @@ namespace ShopTrongGo.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class DichVu
+    public partial class TinTuc
     {
-        public int DichVuID { get; set; }
-        public System.DateTime NgayDang { get; set; }
-        public string NguoiDang { get; set; }
-        public bool TrangThaiXoa { get; set; }
-        public Nullable<System.DateTime> NgayXoa { get; set; }
-        public string TenDichVu { get; set; }
+        public int Id { get; set; }
+        public int LoaiDMTin { get; set; }
+        public string TenTin { get; set; }
         public string MieuTaNgan { get; set; }
         public string MieuTaChiTiet { get; set; }
+        public bool TrangThai { get; set; }
+        public Nullable<System.DateTime> NgayXoaTin { get; set; }
+        public System.DateTime NgayCapNhat { get; set; }
+        public string NguoiDang { get; set; }
         public string AnhDaiDien { get; set; }
+    
+        public virtual DanhMucTin DanhMucTin { get; set; }
     }
 }

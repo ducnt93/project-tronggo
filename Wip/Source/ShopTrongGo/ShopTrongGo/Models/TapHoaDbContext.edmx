@@ -47,6 +47,15 @@
           <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
           <Property Name="NgayXoa" Type="date" />
         </EntityType>
+        <EntityType Name="DanhMucTin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="TenDMTin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+        </EntityType>
         <EntityType Name="DichVu">
           <Key>
             <PropertyRef Name="DichVuID" />
@@ -56,6 +65,10 @@
           <Property Name="NguoiDang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
           <Property Name="NgayXoa" Type="date" />
+          <Property Name="TenDichVu" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" />
+          <Property Name="MieuTaChiTiet" Type="nvarchar(max)" />
+          <Property Name="AnhDaiDien" Type="nchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="DoiTac">
           <Key>
@@ -155,6 +168,21 @@
           <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="TinTuc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="LoaiDMTin" Type="int" Nullable="false" />
+          <Property Name="TenTin" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" />
+          <Property Name="MieuTaChiTiet" Type="nvarchar(max)" />
+          <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="NgayXoaTin" Type="date" />
+          <Property Name="NgayCapNhat" Type="date" Nullable="false" />
+          <Property Name="NguoiDang" Type="nvarchar" MaxLength="50" />
+          <Property Name="AnhDaiDien" Type="nchar" MaxLength="200" />
+        </EntityType>
         <Association Name="FK_CtHoaDon_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
           <End Role="ChiTietHoaDon" Type="Self.ChiTietHoaDon" Multiplicity="*" />
@@ -251,11 +279,24 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_TinTuc_DanhMucTin">
+          <End Role="DanhMucTin" Type="Self.DanhMucTin" Multiplicity="1" />
+          <End Role="TinTuc" Type="Self.TinTuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMucTin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TinTuc">
+              <PropertyRef Name="LoaiDMTin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="WebTapHoaModelStoreContainer">
           <EntitySet Name="Banner" EntityType="Self.Banner" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ChiTietHoaDon" EntityType="Self.ChiTietHoaDon" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMuc" EntityType="Self.DanhMuc" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DanhMucAnh" EntityType="Self.DanhMucAnh" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DanhMucTin" EntityType="Self.DanhMucTin" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DichVu" EntityType="Self.DichVu" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DoiTac" EntityType="Self.DoiTac" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="HoaDon" EntityType="Self.HoaDon" Schema="dbo" store:Type="Tables" />
@@ -265,6 +306,7 @@
           <EntitySet Name="SanPham" EntityType="Self.SanPham" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TaiKhoan" EntityType="Self.TaiKhoan" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="ThongTinCongTy" EntityType="Self.ThongTinCongTy" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TinTuc" EntityType="Self.TinTuc" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_CtHoaDon_HoaDon" Association="Self.FK_CtHoaDon_HoaDon">
             <End Role="HoaDon" EntitySet="HoaDon" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
@@ -296,6 +338,10 @@
           <AssociationSet Name="FK_TaiKhoan_LoaiTk" Association="Self.FK_TaiKhoan_LoaiTk">
             <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoan" />
             <End Role="TaiKhoan" EntitySet="TaiKhoan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TinTuc_DanhMucTin" Association="Self.FK_TinTuc_DanhMucTin">
+            <End Role="DanhMucTin" EntitySet="DanhMucTin" />
+            <End Role="TinTuc" EntitySet="TinTuc" />
           </AssociationSet>
         </EntityContainer>
       </Schema></edmx:StorageModels>
@@ -347,6 +393,12 @@
           <AssociationSet Name="FK_TaiKhoan_LoaiTk" Association="WebTapHoaModel.FK_TaiKhoan_LoaiTk">
             <End Role="LoaiTaiKhoan" EntitySet="LoaiTaiKhoans" />
             <End Role="TaiKhoan" EntitySet="TaiKhoans" />
+          </AssociationSet>
+          <EntitySet Name="DanhMucTins" EntityType="WebTapHoaModel.DanhMucTin" />
+          <EntitySet Name="TinTucs" EntityType="WebTapHoaModel.TinTuc" />
+          <AssociationSet Name="FK_TinTuc_DanhMucTin" Association="WebTapHoaModel.FK_TinTuc_DanhMucTin">
+            <End Role="DanhMucTin" EntitySet="DanhMucTins" />
+            <End Role="TinTuc" EntitySet="TinTucs" />
           </AssociationSet>
         </EntityContainer>
         <EntityType Name="Banner">
@@ -405,6 +457,10 @@
           <Property Name="NguoiDang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
+          <Property Name="TenDichVu" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
+          <Property Name="MieuTaNgan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MieuTaChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AnhDaiDien" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
         </EntityType>
         <EntityType Name="DoiTac">
           <Key>
@@ -611,6 +667,44 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <EntityType Name="DanhMucTin">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="TenDMTin" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="TinTucs" Relationship="WebTapHoaModel.FK_TinTuc_DanhMucTin" FromRole="DanhMucTin" ToRole="TinTuc" />
+        </EntityType>
+        <EntityType Name="TinTuc">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="LoaiDMTin" Type="Int32" Nullable="false" />
+          <Property Name="TenTin" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="MieuTaNgan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="MieuTaChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="TrangThai" Type="Boolean" Nullable="false" />
+          <Property Name="NgayXoaTin" Type="DateTime" Precision="0" />
+          <Property Name="NgayCapNhat" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="NguoiDang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="DanhMucTin" Relationship="WebTapHoaModel.FK_TinTuc_DanhMucTin" FromRole="TinTuc" ToRole="DanhMucTin" />
+          <Property Name="AnhDaiDien" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_TinTuc_DanhMucTin">
+          <End Type="WebTapHoaModel.DanhMucTin" Role="DanhMucTin" Multiplicity="1" />
+          <End Type="WebTapHoaModel.TinTuc" Role="TinTuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="DanhMucTin">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="TinTuc">
+              <PropertyRef Name="LoaiDMTin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -665,6 +759,10 @@
           <EntitySetMapping Name="DichVus">
             <EntityTypeMapping TypeName="WebTapHoaModel.DichVu">
               <MappingFragment StoreEntitySet="DichVu">
+                <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
+                <ScalarProperty Name="MieuTaChiTiet" ColumnName="MieuTaChiTiet" />
+                <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
+                <ScalarProperty Name="TenDichVu" ColumnName="TenDichVu" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
                 <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
@@ -776,6 +874,32 @@
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
                 <ScalarProperty Name="TenCongTy" ColumnName="TenCongTy" />
                 <ScalarProperty Name="CongTyID" ColumnName="CongTyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DanhMucTins">
+            <EntityTypeMapping TypeName="WebTapHoaModel.DanhMucTin">
+              <MappingFragment StoreEntitySet="DanhMucTin">
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MoTa" ColumnName="MoTa" />
+                <ScalarProperty Name="TenDMTin" ColumnName="TenDMTin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TinTucs">
+            <EntityTypeMapping TypeName="WebTapHoaModel.TinTuc">
+              <MappingFragment StoreEntitySet="TinTuc">
+                <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
+                <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
+                <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
+                <ScalarProperty Name="NgayXoaTin" ColumnName="NgayXoaTin" />
+                <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
+                <ScalarProperty Name="MieuTaChiTiet" ColumnName="MieuTaChiTiet" />
+                <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
+                <ScalarProperty Name="TenTin" ColumnName="TenTin" />
+                <ScalarProperty Name="LoaiDMTin" ColumnName="LoaiDMTin" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

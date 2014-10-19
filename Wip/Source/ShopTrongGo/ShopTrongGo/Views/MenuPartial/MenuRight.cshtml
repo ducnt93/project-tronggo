@@ -1,0 +1,27 @@
+﻿@using ShopTrongGo.Models
+@model IEnumerable<ShopTrongGo.Models.DanhMuc>
+@if (Model != null)
+{
+    foreach (var danhMuc in Model)
+    {
+        <div class="box">
+            <div class="top">@danhMuc.TenDanhMuc</div>
+            <div id="category" class="middle">
+                <ul>
+                    @{
+        var dbTapHoa = new WebBanTapHoaEntities();
+        List<LoaiSanPham> list = dbTapHoa.LoaiSanPhams.Where(lSp => !lSp.TrangThaiXoa & lSp.DanhMucID == danhMuc.DanhMucID).ToList();
+        if (list.Count != 0)
+        {
+            foreach (var item in list)
+            {
+                <li><a href="~/Product/All/@item.LoaiSpID">@item.TenLoaiSp</a></li>
+            }
+        }
+                    }
+                </ul>
+            </div>
+        </div>
+    }
+
+}

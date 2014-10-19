@@ -95,12 +95,12 @@
                             {
                                 <div class="sanphamkhac">
                                     <div class="NewProduct">
-                                        <a href="../Product/Details/@sanPham.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/thiet ke quay bar tu bep dep 2-150x150.jpg" title="@sanPham.MieuTaNgan" alt="@sanPham.TenSp" /></a><br />
-                                        <a href="../Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a> <br />
+                                        <a href="~/Product/Details/@sanPham.SanPhamID"><img width="160" height="160" src="~/image/cache/data/Quay_bar/@sanPham.AnhDaiDien" title="@sanPham.MieuTaNgan" alt="@sanPham.TenSp" /></a><br />
+                                        <a href="~/Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a> <br />
                                     </div>
                                     <div class="giasp">Giá bán: @sanPham.Gia.ToString("N0") <b>VNĐ</b></div>
                                     <div class="dathang">
-                                        <a href="../Product/Details/@sanPham.SanPhamID">Chi tiết</a>
+                                        <a href="~/Product/Details/@sanPham.SanPhamID">Chi tiết</a>
                                         <input id="Button1" type="button" value="Đặt hàng" class="btnCart" onclick="AddToCart('@sanPham.SanPhamID');" />
                                     </div>
                                 </div>

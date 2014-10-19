@@ -1,0 +1,40 @@
+﻿@using ShopTrongGo.Models
+@model ShopTrongGo.Models.TinTuc
+@{
+    ViewBag.Title = "DetailNews";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model != null)
+{
+    <div class="top">
+        <div class="left"></div>
+        <div class="center">
+            <h1>@Model.TenTin</h1>
+        </div>
+    </div>
+    <div class="middle" style="padding: 0px;">
+        <div class="list">
+            <div class="Tin">
+                <div class="NgayCapNhat">Ngày cập nhật: @Model.NgayCapNhat </div>
+                <div class="ChitietTin">@Model.MieuTaChiTiet</div>
+            </div>
+        </div>
+    </div>
+}
+<hr />
+@{
+    var listTinTuc = ((List<TinTuc>)ViewBag.DanhSachTin);
+    if (listTinTuc != null)
+    {
+        foreach (var tinTuc in listTinTuc)
+        {
+            <div class="middle" style="padding: 0px;">
+                <div class="list">
+                    <div class="danhSachTin">
+                        <a href="~/News/DetailNews/@tinTuc.Id">@tinTuc.TenTin</a>
+                    </div>
+                </div>
+            </div>
+        }
+    }
+}

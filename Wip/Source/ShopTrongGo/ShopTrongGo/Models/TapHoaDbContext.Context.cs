@@ -38,5 +38,7 @@ namespace ShopTrongGo.Models
         public DbSet<SanPham> SanPhams { get; set; }
         public DbSet<TaiKhoan> TaiKhoans { get; set; }
         public DbSet<ThongTinCongTy> ThongTinCongTies { get; set; }
+        public DbSet<DanhMucTin> DanhMucTins { get; set; }
+        public DbSet<TinTuc> TinTucs { get; set; }
     }
 }

@@ -26,6 +26,9 @@
         <AssociationConnector Association="WebTapHoaModel.FK_HoaDon_TaiKhoan" />
         <AssociationConnector Association="WebTapHoaModel.FK_SanPham_LoaiSp" />
         <AssociationConnector Association="WebTapHoaModel.FK_TaiKhoan_LoaiTk" />
+        <EntityTypeShape EntityType="WebTapHoaModel.DanhMucTin" Width="1.5" PointX="12.375" PointY="5.5" />
+        <EntityTypeShape EntityType="WebTapHoaModel.TinTuc" Width="1.5" PointX="14.625" PointY="5" />
+        <AssociationConnector Association="WebTapHoaModel.FK_TinTuc_DanhMucTin" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

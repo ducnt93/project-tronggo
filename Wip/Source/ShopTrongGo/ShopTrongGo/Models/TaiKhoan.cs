@@ -7,8 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-
 namespace ShopTrongGo.Models
 {
     using System;
@@ -25,10 +23,7 @@ namespace ShopTrongGo.Models
         public int LoaiTaiKhoanID { get; set; }
         public string TenNguoiDung { get; set; }
         public string Email { get; set; }
-        [Required(ErrorMessage = "Please Provide Username", AllowEmptyStrings = false)]
         public string TenDangNhap { get; set; }
-        [Required(ErrorMessage = "Please provide password", AllowEmptyStrings = false)]
-        [DataType(System.ComponentModel.DataAnnotations.DataType.Password)]
         public string MatKhau { get; set; }
         public string Phone { get; set; }
         public string DiaChi { get; set; }

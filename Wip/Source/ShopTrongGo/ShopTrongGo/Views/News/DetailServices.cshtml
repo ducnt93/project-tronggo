@@ -1,0 +1,42 @@
+﻿@using ShopTrongGo.Models;
+@model ShopTrongGo.Models.DichVu
+@{
+    ViewBag.Title = "DetailServices";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@if (Model != null)
+{
+    <div class="top">
+        <div class="left"></div>
+        <div class="center">
+            <h1>@Model.TenDichVu</h1>
+        </div>
+    </div>
+
+    <div class="middle" style="padding:0px;">
+        <div class="list">
+            <div class="DichVu">
+                <p>Ngày cập nhật: @Model.NgayDang</p>
+                <p>@Model.MieuTaChiTiet</p>
+            </div>
+        </div>
+    </div>
+}
+@{
+    var list = (List<DichVu>)ViewBag.DanhSachDichVu;
+    if (list != null)
+    {
+        <hr />
+        <div class="middle" style="padding:0px;">
+            <div class="list">
+                @foreach (var dsDv in list)
+                {
+                    <div class="DanhsachDV">
+                        <a href="~/News/DetailServices/@dsDv.DichVuID">@dsDv.TenDichVu</a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+}
+

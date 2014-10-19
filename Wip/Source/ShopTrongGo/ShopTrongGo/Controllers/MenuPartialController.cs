@@ -9,13 +9,11 @@ namespace ShopTrongGo.Controllers
 {
     public class MenuPartialController : Controller
     {
-        //
-        // GET: /MenuPartial/
+        WebBanTapHoaEntities dbEntities = new WebBanTapHoaEntities();
         [HttpGet]
         [ChildActionOnly]
         public ActionResult MenuTrongRuou()
         {
-            var dbEntities = new WebBanTapHoaEntities();
             ViewBag.MenuLeft = dbEntities.LoaiSanPhams.Where(p => !p.TrangThaiXoa & p.DanhMucID == 1).ToList();
             return PartialView();
         }
@@ -24,7 +22,6 @@ namespace ShopTrongGo.Controllers
         [ChildActionOnly]
         public ActionResult MenuService()
         {
-            var dbEntities = new WebBanTapHoaEntities();
             ViewBag.MenuService = dbEntities.LoaiSanPhams.ToList();
             return PartialView();
         }
@@ -32,7 +29,6 @@ namespace ShopTrongGo.Controllers
         [ChildActionOnly]
         public ActionResult MenuQuanAo()
         {
-            var dbEntities = new WebBanTapHoaEntities();
             ViewBag.MenuQuanAo = dbEntities.LoaiSanPhams.Where(l => !l.TrangThaiXoa & l.DanhMucID == 2).ToList();
             return PartialView();
         }
@@ -41,14 +37,12 @@ namespace ShopTrongGo.Controllers
         [ChildActionOnly]
         public ActionResult MenuSua()
         {
-            var dbEntities = new WebBanTapHoaEntities();
             ViewBag.MenuSua = dbEntities.LoaiSanPhams.Where(l => !l.TrangThaiXoa & l.DanhMucID == 3).ToList();
             return PartialView();
         }
         [ChildActionOnly]
         public ActionResult ProductFeatured()
         {
-            var dbEntities = new WebBanTapHoaEntities();
             ViewBag.ProductFeatured = dbEntities.SanPhams.Where(sp => !sp.TrangThaiXoa).OrderByDescending(p => p.LuotView).Take(5).ToList();
             return PartialView();
         }
@@ -58,6 +52,20 @@ namespace ShopTrongGo.Controllers
         public ActionResult MenuFooter()
         {
             return PartialView();
+        }
+
+        [ChildActionOnly]
+        public ActionResult MenuBanner()
+        {
+            List<DanhMuc> danhMucs = dbEntities.DanhMucs.Where(lSp => !lSp.TrangThaiXoa).ToList();
+            return PartialView(danhMucs);
+        }
+
+        [ChildActionOnly]
+        public ActionResult MenuRight()
+        {
+            List<DanhMuc> danhMucs = dbEntities.DanhMucs.Where(lSp => !lSp.TrangThaiXoa & lSp.DanhMucID != 1).ToList();
+            return PartialView(danhMucs);
         }
     }
 }

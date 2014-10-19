@@ -1,0 +1,30 @@
+﻿@{
+    ViewBag.Title = "Đăng ký tài khoản";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="top">
+    <div class="left"></div>
+    <div class="center">
+        <h1>Đăng ký thông tin tài khoản</h1>
+    </div>
+</div>
+@Html.BeginForm("Register","Account",FormMethod.Post){
+<div class="middle" style="padding:0px;">
+    <div class="list">
+        <table>
+            <tr>
+                <td>Tên đăng nhập:</td>
+                <td>@Html.TextBox("txtUserName")</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+    </div>
+</div>
+}

@@ -275,26 +275,25 @@ p {
 
     #header > .div1 > .menu > ul > li:hover ul {
         display: block;
-        
     }
-    #header > .div1 > .menu > ul > li:hover ul>li>ul {
-        display: none;
 
-    }
-    #header > .div1 > .menu > ul > li:hover ul>li {
-        position: relative;
-        border-bottom: 1px dotted #bdb76b;
-                
-        width: 155px;
-        
-    }
-    #header > .div1 > .menu > ul > li:hover ul>li:hover>ul {
-        display: inline-block;
-        margin-left: 31px;
-        border-left: 1px dotted #bdb76b;
-        position: absolute;
-        background: #CD9362;
-    }
+        #header > .div1 > .menu > ul > li:hover ul > li > ul {
+            display: none;
+        }
+
+        #header > .div1 > .menu > ul > li:hover ul > li {
+            position: relative;
+            border-bottom: 1px dotted #bdb76b;
+            width: 155px;
+        }
+
+            #header > .div1 > .menu > ul > li:hover ul > li:hover > ul {
+                display: inline-block;
+                margin-left: 31px;
+                border-left: 1px dotted #bdb76b;
+                position: absolute;
+                background: #CD9362;
+            }
 
     #header > .div1 > .menu > ul > li > ul > li {
         border-bottom: 1px dotted #bdb76b;
@@ -307,9 +306,9 @@ p {
             color: #cccccc;
         }
 
-  #header > .div1 > .menu > ul > li > ul > li > a:hover {
-        color: #000000;
-}
+            #header > .div1 > .menu > ul > li > ul > li > a:hover {
+                color: #000000;
+            }
 
 
 /*.menu > ul > li > ul > li:hover ul {
@@ -609,16 +608,15 @@ a.button:hover {
     width: 170px;
     height: 245px;
     border: 1px solid #cccccc;
-    margin: 5px 1px 0px 3px;
+    margin: 10px 2px 10px 2px;
 }
 
 .sanphamkhac {
     background: #F6F4F4;
     float: left;
-    width: 155px;
-    height: 245px;
+    width: 170px;
     border: 1px solid #cccccc;
-    margin: 5px 1px 0px 3px;
+    margin: 10px 2px 10px 2px;
 }
 
 .sanpham > a:hover {
@@ -655,10 +653,11 @@ a.button:hover {
     width: 100%;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    -ms-border-radius: 5px;
     border-radius: 5px;
 }
 
-    .sort .div1 {
+.sort .div1 {
         float: right;
         margin-left: 5px;
         padding-top: 6px;
@@ -880,6 +879,7 @@ input:hover {
     margin: auto;
     margin: 10px auto;
     clear: both;
+    padding-bottom: 30px;
 }
 
 .left_slider {

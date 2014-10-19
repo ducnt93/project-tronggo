@@ -1,0 +1,41 @@
+﻿@model IEnumerable<ShopTrongGo.Models.DanhMuc>
+@using System.Web.UI.WebControls
+@using ShopTrongGo.Models
+<div class="menu">
+    <ul>
+        <li><a href="~/Home/Index" class="selected">Trang chủ</a></li>
+        <li><a href="#">Giới thiệu</a> </li>
+        <li><a href="#">Tin tức</a></li>
+        <li>
+            <a href="#">Sản phẩm</a>
+            <ul>
+                @if (Model != null)
+                {
+                    var dbEntities = new WebBanTapHoaEntities();
+                    foreach (var danhMuc in Model)
+                    {
+                        <li>
+                            <a>@danhMuc.TenDanhMuc</a>
+                            <ul style="margin-left: 35px;">
+                                @{
+                        ViewBag.ListLoaiSp = dbEntities.LoaiSanPhams.Where(sp => !sp.TrangThaiXoa & sp.DanhMucID == danhMuc.DanhMucID).ToList();
+                        var list = ((List<LoaiSanPham>)ViewBag.ListLoaiSp);
+                        if (list != null)
+                        {
+                            foreach (var loai in list)
+                            {
+                                <li><a href="~/Product/All/@loai.LoaiSpID">@loai.TenLoaiSp</a> </li>
+                            }
+                        }
+                                }
+                            </ul>
+                        </li>
+                    }
+                }
+
+            </ul>
+        </li>
+        <li><a href="#">Dịch vụ</a> </li>
+        <li><a href="#">Liên hệ</a></li>
+    </ul>
+</div>
