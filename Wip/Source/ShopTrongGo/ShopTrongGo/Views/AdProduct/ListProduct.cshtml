@@ -1,0 +1,66 @@
+﻿@using ShopTrongGo.Models
+@model System.Collections.Generic.List<SanPham>
+
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>List Products</h2>
+@{
+    List<string> sx = new List<string>();
+    sx.Add("Số lượng còn");
+    sx.Add("Lượt bán");
+    sx.Add("Lượt view");
+}
+<div class="box">
+    <div class="left">@Html.ActionLink("Add new product", "AddProduct")    </div>
+    <div class="right">
+        <select id="SapXep" name="SapXep" style="height: 30px;width: 20%; float: right;">
+                  <option value="con">Số lượng còn</option>
+                  <option value="view">Lượt xem</option>
+                  <option value="ban">Lượt bán</option>
+        </select>
+    </div>
+
+</div>
+
+
+<table>
+    <tr style="background: #00008b; color: white; height: 30px;">
+        <th>Tên sản phẩm</th>
+        <th>Loại sản phẩm</th>
+        <th>Ảnh đại diện</th>
+        <th>Giá</th>
+        <th>Trạng thái</th>
+        <th>Model</th>
+        <th>Xóa</th>
+        <th>Còn</th>
+        <th>Bán</th>
+        <th>Xem</th>
+        <th>Chức năng</th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.TenSp)</td>
+            <td>@Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSp)</td>
+            <td><img height="40px" width="60px" src="/image/cache/data/Quay_bar/@Html.DisplayFor(modelItem => item.AnhDaiDien)" /></td>
+            <td>@Html.DisplayFor(modelItem => item.Gia)</td>
+            <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
+            <td>@Html.DisplayFor(modelItem => item.Model)</td>
+            <td>@Html.DisplayFor(modelItem => item.TrangThaiXoa)</td>
+            <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+            <td>@Html.DisplayFor(modelItem => item.LuotBan)</td>
+            <td>@Html.DisplayFor(modelItem => item.LuotView)</td>
+            <td>
+                @Html.ActionLink("Edit", "EditProduct", new { id = item.SanPhamID }) |
+                @Html.ActionLink("Details", "DetailsProduct", new { id = item.SanPhamID }) |
+                @Html.ActionLink("Delete", "DeleteProduct", new { id = item.SanPhamID })
+            </td>
+        </tr>
+    }
+
+</table>
+
