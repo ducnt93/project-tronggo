@@ -251,11 +251,12 @@ p {
         /*overflow:hidden;*/
     }
 
-        #header .div1 .menu ul {
-            list-style-type: none;
-            margin: 0px;
-            padding: 0px;
-        }
+#header .div1 .menu ul {
+    list-style-type: none;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
 
 #header > .div1 > .menu > ul > li {
     float: left;
@@ -263,6 +264,7 @@ p {
     border-right: 1px dotted #bdb76b;
     position: relative;
 }
+
 
     #header > .div1 > .menu > ul > li > a:hover {
         color: #000000;
@@ -272,6 +274,7 @@ p {
         display: none;
         position: absolute;
         clear: both;
+        width: 155px;
     }
 
     #header > .div1 > .menu > ul > li:hover ul {
@@ -285,12 +288,13 @@ p {
         #header > .div1 > .menu > ul > li:hover ul > li {
             position: relative;
             border-bottom: 1px dotted #bdb76b;
-            width: 155px;
+            /*width: 155px;*/
         }
 
             #header > .div1 > .menu > ul > li:hover ul > li:hover > ul {
-                display: inline-block;
-                margin-left: 31px;
+                display: block;
+                margin-left: 155px;
+                top: 0px;
                 border-left: 1px dotted #bdb76b;
                 position: absolute;
                 background: #CD9362;
@@ -298,11 +302,24 @@ p {
 
     #header > .div1 > .menu > ul > li > ul > li {
         border-bottom: 1px dotted #bdb76b;
-        width: 150px;
+        width: 155px;
         position: relative;
         background: url(../image/bg_menu.png) repeat-x left center;
     }
-
+    #header > .div1 > .menu > ul > li > ul > li>ul {
+        width: 180px;
+    }
+    #header > .div1 > .menu > ul > li > ul > li>ul>li{
+        width: 180px;
+    }
+#header > .div1 > .menu > ul > li > ul > li>ul>li>a {
+    color: #ffffff;
+    font-size: 12px;
+    font-weight: Bold;
+    
+    padding-left: 20px;
+    padding-right: 20px;
+}
         #header > .div1 > .menu > ul > li > ul > li > a {
             color: #cccccc;
         }
@@ -312,12 +329,12 @@ p {
             }
 
 
-/*.menu > ul > li > ul > li:hover ul {
+.menu > ul > li > ul > li:hover ul {
     display: inline-block;
     background: url(../image/bg_menu.png) repeat-x left center;
-}*/
+}
 
-#header .div1 .menu ul li a {
+#header >.div1> .menu> ul> li> a {
     color: #ffffff;
     font-size: 12px;
     font-weight: Bold;
@@ -326,17 +343,22 @@ p {
     padding-right: 20px;
 }
 
-#header .div1 .menu ul li ul li a {
+#header> .div1 >.menu> ul> li> ul> li> a {
     color: #ffffff;
+    font-size: 12px;
+    font-weight: Bold;
+    
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
     #header .div1 .menu ul li ul li a:hover {
         color: #000000;
     }
 
-/*#header .div1 .menu ul li a:hover {
+#header .div1 .menu ul li a:hover {
 color:#000;	
-}*/
+}
 #header .div1 .menu .selected {
     color: #000;
     z-index: 3;
@@ -628,7 +650,7 @@ a.button:hover {
 .giasp {
     font-size: 15px;
     color: #e90f07;
-    margin-top: 5px;
+    /*margin-top: 5px;*/
 }
 
 .dathang {
@@ -867,14 +889,19 @@ a.button:hover {
     width: 75px;
     height: 27px;
     font-size: 15px;
+    
+}
+.btnCart:hover {
+    border-radius: 3px;
+    border: 1px solid #bbbbbb;
 }
 
-input:hover {
+/*input:hover {
     background: #f4a460;
     color: #000;
     -ms-border-radius: 4px;
     border-radius: 4px;
-}
+}*/
 
 /*slider san pham*/
 .slider {

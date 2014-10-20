@@ -16,7 +16,7 @@
                     {
                         <li>
                             <a>@danhMuc.TenDanhMuc</a>
-                            <ul style="margin-left: 35px;">
+                            <ul >
                                 @{
                         ViewBag.ListLoaiSp = dbEntities.LoaiSanPhams.Where(sp => !sp.TrangThaiXoa & sp.DanhMucID == danhMuc.DanhMucID).ToList();
                         var list = ((List<LoaiSanPham>)ViewBag.ListLoaiSp);
