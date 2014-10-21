@@ -11,55 +11,7 @@ namespace ShopTrongGo.Controllers.Admin
 {
     public class AdProductController : Controller
     {
-        #region Login
-        //
-        // GET: /AdProduct/
-
-        public ActionResult Index()
-        {
-            if (Session["LogedName"] != null)
-            {
-                return View();
-            }
-            else
-            {
-                return RedirectToAction("Login");
-            }
-        }
-
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(TaiKhoan user)
-        {
-            if (ModelState.IsValid)
-            {
-                using (var m = new WebBanTapHoaEntities())
-                {
-                    var v =
-                        m.TaiKhoans.FirstOrDefault(u => u.TenDangNhap.Equals(user.TenDangNhap) && u.MatKhau.Equals(user.MatKhau));
-                    if (v != null)
-                    {
-                        Session["LogedName"] = v.TenDangNhap;
-                        Session["LogedFullName"] = v.TenNguoiDung;
-                        return RedirectToAction("Index");
-                    }
-                }
-            }
-            return View(user);
-        }
-
-        public ActionResult Logout()
-        {
-            Session["LogedName"] = null;
-            FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
-        }
-        #endregion
+  
 
         #region My Account
         public ActionResult InformationAccount()
@@ -78,7 +30,7 @@ namespace ShopTrongGo.Controllers.Admin
                 }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Login");
             }       
         }
 
@@ -98,7 +50,7 @@ namespace ShopTrongGo.Controllers.Admin
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","Login");
             }                                          
         }          
         #endregion
@@ -112,7 +64,7 @@ namespace ShopTrongGo.Controllers.Admin
                 var sanphams = db.SanPhams.Include("LoaiSanPham");
                 return View(sanphams.ToList());
             }
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","AdminLogin");
         }
 
         public ActionResult AddProduct()
@@ -122,7 +74,7 @@ namespace ShopTrongGo.Controllers.Admin
                 ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp");
                 return View();
             }
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","AdminLogin");
         }
 
         [HttpPost]
@@ -144,12 +96,16 @@ namespace ShopTrongGo.Controllers.Admin
         public ActionResult EditProduct(string id = null)
         {
             SanPham sanpham = db.SanPhams.Find(id);
-            if (sanpham == null)
+            if (Session["LogedName"] != null)
             {
-                return HttpNotFound();
+                if (sanpham == null)
+                {
+                    return HttpNotFound();
+                }
+                ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp", sanpham.LoaiSpID);
+                return View(sanpham);
             }
-            ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp", sanpham.LoaiSpID);
-            return View(sanpham);
+            return RedirectToAction("Login", "AdminLogin");
         }
 
         [HttpPost]
@@ -157,14 +113,23 @@ namespace ShopTrongGo.Controllers.Admin
         [ValidateInput(false)]
         public ActionResult EditProduct(SanPham sanpham)
         {
-            if (ModelState.IsValid)
+            if (Session["LogedName"] != null)
             {
-                db.Entry(sanpham).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (ModelState.IsValid)
+                {
+                    sanpham.NgayCapNhat = DateTime.Now.Date;
+                    if (sanpham.TrangThaiXoa == true)
+                    {
+                        sanpham.NgayXoa = DateTime.Now.Date;
+                    }
+                    db.Entry(sanpham).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("ListProduct", "AdProduct");
+                }
+                ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp", sanpham.LoaiSpID);
+                return View(sanpham);
             }
-            ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp", sanpham.LoaiSpID);
-            return View(sanpham);
+            return RedirectToAction("Login", "AdminLogin");
         }
 
         public ActionResult DetailsProduct(string id = null)
@@ -178,7 +143,7 @@ namespace ShopTrongGo.Controllers.Admin
                 }
                 return View(sanpham);
             }
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","AdminLogin");
         }
 
         public ActionResult DeleteProduct(string id = null)
@@ -192,7 +157,7 @@ namespace ShopTrongGo.Controllers.Admin
                 }
                 return View(sanpham);
             }
-            return RedirectToAction("Login");
+            return RedirectToAction("Login","AdminLogin");
         }
 
         //
@@ -205,7 +170,7 @@ namespace ShopTrongGo.Controllers.Admin
             SanPham sanpham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanpham);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index","AdminLogin");
         }
         #endregion
     }
