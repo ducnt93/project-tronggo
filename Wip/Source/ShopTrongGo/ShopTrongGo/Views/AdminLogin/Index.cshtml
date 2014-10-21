@@ -1,0 +1,10 @@
+﻿@model ShopTrongGo.Models.TaiKhoan
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@if (Session["LogedFullName"] != null)
+{
+    <h2>Chào @Session["LogedFullName"].ToString()</h2>
+}
+

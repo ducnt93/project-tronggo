@@ -1,0 +1,96 @@
+﻿
+<style type="text/css">
+    .main {
+        margin: 0 auto;
+        width: 40%;
+        height: auto;
+        background: #008b8b;
+        color: white;
+        padding: 15px;
+    }
+
+    fieldset {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        border: 1px solid #FFFFFF;
+        border-radius: 5px 5px 5px 5px;
+        font-family: Arial;
+        background: #008b9f;
+    }
+
+    legend {
+        font-size: 25px;
+    }
+
+    .main .editor-label {
+        float: left;
+        width: 40%;
+        height: auto;
+        padding-top: 10px;
+    }
+
+        .main .editor-label .text {
+            float: right;
+        }
+
+    .main .editor-field {
+        float: left;
+        width: 60%;
+        height: auto;
+        padding-top: 10px;
+    }
+
+    .main .false {
+        float: left;
+        width: 40%;
+        height: auto;
+        padding-top: 10px;
+        color: red;
+    }
+
+    .btn {
+        border: 2px white solid;
+        background: #ff4500;
+        color: white;
+        font-size: 18px;
+        padding: 5px;
+        width: 100px;
+    }
+
+        .btn:hover {
+            background: #b22222;
+        }
+
+        .btn:active {
+            background: #000000;
+        }
+</style>
+@model ShopTrongGo.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "TruyCapTrangQuanTri";
+    Layout = "";
+}
+
+@using (Html.BeginForm("Login","Login",FormMethod.Post))
+{
+    @Html.AntiForgeryToken()          
+    @Html.ValidationSummary(true)
+    <div class="main">
+        <fieldset>
+            <legend>ĐĂNG NHẬP HỆ THỐNG</legend>
+            <div class="editor-label"><div class="text">Tên đăng nhập: </div></div>
+            <div class="editor-field">@Html.TextBoxFor(u => u.TenDangNhap)</div>
+            <div class="editor-label"></div>
+            <div class="false">@Html.ValidationMessageFor(u => u.TenDangNhap)</div>
+            <div class="editor-label"><div class="text">Mật khẩu:</div></div>
+            <div class="editor-field">@Html.PasswordFor(u => u.MatKhau)</div>
+            <div class="editor-label"></div>
+            <div class="false">@Html.ValidationMessageFor(u => u.MatKhau)</div>
+            <div class="editor-label"></div>
+            <div class="false">@Html.ValidationSummary(true, "Login failed. Check your login details.")</div>
+            <div class="editor-label"></div>
+             <div class="editor-field"><input type="submit" value="Log In" class="btn" /></div>
+</fieldset>
+    </div>
+}
