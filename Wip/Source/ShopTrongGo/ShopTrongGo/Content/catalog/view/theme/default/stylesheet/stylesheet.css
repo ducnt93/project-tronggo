@@ -251,12 +251,12 @@ p {
         /*overflow:hidden;*/
     }
 
-#header .div1 .menu ul {
-    list-style-type: none;
-    margin: 0px;
-    padding: 0px;
-    position: relative;
-}
+        #header .div1 .menu ul {
+            list-style-type: none;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
 
 #header > .div1 > .menu > ul > li {
     float: left;
@@ -306,20 +306,23 @@ p {
         position: relative;
         background: url(../image/bg_menu.png) repeat-x left center;
     }
-    #header > .div1 > .menu > ul > li > ul > li>ul {
-        width: 180px;
-    }
-    #header > .div1 > .menu > ul > li > ul > li>ul>li{
-        width: 180px;
-    }
-#header > .div1 > .menu > ul > li > ul > li>ul>li>a {
-    color: #ffffff;
-    font-size: 12px;
-    font-weight: Bold;
-    
-    padding-left: 20px;
-    padding-right: 20px;
-}
+
+        #header > .div1 > .menu > ul > li > ul > li > ul {
+            width: 180px;
+        }
+
+            #header > .div1 > .menu > ul > li > ul > li > ul > li {
+                width: 180px;
+            }
+
+                #header > .div1 > .menu > ul > li > ul > li > ul > li > a {
+                    color: #ffffff;
+                    font-size: 12px;
+                    font-weight: Bold;
+                    padding-left: 20px;
+                    padding-right: 20px;
+                }
+
         #header > .div1 > .menu > ul > li > ul > li > a {
             color: #cccccc;
         }
@@ -334,7 +337,7 @@ p {
     background: url(../image/bg_menu.png) repeat-x left center;
 }
 
-#header >.div1> .menu> ul> li> a {
+#header > .div1 > .menu > ul > li > a {
     color: #ffffff;
     font-size: 12px;
     font-weight: Bold;
@@ -343,22 +346,22 @@ p {
     padding-right: 20px;
 }
 
-#header> .div1 >.menu> ul> li> ul> li> a {
+#header > .div1 > .menu > ul > li > ul > li > a {
     color: #ffffff;
     font-size: 12px;
     font-weight: Bold;
-    
     padding-left: 20px;
     padding-right: 20px;
 }
 
-    #header .div1 .menu ul li ul li a:hover {
-        color: #000000;
-    }
+#header .div1 .menu ul li ul li a:hover {
+    color: #000000;
+}
 
 #header .div1 .menu ul li a:hover {
-color:#000;	
+    color: #000;
 }
+
 #header .div1 .menu .selected {
     color: #000;
     z-index: 3;
@@ -747,7 +750,7 @@ a.button:hover {
     border-radius: 5px;
 }
 
-#footer .hotkeyword {
+    #footer .hotkeyword {
         background: #fff;
         margin-bottom: 10px;
         padding: 5px;
@@ -889,12 +892,12 @@ a.button:hover {
     width: 75px;
     height: 27px;
     font-size: 15px;
-    
 }
-.btnCart:hover {
-    border-radius: 3px;
-    border: 1px solid #bbbbbb;
-}
+
+    .btnCart:hover {
+        border-radius: 3px;
+        border: 1px solid #bbbbbb;
+    }
 
 /*input:hover {
     background: #f4a460;
@@ -923,4 +926,19 @@ a.button:hover {
     width: 510px;
     height: 330px;
     margin: auto;
+}
+.td {
+    margin-top: 15px;
+}
+.itm-cartDetails {
+    width: 320px;
+    height: 52px;
+    margin-top: 10px;
+}
+.product_cart {
+    width: 320px;
+    height: 52px;
+}
+.inputText {
+    width: 350px;
 }
