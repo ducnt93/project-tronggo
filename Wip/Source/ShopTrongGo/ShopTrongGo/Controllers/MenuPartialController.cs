@@ -22,7 +22,7 @@ namespace ShopTrongGo.Controllers
         [ChildActionOnly]
         public ActionResult MenuService()
         {
-            ViewBag.MenuService = dbEntities.LoaiSanPhams.ToList();
+            ViewBag.MenuService = dbEntities.DichVus.Where(dv => !dv.TrangThaiXoa).OrderByDescending(dv => dv.NgayDang).Take(20).ToList();
             return PartialView();
         }
 

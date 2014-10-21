@@ -10,22 +10,24 @@
         <h1>Dịch Vụ</h1>
     </div>
 </div>
-<div class="middle" style="padding:0px;">
-    <div class="list">
-        @foreach (var dichVu in Model)
-        {
-            <div class="DichVu">
-                <div class="AnhDaiDien">
-                    <a href="~/News/DetailServices/@dichVu.DichVuID"></a>
+@if (Model != null)
+{
+    <div class="middle" style="padding: 0px;">
+        <div class="list">
+            @foreach (var dichVu in Model)
+            {
+                <div class="DichVu">
+                    <div class="AnhDaiDien">
+                        <a href="~/News/DetailServices/@dichVu.DichVuID"><img src="~/image/cache/data/@dichVu.AnhDaiDien"/></a>
+                    </div>
+                    <p><a href="~/News/DetailServices/@dichVu.DichVuID"></a>@dichVu.TenDichVu</p>
+                    <p> Ngày đăng: @dichVu.NgayDang</p>
+                    <p>@Html.Raw(dichVu.MieuTaNgan)</p>
+                    <p><a href="~/News/DetailServices/@dichVu.DichVuID">Chi tiết</a></p>
                 </div>
-                <p><a href="~/News/DetailServices/@dichVu.DichVuID"></a>@dichVu.TenDichVu</p>
-                <p> Ngày đăng: @dichVu.NgayDang</p>
-                <p>@dichVu.MieuTaNgan</p>
-                <p><a href="~/News/DetailServices/@dichVu.DichVuID">Chi tiết</a></p>
-            </div>
-        }
-        @Html.PagedListPager(Model, page => Url.Action("AllServices", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+            }
+            @Html.PagedListPager(Model, page => Url.Action("AllServices", new {page = page}), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        </div>
     </div>
-</div>
-        }
+}
 

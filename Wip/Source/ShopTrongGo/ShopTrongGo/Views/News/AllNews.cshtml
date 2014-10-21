@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<ShopTrongGo.Models.TinTuc>
 @{
-    ViewBag.Title = "AllNews";
+    ViewBag.Title = "Tin tức";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
@@ -17,11 +17,12 @@
                 @foreach (var tinTuc in Model)
                 {
                     <div class="itemTinTuc">
-                        <a href="~/News/DetailNews/@tinTuc.Id"><img class="imgTT" style="max-height: 80px; max-width: 90px;" src="~/image/cache/data/Quay_bar/@tinTuc.AnhDaiDien" /></a>
+                        <a href="~/News/DetailNews/@tinTuc.Id"><img class="imgTT" style="max-height: 80px; max-width: 90px;" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>
                         <p><a href="~/News/DetailNews/@tinTuc.Id"></a>@tinTuc.TenTin</p>
                         <p>Ngày đăng:@tinTuc.NgayCapNhat</p>
-                        <p>@tinTuc.MieuTaNgan</p>
+                        <p>@Html.Raw(tinTuc.MieuTaNgan)</p>
                         <p>@tinTuc.NguoiDang</p>
+                        <p><a href="~/News/DetailNews/@tinTuc.Id">Chi tiết</a></p>
                     </div>
                 }
                 @Html.PagedListPager(Model, page => Url.Action("AllNews", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)

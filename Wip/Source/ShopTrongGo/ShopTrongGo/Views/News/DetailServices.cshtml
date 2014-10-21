@@ -1,7 +1,7 @@
 ﻿@using ShopTrongGo.Models;
 @model ShopTrongGo.Models.DichVu
 @{
-    ViewBag.Title = "DetailServices";
+    ViewBag.Title = @Model.TenDichVu;
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 @if (Model != null)
@@ -17,7 +17,7 @@
         <div class="list">
             <div class="DichVu">
                 <p>Ngày cập nhật: @Model.NgayDang</p>
-                <p>@Model.MieuTaChiTiet</p>
+                <p>@Html.Raw(Model.MieuTaChiTiet)</p>
             </div>
         </div>
     </div>
@@ -27,6 +27,7 @@
     if (list != null)
     {
         <hr />
+        <p>Các dịch vụ khác:</p>
         <div class="middle" style="padding:0px;">
             <div class="list">
                 @foreach (var dsDv in list)

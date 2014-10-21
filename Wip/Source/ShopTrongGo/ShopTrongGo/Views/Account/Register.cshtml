@@ -14,16 +14,42 @@
     <div class="list">
         <table>
             <tr>
+                <td>Tên đầy đủ:</td>
+                <td>@Html.TextBox("txtFullName")</td>
+            </tr>
+            <tr>
                 <td>Tên đăng nhập:</td>
                 <td>@Html.TextBox("txtUserName")</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Mât khẩu:</td>
+                <td>@Html.Password("txtPass")</td>
             </tr>
             <tr>
-                <td></td>
-                <td></td>
+                <td>Nhập lại mật khẩu:</td>
+                <td>@Html.Password("txtRePass")</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td>@Html.TextBox("txtEmail")</td>
+            </tr>
+            <tr>
+                <td>Số điện thoại:</td>
+                <td>@Html.TextBox("txtPhone")</td>
+            </tr>
+            <tr>
+                <td>Địa chỉ:</td>
+                <td>@Html.TextBox("txtAddress")</td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    @ViewBag.CheckRegister
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Đăng ký" id="btDangky" name="btnDangky"/>
+                </td>
             </tr>
         </table>
     </div>

@@ -12,24 +12,42 @@
 </div>
 <div class="middle" style="padding:0px;">
     <div class="list">
-        @if (Model != null)
+
+        @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
-            foreach (var pro in Model)
-            {
-                <div class="sanpham">
-                    <div class="NewProduct">
-                        <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
-                        <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
-                    </div>                   
-                    <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
-                    <div class="dathang">
-                        <a href="../Product/Details/@pro.SanPhamID">Chi tiết</a>
-                        <input id="Button1" type="button" value="  Đặt hàng" class="btnCart" onclick="AddToCart('@pro.SanPhamID');" />
-                    </div>
-                </div>
-            }
+            <div>
+                Tiêu chí:
+                <select id="dropdown" title="Sắp xếp" name="dropdown" class="" >
+                    <option value="0">--Chọn--</option>
+                    <option value="1">Theo thứ tự A - Z </option>
+                    <option value="2">Giá tăng dần</option>
+                    <option value="3">Giá giảm dần</option>
+                </select>
+                <input type="submit" value="Sắp xếp"/>
+            </div>
         }
+            @if (Model != null)
+            {
+                foreach (var pro in Model)
+                {
+                    <div class="sanpham">
+                        <div class="NewProduct">
+                            <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                            <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
+                        </div>
+                        <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
+                        <div class="dathang">
+                            <a href="../Product/Details/@pro.SanPhamID">Chi tiết</a>
+                            <input id="Button1" type="button" value="  Đặt hàng" class="btnCart" onclick="AddToCart('@pro.SanPhamID');" />
+                        </div>
+                    </div>
+                }
+            }
         @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
     </div>
-      
+    <script type="text/javascript">
+        function SapXep(id) {
+            $.post("/Home/Index/", { "id": id });
+        }
+    </script>
 </div>

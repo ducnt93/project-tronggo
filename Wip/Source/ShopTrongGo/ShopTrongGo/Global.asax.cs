@@ -23,5 +23,19 @@ namespace ShopTrongGo
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
+
+        protected void Session_Start()
+        {
+            Session["CheckLogin"] = "";
+            Session["FullName"] = "";
+            Session["UserName"] = "";
+        }
+
+        protected void Session_End()
+        {
+            Session["CheckLogin"] = "";
+            Session["FullName"] = "";
+            Session["UserName"] = "";
+        }
     }
 }

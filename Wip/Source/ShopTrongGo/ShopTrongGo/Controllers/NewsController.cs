@@ -20,34 +20,34 @@ namespace ShopTrongGo.Controllers
         {
             const int pageSize = 15;
             int pageNum = page ?? 1;
-            var listNews = dbBanTapHoaEntities.TinTucs.Where(tt => !tt.TrangThai);
+            var listNews = dbBanTapHoaEntities.TinTucs.Where(tt => tt.TrangThai).OrderByDescending(tt => tt.NgayCapNhat);
             return View(listNews.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult DetailNews(int id)
         {
-            var tinTuc = dbBanTapHoaEntities.TinTucs.SingleOrDefault(tt => !tt.TrangThai & tt.Id == id);
+            var tinTuc = dbBanTapHoaEntities.TinTucs.SingleOrDefault(tt => tt.TrangThai & tt.Id == id);
             ViewBag.DanhSachTin =
-                dbBanTapHoaEntities.TinTucs.Where(tt => !tt.TrangThai)
+                dbBanTapHoaEntities.TinTucs.Where(tt => !tt.TrangThai & tt.Id != id)
                     .OrderByDescending(tt => tt.NgayCapNhat)
                     .Take(15)
                     .ToList();
             return View(tinTuc);
         }
 
-        public ActionResult AllServices(int ? page)
+        public ActionResult AllServices(int? page)
         {
             const int pageSize = 15;
             int pageNum = page ?? 1;
-            var listServices = dbBanTapHoaEntities.DichVus.Where(dv => !dv.TrangThaiXoa);
+            var listServices = dbBanTapHoaEntities.DichVus.Where(dv => !dv.TrangThaiXoa).OrderByDescending(dv => dv.NgayDang);
             return View(listServices.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult DetailServices(int id)
         {
-            var dichVu = dbBanTapHoaEntities.DichVus.SingleOrDefault(tt => !tt.TrangThaiXoa & tt.DichVuID == id);
+            var dichVu = dbBanTapHoaEntities.DichVus.SingleOrDefault(dv => !dv.TrangThaiXoa & dv.DichVuID == id);
             ViewBag.DanhSachDichVu =
-                dbBanTapHoaEntities.DichVus.Where(tt => !tt.TrangThaiXoa)
+                dbBanTapHoaEntities.DichVus.Where(dv => !dv.TrangThaiXoa & dv.DichVuID != id)
                     .OrderByDescending(tt => tt.NgayDang)
                     .Take(15)
                     .ToList();

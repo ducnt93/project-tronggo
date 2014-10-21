@@ -51,7 +51,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TenDMTin" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
@@ -172,7 +172,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LoaiDMTin" Type="int" Nullable="false" />
           <Property Name="TenTin" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" />
