@@ -2,7 +2,7 @@
 @model System.Collections.Generic.List<SanPham>
 
 @{
-    ViewBag.Title = "title";
+    ViewBag.Title = "DanhSachSanPham";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -46,7 +46,7 @@
         <tr>
             <td>@Html.DisplayFor(modelItem => item.TenSp)</td>
             <td>@Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSp)</td>
-            <td><img height="40px" width="60px" src="/image/cache/data/Quay_bar/@Html.DisplayFor(modelItem => item.AnhDaiDien)" /></td>
+            <td><img height="40px" width="60px" src="/image/cache/data/@Html.DisplayFor(modelItem => item.AnhDaiDien)" /></td>
             <td>@Html.DisplayFor(modelItem => item.Gia)</td>
             <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
             <td>@Html.DisplayFor(modelItem => item.Model)</td>
@@ -54,7 +54,7 @@
             <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
             <td>@Html.DisplayFor(modelItem => item.LuotBan)</td>
             <td>@Html.DisplayFor(modelItem => item.LuotView)</td>
-            <td>
+            <td style="width: 15%;">
                 @Html.ActionLink("Edit", "EditProduct", new { id = item.SanPhamID }) |
                 @Html.ActionLink("Details", "DetailsProduct", new { id = item.SanPhamID }) |
                 @Html.ActionLink("Delete", "DeleteProduct", new { id = item.SanPhamID })

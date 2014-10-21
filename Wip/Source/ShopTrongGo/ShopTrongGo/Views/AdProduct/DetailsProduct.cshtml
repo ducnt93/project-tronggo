@@ -4,11 +4,19 @@
     ViewBag.Title = "ChiTietSanPham";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+
+<h2>Details Product</h2>
+
 <fieldset>
-    <legend>Thông tin chi tiết sản phẩm</legend>
+    <legend style="text-align: center;">Thông tin chi tiết sản phẩm</legend>
     <div class="display">
         <div class="display-label">Tên sản phẩm</div>
         <div class="display-field">@Html.DisplayFor(model => model.TenSp)</div>
+    </div>
+    
+    <div class="display">
+        <div class="display-label">Tên không dấu</div>
+        <div class="display-field">@Html.DisplayFor(model => model.TenKhongDau)</div>
     </div>
     
     <div class="display">
@@ -47,8 +55,13 @@
         <div class="display-label">Miêu tả chi tiết</div>
         <div class="display-field">@Html.Raw(Model.MieuTaChiTiet)</div>
     </div>
+    <div class="display">
+        <div class="display-label">Ngày cập nhật</div>
+        <div class="display-field">@Html.DisplayFor(model => model.NgayCapNhat,new {type="date"})</div>
+    </div>
+
     <table style="border: 1px solid #00008b;">
-        <tr style="background: #00008b; color: white;">
+        <tr style="background: #00008b; color: white; height: 40px;">
             <th style="border-right: solid 1px white; text-align: center">Trạng thái xóa</th>
             <th style="border-right: solid 1px white; text-align: center">Ngày xóa</th>
             <th style="border-right: solid 1px white; text-align: center">Số lượng còn</th>
@@ -67,5 +80,5 @@
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "EditProduct", new { id = Model.SanPhamID }) |
-    @Html.ActionLink("Back to List", "ListProduct")
+    @Html.ActionLink("Back", "ListProduct")
 </p>
