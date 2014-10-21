@@ -23,6 +23,7 @@ namespace ShopTrongGo.Models
         public string TenDMTin { get; set; }
         public string MoTa { get; set; }
         public bool TrangThai { get; set; }
+        public string TenKhongDau { get; set; }
     
         public virtual ICollection<TinTuc> TinTucs { get; set; }
     }

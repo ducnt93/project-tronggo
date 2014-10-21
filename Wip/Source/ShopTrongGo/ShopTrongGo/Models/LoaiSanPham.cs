@@ -24,6 +24,7 @@ namespace ShopTrongGo.Models
         public bool TrangThaiXoa { get; set; }
         public Nullable<System.DateTime> NgayXoa { get; set; }
         public int DanhMucID { get; set; }
+        public string TenKhongDau { get; set; }
     
         public virtual DanhMuc DanhMuc { get; set; }
         public virtual ICollection<SanPham> SanPhams { get; set; }

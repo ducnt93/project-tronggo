@@ -31,6 +31,7 @@
     <Property Name="NhaCungCapID" Type="int" Nullable="false" />
     <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
     <Property Name="NgayXoa" Type="date" />
+    <Property Name="TenKhongDau" Type="nvarchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="DanhMucAnh">
     <Key>
@@ -50,6 +51,7 @@
     <Property Name="TenDMTin" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
     <Property Name="TrangThai" Type="bit" Nullable="false" />
+    <Property Name="TenKhongDau" Type="nvarchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="DichVu">
     <Key>
@@ -64,6 +66,7 @@
     <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" />
     <Property Name="MieuTaChiTiet" Type="nvarchar(max)" />
     <Property Name="AnhDaiDien" Type="nchar" MaxLength="100" />
+    <Property Name="TenKhongDau" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <EntityType Name="DoiTac">
     <Key>
@@ -77,6 +80,7 @@
     <Property Name="NguoiDang" Type="nvarchar" MaxLength="100" Nullable="false" />
     <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
     <Property Name="NgayXoa" Type="date" />
+    <Property Name="TenKhongDau" Type="nvarchar" MaxLength="500" Nullable="false" />
   </EntityType>
   <EntityType Name="HoaDon">
     <Key>
@@ -97,6 +101,7 @@
     <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
     <Property Name="NgayXoa" Type="date" />
     <Property Name="DanhMucID" Type="int" Nullable="false" />
+    <Property Name="TenKhongDau" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>
   <EntityType Name="LoaiTaiKhoan">
     <Key>
@@ -137,6 +142,7 @@
     <Property Name="NgayCapNhat" Type="date" />
     <Property Name="LuotView" Type="float" />
     <Property Name="LuotBan" Type="float" />
+    <Property Name="TenKhongDau" Type="nvarchar" MaxLength="200" Nullable="false" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>
@@ -162,6 +168,7 @@
     <Property Name="DiaChi" Type="nvarchar" MaxLength="200" Nullable="false" />
     <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
     <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="TenKhongDau" Type="nvarchar" MaxLength="1000" Nullable="false" />
   </EntityType>
   <EntityType Name="TinTuc">
     <Key>
@@ -177,6 +184,7 @@
     <Property Name="NgayCapNhat" Type="date" Nullable="false" />
     <Property Name="NguoiDang" Type="nvarchar" MaxLength="50" />
     <Property Name="AnhDaiDien" Type="nchar" MaxLength="200" />
+    <Property Name="TenKhongDau" Type="nvarchar(max)" Nullable="false" />
   </EntityType>
   <Association Name="FK_CtHoaDon_HoaDon">
     <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />

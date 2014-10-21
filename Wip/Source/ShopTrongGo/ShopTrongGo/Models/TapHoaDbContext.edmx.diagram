@@ -4,7 +4,7 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="9994fed6ab9941e98915a9c23269a5fe" Name="Diagram1" ZoomLevel="77">
+      <Diagram DiagramId="9994fed6ab9941e98915a9c23269a5fe" Name="Diagram1" ZoomLevel="95">
         <EntityTypeShape EntityType="WebTapHoaModel.Banner" Width="1.5" PointX="9.75" PointY="9.75" />
         <EntityTypeShape EntityType="WebTapHoaModel.ChiTietHoaDon" Width="1.5" PointX="9.75" PointY="2.5" />
         <EntityTypeShape EntityType="WebTapHoaModel.DanhMuc" Width="1.5" PointX="3" PointY="2.625" />

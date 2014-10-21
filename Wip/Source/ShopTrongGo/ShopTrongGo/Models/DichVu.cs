@@ -23,5 +23,6 @@ namespace ShopTrongGo.Models
         public string MieuTaNgan { get; set; }
         public string MieuTaChiTiet { get; set; }
         public string AnhDaiDien { get; set; }
+        public string TenKhongDau { get; set; }
     }
 }

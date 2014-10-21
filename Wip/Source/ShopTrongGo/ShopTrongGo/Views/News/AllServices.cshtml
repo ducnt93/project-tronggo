@@ -18,12 +18,12 @@
             {
                 <div class="DichVu">
                     <div class="AnhDaiDien">
-                        <a href="~/News/DetailServices/@dichVu.DichVuID"><img src="~/image/cache/data/@dichVu.AnhDaiDien"/></a>
+                        <a href="@dichVu.DichVuID/@dichVu.TenKhongDau"><img src="~/image/cache/data/@dichVu.AnhDaiDien"/></a>
                     </div>
-                    <p><a href="~/News/DetailServices/@dichVu.DichVuID"></a>@dichVu.TenDichVu</p>
+                    <p><a href="@dichVu.DichVuID/@dichVu.TenKhongDau"></a>@dichVu.TenDichVu</p>
                     <p> Ngày đăng: @dichVu.NgayDang</p>
                     <p>@Html.Raw(dichVu.MieuTaNgan)</p>
-                    <p><a href="~/News/DetailServices/@dichVu.DichVuID">Chi tiết</a></p>
+                    <p><a href="@dichVu.DichVuID/@dichVu.TenKhongDau">Chi tiết</a></p>
                 </div>
             }
             @Html.PagedListPager(Model, page => Url.Action("AllServices", new {page = page}), PagedListRenderOptions.ClassicPlusFirstAndLast)

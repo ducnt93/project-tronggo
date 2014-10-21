@@ -35,6 +35,7 @@ namespace ShopTrongGo.Models
         public Nullable<System.DateTime> NgayCapNhat { get; set; }
         public Nullable<double> LuotView { get; set; }
         public Nullable<double> LuotBan { get; set; }
+        public string TenKhongDau { get; set; }
     
         public virtual ICollection<ChiTietHoaDon> ChiTietHoaDons { get; set; }
         public virtual ICollection<DanhMucAnh> DanhMucAnhs { get; set; }

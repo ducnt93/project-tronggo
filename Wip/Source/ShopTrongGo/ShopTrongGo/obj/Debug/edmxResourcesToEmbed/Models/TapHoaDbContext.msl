@@ -27,6 +27,7 @@
     <EntitySetMapping Name="DanhMucs">
       <EntityTypeMapping TypeName="WebTapHoaModel.DanhMuc">
         <MappingFragment StoreEntitySet="DanhMuc">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
           <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
           <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
@@ -49,6 +50,7 @@
     <EntitySetMapping Name="DichVus">
       <EntityTypeMapping TypeName="WebTapHoaModel.DichVu">
         <MappingFragment StoreEntitySet="DichVu">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
           <ScalarProperty Name="MieuTaChiTiet" ColumnName="MieuTaChiTiet" />
           <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
@@ -64,6 +66,7 @@
     <EntitySetMapping Name="DoiTacs">
       <EntityTypeMapping TypeName="WebTapHoaModel.DoiTac">
         <MappingFragment StoreEntitySet="DoiTac">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
           <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
           <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
@@ -89,6 +92,7 @@
     <EntitySetMapping Name="LoaiSanPhams">
       <EntityTypeMapping TypeName="WebTapHoaModel.LoaiSanPham">
         <MappingFragment StoreEntitySet="LoaiSanPham">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
           <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
           <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
@@ -122,6 +126,7 @@
     <EntitySetMapping Name="SanPhams">
       <EntityTypeMapping TypeName="WebTapHoaModel.SanPham">
         <MappingFragment StoreEntitySet="SanPham">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="LuotBan" ColumnName="LuotBan" />
           <ScalarProperty Name="LuotView" ColumnName="LuotView" />
           <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
@@ -159,6 +164,7 @@
     <EntitySetMapping Name="ThongTinCongTies">
       <EntityTypeMapping TypeName="WebTapHoaModel.ThongTinCongTy">
         <MappingFragment StoreEntitySet="ThongTinCongTy">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Phone" ColumnName="Phone" />
           <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
@@ -170,6 +176,7 @@
     <EntitySetMapping Name="DanhMucTins">
       <EntityTypeMapping TypeName="WebTapHoaModel.DanhMucTin">
         <MappingFragment StoreEntitySet="DanhMucTin">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
           <ScalarProperty Name="MoTa" ColumnName="MoTa" />
           <ScalarProperty Name="TenDMTin" ColumnName="TenDMTin" />
@@ -180,6 +187,7 @@
     <EntitySetMapping Name="TinTucs">
       <EntityTypeMapping TypeName="WebTapHoaModel.TinTuc">
         <MappingFragment StoreEntitySet="TinTuc">
+          <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
           <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
           <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
           <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />

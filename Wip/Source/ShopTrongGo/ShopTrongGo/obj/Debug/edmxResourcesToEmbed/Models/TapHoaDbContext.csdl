@@ -88,6 +88,7 @@
     <Property Name="NgayXoa" Type="DateTime" Precision="0" />
     <NavigationProperty Name="NhaCungCap" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCc" FromRole="DanhMuc" ToRole="NhaCungCap" />
     <NavigationProperty Name="LoaiSanPhams" Relationship="WebTapHoaModel.FK_LoaiSp_DanhMuc" FromRole="DanhMuc" ToRole="LoaiSanPham" />
+    <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DanhMucAnh">
     <Key>
@@ -113,6 +114,7 @@
     <Property Name="MieuTaNgan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="MieuTaChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <Property Name="AnhDaiDien" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+    <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="DoiTac">
     <Key>
@@ -126,6 +128,7 @@
     <Property Name="NguoiDang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
     <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
     <Property Name="NgayXoa" Type="DateTime" Precision="0" />
+    <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="HoaDon">
     <Key>
@@ -150,6 +153,7 @@
     <Property Name="DanhMucID" Type="Int32" Nullable="false" />
     <NavigationProperty Name="DanhMuc" Relationship="WebTapHoaModel.FK_LoaiSp_DanhMuc" FromRole="LoaiSanPham" ToRole="DanhMuc" />
     <NavigationProperty Name="SanPhams" Relationship="WebTapHoaModel.FK_SanPham_LoaiSp" FromRole="LoaiSanPham" ToRole="SanPham" />
+    <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="LoaiTaiKhoan">
     <Key>
@@ -195,6 +199,7 @@
     <NavigationProperty Name="ChiTietHoaDons" Relationship="WebTapHoaModel.FK_CtHoaDon_SamPham" FromRole="SanPham" ToRole="ChiTietHoaDon" />
     <NavigationProperty Name="DanhMucAnhs" Relationship="WebTapHoaModel.FK_DmAnh_SanPham" FromRole="SanPham" ToRole="DanhMucAnh" />
     <NavigationProperty Name="LoaiSanPham" Relationship="WebTapHoaModel.FK_SanPham_LoaiSp" FromRole="SanPham" ToRole="LoaiSanPham" />
+    <Property Name="TenKhongDau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
   </EntityType>
   <EntityType Name="TaiKhoan">
     <Key>
@@ -222,6 +227,7 @@
     <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
     <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
     <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_CtHoaDon_HoaDon">
     <End Type="WebTapHoaModel.HoaDon" Role="HoaDon" Multiplicity="1" />
@@ -328,6 +334,7 @@
     <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
     <Property Name="TrangThai" Type="Boolean" Nullable="false" />
     <NavigationProperty Name="TinTucs" Relationship="WebTapHoaModel.FK_TinTuc_DanhMucTin" FromRole="DanhMucTin" ToRole="TinTuc" />
+    <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
   </EntityType>
   <EntityType Name="TinTuc">
     <Key>
@@ -344,6 +351,7 @@
     <Property Name="NguoiDang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="DanhMucTin" Relationship="WebTapHoaModel.FK_TinTuc_DanhMucTin" FromRole="TinTuc" ToRole="DanhMucTin" />
     <Property Name="AnhDaiDien" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+    <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
   </EntityType>
   <Association Name="FK_TinTuc_DanhMucTin">
     <End Type="WebTapHoaModel.DanhMucTin" Role="DanhMucTin" Multiplicity="1" />

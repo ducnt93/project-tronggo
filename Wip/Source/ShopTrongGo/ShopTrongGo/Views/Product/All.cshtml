@@ -35,11 +35,11 @@
                     @foreach (var pro in Model)
                     {
                         <div class="sanpham">
-                            <a href="~/Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
-                            <a href="~/Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
+                            <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                            <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau">@pro.TenSp</a> <br />
                             <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                             <div class="dathang">
-                                <a href="~/Product/Details/@pro.SanPhamID">Chi tiết</a>
+                                <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau">Chi tiết</a>
                                 <input id="Button1" type="button" value="Đặt hàng" class="btnCart" onclick="AddToCart('@pro.SanPhamID');" />
                             </div>
                         </div>

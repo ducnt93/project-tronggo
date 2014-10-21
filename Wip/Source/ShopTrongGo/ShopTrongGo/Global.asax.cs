@@ -29,6 +29,7 @@ namespace ShopTrongGo
             Session["CheckLogin"] = "";
             Session["FullName"] = "";
             Session["UserName"] = "";
+            Session["Home"] = 0;
         }
 
         protected void Session_End()
@@ -36,6 +37,7 @@ namespace ShopTrongGo
             Session["CheckLogin"] = "";
             Session["FullName"] = "";
             Session["UserName"] = "";
+            Session["Home"] = 0;
         }
     }
 }

@@ -33,7 +33,7 @@
                 @foreach (var dsDv in list)
                 {
                     <div class="DanhsachDV">
-                        <a href="~/News/DetailServices/@dsDv.DichVuID">@dsDv.TenDichVu</a>
+                        <a href="@dsDv.DichVuID/@dsDv.TenKhongDau">@dsDv.TenDichVu</a>
                     </div>
                 }
             </div>

@@ -12,7 +12,6 @@
 </div>
 <div class="middle" style="padding:0px;">
     <div class="list">
-
         @using (Html.BeginForm("Index", "Home", FormMethod.Post))
         {
             <div>
@@ -32,12 +31,12 @@
                 {
                     <div class="sanpham">
                         <div class="NewProduct">
-                            <a href="../Product/Details/@pro.SanPhamID"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
-                            <a href="../Product/Details/@pro.SanPhamID">@pro.TenSp</a> <br />
+                            <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                            @Html.ActionLink(@pro.TenSp, "Details", "Product", new { id = @pro.SanPhamID, @pro.TenSp }, null) <br />
                         </div>
                         <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                         <div class="dathang">
-                            <a href="../Product/Details/@pro.SanPhamID">Chi tiết</a>
+                            @Html.ActionLink("Chi tiết","Details","Product",new{id = @pro.SanPhamID, @pro.TenSp},null)
                             <input id="Button1" type="button" value="  Đặt hàng" class="btnCart" onclick="AddToCart('@pro.SanPhamID');" />
                         </div>
                     </div>

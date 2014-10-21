@@ -9,7 +9,9 @@
                 {
                     foreach (var item in list)
                     {
-                        <li><a href="~/News/DetailServices/@item.DichVuID">@item.TenDichVu</a></li>
+                        <li>
+                            @Html.ActionLink(@item.TenDichVu, "DetailNews", "News", new { id = @item.DichVuID, @item.TenKhongDau }, null)
+                        </li>
                     }
                 }
             }

@@ -3,9 +3,12 @@
 @using ShopTrongGo.Models
 <div class="menu">
     <ul>
-        <li><a href="~/Home/Index" class="selected">Trang chủ</a></li>
+        <li>
+            @Html.ActionLink("Trang chủ", "Index", "Home", null, null)
+
+        </li>
         <li><a href="#">Giới thiệu</a> </li>
-        <li><a href="~/News/AllNews">Tin tức</a></li>
+        <li>@Html.ActionLink("Tin tức","AllNews","News",null,null)</li>
         <li>
             <a href="#">Sản phẩm</a>
             <ul>
@@ -16,7 +19,7 @@
                     {
                         <li>
                             <a>@danhMuc.TenDanhMuc</a>
-                            <ul >
+                            <ul>
                                 @{
                         ViewBag.ListLoaiSp = dbEntities.LoaiSanPhams.Where(sp => !sp.TrangThaiXoa & sp.DanhMucID == danhMuc.DanhMucID).ToList();
                         var list = ((List<LoaiSanPham>)ViewBag.ListLoaiSp);
@@ -24,7 +27,7 @@
                         {
                             foreach (var loai in list)
                             {
-                                <li><a href="~/Product/All/@loai.LoaiSpID">@loai.TenLoaiSp</a> </li>
+                                <li>@Html.ActionLink(@loai.TenLoaiSp, "All", "Product", new { id= @loai.LoaiSpID,@loai.TenKhongDau }, null)</li>
                             }
                         }
                                 }
@@ -35,7 +38,7 @@
 
             </ul>
         </li>
-        <li><a href="~/News/AllServices">Dịch vụ</a> </li>
+        <li>@Html.ActionLink("Dịch vụ","AllServices","News",null,null) </li>
         <li><a href="#">Liên hệ</a></li>
     </ul>
 </div>

@@ -12,8 +12,8 @@
                 foreach (var sanPham in list)
                 {
                     <div class="spNoiBat">
-                        <a href="~/Product/Details/@sanPham.SanPhamID"><img style="border:1px solid #ddd; max-height: 130px; max-width: 130px;" src="~/image/cache/data/@sanPham.AnhDaiDien" title="@sanPham.TenSp" alt="@sanPham.TenSp" /></a><br />
-                        <a href="~/Product/Details/@sanPham.SanPhamID">@sanPham.TenSp</a><br />
+                        <a href="~/@sanPham.SanPhamID/san-pham-@sanPham.TenKhongDau"><img style="border:1px solid #ddd; max-height: 130px; max-width: 130px;" src="~/image/cache/data/@sanPham.AnhDaiDien" title="@sanPham.TenSp" alt="@sanPham.TenSp" /></a><br />
+                        @Html.ActionLink(@sanPham.TenSp,"Details","Product",new{id = @sanPham.SanPhamID,@sanPham.TenKhongDau},null)
                     </div>
                    
                 }

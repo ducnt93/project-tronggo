@@ -22,5 +22,6 @@ namespace ShopTrongGo.Models
         public string NguoiDang { get; set; }
         public bool TrangThaiXoa { get; set; }
         public Nullable<System.DateTime> NgayXoa { get; set; }
+        public string TenKhongDau { get; set; }
     }
 }

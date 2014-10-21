@@ -36,6 +36,7 @@
           <Property Name="NhaCungCapID" Type="int" Nullable="false" />
           <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
           <Property Name="NgayXoa" Type="date" />
+          <Property Name="TenKhongDau" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="DanhMucAnh">
           <Key>
@@ -55,6 +56,7 @@
           <Property Name="TenDMTin" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="MoTa" Type="nvarchar" MaxLength="500" />
           <Property Name="TrangThai" Type="bit" Nullable="false" />
+          <Property Name="TenKhongDau" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="DichVu">
           <Key>
@@ -69,6 +71,7 @@
           <Property Name="MieuTaNgan" Type="nvarchar" MaxLength="500" />
           <Property Name="MieuTaChiTiet" Type="nvarchar(max)" />
           <Property Name="AnhDaiDien" Type="nchar" MaxLength="100" />
+          <Property Name="TenKhongDau" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <EntityType Name="DoiTac">
           <Key>
@@ -82,6 +85,7 @@
           <Property Name="NguoiDang" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
           <Property Name="NgayXoa" Type="date" />
+          <Property Name="TenKhongDau" Type="nvarchar" MaxLength="500" Nullable="false" />
         </EntityType>
         <EntityType Name="HoaDon">
           <Key>
@@ -102,6 +106,7 @@
           <Property Name="TrangThaiXoa" Type="bit" Nullable="false" />
           <Property Name="NgayXoa" Type="date" />
           <Property Name="DanhMucID" Type="int" Nullable="false" />
+          <Property Name="TenKhongDau" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="LoaiTaiKhoan">
           <Key>
@@ -142,6 +147,7 @@
           <Property Name="NgayCapNhat" Type="date" />
           <Property Name="LuotView" Type="float" />
           <Property Name="LuotBan" Type="float" />
+          <Property Name="TenKhongDau" Type="nvarchar" MaxLength="200" Nullable="false" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -167,6 +173,7 @@
           <Property Name="DiaChi" Type="nvarchar" MaxLength="200" Nullable="false" />
           <Property Name="Phone" Type="nvarchar" MaxLength="20" Nullable="false" />
           <Property Name="Email" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="TenKhongDau" Type="nvarchar" MaxLength="1000" Nullable="false" />
         </EntityType>
         <EntityType Name="TinTuc">
           <Key>
@@ -182,6 +189,7 @@
           <Property Name="NgayCapNhat" Type="date" Nullable="false" />
           <Property Name="NguoiDang" Type="nvarchar" MaxLength="50" />
           <Property Name="AnhDaiDien" Type="nchar" MaxLength="200" />
+          <Property Name="TenKhongDau" Type="nvarchar(max)" Nullable="false" />
         </EntityType>
         <Association Name="FK_CtHoaDon_HoaDon">
           <End Role="HoaDon" Type="Self.HoaDon" Multiplicity="1" />
@@ -436,6 +444,7 @@
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
           <NavigationProperty Name="NhaCungCap" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCc" FromRole="DanhMuc" ToRole="NhaCungCap" />
           <NavigationProperty Name="LoaiSanPhams" Relationship="WebTapHoaModel.FK_LoaiSp_DanhMuc" FromRole="DanhMuc" ToRole="LoaiSanPham" />
+          <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DanhMucAnh">
           <Key>
@@ -461,6 +470,7 @@
           <Property Name="MieuTaNgan" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="MieuTaChiTiet" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="AnhDaiDien" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+          <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="DoiTac">
           <Key>
@@ -474,6 +484,7 @@
           <Property Name="NguoiDang" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
+          <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="HoaDon">
           <Key>
@@ -498,6 +509,7 @@
           <Property Name="DanhMucID" Type="Int32" Nullable="false" />
           <NavigationProperty Name="DanhMuc" Relationship="WebTapHoaModel.FK_LoaiSp_DanhMuc" FromRole="LoaiSanPham" ToRole="DanhMuc" />
           <NavigationProperty Name="SanPhams" Relationship="WebTapHoaModel.FK_SanPham_LoaiSp" FromRole="LoaiSanPham" ToRole="SanPham" />
+          <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="LoaiTaiKhoan">
           <Key>
@@ -543,6 +555,7 @@
           <NavigationProperty Name="ChiTietHoaDons" Relationship="WebTapHoaModel.FK_CtHoaDon_SamPham" FromRole="SanPham" ToRole="ChiTietHoaDon" />
           <NavigationProperty Name="DanhMucAnhs" Relationship="WebTapHoaModel.FK_DmAnh_SanPham" FromRole="SanPham" ToRole="DanhMucAnh" />
           <NavigationProperty Name="LoaiSanPham" Relationship="WebTapHoaModel.FK_SanPham_LoaiSp" FromRole="SanPham" ToRole="LoaiSanPham" />
+          <Property Name="TenKhongDau" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="TaiKhoan">
           <Key>
@@ -570,6 +583,7 @@
           <Property Name="DiaChi" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="true" />
           <Property Name="Phone" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="1000" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_CtHoaDon_HoaDon">
           <End Type="WebTapHoaModel.HoaDon" Role="HoaDon" Multiplicity="1" />
@@ -676,6 +690,7 @@
           <Property Name="MoTa" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="TrangThai" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="TinTucs" Relationship="WebTapHoaModel.FK_TinTuc_DanhMucTin" FromRole="DanhMucTin" ToRole="TinTuc" />
+          <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="TinTuc">
           <Key>
@@ -692,6 +707,7 @@
           <Property Name="NguoiDang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <NavigationProperty Name="DanhMucTin" Relationship="WebTapHoaModel.FK_TinTuc_DanhMucTin" FromRole="TinTuc" ToRole="DanhMucTin" />
           <Property Name="AnhDaiDien" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <Association Name="FK_TinTuc_DanhMucTin">
           <End Type="WebTapHoaModel.DanhMucTin" Role="DanhMucTin" Multiplicity="1" />
@@ -737,6 +753,7 @@
           <EntitySetMapping Name="DanhMucs">
             <EntityTypeMapping TypeName="WebTapHoaModel.DanhMuc">
               <MappingFragment StoreEntitySet="DanhMuc">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
                 <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NhaCungCapID" ColumnName="NhaCungCapID" />
@@ -759,6 +776,7 @@
           <EntitySetMapping Name="DichVus">
             <EntityTypeMapping TypeName="WebTapHoaModel.DichVu">
               <MappingFragment StoreEntitySet="DichVu">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
                 <ScalarProperty Name="MieuTaChiTiet" ColumnName="MieuTaChiTiet" />
                 <ScalarProperty Name="MieuTaNgan" ColumnName="MieuTaNgan" />
@@ -774,6 +792,7 @@
           <EntitySetMapping Name="DoiTacs">
             <EntityTypeMapping TypeName="WebTapHoaModel.DoiTac">
               <MappingFragment StoreEntitySet="DoiTac">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
                 <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
                 <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
@@ -799,6 +818,7 @@
           <EntitySetMapping Name="LoaiSanPhams">
             <EntityTypeMapping TypeName="WebTapHoaModel.LoaiSanPham">
               <MappingFragment StoreEntitySet="LoaiSanPham">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="DanhMucID" ColumnName="DanhMucID" />
                 <ScalarProperty Name="NgayXoa" ColumnName="NgayXoa" />
                 <ScalarProperty Name="TrangThaiXoa" ColumnName="TrangThaiXoa" />
@@ -832,6 +852,7 @@
           <EntitySetMapping Name="SanPhams">
             <EntityTypeMapping TypeName="WebTapHoaModel.SanPham">
               <MappingFragment StoreEntitySet="SanPham">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="LuotBan" ColumnName="LuotBan" />
                 <ScalarProperty Name="LuotView" ColumnName="LuotView" />
                 <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />
@@ -869,6 +890,7 @@
           <EntitySetMapping Name="ThongTinCongTies">
             <EntityTypeMapping TypeName="WebTapHoaModel.ThongTinCongTy">
               <MappingFragment StoreEntitySet="ThongTinCongTy">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="Email" ColumnName="Email" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
                 <ScalarProperty Name="DiaChi" ColumnName="DiaChi" />
@@ -880,6 +902,7 @@
           <EntitySetMapping Name="DanhMucTins">
             <EntityTypeMapping TypeName="WebTapHoaModel.DanhMucTin">
               <MappingFragment StoreEntitySet="DanhMucTin">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="TrangThai" ColumnName="TrangThai" />
                 <ScalarProperty Name="MoTa" ColumnName="MoTa" />
                 <ScalarProperty Name="TenDMTin" ColumnName="TenDMTin" />
@@ -890,6 +913,7 @@
           <EntitySetMapping Name="TinTucs">
             <EntityTypeMapping TypeName="WebTapHoaModel.TinTuc">
               <MappingFragment StoreEntitySet="TinTuc">
+                <ScalarProperty Name="TenKhongDau" ColumnName="TenKhongDau" />
                 <ScalarProperty Name="AnhDaiDien" ColumnName="AnhDaiDien" />
                 <ScalarProperty Name="NguoiDang" ColumnName="NguoiDang" />
                 <ScalarProperty Name="NgayCapNhat" ColumnName="NgayCapNhat" />

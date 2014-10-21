@@ -19,5 +19,6 @@ namespace ShopTrongGo.Models
         public string DiaChi { get; set; }
         public string Phone { get; set; }
         public string Email { get; set; }
+        public string TenKhongDau { get; set; }
     }
 }
