@@ -18,13 +18,13 @@
             {
                 <div class="DichVu">
                     <div class="LeftNew">
-                        <a href="~/News/DetailNews/@dichVu.DichVuID" style="font-size: 14px;">@dichVu.TenDichVu </a><br />
+                        <a href="@dichVu.DichVuID/@dichVu.TenKhongDau" style="font-size: 14px;">@dichVu.TenDichVu </a><br />
                         <a href="@dichVu.DichVuID/@dichVu.TenKhongDau"></a><img class="imgTT" src="~/image/cache/data/@dichVu.AnhDaiDien" />
                     </div>
                     <div class="RightNew">
                         <br />
-                        <p style="color: #a9a9a9;"> Ngày đăng: @dichVu.NgayDang</p>
-                        <p>@Html.Raw(dichVu.MieuTaNgan) <a href="~/News/DetailServices/@dichVu.DichVuID" style="font-size: 13px;">...Chi tiết</a></p>
+                        <p style="color: #a9a9a9;"> Ngày đăng: @dichVu.NgayDang.ToString("d")</p>
+                        <p>@Html.Raw(dichVu.MieuTaNgan) <a href="@dichVu.DichVuID/@dichVu.TenKhongDau" style="font-size: 13px;">...Chi tiết</a></p>
                     </div>
                 </div>
             }

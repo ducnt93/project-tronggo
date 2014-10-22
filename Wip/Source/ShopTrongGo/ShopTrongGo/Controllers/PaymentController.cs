@@ -42,7 +42,7 @@ namespace ShopTrongGo.Controllers
                 const string smtpHost = "smtp.gmail.com";
                 const int smtpPort = 25;
                 const string emailTo = "ducnt.ts24@gmail.com";
-                string subject = "Đơn đặt hàng ngày" + DateTime.Now.ToString("g");
+                string subject = "Đơn đặt hàng ngày " + DateTime.Now.ToString("g");
                 string body = string.Format("Bạn vừa nhận được đơn đặt hàng từ: <b>{0}</b><br/>Email: {1}<br/>Số điện thoại:{2}<br/>Địa chỉ:{3}<br/>",
                     taiKhoan.TenNguoiDung, taiKhoan.Email, taiKhoan.Phone, taiKhoan.DiaChi);
                 foreach (var product in objCart.ListItem)

@@ -18,13 +18,13 @@
                 {              
                     <div>
                         <div class="LeftNew">
-                            <a href="~/News/DetailNews/@tinTuc.Id" style="font-size: 14px;">@tinTuc.TenTin </a><br/>
-                            <a href="~/News/DetailNews/@tinTuc.Id"><img class="imgTT" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>  
+                            <a href="@tinTuc.Id/@tinTuc.TenKhongDau" style="font-size: 14px;">@tinTuc.TenTin </a><br/>
+                            <a href="@tinTuc.Id/@tinTuc.TenKhongDau"><img class="imgTT" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>  
                         </div>
                         <div class="RightNew">
                             <br/>
-                            <p style=" color: #a9a9a9">Ngày đăng:@tinTuc.NgayCapNhat</p>
-                            <p>@Html.Raw(tinTuc.MieuTaNgan) <a href="~/News/DetailNews/@tinTuc.Id" style="font-size: 12px;">Chi tiết</a></p>
+                            <p style=" color: #a9a9a9">Ngày đăng:@tinTuc.NgayCapNhat.ToString("d")</p>
+                            <p>@Html.Raw(tinTuc.MieuTaNgan) <a href="@tinTuc.Id/@tinTuc.TenKhongDau" style="font-size: 12px;">Chi tiết</a></p>
                             <p style="text-align: right;">@tinTuc.NguoiDang</p>
 
                         </div>
