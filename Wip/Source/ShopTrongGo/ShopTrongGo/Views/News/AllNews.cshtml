@@ -15,14 +15,19 @@
         <div class="middle" style="padding:0px;">
             <div class="list">
                 @foreach (var tinTuc in Model)
-                {
-                    <div class="itemTinTuc">
-                        <a href="@tinTuc.Id/@tinTuc.TenKhongDau"><img class="imgTT" style="max-height: 80px; max-width: 90px;" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>
-                        <p><a href="@tinTuc.Id/@tinTuc.TenKhongDau"></a>@tinTuc.TenTin</p>
-                        <p>Ngày đăng:@tinTuc.NgayCapNhat</p>
-                        <p>@Html.Raw(tinTuc.MieuTaNgan)</p>
-                        <p>Người đăng: @tinTuc.NguoiDang</p>
-                        <p><a href="@tinTuc.Id/@tinTuc.TenKhongDau">Chi tiết</a></p>
+                {              
+                    <div>
+                        <div class="LeftNew">
+                            <a href="~/News/DetailNews/@tinTuc.Id" style="font-size: 14px;">@tinTuc.TenTin </a><br/>
+                            <a href="~/News/DetailNews/@tinTuc.Id"><img class="imgTT" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>  
+                        </div>
+                        <div class="RightNew">
+                            <br/>
+                            <p style=" color: #a9a9a9">Ngày đăng:@tinTuc.NgayCapNhat</p>
+                            <p>@Html.Raw(tinTuc.MieuTaNgan) <a href="~/News/DetailNews/@tinTuc.Id" style="font-size: 12px;">Chi tiết</a></p>
+                            <p style="text-align: right;">@tinTuc.NguoiDang</p>
+
+                        </div>
                     </div>
                 }
                 @Html.PagedListPager(Model, page => Url.Action("AllNews", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)

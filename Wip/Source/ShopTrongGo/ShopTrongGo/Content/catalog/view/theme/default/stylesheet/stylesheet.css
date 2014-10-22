@@ -942,3 +942,20 @@ a.button:hover {
 .inputText {
     width: 350px;
 }
+.imgTT {
+    max-height: 80px; max-width: 90px;
+    margin-top: 5px;
+}
+
+.bando {
+    width: 100%;
+}
+.LeftNew {
+    width: 25%;
+    float: left;
+}
+.RightNew {
+    text-align: left;
+    width: 75%;
+    float: left;
+}
