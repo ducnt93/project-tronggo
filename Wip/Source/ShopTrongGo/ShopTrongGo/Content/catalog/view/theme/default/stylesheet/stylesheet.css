@@ -150,7 +150,7 @@ form {
 }
 
 input, textarea, select {
-    margin: 3px 0px;
+    margin: 0px 0px;
 }
 
 a, a:visited {
@@ -390,14 +390,14 @@ p {
 
 #header .div1 #search .button_search {
     background: url(../image/search.png) repeat-x;
-    cursor: pointer;
+    /*cursor: pointer;*/
     float: right;
     margin-top: 0px;
     color: #FFF;
     font-weight: bold;
-    height: 26px;
+    height: 24px;
     padding-right: 10px;
-    border: 1px solid #333;
+    border: 1px solid #e90f07;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -ms-border-radius: 5px;

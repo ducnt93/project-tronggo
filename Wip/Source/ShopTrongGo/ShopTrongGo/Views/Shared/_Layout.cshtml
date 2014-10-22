@@ -5,6 +5,7 @@
     <meta name="description" content="Th&ugrave;ng gỗ đựng rượu, Nội Thất Ho&agrave;ng Gia, th&ugrave;ng rượu gỗ sồi, Trống rượu, Trống  Ho&agrave;ng Gia,trống gỗ,
 trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượu vang, bom trống đựng rượu vang cao cấp, Thương hiệu Trống Ho&agrave;ng Gia" />
     <base href="#" />
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link href="~/image/data/logo.png" rel="icon" />
     <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/theme/default/stylesheet/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="~/Content/catalog/view/javascript/jquery/thickbox/thickbox.css" />
@@ -86,16 +87,22 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
         <div id="header">
             <div class="login">
                 <ul>
+                    <li>@Html.ActionLink("(Thoát)", "Logout", "Account")</li>
+                    <li><a href="#">|</a></li>
+                    <li style="line-height: 20px;">Chào @Session["FullName"].ToString()</li>
+                    <li><a href="#">|</a></li>
                     <li>
                         <a href="~/tai-khoan/dang-ky">Đăng ký</a>
                     </li>
+                    <li><a href="#">|</a></li>
                     <li><a href="#login-box" class="login-window">Đăng nhập</a></li>
                     <li><a href="#">|</a></li>
                     <li>
+                        <i class="fa fa-shopping-cart" style="margin-right: 5px; font-size: 18px;"></i>
                         @Html.ActionLink("Giỏ hàng", "Cart", "ShoppingCart", null, null)
                     </li>
-                    <li>Chào @Session["FullName"].ToString()</li>
-                    <li>@Html.ActionLink("(Thoát)","Logout","Account")</li>
+                    
+                    
                 </ul>
             </div>
 
@@ -124,7 +131,7 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
             <div class="div2">
                 <div class="center">
                     <div style="float:left;width:1%;"><a href="~/"><img alt="" height="120" src="~/image/data/logo.png" /> </a></div>
-                    <div style="float:right;width:76%;">
+                    <div style="float: left; width: 76%;">
                         <p style="text-align: center;">
                             <span style="font-size:16px;"><strong>C&Ocirc;NG TY CỔ PHẦN HO&Agrave;NG GIA GROUP</strong></span>
                         </p>

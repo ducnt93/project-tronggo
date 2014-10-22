@@ -1,13 +1,14 @@
 ﻿<div id="search">
+    
     @using (Html.BeginForm("SearchProducts", "Product", FormMethod.Post))
     {
         <table style="border:0px;">
             <tr>
                 <td>
-                    <input style="color: #A09999; border-radius: 5px; height: 25px; width: 170px; margin: -4px 0px 0px 0px; " class="text" name="seach" value="Nhập từ khóa" id="keyword" onblur=" if (this.value == '') this.value = 'Nhập từ khóa'; " onfocus=" if (this.value == 'Nhập từ khóa') this.value = ''; " />
+                    <input style="color: #A09999; border-radius: 5px; height: 24px; width: 170px; margin: -2px 0px 0px 0px; " class="text" name="seach" value="Nhập từ khóa" id="keyword" onblur=" if (this.value == '') this.value = 'Nhập từ khóa'; " onfocus=" if (this.value == 'Nhập từ khóa') this.value = ''; " />
                 </td>
-                <td>
-                    <input class="button_search" type="submit" value="Tìm kiếm" />
+                <td class="button_search">
+                    <input type="submit" value="Tìm kiếm" style="height: 26px; cursor: pointer; border: 0px; border-right: 1px dotted #F46363; border-bottom-left-radius: 5px; color: #fff; background: url(../image/search.png) repeat-x; " /> <i class="fa fa-search" style="margin-left: 5px;"></i>
                 </td>
             </tr>
         </table>
