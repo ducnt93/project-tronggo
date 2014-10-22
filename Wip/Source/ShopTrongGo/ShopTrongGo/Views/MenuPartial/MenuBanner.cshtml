@@ -27,7 +27,7 @@
                         {
                             foreach (var loai in list)
                             {
-                                <li>@Html.ActionLink(@loai.TenLoaiSp, "All", "Product", new { id= @loai.LoaiSpID,@loai.TenKhongDau }, null)</li>
+                                <li>@Html.ActionLink(@loai.TenLoaiSp, "All", "Product", new { idDm= @loai.LoaiSpID,@loai.TenKhongDau }, null)</li>
                             }
                         }
                                 }

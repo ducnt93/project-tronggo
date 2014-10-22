@@ -4,162 +4,60 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers
 {
     public class PaymentController : Controller
     {
-        //
-        // GET: /Payment/
-         private String nganluong_url = "https://www.nganluong.vn/checkout.php";
-
-    private String merchant_site_code = "000-000";    //thay mã merchant site mà bạn đã đăng ký vào đây
-
-    private String secure_pass = "xxx-xxx";     //thay mật khẩu giao tiếp giữa website của bạn với NgânLượng.vn mà bạn đã đăng ký vào đây
-    #region GetMD5Hash
-    public String GetMD5Hash(String input)
-    {
-
-        System.Security.Cryptography.MD5CryptoServiceProvider x = new System.Security.Cryptography.MD5CryptoServiceProvider();
-
-        byte[] bs = System.Text.Encoding.UTF8.GetBytes(input);
-
-        bs = x.ComputeHash(bs);
-
-        System.Text.StringBuilder s = new System.Text.StringBuilder();
-
-        foreach (byte b in bs)
-        {
-
-            s.Append(b.ToString("x2").ToLower());
-
-        }
-
-        String md5String = s.ToString();
-
-        return md5String;
-    }
-    #endregion GetMD5Hash
-    #region BuildCheckoutUrl
-    public String BuildCheckoutUrl(String return_url, String receiver, String transaction_info, String order_code, String price)
-    {
-        // Tạo biến secure code
-        String secure_code = "";
-
-        secure_code += this.merchant_site_code;
-
-        secure_code += " " + HttpUtility.UrlEncode(return_url).ToLower();
-
-        secure_code += " " + receiver;
-
-        secure_code += " " + transaction_info;
-
-        secure_code += " " + order_code;
-
-        secure_code += " " + price;
-
-        secure_code += " " + this.secure_pass;
-
-        // Tạo mảng băm
-        Hashtable ht = new Hashtable();
-
-        ht.Add("merchant_site_code", this.merchant_site_code);
-
-        ht.Add("return_url", HttpUtility.UrlEncode(return_url).ToLower());
-
-        ht.Add("receiver", receiver);
-
-        ht.Add("transaction_info", transaction_info);
-
-        ht.Add("order_code", order_code);
-
-        ht.Add("price", price);
-
-        ht.Add("secure_code", this.GetMD5Hash(secure_code));
-
-        // Tạo url redirect
-        String redirect_url = this.nganluong_url;
-
-        if (redirect_url.IndexOf("?") == -1)
-        {
-            redirect_url += "?";
-        }
-        else if (redirect_url.Substring(redirect_url.Length - 1, 1) != "?" && redirect_url.IndexOf("&") == -1)
-        {
-            redirect_url += "&";
-        }
-
-        String url = "";
-
-        // Duyệt các phần tử trong mảng băm ht1 để tạo redirect url
-        IDictionaryEnumerator en = ht.GetEnumerator();
-
-        while (en.MoveNext())
-        {
-            if (url == "")
-                url += en.Key.ToString() + "=" + en.Value.ToString();
-            else
-                url += "&" + en.Key.ToString() + "=" + en.Value.ToString();
-        }
-
-        String rdu = redirect_url + url;
-
-        return rdu;
-    }
-    #endregion BuildCheckoutUrl
-    #region VerifyPaymentUrl
-    public Boolean VerifyPaymentUrl(String transaction_info, String order_code, String price, String payment_id, String payment_type, String error_text, String secure_code)
-    {
-        // Tạo mã xác thực từ chủ web
-        String str = "";
-
-        str += " " + transaction_info;
-
-        str += " " + order_code;
-
-        str += " " + price;
-
-        str += " " + payment_id;
-
-        str += " " + payment_type;
-
-        str += " " + error_text;
-
-        str += " " + this.merchant_site_code;
-
-        str += " " + this.secure_pass;
-
-        // Mã hóa các tham số
-        String verify_secure_code = "";
-
-        verify_secure_code = this.GetMD5Hash(str);
-
-        // Xác thực mã của chủ web với mã trả về từ nganluong.vn
-        if (verify_secure_code == secure_code) return true;
-
-        return false;
-    }
-    #endregion VerifyPaymentUrl
+        readonly WebBanTapHoaEntities dbBanTapHoaEntities = new WebBanTapHoaEntities();
         [HttpGet]
         public ActionResult SendMail()
         {
             string userName = Session["UserName"].ToString();
             if (userName == "")
             {
-                 return RedirectToAction("Login","Account");
+                return RedirectToAction("Login", "Account");
             }
             else
             {
-                ViewBag.Mes = "Gửi mail thành công";
-                 return View();
+                ViewBag.Mes = "Bạn có chắc chắn muốn mua nhưng sản phẩm này";
+                var taikhoan =
+                    dbBanTapHoaEntities.TaiKhoans.SingleOrDefault(
+                        tk => tk.TrangThaiXoa == false & tk.TenDangNhap == userName);
+                return View(taikhoan);
             }
-           
+
         }
 
         [HttpPost]
-        public ActionResult SendMail(string id)
+        public ActionResult SendMail(TaiKhoan taiKhoan)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+                var objCart = (ShoppingCart)Session["Cart"];
+                decimal tong = 0;
+                const string smtpUserName = "ducnt.ts24@gmail.com";
+                const string smtpPassword = "11101993";
+                const string smtpHost = "smtp.gmail.com";
+                const int smtpPort = 25;
+                const string emailTo = "ducnt.ts24@gmail.com";
+                string subject = "Đơn đặt hàng ngày" + DateTime.Now.ToString("g");
+                string body = string.Format("Bạn vừa nhận được đơn đặt hàng từ: <b>{0}</b><br/>Email: {1}<br/>Số điện thoại:{2}<br/>Địa chỉ:{3}<br/>",
+                    taiKhoan.TenNguoiDung, taiKhoan.Email, taiKhoan.Phone, taiKhoan.DiaChi);
+                foreach (var product in objCart.ListItem)
+                {
+                    body += string.Format("<br/>Sản phẩm:<b>{0}</b><br/>Số lượng:<b>{1}</b><br/>Tổng tiền:<b>{2}</b><br/>", product.ProductName, product.Quantity, product.Total.ToString("N0") + "VNĐ");
+                    tong += product.Total;
+                }
+                body += string.Format("<br/>Tổng tiền cần thanh toán:<b>{0}</b><br/>", tong.ToString("N0") + "VNĐ");
+                var service = new EmailService();
+                bool kq = service.Send(smtpUserName, smtpPassword, smtpHost, smtpPort,
+                    emailTo, subject, body);
+                if (kq) ModelState.AddModelError("", "Cảm ơn bạn đã mua hàng của chúng tôi. Chúc bạn 1 ngày tốt lành!");
+                else ModelState.AddModelError("", "Đơn đặt hàng không gửi được, vui lòng thử lại.");
+            }
+            return View(taiKhoan);
         }
 
     }

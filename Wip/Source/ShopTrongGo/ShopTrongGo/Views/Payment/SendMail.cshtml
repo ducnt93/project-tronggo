@@ -1,6 +1,8 @@
 ﻿@using System.Web.UI.WebControls
+@model ShopTrongGo.Models.TaiKhoan
+
 @{
-    ViewBag.Title = "SendMail";
+    ViewBag.Title = "Xác nhận gửi mail";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
@@ -11,6 +13,35 @@
 </div>
 <div class="middle" style="padding:0px;">
     <div class="list">
-        <p>@ViewBag.Mes</p>
+        @using (Html.BeginForm("SendMail", "Payment", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <p>@ViewBag.Mes</p>
+            <p>Vui lòng xác nhận sau các thông tin để đặt hàng:</p>
+            <table>
+                <tr>
+                    <td>Họ tên:</td>
+                    <td>@Html.TextBoxFor(m => Model.TenNguoiDung)</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>@Html.TextBoxFor(m => Model.Email)</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại:</td>
+                    <td>@Html.TextBoxFor(m => Model.Phone)</td>
+                </tr>
+                <tr>
+                    <td>Địa chỉ:</td>
+                    <td>@Html.TextBoxFor(m => Model.DiaChi)</td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input type="submit" value="Gửi đơn hàng" />
+                    </td>
+                </tr>
+            </table>
+        }
     </div>
 </div>

@@ -153,12 +153,11 @@ namespace ShopTrongGo
             );
             routes.MapRoute(
               "RouteShoppingCart",
-              "gio-hang/{id}",
+              "gio-hang",
               new
               {
                   controller = "ShoppingCart",
-                  action = "Cart",
-                  id = UrlParameter.Optional
+                  action = "Cart"
               }
           );
             routes.MapRoute(

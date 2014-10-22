@@ -41,7 +41,7 @@ namespace ShopTrongGo.Controllers
                     Quantity = 1,
                     Total = Convert.ToDecimal(objProduct.Gia),
                 };
-
+                
                 objCart.AddToCart(item);
                 Session["Cart"] = objCart;
                 response = new { Code = 0, Msg = "Success" };

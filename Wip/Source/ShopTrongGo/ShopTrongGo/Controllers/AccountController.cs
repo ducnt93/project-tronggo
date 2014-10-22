@@ -78,7 +78,7 @@ namespace ShopTrongGo.Controllers
                 Session["UserName"] = userName;
                 if (taiKhoan.LoaiTaiKhoanID == 1)
                 {
-                    return RedirectToAction("Index", "AdProduct");
+                    return RedirectToAction("Index", "Home");
                 }
                 else
                 {
@@ -104,29 +104,39 @@ namespace ShopTrongGo.Controllers
         [HttpGet]
         public ActionResult ForgotPass()
         {
+            //var taikhoan = new TaiKhoan();
             return View();
         }
 
         [HttpPost]
-        public ActionResult ForgotPass(FormCollection form)
+        public ActionResult ForgotPass(TaiKhoan model)
         {
-            string userName = form["txtUserName"];
-            string pass = form["txtPass"];
-            string repass = form["txtRePass"];
-            TaiKhoan taiKhoan =
-                dbBanTapHoaEntities.TaiKhoans.SingleOrDefault(tk => !tk.TrangThaiXoa & tk.TenDangNhap == userName);
-            if (taiKhoan != null)
+            var taikhoan = dbBanTapHoaEntities.TaiKhoans.SingleOrDefault(tk => !tk.TrangThaiXoa & tk.Email == model.Email);
+            if (taikhoan == null)
             {
-                taiKhoan.MatKhau = pass;
-                dbBanTapHoaEntities.SaveChanges();
-                return RedirectToAction("RePassSuccess");
+                ModelState.AddModelError("", "Gửi tin nhắn thất bại, vui lòng kiểm tra lại địa chỉ email.");
             }
             else
             {
-                ViewBag.CheckRePass = "Không có tài khoản này! Kiểm tra lại tên đăng nhập";
-                return View();
-            }
+                const string smtpUserName = "ducnt.ts24@gmail.com";
+                const string smtpPassword = "11101993";
+                const string smtpHost = "smtp.gmail.com";
+                const int smtpPort = 25;
 
+                string emailTo = model.Email;
+                const string subject = "Lấy lại mật khẩu";
+                string body = string.Format("Mật khẩu của bạn là: <b>{0}</b><br/>",
+                    taikhoan.MatKhau);
+
+                var service = new EmailService();
+
+                bool kq = service.Send(smtpUserName, smtpPassword, smtpHost, smtpPort,
+                    emailTo, subject, body);
+
+                if (kq) ModelState.AddModelError("", "Kiểm tra lại email để lấy lại mật khẩu.");
+                else ModelState.AddModelError("", "Gửi tin nhắn thất bại, vui lòng thử lại.");
+            }
+            return View(model);
         }
 
         public ActionResult RePassSuccess()

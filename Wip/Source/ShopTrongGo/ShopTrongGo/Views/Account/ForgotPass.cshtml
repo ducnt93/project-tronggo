@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ShopTrongGo.Models.TaiKhoan
+@{
     ViewBag.Title = "Quên mật khẩu";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -10,28 +11,17 @@
 </div>
 <div class="middle" style="padding:0px;">
     <div class="list">
-        @using (Html.BeginForm("ForgotPass", "Account", FormMethod.Post))
+        @using (Html.BeginForm("ForgotPass","Account",FormMethod.Post))
         {
-            <table>
-                <tr>
-                    <td>Tên đăng nhập:</td>
-                    <td>@Html.TextBox("txtUserName")</td>
-                </tr>
-                <tr>
-                    <td>Mật khẩu mới:</td>
-                    <td>@Html.TextBox("txtPass")</td>
-                </tr>
-                <tr>
-                    <td>Nhập lại mật khẩu:</td>
-                    <td>@Html.Password("txtRePass")</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" value="Reset mật khẩu" id="btnResetPass" name="ResetPass"/>
-                    </td>
-                </tr>
-            </table>
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+
+            <fieldset>
+                <legend>Form</legend>
+                Email: @Html.TextBoxFor(m => Model.Email)
+                <input type="submit" value="Gửi" />
+            </fieldset>
+
         }
     </div>
-    </div>
-
+</div>
