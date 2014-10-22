@@ -14,14 +14,64 @@ namespace ShopTrongGo.Controllers
     {
         //
         // GET: /Product/
-        //[HttpGet]
-        public ActionResult All(int id, int? page)
+        [HttpGet]
+        public ActionResult All(int idDm, int? page)
         {
             var dbTapHoa = new WebBanTapHoaEntities();
             const int pageSize = 3;
             int pageNum = page ?? 1;
-            var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == id).OrderBy(p => p.SanPhamID).ToList();
-            return View(list.ToPagedList(pageNum, pageSize));
+            var id = int.Parse(Session["AllPro"].ToString());
+            if (id == 1)
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderBy(p => p.TenSp);
+                return View(list.ToPagedList(pageNum, pageSize));
+            }
+            if (id == 2)
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderBy(p => p.Gia);
+                return View(list.OrderByDescending(p => p.Gia).ToPagedList(pageNum, pageSize));
+            }
+            if (id == 3)
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderByDescending(p => p.Gia);
+                return View(list.ToPagedList(pageNum, pageSize));
+            }
+            else
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderByDescending(p => p.NgayCapNhat);
+                return View(list.ToPagedList(pageNum, pageSize));
+            }
+        }
+
+        [HttpPost]
+        public ActionResult All(int idDm, int? page, FormCollection form)
+        {
+            var dbTapHoa = new WebBanTapHoaEntities();
+            const int pageSize = 3;
+            int pageNum = page ?? 1;
+            Session["AllPro"] = form["dropdown"];
+            var id = int.Parse(Session["AllPro"].ToString());
+            if (id == 1)
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderBy(p => p.TenSp);
+                return View(list.ToPagedList(pageNum, pageSize));
+            }
+            if (id == 2)
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderBy(p => p.Gia);
+                return View(list.OrderByDescending(p => p.Gia).ToPagedList(pageNum, pageSize));
+            }
+            if (id == 3)
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderByDescending(p => p.Gia);
+                return View(list.ToPagedList(pageNum, pageSize));
+            }
+            else
+            {
+                var list = dbTapHoa.SanPhams.Where(sp => !sp.TrangThaiXoa & sp.LoaiSpID == idDm).OrderByDescending(p => p.NgayCapNhat);
+                return View(list.ToPagedList(pageNum, pageSize));
+            }
+
         }
         [HttpGet]
         public ActionResult Details(string id, int? page)

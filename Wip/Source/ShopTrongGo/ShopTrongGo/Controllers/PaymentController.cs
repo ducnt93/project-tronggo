@@ -140,7 +140,24 @@ namespace ShopTrongGo.Controllers
         return false;
     }
     #endregion VerifyPaymentUrl
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult SendMail()
+        {
+            string userName = Session["UserName"].ToString();
+            if (userName == "")
+            {
+                 return RedirectToAction("Login","Account");
+            }
+            else
+            {
+                ViewBag.Mes = "Gửi mail thành công";
+                 return View();
+            }
+           
+        }
+
+        [HttpPost]
+        public ActionResult SendMail(string id)
         {
             return View();
         }

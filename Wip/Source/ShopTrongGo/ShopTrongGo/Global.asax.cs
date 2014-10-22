@@ -27,17 +27,19 @@ namespace ShopTrongGo
         protected void Session_Start()
         {
             Session["CheckLogin"] = "";
-            Session["FullName"] = "";
+            Session["FullName"] = "bạn!";
             Session["UserName"] = "";
             Session["Home"] = 0;
+            Session["AllPro"] = 0;
         }
 
         protected void Session_End()
         {
             Session["CheckLogin"] = "";
-            Session["FullName"] = "";
+            Session["FullName"] = "bạn!";
             Session["UserName"] = "";
             Session["Home"] = 0;
+            Session["AllPro"] = 0;
         }
     }
 }

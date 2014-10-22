@@ -89,31 +89,35 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
                     <li>
                         <a href="~/tai-khoan/dang-ky">Đăng ký</a>
                     </li>
-                    <li><a href="#">|</a></li>
                     <li><a href="#login-box" class="login-window">Đăng nhập</a></li>
                     <li><a href="#">|</a></li>
-                    <li><a href="~/ShoppingCart/Cart">Giỏ hàng</a></li>
+                    <li>
+                        @Html.ActionLink("Giỏ hàng", "Cart", "ShoppingCart", null, null)
+                    </li>
+                    <li>Chào @Session["FullName"].ToString()</li>
+                    <li>@Html.ActionLink("(Thoát)","Logout","Account")</li>
                 </ul>
             </div>
 
             <div id="login-box" class="login-popup">
-                @*<a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>*@
-                <form method="post" class="signin" action="#">
+                <a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
+                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                {
                     <fieldset class="textbox">
                         <label class="username">
                             <span>Tài khoản hoặc email</span>
-                            <input id="username" name="username" value="" type="text" autocomplete="on" placeholder="Tài khoản">
+                            <input id="txtUserName" name="txtUserName" value="" type="text" autocomplete="on" placeholder="Tài khoản">
                         </label>
                         <label class="password">
                             <span>Mật khẩu</span>
-                            <input id="password" name="password" value="" type="password" placeholder="Mật khẩu">
+                            <input id="txtPass" name="txtPass" value="" type="password" placeholder="Mật khẩu">
                         </label>
-                        <button class="submit button" type="button">Đăng nhập</button>
+                        <button class="submit button" type="submit">Đăng nhập</button>
                         <p>
-                            <a class="forgot" href="#">Quên mật khẩu?</a>
+                            @Html.ActionLink("Quên mật khẩu?", "ForgotPass", "Account", null, new { @class = "forgot" })
                         </p>
                     </fieldset>
-                </form>
+                }
             </div>
 
 
@@ -205,7 +209,7 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
         </script>
         <script type="text/javascript">
             function AddToCart(id) {
-                $.post("/ShoppingCart/AddToCart", { "id": id },
+                $.post("/them-san-pham", { "id": id },
                 function (data) {
                     if (data.Code == '0') {
                         alert('Thêm sản phẩm vào giỏ hàng thành công');

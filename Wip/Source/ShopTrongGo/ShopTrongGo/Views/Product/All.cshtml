@@ -2,7 +2,7 @@
 @using PagedList.Mvc;
 @model PagedList.IPagedList<ShopTrongGo.Models.SanPham>
 @{
-    ViewBag.Title = "All";
+    ViewBag.Title = "Các sản phẩm";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
@@ -28,10 +28,23 @@
 <div id="ajaxUpdate">
     @using (Ajax.BeginForm(new AjaxOptions() { UpdateTargetId = "ajaxUpdate", OnBegin = "BeginClient" }))
     {
-        if (Model !=null)
+        if (Model != null)
         {
             <div class="middle" style="padding: 0px;">
                 <div class="list">
+                    @using (Html.BeginForm("All", "Product", FormMethod.Get))
+                    {
+                        <div>
+                            Tiêu chí:
+                            <select id="dropdown" title="Sắp xếp" name="dropdown" class="">
+                                <option value="0">--Chọn--</option>
+                                <option value="1">Theo thứ tự A - Z </option>
+                                <option value="2">Giá tăng dần</option>
+                                <option value="3">Giá giảm dần</option>
+                            </select>
+                            <input type="submit" value="Sắp xếp"/>
+                        </div>
+                    }
                     @foreach (var pro in Model)
                     {
                         <div class="sanpham">
@@ -39,7 +52,11 @@
                             <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau">@pro.TenSp</a> <br />
                             <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                             <div class="dathang">
-                                <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau">Chi tiết</a>
+                                @Html.ActionLink("Chi tiết", "Details", "Product", new
+                                {
+                                    id = @pro.SanPhamID,
+                                    @pro.TenKhongDau
+                                }, null)
                                 <input id="Button1" type="button" value="Đặt hàng" class="btnCart" onclick="AddToCart('@pro.SanPhamID');" />
                             </div>
                         </div>
@@ -59,4 +76,4 @@
             </div>
         }
     }
-    </div>
+</div>

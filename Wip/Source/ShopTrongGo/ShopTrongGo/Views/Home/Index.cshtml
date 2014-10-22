@@ -1,7 +1,7 @@
 ﻿@using PagedList.Mvc
 @model PagedList.IPagedList<ShopTrongGo.Models.SanPham>
 @{
-    ViewBag.Title = "Trang chủ";
+    ViewBag.Title = "Trang chủ - Web bán tạp hóa 24h";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
@@ -32,11 +32,11 @@
                     <div class="sanpham">
                         <div class="NewProduct">
                             <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
-                            @Html.ActionLink(@pro.TenSp, "Details", "Product", new { id = @pro.SanPhamID, @pro.TenSp }, null) <br />
+                            @Html.ActionLink(@pro.TenSp, "Details", "Product", new { id = @pro.SanPhamID, @pro.TenKhongDau }, null) <br />
                         </div>
                         <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                         <div class="dathang">
-                            @Html.ActionLink("Chi tiết","Details","Product",new{id = @pro.SanPhamID, @pro.TenSp},null)
+                            @Html.ActionLink("Chi tiết","Details","Product",new{id = @pro.SanPhamID, @pro.TenKhongDau},null)
                             <input id="Button1" type="button" value="  Đặt hàng" class="btnCart" onclick="AddToCart('@pro.SanPhamID');" />
                         </div>
                     </div>
@@ -46,7 +46,7 @@
     </div>
     <script type="text/javascript">
         function SapXep(id) {
-            $.post("/Home/Index/", { "id": id });
+            $.post("/trang-chu", { "id": id });
         }
     </script>
 </div>

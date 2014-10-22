@@ -67,8 +67,8 @@ namespace ShopTrongGo.Controllers
         [HttpPost]
         public ActionResult Login(FormCollection form)
         {
-            string userName = form["username"];
-            string pass = form["password"];
+            string userName = form["txtUserName"];
+            string pass = form["txtPass"];
             var taiKhoan =
                 dbBanTapHoaEntities.TaiKhoans.SingleOrDefault(
                     tk => !tk.TrangThaiXoa & tk.TenDangNhap == userName & tk.MatKhau == pass);
@@ -82,15 +82,24 @@ namespace ShopTrongGo.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Index", "Home");
+                    var cart = Session["Cart"];
+                    if (cart != null)
+                    {
+                        return RedirectToAction("Cart", "ShoppingCart");
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+
                 }
             }
             else
             {
-               Session["CheckLogin"] = "Kiểm tra lại tên đăng nhập hoặc mật khẩu!";
-                return RedirectToAction("Login","Account");
+                Session["CheckLogin"] = "Kiểm tra lại tên đăng nhập hoặc mật khẩu!";
+                return RedirectToAction("Login", "Account");
             }
-           
+
         }
         [HttpGet]
         public ActionResult ForgotPass()
@@ -117,12 +126,19 @@ namespace ShopTrongGo.Controllers
                 ViewBag.CheckRePass = "Không có tài khoản này! Kiểm tra lại tên đăng nhập";
                 return View();
             }
-            
+
         }
 
         public ActionResult RePassSuccess()
         {
             return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["FullName"] = "bạn!";
+            Session["UserName"] = "";
+            return RedirectToAction("Index", "Home");
         }
     }
 }

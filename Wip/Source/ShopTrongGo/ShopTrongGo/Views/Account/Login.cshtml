@@ -1,6 +1,6 @@
 ﻿@using System.Web.UI.WebControls
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Đăng nhập";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="top">
@@ -16,7 +16,12 @@
             <table>
                 <tr>
                     <td colspan="2">
-                        @ViewBag.CheckLogin
+                        @{
+                            if (Session["CheckLogin"] != null)
+                            {
+                                <i>@Session["CheckLogin"];</i>
+                            }
+                        }
                     </td>
                 </tr>
                 <tr>
@@ -29,12 +34,12 @@
                 </tr>
                 <tr>
                     <td colspan="2">
-                        <a href="~/Account/ForgotPass">Quên mật khẩu?</a>
+                        @Html.ActionLink("Quên mật khẩu?", "ForgotPass", "Account", null, null)
                     </td>
                 </tr>
                 <tr>
                     <td><input type="submit" id="btnDangNhap" name="btnDangNhap" class="dangnhap" value="Đăng nhập" /></td>
-                    <td><input type="button" id="btnHuy" name="btnHuy" value="Hủy bỏ" onclick="return ('~/Home/Index')"/></td>
+                    <td><input type="button" id="btnHuy" name="btnHuy" value="Hủy bỏ" onclick="return ('~/trang-chu')" /></td>
                 </tr>
             </table>
         }
