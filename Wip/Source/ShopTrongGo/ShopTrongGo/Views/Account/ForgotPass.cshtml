@@ -16,10 +16,11 @@
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
 
-            <fieldset>
-                <legend>Form</legend>
-                Email: @Html.TextBoxFor(m => Model.Email)
-                <input type="submit" value="Gửi" />
+            <fieldset style="width: 500px; margin-top: 20px; margin-top: 20px; margin-left: 60px;">
+                    <h3>bạn vui lòng nhập email của bạn vào đây để được cấp lại mật khẩu</h3> <br/>
+                Email <br/>
+                @Html.TextBoxFor(m => Model.Email)
+                    <input type="submit" value="Gửi" style="width: 90px; height: 34px; cursor: pointer;" />
             </fieldset>
 
         }

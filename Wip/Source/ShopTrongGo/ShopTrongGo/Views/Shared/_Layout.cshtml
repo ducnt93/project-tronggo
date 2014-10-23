@@ -109,24 +109,28 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
             </div>
 
             <div id="login-box" class="login-popup">
-                <a href="#" class="close"><img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" /></a>
-                @using (Html.BeginForm("Login", "Account", FormMethod.Post))
-                {
-                    <fieldset class="textbox">
-                        <label class="username">
-                            <span>Tài khoản hoặc email</span>
-                            <input id="txtUserName" name="txtUserName" value="" type="text" autocomplete="on" placeholder="Tài khoản">
-                        </label>
-                        <label class="password">
-                            <span>Mật khẩu</span>
-                            <input id="txtPass" name="txtPass" value="" type="password" placeholder="Mật khẩu">
-                        </label>
-                        <button class="submit button" type="submit">Đăng nhập</button>
-                        <p>
-                            @Html.ActionLink("Quên mật khẩu?", "ForgotPass", "Account", null, new { @class = "forgot" })
-                        </p>
-                    </fieldset>
-                }
+                <a href="#" class="close">@*<img src="close_pop.png" class="btn_close" title="Close Window" alt="Close" />*@
+                    <img src="~/image/icon-del.png" class="btn_close" title="Close Window" alt="Close" /> </a>
+                <form class="signin">
+                    @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+                    {
+                        <fieldset class="textbox">
+                            <label class="username">
+                                <span>Tài khoản hoặc email</span>
+                                <input id="txtUserName" name="txtUserName" value="" type="text" autocomplete="on" placeholder="Tài khoản">
+                            </label>
+                            <label class="password">
+                                <span>Mật khẩu</span>
+                                <input id="txtPass" name="txtPass" value="" type="password" placeholder="Mật khẩu">
+                            </label>
+                            <button class="submit button" type="submit">Đăng nhập</button>
+                            <p>
+                                @Html.ActionLink("Quên mật khẩu?", "ForgotPass", "Account", null, new { @class = "forgot" })
+                            </p>
+                        </fieldset>
+                    }
+                </form>
+
             </div>
 
 

@@ -15,33 +15,36 @@
     <div class="list">
         @using (Html.BeginForm("SendMail", "Payment", FormMethod.Post))
         {
-            @Html.AntiForgeryToken()
-            @Html.ValidationSummary(true)
-            <p>@ViewBag.Mes</p>
-            <p>Vui lòng xác nhận sau các thông tin để đặt hàng:</p>
-            <table>
-                <tr>
-                    <td>Họ tên:</td>
-                    <td>@Html.TextBoxFor(m => Model.TenNguoiDung)</td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td>@Html.TextBoxFor(m => Model.Email)</td>
-                </tr>
-                <tr>
-                    <td>Số điện thoại:</td>
-                    <td>@Html.TextBoxFor(m => Model.Phone)</td>
-                </tr>
-                <tr>
-                    <td>Địa chỉ:</td>
-                    <td>@Html.TextBoxFor(m => Model.DiaChi)</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        <input type="submit" value="Gửi đơn hàng" />
-                    </td>
-                </tr>
-            </table>
+            <div class="sendEmail">
+                @Html.AntiForgeryToken()
+                @Html.ValidationSummary(true)
+                <p style="text-align: center; font-size: 15px;"><b>@ViewBag.Mes</b></p>
+                <p style="text-align: center; font-size: 15px;"><b>Vui lòng xác nhận các thông tin sau để đặt hàng!</b></p>
+                <table class="tableSendEmail">
+                    <tr>
+                        <td>Họ tên:</td>
+                        <td>@Html.TextBoxFor(m => Model.TenNguoiDung)</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>@Html.TextBoxFor(m => Model.Email)</td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại:</td>
+                        <td>@Html.TextBoxFor(m => Model.Phone)</td>
+                    </tr>
+                    <tr>
+                        <td>Địa chỉ:</td>
+                        <td>@Html.TextBoxFor(m => Model.DiaChi)</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            <input type="submit" value="Gửi đơn hàng" style="width: 100px; height: 30px; cursor: pointer; margin-top: 10px;" />
+                        </td>
+                    </tr>
+                </table>
+            </div>
+           
         }
     </div>
 </div>

@@ -13,35 +13,39 @@
     <div class="list">
         @using (Html.BeginForm("Login", "Account", FormMethod.Post))
         {
-            <table>
-                <tr>
-                    <td colspan="2">
-                        @{
-                            if (Session["CheckLogin"] != null)
-                            {
-                                <i>@Session["CheckLogin"];</i>
+            <div class="sendEmail">
+                <table class="tableSendEmail">
+                    <tr>
+                        <td colspan="2">
+                            @{
+            if (Session["CheckLogin"] != null)
+            {
+                <i>@Session["CheckLogin"]</i>
+            }
                             }
-                        }
-                    </td>
-                </tr>
-                <tr>
-                    <td>Tên đăng nhập:</td>
-                    <td>@Html.TextBox("txtUserName")</td>
-                </tr>
-                <tr>
-                    <td>Mật khẩu:</td>
-                    <td>@Html.Password("txtPass")</td>
-                </tr>
-                <tr>
-                    <td colspan="2">
-                        @Html.ActionLink("Quên mật khẩu?", "ForgotPass", "Account", null, null)
-                    </td>
-                </tr>
-                <tr>
-                    <td><input type="submit" id="btnDangNhap" name="btnDangNhap" class="dangnhap" value="Đăng nhập" /></td>
-                    <td><input type="button" id="btnHuy" name="btnHuy" value="Hủy bỏ" onclick="return ('~/trang-chu')" /></td>
-                </tr>
-            </table>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tên đăng nhập:</td>
+                        <td>@Html.TextBox("txtUserName")</td>
+                    </tr>
+                    <tr>
+                        <td>Mật khẩu:</td>
+                        <td>@Html.Password("txtPass")</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2">
+                            @Html.ActionLink("Quên mật khẩu?", "ForgotPass", "Account", null, null)
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="submit" id="btnDangNhap" name="btnDangNhap" value="Đăng nhập" style="width: 80px; height: 26px; margin-left: 45px; margin-top: 10px;" /></td>
+                        <td><input type="button" id="btnHuy" name="btnHuy" value="Hủy bỏ" onclick="return ('~/trang-chu')" style="width: 80px; height: 26px; margin-left: 45px; margin-top: 10px;" /></td>
+                    </tr>
+                </table>
+
+            </div>
+
         }
     </div>
 </div>

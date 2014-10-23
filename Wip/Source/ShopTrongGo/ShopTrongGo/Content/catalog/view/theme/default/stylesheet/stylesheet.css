@@ -134,7 +134,7 @@ html {
 body {
     margin: 0px;
     padding: 0px;
-    background: url('../image/br.png');
+    background: url('../image/br1.png') repeat;
     text-align: center;
 }
 
@@ -143,10 +143,29 @@ body, td, th, input, textarea, select {
     padding-right: 10px;
 }
 
+fieldset > input {
+    width: 200px;
+    height: 30px;
+}
+
+input {
+    text-align: center;
+    padding: 0px;
+}
+
 form {
     padding: 0;
     margin: 0;
     display: inline;
+}
+
+form>.middle>.list>table>tbody>tr>td>input {
+    width: 180px;
+    height: 20px;
+}
+ .middle>.list>form>div>table>tbody>tr>td>input {
+    width: 180px;
+    height: 20px;
 }
 
 input, textarea, select {
@@ -238,8 +257,8 @@ p {
 
 #header .div1 {
     width: 100%;
-    height: 45px;
-    background: url(../image/bg_menu.png) repeat-x left center;
+    height: 46px;
+    background: url(../image/IimageBackGround.png) repeat left center;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     -ms-border-radius: 5px;
@@ -297,14 +316,14 @@ p {
                 top: 0px;
                 border-left: 1px dotted #bdb76b;
                 position: absolute;
-                background: #CD9362;
+                background: #E0DFDE;
             }
 
     #header > .div1 > .menu > ul > li > ul > li {
         border-bottom: 1px dotted #bdb76b;
         width: 155px;
         position: relative;
-        background: url(../image/bg_menu.png) repeat-x left center;
+        background: url(../image/IimageBackGround.png) repeat bottom center;
     }
 
         #header > .div1 > .menu > ul > li > ul > li > ul {
@@ -316,7 +335,7 @@ p {
             }
 
                 #header > .div1 > .menu > ul > li > ul > li > ul > li > a {
-                    color: #ffffff;
+                    color: #515050;
                     font-size: 12px;
                     font-weight: Bold;
                     padding-left: 20px;
@@ -334,12 +353,12 @@ p {
 
 .menu > ul > li > ul > li:hover ul {
     display: inline-block;
-    background: url(../image/bg_menu.png) repeat-x left center;
+    background: url(../image/IimageBackGround.png) repeat left center;
 }
 
 #header > .div1 > .menu > ul > li > a {
-    color: #ffffff;
-    font-size: 12px;
+    color: #515050;
+    font-size: 13px;
     font-weight: Bold;
     text-transform: uppercase;
     padding-left: 20px;
@@ -347,7 +366,7 @@ p {
 }
 
 #header > .div1 > .menu > ul > li > ul > li > a {
-    color: #ffffff;
+    color: #515050;
     font-size: 12px;
     font-weight: Bold;
     padding-left: 20px;
@@ -501,7 +520,9 @@ p {
 }
 
 #content .middle img {
-    max-width: 560px;
+   width: 450px;
+height: 350px;
+margin-top: 20px;
 }
 
 #column_left .box {
@@ -927,35 +948,49 @@ a.button:hover {
     height: 330px;
     margin: auto;
 }
+
 .td {
     margin-top: 15px;
 }
+
 .itm-cartDetails {
     width: 320px;
     height: 52px;
     margin-top: 10px;
 }
+
 .product_cart {
     width: 320px;
     height: 52px;
 }
+
 .inputText {
     width: 350px;
 }
+
 .imgTT {
-    max-height: 80px; max-width: 90px;
+    max-height: 80px;
+    max-width: 90px;
     margin-top: 5px;
 }
 
 .bando {
     width: 100%;
 }
+
 .LeftNew {
     width: 25%;
     float: left;
 }
+
 .RightNew {
     text-align: left;
     width: 75%;
     float: left;
+}
+.sendEmail {
+    border: 1px solid #d3d3d3; border-radius: 5px; margin-top: 20px; padding-bottom: 20px;
+}
+.tableSendEmail {
+    width: 320px; margin: auto; margin-top: 10px;
 }
