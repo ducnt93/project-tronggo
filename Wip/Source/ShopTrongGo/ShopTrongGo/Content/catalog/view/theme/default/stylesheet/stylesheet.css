@@ -518,12 +518,14 @@ p {
     height: 120px;
     margin-top: 10px;
 }
-
-#content .middle img {
-   width: 450px;
+.ChitietTin>.middle>p>img {
+     width: 450px;
 height: 350px;
 margin-top: 20px;
 }
+/*#content .middle img {
+  
+}*/
 
 #column_left .box {
     background: url('../image/box_top_right.png') repeat-x;
