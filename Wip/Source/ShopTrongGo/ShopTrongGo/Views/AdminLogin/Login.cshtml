@@ -4,7 +4,7 @@
         margin: 0 auto;
         width: 40%;
         height: auto;
-        background: #008b8b;
+        background:#ABACAD;
         color: white;
         padding: 15px;
     }
@@ -12,10 +12,10 @@
     fieldset {
         padding-top: 20px;
         padding-bottom: 30px;
-        border: 1px solid #FFFFFF;
+        border: 1px solid #EEE;
         border-radius: 5px 5px 5px 5px;
         font-family: Arial;
-        background: #008b9f;
+        background: #CED26A;
     }
 
     legend {
@@ -50,15 +50,17 @@
 
     .btn {
         border: 2px white solid;
-        background: #ff4500;
+        background: #D16B33;
         color: white;
         font-size: 18px;
         padding: 5px;
         width: 100px;
+        border-radius: 5px;
     }
 
         .btn:hover {
-            background: #b22222;
+            background: #AD5F24;
+            border-radius: 5px;
         }
 
         .btn:active {
@@ -72,7 +74,7 @@
     Layout = "";
 }
 
-@using (Html.BeginForm("Login","Login",FormMethod.Post))
+@using (Html.BeginForm("Login","AdminLogin",FormMethod.Post))
 {
     @Html.AntiForgeryToken()          
     @Html.ValidationSummary(true)
