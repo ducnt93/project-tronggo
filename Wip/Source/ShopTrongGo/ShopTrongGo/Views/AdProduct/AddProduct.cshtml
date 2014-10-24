@@ -12,19 +12,35 @@
 {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
-    <h2>Add new product</h2>
+    <h2>Trang thêm mới sản phẩm</h2>
     <fieldset>
         <legend style="text-align: center;">Thêm sản phẩm</legend>
+        <div class="editor">
+            <div class="editor-label">Mã sản phẩm</div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.SanPhamID, new { @class = "txt" })
+            @Html.ValidationMessageFor(model => model.SanPhamID)
+        </div>
+    </div>
         <div class="editor">
             <div class="editor-label">Tên sản phẩm</div>
             <div class="editor-field">@Html.TextBoxFor(model => model.TenSp, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.TenSp)
             </div>
         </div>
+        
+        @*<div class="editor">
+            <div class="editor-label">Tên không dấu</div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.TenKhongDau, new { @class = "txt" })
+                @Html.ValidationMessageFor(model => model.TenKhongDau)
+            </div>
+        </div>*@
 
         <div class="editor">
             <div class="editor-label">Loại sản phẩm</div>
-            <div class="editor-field">@Html.DropDownList("LoaiSpID", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "drl" })
+            <div class="editor-field">
+                @Html.DropDownList("LoaiSpID", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "drl" })
                 @Html.ValidationMessageFor(model => model.LoaiSpID)
             </div>
         </div>
@@ -52,7 +68,7 @@
         
         <div class="editor">
             <div class="editor-label">Trạng thái</div>
-            <div class="editor-field">@Html.TextBoxFor(model => model.TrangThai, new { @class = "txt" })
+            <div class="editor-field">@Html.DropDownList("TrangThai",ViewData["TrangThai"] as List<SelectListItem>,  new { @class = "drl" })
                 @Html.ValidationMessageFor(model => model.TrangThai)
             </div>
         </div>
@@ -83,38 +99,6 @@
         </div>
 
         <div class="editor">
-            <div class="editor-label">Trạng thái xóa</div>
-            <div class="editor-field">
-                @Html.CheckBoxFor(model => model.TrangThaiXoa)
-                @Html.ValidationMessageFor(model => model.TrangThaiXoa)
-            </div>
-        </div>
-
-        <div class="editor">
-            <div class="editor-label">Ngày xóa</div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.NgayXoa, new { type = "date", @class = "txt" })
-                @Html.ValidationMessageFor(model => model.NgayXoa)
-            </div>
-        </div>
-        
-        <div class="editor">
-            <div class="editor-label">Lượt bán</div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.LuotBan, new { type = "number", @class = "txt" })
-                @Html.ValidationMessageFor(model => model.NgayXoa)
-            </div>
-        </div>
-
-        <div class="editor">
-            <div class="editor-label">Lượt xem</div>
-            <div class="editor-field">
-                @Html.TextBoxFor(model => model.LuotView, new { type = "number", @class = "txt" })
-                @Html.ValidationMessageFor(model => model.NgayXoa)
-            </div>
-        </div>
-
-        <div class="editor">
             <div class="editor-label">Số lượng</div>
             <div class="editor-field">
                 @Html.TextBoxFor(model => model.SoLuong, new { type = "number", @class = "txt" })
@@ -126,12 +110,32 @@
             <div class="editor-label"></div>
             <div class="editor-field">
                 <p>
-                    <input type="submit" value="Create" />
+                    <input type="submit" value="Create" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;"/>
                 </p>
             </div>
             </div>
 </fieldset>
 }
+@*<script type="text/javascript">
+    $(document).ready(function () {
+        $('#TenSp').keyup(function () {
+            $('#TenKhongDau').val(bodauTiengViet($(this).val()));
+        });
+    });
+    function bodauTiengViet(str) {  
+        str= str.toLowerCase();  
+        str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a");  
+        str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e");  
+        str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i");  
+        str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o");  
+        str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u");  
+        str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y");  
+        str= str.replace(/đ/g,"d");  
+        return str;  
+    }
+</script>*@
+
+
 <script language="javascript" type="text/javascript">
     $(function () {
         $("#btnBrowserImage").click(function () {
