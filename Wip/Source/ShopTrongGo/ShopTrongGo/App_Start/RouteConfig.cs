@@ -200,6 +200,24 @@ namespace ShopTrongGo
             }
         );
             routes.MapRoute(
+          "RouteContact",
+          "lien-he",
+          new
+          {
+              controller = "Home",
+              action = "Contact"
+          }
+      );
+            routes.MapRoute(
+          "RouteInformation",
+          "gioi-thieu",
+          new
+          {
+              controller = "Home",
+              action = "Information"
+          }
+      );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
