@@ -34,7 +34,7 @@
                 <div class="list">
                     @using (Html.BeginForm("All", "Product", FormMethod.Get))
                     {
-                        <div>
+                        <div style="margin-top: 5px; width: 98%; text-align: right;">
                             Tiêu chí:
                             <select id="dropdown" title="Sắp xếp" name="dropdown" class="">
                                 <option value="0">--Chọn--</option>
@@ -51,8 +51,10 @@
                     @foreach (var pro in Model)
                     {
                         <div class="sanpham">
-                            <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
-                            <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau">@pro.TenSp</a> <br />
+                            <div class="NewProduct">
+                                <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau"><img width="160" height="160" src="~/image/cache/data/@pro.AnhDaiDien" title="@pro.TenSp" alt="@pro.TenSp" /></a><br />
+                                <a href="@pro.SanPhamID/san-pham-@pro.TenKhongDau">@pro.TenSp</a> <br />
+                            </div> 
                             <div class="giasp">Giá bán: @pro.Gia.ToString("N0") <b>VNĐ</b></div>
                             <div class="dathang">
                                 @Html.ActionLink("Chi tiết", "Details", "Product", new
