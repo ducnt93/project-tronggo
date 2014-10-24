@@ -20,7 +20,7 @@ namespace ShopTrongGo.Controllers.Admin
             }
             else
             {
-                return RedirectToAction("Login");
+                return RedirectToAction("Login","AdminLogin");
             }
         }
 
@@ -33,8 +33,8 @@ namespace ShopTrongGo.Controllers.Admin
         [ValidateAntiForgeryToken]
         public ActionResult Login(TaiKhoan user)
         {
-            if (ModelState.IsValid)
-            {
+            //if (ModelState.IsValid)
+            //{
                 using (var m = new WebBanTapHoaEntities())
                 {
                     var v =
@@ -43,18 +43,19 @@ namespace ShopTrongGo.Controllers.Admin
                     {
                         Session["LogedName"] = v.TenDangNhap;
                         Session["LogedFullName"] = v.TenNguoiDung;
-                        return RedirectToAction("Index");
+                        return RedirectToAction("Index","AdminLogin");
                     }
+                    return View(user);
                 }
-            }
-            return View(user);
+            //}
+            //
         }
 
         public ActionResult Logout()
         {
             Session["LogedName"] = null;
             FormsAuthentication.SignOut();
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login", "AdminLogin");
         }
         #endregion
 

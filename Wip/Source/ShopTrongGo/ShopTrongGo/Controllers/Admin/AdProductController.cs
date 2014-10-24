@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.Mime;
+using System.Text;
+using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -30,7 +33,7 @@ namespace ShopTrongGo.Controllers.Admin
                 }
             else
             {
-                return RedirectToAction("Login","Login");
+                return RedirectToAction("Login","AdminLogin");
             }       
         }
 
@@ -50,7 +53,7 @@ namespace ShopTrongGo.Controllers.Admin
             }
             else
             {
-                return RedirectToAction("Login","Login");
+                return RedirectToAction("Login","AdminLogin");
             }                                          
         }          
         #endregion
@@ -71,6 +74,11 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (Session["LogedName"] != null)
             {
+                var dstrangthai = new List<SelectListItem>();
+                dstrangthai.Add(new SelectListItem { Text = "Còn hàng", Value = "Còn hàng" });
+                dstrangthai.Add(new SelectListItem { Text = "Hét hàng", Value = "Hết hàng" });
+                dstrangthai.Add(new SelectListItem { Text = "Đang nhập", Value = "Đang nhập" });
+                ViewData["TrangThai"] = dstrangthai;
                 ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp");
                 return View();
             }
@@ -84,6 +92,13 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                sanpham.NgayCapNhat = DateTime.Now;
+                sanpham.LuotView = 0;
+                sanpham.LuotBan = 0;
+                sanpham.TrangThaiXoa = false;
+                sanpham.NgayXoa = null;
+                sanpham.TenKhongDau = ConvertToUnSign3(sanpham.TenSp);
+                int s = sanpham.LoaiSpID;
                 db.SanPhams.Add(sanpham);
                 db.SaveChanges();
                 return RedirectToAction("ListProduct");
@@ -118,10 +133,12 @@ namespace ShopTrongGo.Controllers.Admin
                 if (ModelState.IsValid)
                 {
                     sanpham.NgayCapNhat = DateTime.Now.Date;
-                    if (sanpham.TrangThaiXoa == true)
+                    if (sanpham.TrangThaiXoa)
                     {
                         sanpham.NgayXoa = DateTime.Now.Date;
                     }
+                    else sanpham.NgayXoa = null;
+
                     db.Entry(sanpham).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ListProduct", "AdProduct");
@@ -173,5 +190,13 @@ namespace ShopTrongGo.Controllers.Admin
             return RedirectToAction("Index","AdminLogin");
         }
         #endregion
+
+        //Hàm chuyển tiếng Việt có dấu sang không có dấu
+        public static string ConvertToUnSign3(string s)
+        {
+            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
+            string temp = s.Normalize(NormalizationForm.FormD);
+            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
+        }  
     }
 }
