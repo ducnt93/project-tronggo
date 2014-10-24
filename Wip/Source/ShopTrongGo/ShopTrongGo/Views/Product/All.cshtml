@@ -42,8 +42,11 @@
                                 <option value="2">Giá tăng dần</option>
                                 <option value="3">Giá giảm dần</option>
                             </select>
-                            <input type="submit" value="Sắp xếp"/>
+                            <input type="submit" value="Sắp xếp" />
                         </div>
+                        <script type="text/javascript">
+                            $('#dropdown').val('@Session["AllPro"]');
+                        </script>
                     }
                     @foreach (var pro in Model)
                     {
@@ -63,7 +66,7 @@
                     }
                 </div>
                 <p>
-                    @Html.PagedListPager(Model, page => Url.Action("All", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                    @Html.PagedListPager(Model, page => Url.Action("All", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
                 </p>
             </div>
         }

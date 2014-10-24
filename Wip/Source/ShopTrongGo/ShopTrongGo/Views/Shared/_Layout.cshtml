@@ -187,6 +187,7 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
                     </div>
                 </div>
             </div>
+
         </div>
         @*<div style="clear: both;"></div>*@
         <div id="column_left">
@@ -194,7 +195,12 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
                 Html.RenderAction("MenuTrongRuou", "MenuPartial");
                 Html.RenderAction("MenuService", "MenuPartial");
             }
-
+            <div class="box">
+                <div class="top">Trang facebook</div>
+                <div id="category" class="middle">
+                    <iframe src="//www.facebook.com/plugins/likebox.php?href=https%3A%2F%2Fwww.facebook.com%2Finaophongcach&amp;width=165&amp;height=258&amp;colorscheme=light&amp;show_faces=true&amp;header=false&amp;stream=false&amp;show_border=true" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:165px; height:258px;" allowtransparency="true"></iframe>
+                </div>
+            </div>
         </div>
         <div id="column_right">
             @{
@@ -223,11 +229,11 @@ trống gỗ ho&agrave;ng gia, Cơ sở sản xuất Trống rượu, bom rượ
         <script type="text/javascript">
             function AddToCart(id) {
                 $.post("/them-san-pham", { "id": id },
-                function (data) {
-                    if (data.Code == '0') {
-                        alert('Thêm sản phẩm vào giỏ hàng thành công');
-                    }
-                });
+                    function (data) {
+                        if (data.Code == '0') {
+                            alert('Thêm sản phẩm vào giỏ hàng thành công');
+                        }
+                    });
                 return false;
             }
         </script>

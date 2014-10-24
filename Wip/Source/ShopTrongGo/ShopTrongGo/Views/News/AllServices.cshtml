@@ -28,7 +28,7 @@
                     </div>
                 </div>
             }
-            @Html.PagedListPager(Model, page => Url.Action("AllServices", new {page = page}), PagedListRenderOptions.ClassicPlusFirstAndLast)
+            @Html.PagedListPager(Model, page => Url.Action("AllServices", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
         </div>
     </div>
 }

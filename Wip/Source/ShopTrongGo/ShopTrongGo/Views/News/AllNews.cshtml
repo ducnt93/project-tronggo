@@ -30,7 +30,7 @@
                         </div>
                     </div>
                 }
-                @Html.PagedListPager(Model, page => Url.Action("AllNews", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                @Html.PagedListPager(Model, page => Url.Action("AllNews", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
             </div>
         </div>
 }

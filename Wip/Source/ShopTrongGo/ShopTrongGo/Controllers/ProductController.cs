@@ -18,7 +18,7 @@ namespace ShopTrongGo.Controllers
         public ActionResult All(int idDm, int? page)
         {
             var dbTapHoa = new WebBanTapHoaEntities();
-            const int pageSize = 3;
+            const int pageSize = 9;
             int pageNum = page ?? 1;
             var id = int.Parse(Session["AllPro"].ToString());
             if (id == 1)
@@ -47,7 +47,7 @@ namespace ShopTrongGo.Controllers
         public ActionResult All(int idDm, int? page, FormCollection form)
         {
             var dbTapHoa = new WebBanTapHoaEntities();
-            const int pageSize = 3;
+            const int pageSize = 9;
             int pageNum = page ?? 1;
             Session["AllPro"] = form["dropdown"];
             var id = int.Parse(Session["AllPro"].ToString());
@@ -105,7 +105,7 @@ namespace ShopTrongGo.Controllers
             Session["search"] = form["seach"];
             string keyword = form["seach"];
             var dbEntities = new WebBanTapHoaEntities();
-            const int pageSize = 3;
+            const int pageSize = 9;
             int pageNum = page ?? 1;
             var listProduct =
                 dbEntities.SanPhams.Where(
@@ -118,7 +118,7 @@ namespace ShopTrongGo.Controllers
         {
             string keyword = Session["search"].ToString();
             var dbEntities = new WebBanTapHoaEntities();
-            const int pageSize = 3;
+            const int pageSize = 9;
             int pageNum = page ?? 1;
             var listProduct =
                 dbEntities.SanPhams.Where(

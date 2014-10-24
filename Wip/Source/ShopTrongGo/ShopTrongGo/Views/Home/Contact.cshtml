@@ -1,0 +1,45 @@
+﻿@model ShopTrongGo.Models.Contact
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="top">
+    <div class="left"></div>
+    <div class="center">
+        <h1>Liên hệ với chúng tôi</h1>
+    </div>
+</div>
+<div class="middle" style="padding:0px;">
+    <div class="list">
+        @using (Html.BeginForm("Contact", "Home", FormMethod.Post))
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
+            <table>
+                <tr>
+                    <td>Tên của bạn:</td>
+                    <td>@Html.TextBox("UserName")</td>
+                </tr>
+                <tr>
+                    <td>Số điện thoại:</td>
+                    <td>@Html.TextBox("Phone")</td>
+                </tr>
+                <tr>
+                    <td>Email:</td>
+                    <td>@Html.TextBox("Email")</td>
+                </tr>
+                <tr>
+                    <td>Chủ đề:</td>
+                    <td>@Html.TextBox("Subject")</td>
+                </tr>
+                <tr>
+                    <td>Nội dung:</td>
+                    <td>@Html.TextArea("Message")</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><input type="submit" value="Gửi" /></td>
+                </tr>
+            </table>
+        }
+    </div>
+</div>

@@ -5,9 +5,8 @@
     <ul>
         <li>
             @Html.ActionLink("Trang chủ", "Index", "Home", null, null)
-
         </li>
-        <li><a href="#">Giới thiệu</a> </li>
+        <li>@Html.ActionLink("Giới thiệu","Information","Home",null,null) </li>
         <li>@Html.ActionLink("Tin tức","AllNews","News",null,null)</li>
         <li>
             <a href="#">Sản phẩm</a>
@@ -39,6 +38,6 @@
             </ul>
         </li>
         <li>@Html.ActionLink("Dịch vụ","AllServices","News",null,null) </li>
-        <li><a href="#">Liên hệ</a></li>
+        <li>@Html.ActionLink("Liên hệ", "Contact", "Home", null, null) </li>
     </ul>
 </div>

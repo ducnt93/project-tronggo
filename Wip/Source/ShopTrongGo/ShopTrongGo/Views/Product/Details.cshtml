@@ -10,6 +10,7 @@
 <link href="~/Content/Detail/flexslider.css" rel="stylesheet" />
 <link href="~/Content/Detail/font-awesome.css" rel="stylesheet" />
 <link href="~/Content/Detail/font-awesome.min.css" rel="stylesheet" />
+
 <div class="top">
     <div class="left"></div>
     <div class="center">
@@ -82,8 +83,6 @@
                         @Model.MieuTaChiTiet
                     </p>
                 </div>
-
-
             </div>
             <div class="product_detail">
                 <b>CÁC SẢN PHẨM KHÁC <br /></b>
@@ -97,11 +96,22 @@
                                 <div class="sanphamkhac">
                                     <div class="NewProduct">
                                         <a href="@sanPham.SanPhamID/san-pham-@sanPham.TenKhongDau"><img width="160" height="160" src="~/image/cache/data/@sanPham.AnhDaiDien" title="@sanPham.MieuTaNgan" alt="@sanPham.TenSp" /></a><br />
-                                        <a href="@sanPham.SanPhamID/san-pham-@sanPham.TenKhongDau">@sanPham.TenSp</a> <br />
+                                        @Html.ActionLink(@sanPham.TenSp, "Details", "Product", new
+                                        {
+                                            id = @sanPham.SanPhamID,
+                                            @sanPham.TenKhongDau
+
+                                        }, null)
+                                        <br />
                                     </div>
                                     <div class="giasp">Giá bán: @sanPham.Gia.ToString("N0") <b>VNĐ</b></div>
                                     <div class="dathang">
-                                        <a href="@sanPham.SanPhamID/san-pham-@sanPham.TenKhongDau">Chi tiết</a>
+                                        @Html.ActionLink("Chi tiết", "Details", "Product", new
+                                        {
+                                            id = @sanPham.SanPhamID,
+                                            @sanPham.TenKhongDau
+
+                                        }, null)
                                         <input id="Button1" type="button" value="Đặt hàng" class="btnCart" onclick="AddToCart('@sanPham.SanPhamID');" />
                                     </div>
                                 </div>
@@ -109,8 +119,9 @@
                         }
                     }
                 </div>
-                @Html.PagedListPager(list, page => Url.Action("Details", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+                @Html.PagedListPager(list, page => Url.Action("Details", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
             </div>
+
         </div>
 
     </div>

@@ -24,6 +24,9 @@
                 </select>
                 <input type="submit" value="Sắp xếp" />
             </div>
+            <script type="text/javascript">
+                $('#dropdown').val('@Session["Home"]');
+            </script>
         }
         @if (Model != null)
         {
@@ -42,7 +45,7 @@
                 </div>
             }
         }
-        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), PagedListRenderOptions.ClassicPlusFirstAndLast)
+        @Html.PagedListPager(Model, page => Url.Action("Index", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
     </div>
     <script type="text/javascript">
         function SapXep(id) {

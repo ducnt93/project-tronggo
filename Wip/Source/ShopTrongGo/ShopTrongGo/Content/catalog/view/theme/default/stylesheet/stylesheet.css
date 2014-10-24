@@ -996,3 +996,6 @@ a.button:hover {
 .tableSendEmail {
     width: 320px; margin: auto; margin-top: 10px;
 }
+.quantity {
+    width: 45px;
+}
