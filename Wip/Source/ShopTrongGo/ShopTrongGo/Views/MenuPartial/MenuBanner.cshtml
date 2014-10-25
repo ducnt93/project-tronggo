@@ -9,7 +9,7 @@
         <li>@Html.ActionLink("Giới thiệu","Information","Home",null,null) </li>
         <li>@Html.ActionLink("Tin tức","AllNews","News",null,null)</li>
         <li>
-            <a href="#">Sản phẩm</a>
+            <a href="#" style="padding-right: 10px;">Sản phẩm</a>
             <ul>
                 @if (Model != null)
                 {
@@ -20,22 +20,24 @@
                             <a>@danhMuc.TenDanhMuc</a>
                             <ul>
                                 @{
-                        ViewBag.ListLoaiSp = dbEntities.LoaiSanPhams.Where(sp => !sp.TrangThaiXoa & sp.DanhMucID == danhMuc.DanhMucID).ToList();
-                        var list = ((List<LoaiSanPham>)ViewBag.ListLoaiSp);
-                        if (list != null)
-                        {
-                            foreach (var loai in list)
-                            {
-                                <li>@Html.ActionLink(@loai.TenLoaiSp, "All", "Product", new { idDm= @loai.LoaiSpID,@loai.TenKhongDau }, null)</li>
-                            }
-                        }
+                                    ViewBag.ListLoaiSp = dbEntities.LoaiSanPhams.Where(sp => !sp.TrangThaiXoa & sp.DanhMucID == danhMuc.DanhMucID).ToList();
+                                    var list = ((List<LoaiSanPham>)ViewBag.ListLoaiSp);
+                                    if (list != null)
+                                    {
+                                        foreach (var loai in list)
+                                        {
+                                            <li>@Html.ActionLink(@loai.TenLoaiSp, "All", "Product", new { idDm= @loai.LoaiSpID,@loai.TenKhongDau }, null)</li>
+                                        }
+                                    }
                                 }
                             </ul>
+                            <i class="fa fa-angle-double-right" style="float: right; margin-right: 10px; font-size: 15px; line-height: 46px;"></i>
                         </li>
                     }
                 }
 
             </ul>
+            <i class="fa fa-angle-double-down" style="margin-right: 10px; font-size: 15px; line-height: 46px;"></i>
         </li>
         <li>@Html.ActionLink("Dịch vụ","AllServices","News",null,null) </li>
         <li>@Html.ActionLink("Liên hệ", "Contact", "Home", null, null) </li>
