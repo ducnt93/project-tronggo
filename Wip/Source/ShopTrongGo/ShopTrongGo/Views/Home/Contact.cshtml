@@ -15,31 +15,34 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary(true)
-            <table>
-                <tr>
-                    <td>Tên của bạn:</td>
-                    <td>@Html.TextBox("UserName")</td>
-                </tr>
-                <tr>
-                    <td>Số điện thoại:</td>
-                    <td>@Html.TextBox("Phone")</td>
-                </tr>
-                <tr>
-                    <td>Email:</td>
-                    <td>@Html.TextBox("Email")</td>
-                </tr>
-                <tr>
-                    <td>Chủ đề:</td>
-                    <td>@Html.TextBox("Subject")</td>
-                </tr>
-                <tr>
-                    <td>Nội dung:</td>
-                    <td>@Html.TextArea("Message")</td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" value="Gửi" /></td>
-                </tr>
-            </table>
+            <div class="sendEmail">
+                <table class="tableSendEmail">
+                    <tr>
+                        <td>Tên của bạn:</td>
+                        <td>@Html.TextBox("UserName")</td>
+                    </tr>
+                    <tr>
+                        <td>Số điện thoại:</td>
+                        <td>@Html.TextBox("Phone")</td>
+                    </tr>
+                    <tr>
+                        <td>Email:</td>
+                        <td>@Html.TextBox("Email")</td>
+                    </tr>
+                    <tr>
+                        <td>Chủ đề:</td>
+                        <td>@Html.TextBox("Subject")</td>
+                    </tr>
+                    <tr>
+                        <td>Nội dung:</td>
+                        <td>@Html.TextArea("Message")</td>
+                    </tr>
+                    <tr>
+                        <td colspan="2"><input type="submit" value="Gửi" style="width: 100px; height: 30px; cursor: pointer; margin-top: 10px;" /></td>
+                    </tr>
+                </table>
+            </div>
+           
         }
     </div>
 </div>

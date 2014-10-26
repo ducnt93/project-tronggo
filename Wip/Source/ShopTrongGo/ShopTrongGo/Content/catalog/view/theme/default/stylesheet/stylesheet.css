@@ -167,6 +167,10 @@ form>.middle>.list>table>tbody>tr>td>input {
     width: 180px;
     height: 20px;
 }
+ .middle>.list>form>div>table>tbody>tr>td>textarea {
+      width: 172px;
+    height: 40px;
+ }
 
 input, textarea, select {
     margin: 0px 0px;
