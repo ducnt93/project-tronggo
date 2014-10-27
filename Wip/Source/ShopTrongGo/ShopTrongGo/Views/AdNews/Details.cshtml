@@ -1,0 +1,86 @@
+﻿@model ShopTrongGo.Models.TinTuc
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>TinTuc</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DanhMucTin.TenDMTin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DanhMucTin.TenDMTin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenTin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenTin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MieuTaNgan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaNgan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MieuTaChiTiet)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaChiTiet)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThai)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThai)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayXoaTin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoaTin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayCapNhat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayCapNhat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NguoiDang)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NguoiDang)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AnhDaiDien)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AnhDaiDien)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenKhongDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenKhongDau)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

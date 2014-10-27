@@ -14,6 +14,11 @@ namespace ShopTrongGo
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
             routes.MapRoute(
+    name: "Default",
+    url: "{controller}/{action}/{id}",
+    defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+);
+            routes.MapRoute(
                "RouteIndex",
                "trang-chu",
                new
@@ -144,7 +149,7 @@ namespace ShopTrongGo
         );
             routes.MapRoute(
                 "RoutSearchProducts",
-                "ket-qua-tim-kien-san-pham-{TenKhongDau}",
+                "ket-qua-tim-kiem",
                 new
                 {
                     controller = "Product",
@@ -218,10 +223,15 @@ namespace ShopTrongGo
           }
       );
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+               name: "Admin",
+               url: "quan-ly-loai-tai-khoan/danh-sach",
+               defaults:
+               new
+               {
+                   controller = "AdTypeOfAcc",
+                   action = "Index"
+               }
+           );
         }
     }
 }

@@ -1,0 +1,37 @@
+﻿@model ShopTrongGo.Models.LoaiTaiKhoan
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>LoaiTaiKhoan</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenLoai)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenLoai)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThaiXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.LoaiTaiKhoanID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

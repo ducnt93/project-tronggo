@@ -1,0 +1,83 @@
+﻿@model ShopTrongGo.Models.TaiKhoan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>TaiKhoan</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.LoaiTaiKhoan.TenLoai)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.LoaiTaiKhoan.TenLoai)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenNguoiDung)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenNguoiDung)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Email)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Email)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenDangNhap)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenDangNhap)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MatKhau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MatKhau)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Phone)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Phone)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.DiaChi)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DiaChi)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThaiXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

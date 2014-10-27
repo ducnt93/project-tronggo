@@ -28,5 +28,6 @@ namespace ShopTrongGo.Models
     
         public virtual NhaCungCap NhaCungCap { get; set; }
         public virtual ICollection<LoaiSanPham> LoaiSanPhams { get; set; }
+        public virtual NhaCungCap NhaCungCap1 { get; set; }
     }
 }

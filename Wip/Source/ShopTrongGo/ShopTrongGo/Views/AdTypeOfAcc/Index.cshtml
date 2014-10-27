@@ -1,0 +1,46 @@
+﻿@model IEnumerable<ShopTrongGo.Models.LoaiTaiKhoan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenLoai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThaiXoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayXoa)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLoai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThaiXoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayXoa)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.LoaiTaiKhoanID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.LoaiTaiKhoanID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.LoaiTaiKhoanID })
+        </td>
+    </tr>
+}
+
+</table>

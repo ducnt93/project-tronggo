@@ -215,15 +215,15 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_DanhMuc_NhaCc">
+        <Association Name="FK_DanhMuc_NhaCungCap">
           <End Role="NhaCungCap" Type="Self.NhaCungCap" Multiplicity="1" />
-          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="0..1" />
+          <End Role="DanhMuc" Type="Self.DanhMuc" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="NhaCungCap">
               <PropertyRef Name="NhaCungCapID" />
             </Principal>
             <Dependent Role="DanhMuc">
-              <PropertyRef Name="DanhMucID" />
+              <PropertyRef Name="NhaCungCapID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -323,7 +323,7 @@
             <End Role="SanPham" EntitySet="SanPham" />
             <End Role="ChiTietHoaDon" EntitySet="ChiTietHoaDon" />
           </AssociationSet>
-          <AssociationSet Name="FK_DanhMuc_NhaCc" Association="Self.FK_DanhMuc_NhaCc">
+          <AssociationSet Name="FK_DanhMuc_NhaCungCap" Association="Self.FK_DanhMuc_NhaCungCap">
             <End Role="NhaCungCap" EntitySet="NhaCungCap" />
             <End Role="DanhMuc" EntitySet="DanhMuc" />
           </AssociationSet>
@@ -408,6 +408,10 @@
             <End Role="DanhMucTin" EntitySet="DanhMucTins" />
             <End Role="TinTuc" EntitySet="TinTucs" />
           </AssociationSet>
+          <AssociationSet Name="FK_DanhMuc_NhaCungCap" Association="WebTapHoaModel.FK_DanhMuc_NhaCungCap">
+            <End Role="NhaCungCap" EntitySet="NhaCungCaps" />
+            <End Role="DanhMuc" EntitySet="DanhMucs" />
+          </AssociationSet>
         </EntityContainer>
         <EntityType Name="Banner">
           <Key>
@@ -445,6 +449,7 @@
           <NavigationProperty Name="NhaCungCap" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCc" FromRole="DanhMuc" ToRole="NhaCungCap" />
           <NavigationProperty Name="LoaiSanPhams" Relationship="WebTapHoaModel.FK_LoaiSp_DanhMuc" FromRole="DanhMuc" ToRole="LoaiSanPham" />
           <Property Name="TenKhongDau" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="NhaCungCap1" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCungCap" FromRole="DanhMuc" ToRole="NhaCungCap" />
         </EntityType>
         <EntityType Name="DanhMucAnh">
           <Key>
@@ -532,6 +537,7 @@
           <Property Name="TrangThaiXoa" Type="Boolean" Nullable="false" />
           <Property Name="NgayXoa" Type="DateTime" Precision="0" />
           <NavigationProperty Name="DanhMuc" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCc" FromRole="NhaCungCap" ToRole="DanhMuc" />
+          <NavigationProperty Name="DanhMucs" Relationship="WebTapHoaModel.FK_DanhMuc_NhaCungCap" FromRole="NhaCungCap" ToRole="DanhMuc" />
         </EntityType>
         <EntityType Name="SanPham">
           <Key>
@@ -718,6 +724,18 @@
             </Principal>
             <Dependent Role="TinTuc">
               <PropertyRef Name="LoaiDMTin" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_DanhMuc_NhaCungCap">
+          <End Type="WebTapHoaModel.NhaCungCap" Role="NhaCungCap" Multiplicity="1" />
+          <End Type="WebTapHoaModel.DanhMuc" Role="DanhMuc" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="NhaCungCap">
+              <PropertyRef Name="NhaCungCapID" />
+            </Principal>
+            <Dependent Role="DanhMuc">
+              <PropertyRef Name="NhaCungCapID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>

@@ -14,6 +14,11 @@ namespace ShopTrongGo.Models
     
     public partial class NhaCungCap
     {
+        public NhaCungCap()
+        {
+            this.DanhMucs = new HashSet<DanhMuc>();
+        }
+    
         public int NhaCungCapID { get; set; }
         public string TenNcc { get; set; }
         public string Phone { get; set; }
@@ -22,5 +27,6 @@ namespace ShopTrongGo.Models
         public Nullable<System.DateTime> NgayXoa { get; set; }
     
         public virtual DanhMuc DanhMuc { get; set; }
+        public virtual ICollection<DanhMuc> DanhMucs { get; set; }
     }
 }

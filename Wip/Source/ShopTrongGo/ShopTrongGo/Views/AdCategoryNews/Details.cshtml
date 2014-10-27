@@ -1,0 +1,44 @@
+﻿@model ShopTrongGo.Models.DanhMucTin
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DanhMucTin</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenDMTin)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenDMTin)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MoTa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MoTa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThai)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThai)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenKhongDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenKhongDau)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
