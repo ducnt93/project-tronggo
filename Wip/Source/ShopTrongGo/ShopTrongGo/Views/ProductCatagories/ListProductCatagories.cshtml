@@ -1,0 +1,45 @@
+﻿@model IEnumerable<ShopTrongGo.Models.LoaiSanPham>
+
+@{
+    ViewBag.Title = "Thêm mới một loại sản phẩm";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Danh sách các loại sản phẩm</h2>
+
+<p>
+    @Html.ActionLink("Thêm mới", "Create")
+</p>
+<table>
+    <tr style="background: #00008b; color: white; height: 30px;">
+        <th>Mã</th>
+        <th>Tên Loại</th>
+        <th>Xóa</th>
+        <th>Danh mục</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiSpID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenLoaiSp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThaiXoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+        </td>
+        <td style="width: 15%;">
+            @Html.ActionLink("Sửa", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Chi tiết", "Details", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Xóa", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>
