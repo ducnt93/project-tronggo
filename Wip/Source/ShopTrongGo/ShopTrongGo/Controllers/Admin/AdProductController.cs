@@ -14,7 +14,7 @@ namespace ShopTrongGo.Controllers.Admin
 {
     public class AdProductController : Controller
     {
-  
+        Func func = new Func();
 
         #region My Account
         public ActionResult InformationAccount()
@@ -97,7 +97,7 @@ namespace ShopTrongGo.Controllers.Admin
                 sanpham.LuotBan = 0;
                 sanpham.TrangThaiXoa = false;
                 sanpham.NgayXoa = null;
-                sanpham.TenKhongDau = ConvertToUnSign3(sanpham.TenSp);
+                sanpham.TenKhongDau = func.ConvertToUnSign3(sanpham.TenSp);
                 int s = sanpham.LoaiSpID;
                 db.SanPhams.Add(sanpham);
                 db.SaveChanges();
@@ -138,7 +138,7 @@ namespace ShopTrongGo.Controllers.Admin
                         sanpham.NgayXoa = DateTime.Now.Date;
                     }
                     else sanpham.NgayXoa = null;
-
+                    sanpham.TenKhongDau = func.ConvertToUnSign3(sanpham.TenSp);
                     db.Entry(sanpham).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ListProduct", "AdProduct");
@@ -189,14 +189,7 @@ namespace ShopTrongGo.Controllers.Admin
             db.SaveChanges();
             return RedirectToAction("Index","AdminLogin");
         }
-        #endregion
+        #endregion        
 
-        //Hàm chuyển tiếng Việt có dấu sang không có dấu
-        public static string ConvertToUnSign3(string s)
-        {
-            Regex regex = new Regex("\\p{IsCombiningDiacriticalMarks}+");
-            string temp = s.Normalize(NormalizationForm.FormD);
-            return regex.Replace(temp, String.Empty).Replace('\u0111', 'd').Replace('\u0110', 'D');
-        }  
     }
 }
