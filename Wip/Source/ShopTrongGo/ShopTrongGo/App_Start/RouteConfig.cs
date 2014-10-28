@@ -38,6 +38,66 @@ namespace ShopTrongGo
                 }
             );
             routes.MapRoute(
+                "RouteAdminLogin",
+                "AdminLogin/Login",
+                new
+                {
+                    controller = "AdminLogin",
+                    action = "Login",
+                    id = UrlParameter.Optional
+                }
+            );
+            routes.MapRoute(
+               "RouteListProduct",
+               "AdProduct/ListProduct",
+               new
+               {
+                   controller = "AdProduct",
+                   action = "ListProduct",
+                   id = UrlParameter.Optional
+               }
+           );
+            routes.MapRoute(
+               "RouteListProductCatalogies",
+               "ProductCatagories/ListProductCatagories",
+               new
+               {
+                   controller = "ProductCatagories",
+                   action = "ListProductCatagories",
+                   id = UrlParameter.Optional
+               }
+           );
+            routes.MapRoute(
+              "RouteAddProductCatalogies",
+              "ProductCatagories/Create",
+              new
+              {
+                  controller = "ProductCatagories",
+                  action = "Create",
+                  id = UrlParameter.Optional
+              }
+          );
+            routes.MapRoute(
+               "RouteListProvider",
+               "Provider/ListProvider",
+               new
+               {
+                   controller = "Provider",
+                   action = "ListProvider",
+                   id = UrlParameter.Optional
+               }
+            );
+            routes.MapRoute(
+              "RouteAddProduct",
+              "AdProduct/AddProduct",
+              new
+              {
+                  controller = "AdProduct",
+                  action = "AddProduct",
+                  id = UrlParameter.Optional
+              }
+          );
+            routes.MapRoute(
                "RouteRegisterAccount",
                "tai-khoan/dang-ky",
                new
