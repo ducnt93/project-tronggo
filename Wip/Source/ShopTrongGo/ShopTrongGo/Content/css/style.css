@@ -1,0 +1,106 @@
+﻿/* Styles for basic forms
+-----------------------------------------------------------*/
+fieldset {
+    border: 1px solid #000080;
+    border-radius: 10px;
+    padding: 0 1.4em 1.4em 1.4em;
+    margin: 0 0 1.5em 0;
+    font-size: 20px;
+}
+
+legend {
+    font-size: 28px;
+    border: 1px solid #000080;
+    border-radius: 5px;
+}
+
+textarea {
+    min-height: 75px;
+}
+.editor{ height: auto;width: 100%;}
+.editor .editor-label {
+    float: left;
+    width: 30%;
+    margin: 10px 0 0 0;
+}
+
+.editor .editor-field {
+    float: left;
+    margin: 10px 0 0 0;
+    width: 70%;
+    height: auto;
+}
+.editor .editor-field .txt {
+    float: left;
+    width: 60%;
+    height: auto;
+}
+
+.editor .editor-field .drl {
+    float: left;
+    width: 60%;
+}
+.display {
+    width: 100%;
+}
+.display  .display-label {
+    float: left;
+    width: 25%;
+    padding-left: 5px;
+    margin: 10px 0px 0px 0px;
+}
+
+.display  .display-field {
+    float: left;
+    width: 75%;
+    color: #0000cd;
+    margin: 10px 0px 0px 0px;
+}
+
+
+
+
+/* Styles for validation helpers
+-----------------------------------------------------------*/
+.field-validation-error {
+    color: #f00;
+}
+
+.field-validation-valid {
+    display: none;
+}
+
+.input-validation-error {
+    border: 1px solid #f00;
+    background-color: #fee;
+}
+
+.validation-summary-errors {
+    font-weight: bold;
+    color: #f00;
+}
+
+.validation-summary-valid {
+    display: none;
+}
+
+table{width: 100%;height: auto;border-radius: 5px;}
+table tr{border: 1px solid #0000cd; border-radius: 5px;  height: 60px;width: 100%;overflow: hidden;}
+.box {
+    color: #87cefa;
+    width: 100%;
+    height: auto;
+    margin-bottom: 5px;
+}
+
+.box .left {
+    border: 1px black solid;
+    border-radius: 5px;
+    background: #f0fff0;
+    float: left;
+}
+
+.box right {
+    border-radius: 5px;
+    float: right;
+}
