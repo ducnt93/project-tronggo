@@ -7,7 +7,7 @@ using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
 {
-    public class ProviderController : Controller
+    public class AdProviderController : Controller
     {
         //
         // GET: /NhaCungCap/

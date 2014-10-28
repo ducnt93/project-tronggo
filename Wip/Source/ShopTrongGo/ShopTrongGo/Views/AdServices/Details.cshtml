@@ -1,0 +1,79 @@
+﻿@model ShopTrongGo.Models.DichVu
+
+@{
+    ViewBag.Title = "Xóa dịch vụ";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DichVu</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayDang)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayDang)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NguoiDang)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NguoiDang)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThaiXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenDichVu)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenDichVu)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MieuTaNgan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaNgan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MieuTaChiTiet)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaChiTiet)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.AnhDaiDien)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AnhDaiDien)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenKhongDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenKhongDau)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DichVuID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

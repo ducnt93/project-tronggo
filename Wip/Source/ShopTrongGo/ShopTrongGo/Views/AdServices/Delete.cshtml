@@ -1,0 +1,83 @@
+﻿@model ShopTrongGo.Models.DichVu
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Bạn chắc chắn muốn xóa bản tin dịch vụ này?</h3>
+<fieldset>
+    <legend>Dịch vụ</legend>
+
+    <div class="display-label">
+         Ngày đăng:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayDang)
+    </div>
+
+    <div class="display-label">
+        Người đăng:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NguoiDang)
+    </div>
+
+    <div class="display-label">
+        Trạng thái xóa:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+         Ngày xóa:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+
+    <div class="display-label">
+         Tên dịch vụ:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenDichVu)
+    </div>
+
+    <div class="display-label">
+         Miêu tả ngắn
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaNgan)
+    </div>
+
+    <div class="display-label">
+         Miêu tả chi tiết:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaChiTiet)
+    </div>
+
+    <div class="display-label">
+         Anh đại điện:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.AnhDaiDien)
+    </div>
+
+    <div class="display-label">
+        Tên không dấu:
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenKhongDau)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    <p>
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Quay lại danh sách", "Index")
+    </p>
+}

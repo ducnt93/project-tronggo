@@ -1,31 +1,31 @@
 ﻿@model ShopTrongGo.Models.DanhMucTin
 
 @{
-    ViewBag.Title = "Edit";
+    ViewBag.Title = "Sửa thông tin danh mục";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Sửa thông tin danh mục</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>DanhMucTin</legend>
+        <legend>Danh mục tin</legend>
 
         @Html.HiddenFor(model => model.Id)
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TenDMTin)
+            Tên danh mục:
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.TenDMTin)
-            @Html.ValidationMessageFor(model => model.TenDMTin)
+            @Html.ValidationMessageFor(model => model.TenDMTin,"Tên này không được bỏ trống")
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.MoTa)
+            Mô tả:
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.MoTa)
@@ -33,7 +33,7 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TrangThai)
+            Trạng thái:
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.TrangThai)
@@ -41,21 +41,21 @@
         </div>
 
         <div class="editor-label">
-            @Html.LabelFor(model => model.TenKhongDau)
+            Tên không dấu:
         </div>
         <div class="editor-field">
             @Html.EditorFor(model => model.TenKhongDau)
-            @Html.ValidationMessageFor(model => model.TenKhongDau)
+            @Html.ValidationMessageFor(model => model.TenKhongDau,"Tên này không được trống")
         </div>
 
         <p>
-            <input type="submit" value="Save" />
+            <input type="submit" value="Lưu lại" />
         </p>
     </fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Quay lại trang danh sách", "Index")
 </div>
 
 @section Scripts {

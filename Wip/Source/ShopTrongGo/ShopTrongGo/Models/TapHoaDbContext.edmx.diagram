@@ -29,6 +29,8 @@
         <EntityTypeShape EntityType="WebTapHoaModel.DanhMucTin" Width="1.5" PointX="12.375" PointY="5.5" />
         <EntityTypeShape EntityType="WebTapHoaModel.TinTuc" Width="1.5" PointX="14.625" PointY="5" />
         <AssociationConnector Association="WebTapHoaModel.FK_TinTuc_DanhMucTin" />
+        <AssociationConnector Association="WebTapHoaModel.FK_DanhMuc_NhaCungCap" />
+        <EntityTypeShape EntityType="WebTapHoaModel.sysdiagram" Width="1.5" PointX="5.375" PointY="11.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

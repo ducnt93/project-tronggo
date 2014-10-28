@@ -24,7 +24,7 @@ namespace ShopTrongGo.Controllers
                 ViewBag.Mes = "Bạn có chắc chắn muốn mua nhưng sản phẩm này";
                 var taikhoan =
                     dbBanTapHoaEntities.TaiKhoans.SingleOrDefault(
-                        tk => tk.TrangThaiXoa == false & tk.TenDangNhap == userName);
+                        tk => tk.TrangThaiXoa == false & tk.TenDangNhap == userName & tk.LoaiTaiKhoanID == 2);
                 return View(taikhoan);
             }
 

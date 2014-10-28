@@ -1,7 +1,7 @@
 ﻿@model ShopTrongGo.Models.DanhMucTin
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa danh mục";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -12,28 +12,28 @@
     <legend>DanhMucTin</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenDMTin)
+         Tên danh mục:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.TenDMTin)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.MoTa)
+         Mô tả:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.MoTa)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThai)
+         Trạng thái:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.TrangThai)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenKhongDau)
+         Tên không dấu:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.TenKhongDau)
@@ -42,7 +42,7 @@
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
+        <input type="submit" value="Xóa danh mục này" /> |
+        @Html.ActionLink("Quay lại trang danh sách", "Index")
     </p>
 }

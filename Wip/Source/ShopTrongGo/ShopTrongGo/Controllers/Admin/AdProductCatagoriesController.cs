@@ -9,7 +9,7 @@ using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
 {
-    public class ProductCatagoriesController : Controller
+    public class AdProductCatagoriesController : Controller
     {
         Func func = new Func();
         private WebBanTapHoaEntities db = new WebBanTapHoaEntities();

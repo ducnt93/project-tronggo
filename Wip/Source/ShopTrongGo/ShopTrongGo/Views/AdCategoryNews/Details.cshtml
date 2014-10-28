@@ -1,7 +1,7 @@
 ﻿@model ShopTrongGo.Models.DanhMucTin
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -11,34 +11,34 @@
     <legend>DanhMucTin</legend>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenDMTin)
+         Tên danh mục tin:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.TenDMTin)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.MoTa)
+         Mô tả:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.MoTa)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThai)
+        Trạng thái:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.TrangThai)
     </div>
 
     <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenKhongDau)
+         Tên không dấu:
     </div>
     <div class="display-field">
         @Html.DisplayFor(model => model.TenKhongDau)
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Quay lại trang danh sách", "Index")
 </p>

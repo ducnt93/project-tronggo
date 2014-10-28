@@ -1,0 +1,76 @@
+﻿@model IEnumerable<ShopTrongGo.Models.DoiTac>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenDoiTac)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayCapNhat)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NoiDung)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MieuTaNgan)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NguoiDang)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TrangThaiXoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NgayXoa)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TenKhongDau)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenDoiTac)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayCapNhat)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NoiDung)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MieuTaNgan)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NguoiDang)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TrangThaiXoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.NgayXoa)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenKhongDau)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DoiTacID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DoiTacID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DoiTacID })
+        </td>
+    </tr>
+}
+
+</table>

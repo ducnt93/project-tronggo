@@ -1,5 +1,4 @@
 ﻿<!DOCTYPE html>
-
 <html>
 <head>
     <meta charset="utf-8" />
@@ -15,6 +14,7 @@
     <link href="~/Content/css/price-range.css" rel="stylesheet" />
     <link href="~/Content/css/responsive.css" rel="stylesheet" />
     <link href="~/Content/css/style.css" rel="stylesheet" />
+    @*<link href="~/Content/jquery-ui.min.css" rel="stylesheet" />*@
     <!--/head-->
 </head>
 <body>
@@ -27,7 +27,7 @@
                     <div class="col-sm-6">
                         <div class="contactinfo">
                             <ul class="nav nav-pills">
-                                <li>@Html.ActionLink(Session["LogedFullName"].ToString(),"InformationAccount","AdProduct")</li>
+                                <li>@Html.ActionLink(Session["LogedFullName"].ToString(), "InformationAccount", "AdProduct")</li>
                             </ul>
                         </div>
                     </div>
@@ -36,7 +36,7 @@
                             <ul class="nav navbar-nav">
                                 <li>@Html.ActionLink("Đổi mật khẩu", "ChangePassword", "AdProduct")</li>
                                 <li>@Html.ActionLink("Thông tin tài khoản", "InformationAccount", "AdProduct")</li>
-                                <li>@Html.ActionLink("Đăng xuất", "Logout", "AdProduct")</li>
+                                <li>@Html.ActionLink("Đăng xuất", "Logout", "AdminLogin")</li>
                             </ul>
                         </div>
                     </div>
@@ -64,10 +64,10 @@
                                     <div id="sportswear" class="panel-collapse collapse">
                                         <div class="panel-body">
                                             <ul>
-                                                <li>@Html.ActionLink("Thêm sản phẩm","AddProduct","AdProduct")</li>
+                                                <li>@Html.ActionLink("Thêm sản phẩm", "AddProduct", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Danh sách sản phẩm", "ListProduct", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Danh sách đặt hàng", "Index", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Đối tác cung cấp","Index","AdProduct")</li>
+                                                <li>@Html.ActionLink("Đối tác cung cấp", "Index", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Loại sản phẩm", "Index", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Nhà cung cấp", "Index", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Thống kê", "Index", "AdProduct")</li>
@@ -90,6 +90,27 @@
                                                 <li>@Html.ActionLink("Thêm khách hàng mới", "Index", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Danh sách khách hàng", "Index", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Thống kê", "Index", "AdProduct")</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading">
+                                        <h4 class="panel-title">
+                                            <a data-toggle="collapse" data-parent="#accordian" href="#mens2">
+                                                <span class="badge pull-right"></span>
+                                                Quản lý chung
+                                            </a>
+                                        </h4>
+                                    </div>
+                                    <div id="mens2" class="panel-collapse collapse">
+                                        <div class="panel-body">
+                                            <ul>
+                                                <li>@Html.ActionLink("Quản lý danh mục tin", "Index", "AdCategoryNews")</li>
+                                                <li>@Html.ActionLink("Quản lý tin tức", "Index", "AdNews")</li>
+                                                <li>@Html.ActionLink("Quản lý danh sách dịch vụ", "Index", "AdServices")</li>
+                                                <li>@Html.ActionLink("Quản lý danh sách đối tác", "Index", "AdPartners")</li>
+                                                <li>@Html.ActionLink("Quản lý thông tin công ty", "Index", "AdInforCompany")</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -138,6 +159,7 @@
         <script src="~/Scripts/js/jquery.scrollUp.min.js"></script>
         <script src="~/Scripts/js/main.js"></script>
         <script src="~/Scripts/js/price-range.js"></script>
+        @*<script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>*@
     </header>
 </body>
 </html>

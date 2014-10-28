@@ -1,0 +1,101 @@
+﻿@model ShopTrongGo.Models.DichVu
+
+@{
+    ViewBag.Title = "Sửa thông tin";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Dịch vụ</legend>
+
+        @Html.HiddenFor(model => model.DichVuID)
+
+        <div class="editor-label">
+            Ngày đăng:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NgayDang)
+            @Html.ValidationMessageFor(model => model.NgayDang, "Không được bỏ trống")
+        </div>
+
+        <div class="editor-label">
+            Người đăng:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.NguoiDang)
+            @Html.ValidationMessageFor(model => model.NguoiDang, "Người đăng tin không nên bỏ trống")
+        </div>
+
+        <div class="editor-label">
+            Trạng thái xóa:
+            (Tích chọn thì tin sẽ không được hiển thị)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TrangThaiXoa)
+            @Html.ValidationMessageFor(model => model.TrangThaiXoa)
+        </div>
+
+        <div class="editor-label">
+            Tên dịch vụ:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TenDichVu)
+            @Html.ValidationMessageFor(model => model.TenDichVu,
+            "Tên dịch vụ không được để trống")
+        </div>
+
+        <div class="editor-label">
+            Miêu tả ngắn:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.MieuTaNgan)
+            @Html.ValidationMessageFor(model => model.MieuTaNgan)
+        </div>
+
+        <div class="editor-label">
+            Miêu tả chi tiết:
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.MieuTaChiTiet, new { @id = "ckeContent" })
+            <script language="javascript" type="text/javascript">
+    CKEDITOR.replace("ckeContent");
+            </script>
+            @Html.ValidationMessageFor(model => model.MieuTaChiTiet)
+        </div>
+
+        <div class="editor-label">
+            Ảnh đại diện:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.AnhDaiDien)
+            @Html.ValidationMessageFor(model => model.AnhDaiDien)
+        </div>
+
+        <div class="editor-label">
+            Tên không dấu:
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.TenKhongDau)
+            @Html.ValidationMessageFor(model => model.TenKhongDau)
+        </div>
+
+        <p>
+            <input type="submit" value="Lưu lại" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Quay lại danh sách", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

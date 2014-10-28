@@ -31,6 +31,7 @@ namespace ShopTrongGo
             Session["UserName"] = "";
             Session["Home"] = 0;
             Session["AllPro"] = 0;
+            Session["LogedFullName"] = "Chào bạn!";
 
         }
 
@@ -41,7 +42,7 @@ namespace ShopTrongGo
             Session["UserName"] = "";
             Session["Home"] = 0;
             Session["AllPro"] = 0;
-
+            Session["LogedFullName"] = "Chào bạn!";
         }
     }
 }

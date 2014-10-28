@@ -1,0 +1,72 @@
+﻿@model ShopTrongGo.Models.DoiTac
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>DoiTac</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenDoiTac)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenDoiTac)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayCapNhat)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayCapNhat)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NoiDung)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NoiDung)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.MieuTaNgan)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.MieuTaNgan)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NguoiDang)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NguoiDang)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThaiXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TenKhongDau)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TenKhongDau)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.DoiTacID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
