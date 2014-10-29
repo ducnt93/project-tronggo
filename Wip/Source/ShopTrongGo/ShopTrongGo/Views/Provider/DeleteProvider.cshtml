@@ -1,0 +1,51 @@
+﻿@model ShopTrongGo.Models.NhaCungCap
+
+@{
+    ViewBag.Title = "DeleteProvider";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+
+<h2>Xóa nhà cung cấp</h2>
+
+<h3>Bạn thực sự muốn xóa bỏ nhà cung cấp này?</h3>
+
+<fieldset>
+    <legend>Thông tin chi tiết nhà cung cấp</legend>
+    <div class="display">
+        <div class="display-label">Nhà cung cấp</div>
+        <div class="display-field">@Html.DisplayFor(model=>model.TenNcc)</div>
+    </div>
+    <div class="display">
+        <div class="display-label">Dịa chỉ</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DiaChi)</div>
+    </div>
+    <div class="display">
+        <div class="display-label">Số điện thoại</div>
+        <div class="display-field">@Html.DisplayFor(model => model.Phone)</div>
+    </div>
+    <div class="display">
+        <div class="display-label">Danh mục</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DanhMuc.TenDanhMuc)</div>
+    </div>
+    <div class="display">
+        <div class="display-label">Trạng thái xóa</div>
+        <div class="display-field">@Html.DisplayFor(model => model.TrangThaiXoa)</div>
+    </div>
+    <div class="display">
+        <div class="display-label">Ngày xóa</div>
+        <div class="display-field">@Html.DisplayFor(model => model.NgayXoa)</div>
+    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="display">
+            <div class="display-label"></div>
+            <div class="display-field"><input type="submit" value="Xóa" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" /></div>
+        </div>
+    }
+</fieldset>
+<p>
+    @Html.ActionLink("Trở lại", "ListProvider")
+</p>
+
