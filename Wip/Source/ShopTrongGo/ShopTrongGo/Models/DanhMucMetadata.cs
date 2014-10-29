@@ -13,5 +13,7 @@ namespace ShopTrongGo.Models
     }
     public partial class DanhMucMetadata
     {
+        [Required (ErrorMessage = "Nhập tên danh mục")]
+        public string TenDanhMuc { get; set; }
     }
 }

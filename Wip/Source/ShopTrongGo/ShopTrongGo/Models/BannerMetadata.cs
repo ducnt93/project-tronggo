@@ -10,6 +10,11 @@ namespace ShopTrongGo.Models
     public partial class Banner { }
     public partial class BannerMetadata
     {
+        [Required(ErrorMessage = "Nhập thứ tự hiển thị")]
+        [Range(0,int.MaxValue,ErrorMessage = "Nhập 1 số")]
+        public int ThuTuShow { get; set; }
 
+        [Required(ErrorMessage = "Nhập mô tả")]
+        public string MoTa { get; set; }
     }
 }

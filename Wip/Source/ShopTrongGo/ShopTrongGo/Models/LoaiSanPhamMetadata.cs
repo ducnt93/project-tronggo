@@ -13,5 +13,8 @@ namespace ShopTrongGo.Models
     }
     public partial class LoaiSanPhamMetadata
     {
+        [Required(ErrorMessage = "Nhập tên loại sản phẩm")]
+        [DataType(DataType.Text)]
+        public string TenLoaiSp { get; set; }
     }
 }

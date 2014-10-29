@@ -13,5 +13,10 @@ namespace ShopTrongGo.Models
     }
     public partial class DanhMucTinMetadata
     {
+        [Required(ErrorMessage = "Nhập tên danh mục tin tức")]
+        public string TenDMTin { get; set; }
+
+        [Required(ErrorMessage = "Nhập mô tả danh mục tin tức")]
+        public string MoTa { get; set; }
     }
 }

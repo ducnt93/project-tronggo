@@ -13,5 +13,8 @@ namespace ShopTrongGo.Models
     }
     public partial class DanhMucAnhMetadata
     {
+        [Required(ErrorMessage = "Tải ảnh lên")]
+        [DataType(DataType.ImageUrl)]
+        public string TenAnh { get; set; }
     }
 }
