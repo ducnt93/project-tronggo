@@ -13,5 +13,8 @@ namespace ShopTrongGo.Models
     }
     public partial class LoaiTaiKhoanMetadata
     {
+        [Required(ErrorMessage = "Nhập tên loại tài khoản")]
+        [DataType(DataType.Text)]
+        public string TenLoai { get; set; }
     }
 }
