@@ -12,36 +12,13 @@
 </p>
 <table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.DanhMucTin.TenDMTin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenTin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MieuTaNgan)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.MieuTaChiTiet)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThai)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayXoaTin)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayCapNhat)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NguoiDang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AnhDaiDien)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenKhongDau)
-        </th>
+        <th>Danh mục tin</th>
+        <th>TIn bài</th>
+        <th>Miêu tả ngắn</th>
+        <th>Trạng thái</th>
+        <th>Ngày cập nhật</th>
+        <th>Người đăng bài</th>
+        <th>Ảnh đại diện</th>
         <th></th>
     </tr>
 
@@ -57,13 +34,7 @@
             @Html.DisplayFor(modelItem => item.MieuTaNgan)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MieuTaChiTiet)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayXoaTin)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.NgayCapNhat)
@@ -72,10 +43,7 @@
             @Html.DisplayFor(modelItem => item.NguoiDang)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.AnhDaiDien)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKhongDau)
+            <img src ="/image/cache/data/" @Html.DisplayFor(modelItem => item.AnhDaiDien) />
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

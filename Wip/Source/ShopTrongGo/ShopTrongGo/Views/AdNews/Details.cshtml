@@ -9,76 +9,49 @@
 
 <fieldset>
     <legend>TinTuc</legend>
+    <div class="display">
+        <div class=" display-label">Danh mục tin</div>
+        <div class="display-field">@Html.DisplayFor(model => model.DanhMucTin.TenDMTin)</div>
+    </div>  
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DanhMucTin.TenDMTin)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DanhMucTin.TenDMTin)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenTin)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenTin)
+    <div class="display">
+        <div class=" display-label">Tin bài</div>
+        <div class="display-field">@Html.DisplayFor(model => model.TenTin)</div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MieuTaNgan)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MieuTaNgan)
+    <div class="display">
+        <div class="display-label">Trạng thái</div>
+        <div class="display-field">@Html.DisplayFor(model => model.TrangThai) @Html.DisplayFor(model => model.NgayXoaTin)</div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MieuTaChiTiet)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MieuTaChiTiet)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThai)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThai)
+    <div class="display">
+        <div class="display-label">Ngày cập nhật</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayXoaTin)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayXoaTin)
+    <div class="display">
+        <div class="display-label">Người đăng</div>
+        <div class="display-field">@Html.DisplayFor(model => model.NguoiDang)</div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayCapNhat)
+    <div class="display">
+        <div class="display-label">Ảnh</div>
+        <div class="display-field"><img src ="/image/cache/data/@Html.DisplayFor(model => model.AnhDaiDien)"/></div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayCapNhat)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NguoiDang)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NguoiDang)
+    <div class="display">
+        <div class="display-label">Tên không dấu</div>
+        <div class="display-field">@Html.DisplayFor(model => model.TenKhongDau)</div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.AnhDaiDien)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AnhDaiDien)
+    <div class="display">
+        <div class="display-label">Miêu tả ngắn</div>
+        <div class="display-field">@Html.DisplayFor(model => model.MieuTaNgan)</div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenKhongDau)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenKhongDau)
-    </div>
+    <div class="display">Miêu tả chi tiết</div>
+    <div class="display">@Html.Raw(Model.MieuTaChiTiet)</div>
 </fieldset>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |

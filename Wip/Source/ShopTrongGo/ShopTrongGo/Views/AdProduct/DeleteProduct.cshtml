@@ -5,8 +5,6 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Xóa sản phẩm</h2>
-
 <h3>Bạn thực sự muốn xóa bỏ?</h3>
 <fieldset>
     <legend>Thông tin chi tiết sản phẩm</legend>
@@ -23,7 +21,7 @@
 
     <div class="display">
         <div class="display-label">Ảnh đại diện</div>
-        <div class="display-field">@Html.DisplayFor(model => model.AnhDaiDien)</div>
+        <div class="display-field"><img src = "/image/cache/data/@Html.DisplayFor(model => model.AnhDaiDien)" /></div>
     </div>
 
     <div class="display">
@@ -52,14 +50,14 @@
         <div class="display-field">@Html.Raw(Model.MieuTaChiTiet)</div>
     </div>
     <table style="border: 1px solid #00008b;">
-        <tr style="background: #00008b; color: white;">
+        <tr style="background: #00008b; color: white; height: 30px;">
             <th style="border-right: solid 1px white; text-align: center">Trạng thái xóa</th>
             <th style="border-right: solid 1px white; text-align: center">Ngày xóa</th>
             <th style="border-right: solid 1px white; text-align: center">Số lượng còn</th>
             <th style="border-right: solid 1px white; text-align: center">Lượt bán</th>
             <th style="text-align: center">Lượt xem</th>
         </tr>
-        <tr>
+        <tr style="height: 30px;">
             <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.TrangThaiXoa)</th>
             <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.NgayXoa)</th>
             <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.SoLuong)</th>
@@ -77,7 +75,7 @@
     }
 </fieldset>
 <p>
-    @Html.ActionLink("Back", "ListProduct")
+    @Html.ActionLink("Danh sách sản phẩm", "ListProduct")
 </p>
 
 

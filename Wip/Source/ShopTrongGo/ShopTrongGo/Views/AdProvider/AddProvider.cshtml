@@ -1,0 +1,45 @@
+﻿
+@model ShopTrongGo.Models.NhaCungCap
+@{
+    ViewBag.Title = "title";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+    <h2>Trang thêm mới sản phẩm</h2>
+    <fieldset>
+        <legend style="text-align: center;">Thêm sản phẩm</legend>
+        <div class="editor">
+            <div class="editor-label">Nhà cung cấp</div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.TenNcc, new { @class = "txt" })
+                @Html.ValidationMessageFor(model => model.TenNcc)
+            </div>
+        </div>
+        <div class="editor">
+            <div class="editor-label">Địa chỉ</div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.DiaChi, new { @class = "txt" })
+                @Html.ValidationMessageFor(model => model.DiaChi)
+            </div>
+        </div>
+        <div class="editor">
+            <div class="editor-label">Điện thoại</div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.Phone, new { @class = "txt" })
+                @Html.ValidationMessageFor(model => model.Phone)
+            </div>
+        </div>
+    <div class="editor">
+        <div class="editor-label"></div>
+        <div class="editor-field">
+            <p>
+                <input type="submit" value="Create" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" />
+            </p>
+        </div>
+    </div>
+</fieldset>
+}

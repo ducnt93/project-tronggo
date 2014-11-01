@@ -5,75 +5,65 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
-
 <fieldset>
-    <legend>TaiKhoan</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.LoaiTaiKhoan.TenLoai)
+    <legend>Chi tiết tài khoản</legend>
+    <div class="display">
+        <div class="display-label">Loại tài khoản</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LoaiTaiKhoan.TenLoai)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LoaiTaiKhoan.TenLoai)
+    <div class="display">
+        <div class="display-label">Tên người dùng</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenNguoiDung)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenNguoiDung)
+    <div class="display">
+        <div class="display-label">Email
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenNguoiDung)
+    <div class="display">
+        <div class="display-label">Tên đăng nhập</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenDangNhap)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
+    <div class="display">
+        <div class="display-label">Mật khẩu</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MatKhau)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Email)
+    <div class="display">
+        <div class="display-label">Phone</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenDangNhap)
+    <div class="display">
+        <div class="display-label">Địa chỉ</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DiaChi)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenDangNhap)
+    <div class="display">
+        <div class="display-label">Hiển thị</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MatKhau)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MatKhau)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Phone)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Phone)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DiaChi)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DiaChi)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThaiXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThaiXoa)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayXoa)
+    <div class="display">
+        <div class="display-label">Ngày ẩn</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NgayXoa)
+        </div>
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.TaiKhoanID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id=Model.TaiKhoanID }) |
+    @Html.ActionLink("Danh sách tài khoản", "Index")
 </p>
