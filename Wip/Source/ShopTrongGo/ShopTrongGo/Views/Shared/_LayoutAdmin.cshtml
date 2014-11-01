@@ -66,11 +66,11 @@
                                             <ul>
                                                 <li>@Html.ActionLink("Thêm sản phẩm", "AddProduct", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Danh sách sản phẩm", "ListProduct", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Danh sách đặt hàng", "Index", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Đối tác cung cấp", "Index", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Loại sản phẩm", "Index", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Nhà cung cấp", "Index", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Thống kê", "Index", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Danh sách đặt hàng", "", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Đối tác cung cấp", "Index", "AdPartners")</li>
+                                                <li>@Html.ActionLink("Loại sản phẩm", "ListProductCatagories", "AdProductCatagories")</li>
+                                                <li>@Html.ActionLink("Nhà cung cấp", "ListProvider", "AdProvider")</li>
+                                                <li>@Html.ActionLink("Thống kê", "", "AdProduct")</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -87,9 +87,9 @@
                                     <div id="mens" class="panel-collapse collapse">
                                         <div class="panel-body">
                                             <ul>
-                                                <li>@Html.ActionLink("Thêm khách hàng mới", "Index", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Danh sách khách hàng", "Index", "AdProduct")</li>
-                                                <li>@Html.ActionLink("Thống kê", "Index", "AdProduct")</li>
+                                                <li>@Html.ActionLink("Thêm khách hàng mới", "Create", "AdAccount")</li>
+                                                <li>@Html.ActionLink("Danh sách khách hàng", "Index", "AdAccount")</li>
+                                                <li>@Html.ActionLink("Thống kê", "Index", "AdAccount")</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -150,6 +150,9 @@
 
         </section>
         <footer></footer>
+        <script src="~/Content/ckeditor/ckeditor.js"></script>
+        <script src="~/Content/ckfinder/ckfinder.js"></script>
+        <script src="~/Scripts/jquery-1.8.2.min.js"></script>
         <script src="~/Scripts/js/bootstrap.min.js"></script>
         <script src="~/Scripts/js/contact.js"></script>
         <script src="~/Scripts/js/gmaps.js"></script>
@@ -159,6 +162,20 @@
         <script src="~/Scripts/js/jquery.scrollUp.min.js"></script>
         <script src="~/Scripts/js/main.js"></script>
         <script src="~/Scripts/js/price-range.js"></script>
+        <script language="javascript" type="text/javascript">
+    $(function () {
+        $("#btnBrowserImage").click(function () {
+            var ckfinder = new CKFinder();
+            ckfinder.selectActionFunction = function (fileUrl) {
+                $("#AnhDaiDien").val(fileUrl);
+            };
+            ckfinder.popup();
+        });
+    });
+        </script>
+        <script language="javascript" type="text/javascript">
+            CKEDITOR.replace("ckeContent");
+        </script>
         @*<script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>*@
     </header>
 </body>
