@@ -98,6 +98,7 @@ namespace ShopTrongGo.Controllers.Admin
                 sanpham.TrangThaiXoa = false;
                 sanpham.NgayXoa = null;
                 sanpham.TenKhongDau = func.ConvertToUnSign3(sanpham.TenSp);
+                sanpham.AnhDaiDien = func.LinkImage(sanpham.AnhDaiDien);
                 int s = sanpham.LoaiSpID;
                 db.SanPhams.Add(sanpham);
                 db.SaveChanges();

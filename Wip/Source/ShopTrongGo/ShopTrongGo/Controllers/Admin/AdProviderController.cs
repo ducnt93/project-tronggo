@@ -63,7 +63,7 @@ namespace ShopTrongGo.Controllers.Admin
             SanPham sanpham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanpham);
             db.SaveChanges();
-            return RedirectToAction("ListProvider", "Provider");
+            return RedirectToAction("ListProvider", "AdProvider");
         }
     }
 }
