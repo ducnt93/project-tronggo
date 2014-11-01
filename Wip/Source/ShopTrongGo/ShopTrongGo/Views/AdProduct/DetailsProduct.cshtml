@@ -59,23 +59,24 @@
         <div class="display-label">Ngày cập nhật</div>
         <div class="display-field">@Html.DisplayFor(model => model.NgayCapNhat,new {type="date"})</div>
     </div>
-
-    <table style="border: 1px solid #00008b;">
-        <tr style="background: #00008b; color: white; height: 40px;">
-            <th style="border-right: solid 1px white; text-align: center">Trạng thái xóa</th>
-            <th style="border-right: solid 1px white; text-align: center">Ngày xóa</th>
-            <th style="border-right: solid 1px white; text-align: center">Số lượng còn</th>
-            <th style="border-right: solid 1px white; text-align: center">Lượt bán</th>
-            <th style="text-align: center">Lượt xem</th>
-        </tr>
-        <tr>
-            <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.TrangThaiXoa)</th>
-            <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.NgayXoa)</th>
-            <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.SoLuong)</th>
-            <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.LuotBan)</th>
-            <th style="text-align: center">@Html.DisplayFor(model => model.LuotView)</th>
-        </tr>
-    </table>
+    <div class="display">
+        <table style="border: 1px solid #00008b;">
+            <tr style="background: #00008b; color: white; height: 30px;">
+                <th style="border-right: solid 1px white; text-align: center">Trạng thái xóa</th>
+                <th style="border-right: solid 1px white; text-align: center">Ngày xóa</th>
+                <th style="border-right: solid 1px white; text-align: center">Số lượng còn</th>
+                <th style="border-right: solid 1px white; text-align: center">Lượt bán</th>
+                <th style="text-align: center">Lượt xem</th>
+            </tr>
+            <tr style="color: blue; height: 30px;">
+                <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.TrangThaiXoa)</th>
+                <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.NgayXoa)</th>
+                <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.SoLuong)</th>
+                <th style="border-right: solid 1px #00008b; text-align: center">@Html.DisplayFor(model => model.LuotBan)</th>
+                <th style="text-align: center">@Html.DisplayFor(model => model.LuotView)</th>
+            </tr>
+        </table>
+    </div>
 
 </fieldset>
 <p>
