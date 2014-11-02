@@ -752,8 +752,7 @@ h2.title:before{
 }
 
 .panel-body ul{
-  padding-left: 20px;
-  
+  padding-left: 0px;
 }
 .panel-body ul li {
     padding-top: 10px;
@@ -764,6 +763,16 @@ h2.title:before{
   font-family: 'Roboto', sans-serif;
   font-size: 12px;
   text-transform: uppercase;
+  padding-left: 20px;
+}
+.panel-body ul li:hover {
+    background: #5bbcec;
+    border-bottom-width: 3px;
+    border-bottom: solid #00008b;
+}
+.panel-body ul li a:hover {
+    color: white;
+    font-size: 120%;
 }
 
 .brands-name {
