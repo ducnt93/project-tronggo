@@ -76,8 +76,8 @@ namespace ShopTrongGo.Controllers.Admin
             {
                 var dstrangthai = new List<SelectListItem>();
                 dstrangthai.Add(new SelectListItem { Text = "Còn hàng", Value = "Còn hàng" });
-                dstrangthai.Add(new SelectListItem { Text = "Hét hàng", Value = "Hết hàng" });
-                dstrangthai.Add(new SelectListItem { Text = "Đang nhập", Value = "Đang nhập" });
+                dstrangthai.Add(new SelectListItem { Text = "Hết hàng", Value = "Hết hàng" });
+                dstrangthai.Add(new SelectListItem { Text = "Đăng nhập", Value = "Đăng nhập" });
                 ViewData["TrangThai"] = dstrangthai;
                 ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp");
                 return View();
