@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết tin tức</h2>
 
 <fieldset>
-    <legend>TinTuc</legend>
+    <legend>Tin tức</legend>
     <div class="display">
         <div class=" display-label">Danh mục tin</div>
         <div class="display-field">@Html.DisplayFor(model => model.DanhMucTin.TenDMTin)</div>
@@ -38,7 +38,7 @@
 
     <div class="display">
         <div class="display-label">Ảnh</div>
-        <div class="display-field"><img src ="/image/cache/data/@Html.DisplayFor(model => model.AnhDaiDien)"/></div>
+        <div class="display-field"><img  src="/image/cache/data/@Html.DisplayFor(model => model.AnhDaiDien)" /></div>
     </div>
     <div class="display">
         <div class="display-label">Tên không dấu</div>
@@ -50,10 +50,12 @@
         <div class="display-field">@Html.DisplayFor(model => model.MieuTaNgan)</div>
     </div>
 
-    <div class="display">Miêu tả chi tiết</div>
+    <div class="display">
+        <div class="display-label">Miêu tả chi tiết</div>
+    </div>
     <div class="display">@Html.Raw(Model.MieuTaChiTiet)</div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Danh sách sản phẩm", "Index")
 </p>
