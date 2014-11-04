@@ -105,20 +105,52 @@ textarea {
 table{width: 100%;height: auto;border-radius: 5px;}
 table tr{border: 1px solid #0000cd; border-radius: 5px;  height: 60px;width: 100%;overflow: hidden;}
 .box {
-    color: #87cefa;
     width: 100%;
+    float: left;
     height: auto;
     margin-bottom: 5px;
+    padding-bottom: 10px;
+    border-bottom: 1px black solid;
 }
 
 .box .left {
-    border: 1px black solid;
-    border-radius: 5px;
     background: #f0fff0;
     float: left;
+    width: 20%;
+    height: auto;
+    overflow: hidden;
 }
 
-.box right {
-    border-radius: 5px;
+.box .right {
+    float: left;
+    width: 80%;
+    height: auto;
+}
+.box .right .title {
+    float: left;
+    color: white;
+    width: 100%;
+    background: #000080;
+}
+.box .right .news {
+    width: 100%;
+    float: left;
+    color: white;
+    background: #87cefa;
+}
+
+.box .right .main {
+    float: left;
+    width: 100%;
+}
+.box .right .author {
+    float: left;
+    width: 100%;
+}
+.box .right .func {
+    float: left;
+    width: 100%;
+}
+.box .right .func .defunc {
     float: right;
 }
