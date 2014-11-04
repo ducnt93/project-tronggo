@@ -16,6 +16,7 @@ namespace ShopTrongGo.Controllers.Admin
         //
         // GET: /News/
 
+        readonly Func fun = new Func();
         public ActionResult Index()
         {
             var tintucs = db.TinTucs.Include(t => t.DanhMucTin);
@@ -49,10 +50,16 @@ namespace ShopTrongGo.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(TinTuc tintuc)
         {
             if (ModelState.IsValid)
             {
+                tintuc.NgayCapNhat = DateTime.Now.Date;
+                tintuc.TrangThai = false;
+                tintuc.NgayXoaTin = null;
+                tintuc.TenKhongDau = fun.ConvertToUnSign3(tintuc.TenTin);
+                tintuc.AnhDaiDien = fun.LinkImage(tintuc.AnhDaiDien);
                 db.TinTucs.Add(tintuc);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -81,11 +88,22 @@ namespace ShopTrongGo.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(TinTuc tintuc)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(tintuc).State = EntityState.Modified;
+                if (tintuc.TrangThai)
+                {
+                    tintuc.NgayXoaTin = DateTime.Now.Date;
+                }
+                else
+                {
+                    tintuc.NgayXoaTin = null;
+                }                                                                          
+                tintuc.TenKhongDau = fun.ConvertToUnSign3(tintuc.TenTin);
+                tintuc.AnhDaiDien = fun.LinkImage(tintuc.AnhDaiDien);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
