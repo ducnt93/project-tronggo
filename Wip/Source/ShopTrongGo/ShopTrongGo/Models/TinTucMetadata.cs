@@ -18,7 +18,7 @@ namespace ShopTrongGo.Models
         public string TenTin { get; set; }
 
         [Required(ErrorMessage = "Nhập miêu tả ngắn")]
-        [MaxLength(200, ErrorMessage = "Độ dài lớn nhất là 200 ký tự")]
+        [MaxLength(500, ErrorMessage = "Độ dài lớn nhất là 500 ký tự")]
         [DataType(DataType.Text)]
         public string MieuTaNgan { get; set; }
 
