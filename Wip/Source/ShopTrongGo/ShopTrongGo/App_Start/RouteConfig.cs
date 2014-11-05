@@ -44,6 +44,16 @@ namespace ShopTrongGo
                 }
             );
             routes.MapRoute(
+                "RouteAdminLogout",
+                "AdminLogin/Logout",
+                new
+                {
+                    controller = "AdminLogin",
+                    action = "Logout",
+                    id = UrlParameter.Optional
+                }
+            );
+            routes.MapRoute(
                "RouteListProduct",
                "AdProduct/ListProduct",
                new
@@ -53,6 +63,171 @@ namespace ShopTrongGo
                    id = UrlParameter.Optional
                }
            );
+            //Trang quan tri admin
+            #region ==Admin==
+            routes.MapRoute(
+             "RouteAdProvider",
+             "AdProvider/Index",
+             new
+             {
+                 controller = "AdProvider",
+                 action = "ListProvider",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+            "RouteAddProvider",
+            "AdProvider/AddProvider",
+            new
+            {
+                controller = "AdProvider",
+                action = "AddProvider",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+              "RouteAdNews",
+              "AdNews/Index",
+              new
+              {
+                  controller = "AdNews",
+                  action = "Index",
+                  id = UrlParameter.Optional
+              }
+          );
+            routes.MapRoute(
+              "RouteAddNews",
+              "AdNews/Create",
+              new
+              {
+                  controller = "AdNews",
+                  action = "Create",
+                  id = UrlParameter.Optional
+              }
+          );
+            routes.MapRoute(
+             "RouteAdCategoryNews",
+             "AdCategoryNews/Index",
+             new
+             {
+                 controller = "AdCategoryNews",
+                 action = "Index",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+            "RouteAddCategoryNews",
+            "AdCategoryNews/Create",
+            new
+            {
+                controller = "AdCategoryNews",
+                action = "Create",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+             "RouteAdAccount",
+             "AdAccount/Index",
+             new
+             {
+                 controller = "AdAccount",
+                 action = "Index",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteAddAccount",
+             "AdAccount/Create",
+             new
+             {
+                 controller = "AdAccount",
+                 action = "Create",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteAdInforCompany",
+             "AdInforCompany/Index",
+             new
+             {
+                 controller = "AdInforCompany",
+                 action = "Index",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteAddCompany",
+             "AdInforCompany/Create",
+             new
+             {
+                 controller = "AdInforCompany",
+                 action = "Create",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteAdPartner",
+             "AdPartners/Index",
+             new
+             {
+                 controller = "AdPartners",
+                 action = "Index",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteAddPartners",
+             "AdPartners/Create",
+             new
+             {
+                 controller = "AdPartners",
+                 action = "Create",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+                "RouteAdServices",
+                "AdServices/Index",
+                new
+                {
+                    controller = "AdServices",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                }
+                );
+            routes.MapRoute(
+                "RouteAddServices",
+                "AdServices/Create",
+                new
+                {
+                    controller = "AdServices",
+                    action = "Create",
+                    id = UrlParameter.Optional
+                }
+                );
+
+            routes.MapRoute(
+                "RouteAdTypeOfAcc",
+                "AdTypeOfAcc/Index",
+                new
+                {
+                    controller = "AdTypeOfAcc",
+                    action = "Index",
+                    id = UrlParameter.Optional
+                }
+                );
+            routes.MapRoute(
+           "RouteAddTypeOfAcc",
+           "AdTypeOfAcc/Create",
+           new
+           {
+               controller = "AdTypeOfAcc",
+               action = "Create",
+               id = UrlParameter.Optional
+           }
+           );
+   
+
             routes.MapRoute(
                "RouteListProductCatalogies",
                "ProductCatagories/ListProductCatagories",
@@ -93,6 +268,7 @@ namespace ShopTrongGo
                   id = UrlParameter.Optional
               }
           );
+            #endregion
             routes.MapRoute(
                "RouteRegisterAccount",
                "tai-khoan/dang-ky",
