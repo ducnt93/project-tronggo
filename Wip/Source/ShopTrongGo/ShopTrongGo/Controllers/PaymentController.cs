@@ -14,19 +14,19 @@ namespace ShopTrongGo.Controllers
         [HttpGet]
         public ActionResult SendMail()
         {
-            string userName = Session["UserName"].ToString();
-            if (userName == "")
-            {
-                return RedirectToAction("Login", "Account");
-            }
-            else
-            {
-                ViewBag.Mes = "Bạn có chắc chắn muốn mua nhưng sản phẩm này";
-                var taikhoan =
-                    dbBanTapHoaEntities.TaiKhoans.SingleOrDefault(
-                        tk => tk.TrangThaiXoa == false & tk.TenDangNhap == userName & tk.LoaiTaiKhoanID == 2);
-                return View(taikhoan);
-            }
+            //string userName = Session["UserName"].ToString();
+            //if (userName == "")
+            //{
+            //    return RedirectToAction("Login", "Account");
+            //}
+            //else
+            //{
+                //ViewBag.Mes = "Bạn có chắc chắn muốn mua nhưng sản phẩm này";
+                //var taikhoan =
+                //    dbBanTapHoaEntities.TaiKhoans.SingleOrDefault(
+                //        tk => tk.TrangThaiXoa == false & tk.TenDangNhap == userName & tk.LoaiTaiKhoanID == 2);
+                return View();
+            //}
 
         }
 
