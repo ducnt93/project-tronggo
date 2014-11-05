@@ -12,7 +12,7 @@ namespace ShopTrongGo.Controllers.Admin
     public class AdAccountController : Controller
     {
         private WebBanTapHoaEntities db = new WebBanTapHoaEntities();
-
+        Func func = new Func();
         //
         // GET: /Account/
 
@@ -61,6 +61,7 @@ namespace ShopTrongGo.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(TaiKhoan taikhoan)
         {
             if (Session["LogedName"] == null)
@@ -69,6 +70,7 @@ namespace ShopTrongGo.Controllers.Admin
             }
             if (ModelState.IsValid)
             {
+                taikhoan.MatKhau = func.GetMd5(taikhoan.MatKhau);
                 db.TaiKhoans.Add(taikhoan);
                 db.SaveChanges();
                 return RedirectToAction("Index");

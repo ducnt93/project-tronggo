@@ -63,6 +63,7 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                dichvu.NgayDang = DateTime.Now.Date;
                 db.DichVus.Add(dichvu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -101,6 +102,14 @@ namespace ShopTrongGo.Controllers.Admin
             }
             if (ModelState.IsValid)
             {
+                if (dichvu.TrangThaiXoa)
+                {
+                    dichvu.NgayXoa = DateTime.Now.Date;
+                }
+                else
+                {
+                    dichvu.NgayXoa = null;
+                }
                 db.Entry(dichvu).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

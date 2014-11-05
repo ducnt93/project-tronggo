@@ -10,6 +10,7 @@ namespace ShopTrongGo.Controllers.Admin
 {
     public class AdminLoginController : Controller
     {
+        Func func = new Func();
         #region Login
 
         public ActionResult Index()
@@ -31,12 +32,14 @@ namespace ShopTrongGo.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Login(TaiKhoan user)
         {
             //if (ModelState.IsValid)
             //{
                 using (var m = new WebBanTapHoaEntities())
                 {
+
                     var v =
                         m.TaiKhoans.FirstOrDefault(u => u.TenDangNhap.Equals(user.TenDangNhap) && u.MatKhau.Equals(user.MatKhau));
                     if (v != null)

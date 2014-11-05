@@ -11,6 +11,7 @@ namespace ShopTrongGo.Controllers.Admin
 {
     public class AdPartnersController : Controller
     {
+        Func func = new Func();
         private WebBanTapHoaEntities db = new WebBanTapHoaEntities();
 
         //
@@ -63,6 +64,8 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                doitac.NgayCapNhat = DateTime.Now.Date;
+                doitac.TenKhongDau = func.ConvertToUnSign3(doitac.TenDoiTac);
                 db.DoiTacs.Add(doitac);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -97,6 +100,16 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                doitac.NgayCapNhat = DateTime.Now.Date;
+                doitac.TenKhongDau = func.ConvertToUnSign3(doitac.TenDoiTac);
+                if (doitac.TrangThaiXoa == false)
+                {
+                    doitac.NgayXoa = null;
+                }
+                else
+                {
+                    doitac.NgayXoa = DateTime.Now.Date;
+                }
                 db.Entry(doitac).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
