@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShopTrongGo.Models.TaiKhoan>
+﻿@using System.Web.UI.WebControls.Adapters
+@model IEnumerable<ShopTrongGo.Models.TaiKhoan>
 
 @{
     ViewBag.Title = "Index";
@@ -11,7 +12,7 @@
     @Html.ActionLink("Thêm tài khoản", "Create")
 </p>
 <table>
-    <tr>
+    <tr style="background: #00008b; color: white; height: 30px;">
         <th>Loại tài khoản</th>
         <th>Tên người dùng</th>
         <th>Email</th>
@@ -36,7 +37,7 @@
             @Html.DisplayFor(modelItem => item.Email)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.TenDangNhap, new {type="password"})
+            @Html.DisplayFor(modelItem => item.TenDangNhap)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.MatKhau)
@@ -53,10 +54,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.NgayXoa)
         </td>
-        <td>
-            @Html.ActionLink("Sửa", "Edit", new { id=item.TaiKhoanID }) |
-            @Html.ActionLink("Chi tiết", "Details", new { id=item.TaiKhoanID }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.TaiKhoanID })
+        <td style="width: 15%;">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.TaiKhoanID }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.TaiKhoanID }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.TaiKhoanID })
         </td>
     </tr>
 }

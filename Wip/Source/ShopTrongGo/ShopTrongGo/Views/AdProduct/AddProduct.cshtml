@@ -76,7 +76,7 @@
         </div>
 
         <div class="editor">
-            <div class="editor-label">Miêu tả ngắn</div>
+            <div class="editor-label">Sơ lược</div>
             <div class="editor-field">
                 @Html.TextBoxFor(model => model.MieuTaNgan, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.MieuTaNgan)
@@ -84,7 +84,7 @@
         </div>
 
         <div class="editor">
-            <div class="editor-label">Miêu tả chi tiết</div>
+            <div class="editor-label">Chi tiết</div>
             <div class="editor-field">
                 @Html.TextAreaFor(model => model.MieuTaChiTiet, new { @id = "ckeContent" })
                 @Html.ValidationMessageFor(model => model.MieuTaChiTiet)

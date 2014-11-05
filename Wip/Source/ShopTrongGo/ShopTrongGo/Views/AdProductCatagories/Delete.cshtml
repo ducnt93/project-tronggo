@@ -5,58 +5,48 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa sản phẩm</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn có thực sự muốn xóa sản phẩm này?</h3>
 <fieldset>
-    <legend>LoaiSanPham</legend>
+    <legend>Loại sản phẩm</legend>
+    <div class="display">
+        <div class=" display-label">Mã
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.LoaiSpID)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">Tên loại
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenLoaiSp)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">Ẩn
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">Tên danh mục
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DanhMuc.TenDanhMuc)
+        </div>
+    </div>
+    <div class="display">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" value="Xóa" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" />
+            </p>
+        }
+    </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.LoaiSpID)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.LoaiSpID)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenLoaiSp)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenLoaiSp)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThaiXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThaiXoa)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayXoa)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DanhMuc.TenDanhMuc)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DanhMuc.TenDanhMuc)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenKhongDau)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenKhongDau)
-    </div>
 </fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+@Html.ActionLink("Danh sách các loại sản phẩm", "ListProductCatagories")

@@ -5,14 +5,9 @@
     ViewBag.Title = "DanhSachSanPham";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-@{
-    List<string> sx = new List<string>();
-    sx.Add("Số lượng còn");
-    sx.Add("Lượt bán");
-    sx.Add("Lượt view");
-}
+
 <h2>Danh sách sản phẩm</h2>
-@Html.ActionLink("Thêm sản phẩm", "AddProduct")   
+@Html.ActionLink("Thêm sản phẩm", "AddProduct")
         <select id="SapXep" name="SapXep" style="height: 30px;width: 20%; float: right;">
                   <option value="con">Số lượng còn</option>
                   <option value="view">Lượt xem</option>

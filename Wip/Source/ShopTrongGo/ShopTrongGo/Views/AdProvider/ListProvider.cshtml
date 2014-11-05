@@ -7,7 +7,7 @@
 }
 <h2>Danh sách các nhà cung cấp</h2>
 <div class="box">
-    <div class="left">@Html.ActionLink("Add new provider", "ListProvider")    </div>
+    <div class="left">@Html.ActionLink("Thêm nhà cung cấp mới", "AddProvider")    </div>
 </div>
     <table>
         <tr style="background: #00008b; color: white; height: 30px;">
@@ -15,7 +15,8 @@
             <td>Địa chỉ</td>
             <td>Phone</td>
             <td>Danh mục</td>
-            <td>Trạng thái xóa</td>
+            <td>Ẩn</td>
+            <td></td>
         </tr>
 
         @foreach (var item in Model)
@@ -25,7 +26,8 @@
                 <td>@Html.DisplayFor(modelItem => item.DiaChi)</td>
                 <td>@Html.DisplayFor(modelItem => item.Phone)</td>
                 <td>@Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)</td>
-                <td>@Html.DisplayFor(modelItem => item.TrangThaiXoa)</td>
+                <td>@Html.DisplayFor(modelItem => item.TrangThaiXoa) @Html.DisplayFor(modelItem => item.NgayXoa)</td>
+                <td style="width: 15%;">@Html.ActionLink("Xóa", "DeleteProvider", new { id = item.NhaCungCapID })</td>
             </tr>
         }
     </table>

@@ -35,14 +35,7 @@
             @Html.DisplayFor(model => model.TrangThai)
         </div>
     </div>
-    <div class="display">
-        <div class="display-label">
-            Tên không dấu:
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.TenKhongDau)
-        </div>
-    </div>
+
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()

@@ -18,71 +18,74 @@
 
     <fieldset>
         <legend>Dịch vụ</legend>
+        @*<div class="editor">
+            <div class="editor-label">Ngày đăng:</div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.NgayDang,
+                    new { type = "text", id = "datepicker" })
+                @Html.ValidationMessageFor(model => model.NgayDang, "Ngày đăng không được bỏ trống")
+            </div>
+        </div>*@
 
-        <div class="editor-label">
-            Ngày đăng:
-        </div>
-        <div class="editor-field">
-            @Html.TextBoxFor(model => model.NgayDang,
-         new { type = "text", id = "datepicker" })
-            @Html.ValidationMessageFor(model => model.NgayDang, "Ngày đăng không được bỏ trống")
-        </div>
-
-        <div class="editor-label">
-            Người đăng tin:
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NguoiDang)
-            @Html.ValidationMessageFor(model => model.NguoiDang, "Không được bỏ trống")
-        </div>
-
-        <div class="editor-label">
-            Trạng thái xóa:
-            <br />(Tích chọn thì tin sẽ không được hiện thị)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TrangThaiXoa)
-            @Html.ValidationMessageFor(model => model.TrangThaiXoa)
+        <div class="editor">
+            <div class="editor-label">Người đăng tin:</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.NguoiDang)
+                @Html.ValidationMessageFor(model => model.NguoiDang, "Không được bỏ trống")
+            </div>
         </div>
 
-        <div class="editor-label">
-            Tên dịch vụ:
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TenDichVu)
-            @Html.ValidationMessageFor(model => model.TenDichVu, "Tên của dịch vụ không được bỏ trống")
-        </div>
-
-        <div class="editor-label">
-            Miêu tả ngắn:
-        </div>
-        <div class="editor-field">
-            @Html.TextAreaFor(model => model.MieuTaNgan)
-            @Html.ValidationMessageFor(model => model.MieuTaNgan, "Không nên bỏ trống trường này")
+        <div class="editor">
+            <div class="editor-label">Ẩn</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TrangThaiXoa)
+                @Html.ValidationMessageFor(model => model.TrangThaiXoa)
+            </div>
         </div>
 
-        <div class="editor-label">
-            Mô tả chi tiết:
-        </div>
-        <div class="editor-field">
-            @Html.TextArea("MieuTaChiTiet", new { @id = "ckeditorMT" })
-            @Html.ValidationMessageFor(model => model.MieuTaChiTiet)
-        </div>
-
-        <div class="editor-label">
-            Ảnh đại diện:
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.AnhDaiDien)
-            @Html.ValidationMessageFor(model => model.AnhDaiDien)
+        <div class="editor">
+            <div class="editor-label">Tên dịch vụ:</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TenDichVu)
+                @Html.ValidationMessageFor(model => model.TenDichVu, "Tên của dịch vụ không được bỏ trống")
+            </div>
         </div>
 
+        <div class="editor">
+            <div class="editor-label">Sơ lược</div>
+            <div class="editor-field">
+                @Html.TextAreaFor(model => model.MieuTaNgan)
+                @Html.ValidationMessageFor(model => model.MieuTaNgan, "Không nên bỏ trống trường này")
+            </div>
+        </div>
 
+        <div class="editor">
+            <div class="editor-label">Chi tiết</div>
+            <div class="editor-field">
+                @Html.TextArea("MieuTaChiTiet", new { @id = "ckeditorMT" })
+                @Html.ValidationMessageFor(model => model.MieuTaChiTiet)
+            </div>
+        </div>
 
-        <p>
-            <input type="submit" value="Tạo mới" />
-        </p>
-    </fieldset>
+        <div class="editor">
+            <div class="editor-label">Ảnh đại diện:</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.AnhDaiDien)
+                @Html.ValidationMessageFor(model => model.AnhDaiDien)
+            </div>
+        </div>
+        <div class="editor">
+            <div class="editor-label"></div>
+            <div class="editor-field">
+                <input type="button" id="btnBrowserImage" value="Browser" />
+            </div>
+        </div>
+        <div class="editor">
+            <p>
+                <input type="submit" value="Thêm" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" />
+            </p>
+        </div>
+</fieldset>
 }
 
 <div>

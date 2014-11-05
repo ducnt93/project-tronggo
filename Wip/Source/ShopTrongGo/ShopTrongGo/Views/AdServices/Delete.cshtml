@@ -10,74 +10,74 @@
 <h3>Bạn chắc chắn muốn xóa bản tin dịch vụ này?</h3>
 <fieldset>
     <legend>Dịch vụ</legend>
-
-    <div class="display-label">
-         Ngày đăng:
+    <div class="display">
+        <div class="display-label">
+            Ngày đăng:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NgayDang)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayDang)
+    <div class="display">
+        <div class="display-label">
+            Người đăng:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NguoiDang)
+        </div>
     </div>
-
-    <div class="display-label">
-        Người đăng:
+    <div class="display">
+        <div class="display-label">
+            Trạng thái xóa:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NguoiDang)
+    <div class="display">
+        <div class="display-label">
+            Ngày xóa:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NgayXoa)
+        </div>
     </div>
-
-    <div class="display-label">
-        Trạng thái xóa:
+    <div class="display">
+        <div class="display-label">
+            Tên dịch vụ:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenDichVu)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThaiXoa)
+    <div class="display">
+        <div class="display-label">Sơ lược</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MieuTaNgan)
+        </div>
     </div>
-
-    <div class="display-label">
-         Ngày xóa:
+    <div class="display">
+        <div class="display-label">Chi tiết:</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MieuTaChiTiet)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayXoa)
+    <div class="display">
+        <div class="display-label">Anh đại điện:</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.AnhDaiDien)
+        </div>
     </div>
-
-    <div class="display-label">
-         Tên dịch vụ:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenDichVu)
-    </div>
-
-    <div class="display-label">
-         Miêu tả ngắn
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MieuTaNgan)
-    </div>
-
-    <div class="display-label">
-         Miêu tả chi tiết:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MieuTaChiTiet)
-    </div>
-
-    <div class="display-label">
-         Anh đại điện:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.AnhDaiDien)
-    </div>
-
-    <div class="display-label">
-        Tên không dấu:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenKhongDau)
-    </div>
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        <div class="display">
+            <p>
+                <input type="submit" value="Xóa" />
+            </p>
+        </div>
+        
+        }
 </fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Quay lại danh sách", "Index")
-    </p>
-}
+@Html.ActionLink("Quay lại danh sách", "Index")
+

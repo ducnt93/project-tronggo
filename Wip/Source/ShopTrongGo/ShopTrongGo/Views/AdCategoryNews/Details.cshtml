@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <fieldset>
     <legend>Danh mục tin</legend>
@@ -26,19 +26,10 @@
         </div>
     </div>
     <div class="display">
-        <div class="display-label">
-            Trạng thái:
+        <div class="display-label">Ẩn
         </div>
         <div class="display-field">
             @Html.DisplayFor(model => model.TrangThai)
-        </div>
-    </div>
-    <div class="display">
-        <div class="display-label">
-            Tên không dấu:
-        </div>
-        <div class="display-field">
-            @Html.DisplayFor(model => model.TenKhongDau)
         </div>
     </div>
 </fieldset>

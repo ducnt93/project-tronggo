@@ -5,71 +5,57 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Edit</h2>
+<h2>Sửa thông tin</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>LoaiSanPham</legend>
+        <legend>Loại sản phẩm</legend>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.LoaiSpID)
+        <div class="editor">
+            <div class="editor-label">Mã</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.LoaiSpID)
+                @Html.ValidationMessageFor(model => model.LoaiSpID)
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.LoaiSpID)
-            @Html.ValidationMessageFor(model => model.LoaiSpID)
+        <div class="editor">
+            <div class="editor-label">Tên loại sản phẩm
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TenLoaiSp)
+                @Html.ValidationMessageFor(model => model.TenLoaiSp)
+            </div>
         </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TenLoaiSp)
+        <div class="editor">
+            <div class="editor-label">Ẩn
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TrangThaiXoa)
+                @Html.ValidationMessageFor(model => model.TrangThaiXoa)
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TenLoaiSp)
-            @Html.ValidationMessageFor(model => model.TenLoaiSp)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TrangThaiXoa)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TrangThaiXoa)
-            @Html.ValidationMessageFor(model => model.TrangThaiXoa)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.NgayXoa)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.NgayXoa)
-            @Html.ValidationMessageFor(model => model.NgayXoa)
-        </div>
-
-        <div class="editor-label">
-            @Html.LabelFor(model => model.DanhMucID, "DanhMuc")
-        </div>
-        <div class="editor-field">
-            @Html.DropDownList("DanhMucID", String.Empty)
-            @Html.ValidationMessageFor(model => model.DanhMucID)
+        <div class="editor">
+            <div class="editor-label">Danh mục
+            </div>
+            <div class="editor-field">
+                @Html.DropDownList("DanhMucID", String.Empty)
+                @Html.ValidationMessageFor(model => model.DanhMucID)
+            </div>
         </div>
 
-        <div class="editor-label">
-            @Html.LabelFor(model => model.TenKhongDau)
+        <div class="editor">
+            <p>
+                <input type="submit" value="Lưu lại" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" />
+            </p>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TenKhongDau)
-            @Html.ValidationMessageFor(model => model.TenKhongDau)
-        </div>
-
-        <p>
-            <input type="submit" value="Save" />
-        </p>
-    </fieldset>
+</fieldset>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Danh sách các loại sản phẩm", "ListProductCatagories")
 </div>
 
 @section Scripts {

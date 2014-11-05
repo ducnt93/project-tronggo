@@ -5,68 +5,61 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <fieldset>
-    <legend>DoiTac</legend>
+    <legend>Đối tác</legend>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenDoiTac)
+    <div class="display">
+        <div class="display-label">
+            Tên đối tác
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenDoiTac)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenDoiTac)
+    <div class="display">
+        <div class="display-label">
+            Ngày cập nhật
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayCapNhat)
+    <div class="display">
+        <div class="display-label">
+            Nội dung
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NoiDung)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayCapNhat)
+    <div class="display">
+        <div class="display-label">
+            Sơ lược
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MieuTaNgan)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NoiDung)
+    <div class="display">
+        <div class="display-label">
+            Người đăng
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NguoiDang)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NoiDung)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MieuTaNgan)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MieuTaNgan)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NguoiDang)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NguoiDang)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThaiXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThaiXoa)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayXoa)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenKhongDau)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenKhongDau)
+    <div class="display">
+        <div class="display-label">
+            Ẩn đối tác
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)
+        </div>
     </div>
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.DoiTacID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new { id=Model.DoiTacID }) |
+    @Html.ActionLink("Danh sách đối tác", "Index")
 </p>

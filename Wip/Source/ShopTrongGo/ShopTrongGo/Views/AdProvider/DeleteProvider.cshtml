@@ -29,12 +29,8 @@
         <div class="display-field">@Html.DisplayFor(model => model.DanhMuc.TenDanhMuc)</div>
     </div>
     <div class="display">
-        <div class="display-label">Trạng thái xóa</div>
-        <div class="display-field">@Html.DisplayFor(model => model.TrangThaiXoa)</div>
-    </div>
-    <div class="display">
-        <div class="display-label">Ngày xóa</div>
-        <div class="display-field">@Html.DisplayFor(model => model.NgayXoa)</div>
+        <div class="display-label">Ẩn</div>
+        <div class="display-field">@Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)</div>
     </div>
     @using (Html.BeginForm())
     {

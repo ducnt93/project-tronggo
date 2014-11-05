@@ -1,11 +1,12 @@
-﻿@model ShopTrongGo.Models.TaiKhoan
+﻿@using System.Web.Mvc.Html
+@model ShopTrongGo.Models.TaiKhoan
 
 @{
     ViewBag.Title = "Create";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Thêm mới</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
@@ -56,8 +57,8 @@
         <div class="editor">
             <div class="editor-label">Nhập lại mật khẩu</div>
             <div class="editor-field">
-                @Html.PasswordFor(model => model.MatKhau, new { @class = "txt" })
-                @Html.ValidationMessageFor(model => model.MatKhau)
+                <input type="password" class="txt" id="XacNhanMatKhau" />
+                @Html.ValidationSummary(false,"Xác nhận lại mật khẩu")
             </div>
         </div>
 

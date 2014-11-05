@@ -5,31 +5,18 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Danh sách công ty</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Thêm công ty mới", "Create")
 </p>
 <table>
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.CongTyID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenCongTy)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Phone)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Email)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TenKhongDau)
-        </th>
+    <tr style="background: #00008b; color: white; height: 30px;">
+        <th>Mã công ty</th>
+        <th>Tên công ty</th>
+        <th>Địa chỉ</th>
+        <th>Điện thoại</th>
+        <th>Email</th>
         <th></th>
     </tr>
 
@@ -50,13 +37,10 @@
         <td>
             @Html.DisplayFor(modelItem => item.Email)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKhongDau)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        <td style="width: 15%;">
+            @Html.ActionLink("Sửa", "Edit", new { id = item.CongTyID }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id = item.CongTyID }) |
+            @Html.ActionLink("Xóa", "Delete", new { id = item.CongTyID })
         </td>
     </tr>
 }

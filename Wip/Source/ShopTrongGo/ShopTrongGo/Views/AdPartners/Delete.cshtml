@@ -5,72 +5,63 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Delete</h2>
+<h2>Xóa đối tác</h2>
 
-<h3>Are you sure you want to delete this?</h3>
+<h3>Bạn thục sự muốn xóa đối tác này?</h3>
 <fieldset>
-    <legend>DoiTac</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenDoiTac)
+    <legend>Đối tác</legend>
+    <div class="display">
+        <div class="display-label">Tên đối tác
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenDoiTac)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenDoiTac)
+    <div class="display">
+        <div class="display-label">Ngày cập nhật
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NgayCapNhat)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayCapNhat)
+    <div class="display">
+        <div class="display-label">Nội dung
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NoiDung)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayCapNhat)
+    <div class="display">
+        <div class="display-label">Sơ lược
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MieuTaNgan)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NoiDung)
+    <div class="display">
+        <div class="display-label">Người đăng
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NguoiDang)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NoiDung)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.MieuTaNgan)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MieuTaNgan)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NguoiDang)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NguoiDang)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThaiXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThaiXoa)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayXoa)
+    <div class="display">
+        <div class="display-label">Ẩn đối tác
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenKhongDau)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenKhongDau)
+    <div class="display">=
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" value="Xóa" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" />
+            </p>
+        }
+
     </div>
 </fieldset>
-@using (Html.BeginForm()) {
-    @Html.AntiForgeryToken()
-    <p>
-        <input type="submit" value="Delete" /> |
-        @Html.ActionLink("Back to List", "Index")
-    </p>
-}
+@Html.ActionLink("Danh sách đối tác", "Index")

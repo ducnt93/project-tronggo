@@ -5,54 +5,48 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <fieldset>
-    <legend>ThongTinCongTy</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.CongTyID)
+    <legend>Thông tin công ty</legend>
+    <div class="display">
+        <div class="display-label">Mã công ty
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.CongTyID)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.CongTyID)
+    <div class="display">
+        <div class="display-label">Tên công ty
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenCongTy)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenCongTy)
+    <div class="display">
+        <div class="display-label">Địa chỉ
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.DiaChi)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenCongTy)
+    <div class="display">
+        <div class="display-label">Phone
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Phone)
+        </div>
     </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.DiaChi)
+    <div class="display">
+        <div class="display-label">Email
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.Email)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.DiaChi)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Phone)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Phone)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.Email)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.Email)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TenKhongDau)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenKhongDau)
-    </div>
+    
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Sửa", "Edit", new {id=Model.CongTyID}) |
+    @Html.ActionLink("Danh sách công ty", "Index")
 </p>
