@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -31,6 +32,13 @@ namespace ShopTrongGo.Models
                 return link[4] + "/" + link[5];
             }
                 return oldLink;
+        }
+        public string GetMd5(string chuoi)
+        {
+            byte[] mang = System.Text.Encoding.UTF8.GetBytes(chuoi);                         
+            var myMd5 = new MD5CryptoServiceProvider();
+            mang = myMd5.ComputeHash(mang);
+            return mang.Aggregate("", (current, b) => current + b.ToString("X2"));
         }
     }
 }
