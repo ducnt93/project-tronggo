@@ -19,6 +19,10 @@ namespace ShopTrongGo.Controllers.Admin
         readonly Func fun = new Func();
         public ActionResult Index()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             var tintucs = db.TinTucs.Include(t => t.DanhMucTin);
             return View(tintucs.ToList());
         }
@@ -28,6 +32,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Details(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             TinTuc tintuc = db.TinTucs.Find(id);
             if (tintuc == null)
             {
@@ -41,6 +49,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Create()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             ViewBag.LoaiDMTin = new SelectList(db.DanhMucTins, "Id", "TenDMTin");
             return View();
         }
@@ -74,6 +86,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Edit(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             TinTuc tintuc = db.TinTucs.Find(id);
             if (tintuc == null)
             {
@@ -116,6 +132,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Delete(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             TinTuc tintuc = db.TinTucs.Find(id);
             if (tintuc == null)
             {

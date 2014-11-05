@@ -19,6 +19,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult ListProductCatagories()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             var loaisanphams = db.LoaiSanPhams.Include(l => l.DanhMuc);
             return View(loaisanphams.ToList());
         }
@@ -28,6 +32,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Details(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             LoaiSanPham loaisanpham = db.LoaiSanPhams.Find(id);
             if (loaisanpham == null)
             {
@@ -41,6 +49,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Create()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             ViewBag.DanhMucID = new SelectList(db.DanhMucs, "DanhMucID", "TenDanhMuc");
             return View();
         }
@@ -69,6 +81,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Edit(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             LoaiSanPham loaisanpham = db.LoaiSanPhams.Find(id);
             if (loaisanpham == null)
             {
@@ -102,6 +118,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Delete(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             LoaiSanPham loaisanpham = db.LoaiSanPhams.Find(id);
             if (loaisanpham == null)
             {

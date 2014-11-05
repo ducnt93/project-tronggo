@@ -18,6 +18,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Index()
         {
+            if (Session["LogedName"]==null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             var taikhoans = db.TaiKhoans.Include(t => t.LoaiTaiKhoan);
             return View(taikhoans.ToList());
         }
@@ -27,6 +31,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Details(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             TaiKhoan taikhoan = db.TaiKhoans.Find(id);
             if (taikhoan == null)
             {
@@ -40,6 +48,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Create()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             ViewBag.LoaiTaiKhoanID = new SelectList(db.LoaiTaiKhoans, "LoaiTaiKhoanID", "TenLoai");
             return View();
         }
@@ -51,6 +63,10 @@ namespace ShopTrongGo.Controllers.Admin
         [ValidateAntiForgeryToken]
         public ActionResult Create(TaiKhoan taikhoan)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             if (ModelState.IsValid)
             {
                 db.TaiKhoans.Add(taikhoan);
@@ -67,6 +83,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Edit(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             TaiKhoan taikhoan = db.TaiKhoans.Find(id);
             if (taikhoan == null)
             {
@@ -98,6 +118,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Delete(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             TaiKhoan taikhoan = db.TaiKhoans.Find(id);
             if (taikhoan == null)
             {

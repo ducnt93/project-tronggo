@@ -18,6 +18,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Index()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View(db.DichVus.ToList());
         }
 
@@ -26,6 +30,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Details(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             DichVu dichvu = db.DichVus.Find(id);
             if (dichvu == null)
             {
@@ -39,6 +47,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Create()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
 
@@ -64,6 +76,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Edit(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             DichVu dichvu = db.DichVus.Find(id);
             if (dichvu == null)
             {
@@ -79,6 +95,10 @@ namespace ShopTrongGo.Controllers.Admin
         [ValidateAntiForgeryToken]
         public ActionResult Edit(DichVu dichvu)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             if (ModelState.IsValid)
             {
                 db.Entry(dichvu).State = EntityState.Modified;

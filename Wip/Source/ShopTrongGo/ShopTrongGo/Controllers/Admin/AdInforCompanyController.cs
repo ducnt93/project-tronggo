@@ -10,7 +10,8 @@ using ShopTrongGo.Models;
 namespace ShopTrongGo.Controllers.Admin
 {
     public class AdInforCompanyController : Controller
-    {
+    {           
+        Func func = new Func();
         private WebBanTapHoaEntities db = new WebBanTapHoaEntities();
 
         //
@@ -18,6 +19,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Index()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View(db.ThongTinCongTies.ToList());
         }
 
@@ -26,6 +31,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Details(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             ThongTinCongTy thongtincongty = db.ThongTinCongTies.Find(id);
             if (thongtincongty == null)
             {
@@ -39,6 +48,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Create()
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             return View();
         }
 
@@ -51,6 +64,7 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                thongtincongty.TenKhongDau = func.ConvertToUnSign3(thongtincongty.TenCongTy);
                 db.ThongTinCongTies.Add(thongtincongty);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -64,6 +78,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Edit(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             ThongTinCongTy thongtincongty = db.ThongTinCongTies.Find(id);
             if (thongtincongty == null)
             {
@@ -81,6 +99,7 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                thongtincongty.TenKhongDau = func.ConvertToUnSign3(thongtincongty.TenCongTy);
                 db.Entry(thongtincongty).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -93,6 +112,10 @@ namespace ShopTrongGo.Controllers.Admin
 
         public ActionResult Delete(int id = 0)
         {
+            if (Session["LogedName"] == null)
+            {
+                return RedirectToAction("Login", "AdminLogin");
+            }
             ThongTinCongTy thongtincongty = db.ThongTinCongTies.Find(id);
             if (thongtincongty == null)
             {
