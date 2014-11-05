@@ -16,7 +16,7 @@
         <div class="editor">
             <div class="editor-label">Loại tài khoản</div>
             <div class="editor-field">
-                @Html.DropDownList("LoaiTaiKhoanID", String.Empty)
+                @Html.DropDownList("LoaiTaiKhoanID", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "drl" })
                 @Html.ValidationMessageFor(model => model.LoaiTaiKhoanID)
             </div>
         </div>
@@ -24,7 +24,7 @@
         <div class="editor">
             <div class="editor-label">Tên người dùng</div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.TenNguoiDung)
+                @Html.TextBoxFor(model => model.TenNguoiDung, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.TenNguoiDung)
             </div>
         </div>
@@ -32,7 +32,7 @@
         <div class="editor">
             <div class="editor-label">Email</div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Email)
+                @Html.TextBoxFor(model => model.Email, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.Email)
             </div>
         </div>
@@ -40,7 +40,7 @@
         <div class="editor">
             <div class="editor-label">Tên đăng nhập</div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.TenDangNhap)
+                @Html.TextBoxFor(model => model.TenDangNhap, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.TenDangNhap)
             </div>
         </div>
@@ -48,7 +48,7 @@
         <div class="editor">
             <div class="editor-label">Mật khẩu</div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.MatKhau)
+                @Html.PasswordFor(model => model.MatKhau, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.MatKhau)
             </div>
         </div>
@@ -56,7 +56,7 @@
         <div class="editor">
             <div class="editor-label">Nhập lại mật khẩu</div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.MatKhau)
+                @Html.PasswordFor(model => model.MatKhau, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.MatKhau)
             </div>
         </div>
@@ -66,7 +66,7 @@
                 Phone
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.Phone)
+                @Html.TextBoxFor(model => model.Phone, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.Phone)
             </div>
         </div>
@@ -74,13 +74,13 @@
         <div class="editor">
             <div class="editor-label">Địa chỉ</div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.DiaChi)
+                @Html.TextBoxFor(model => model.DiaChi, new { @class = "txt" })
                 @Html.ValidationMessageFor(model => model.DiaChi)
             </div>
         </div>
 
         <div class="editor">
-            <p><input type="submit" value="Create" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" /></p>
+            <p><input type="submit" value="Thêm" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" /></p>
         </div>
     </fieldset>
 }

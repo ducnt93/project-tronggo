@@ -8,34 +8,38 @@
 <h2>Details</h2>
 
 <fieldset>
-    <legend>DanhMucTin</legend>
-
-    <div class="display-label">
-         Tên danh mục tin:
+    <legend>Danh mục tin</legend>
+    <div class="display">
+        <div class="display-label">
+            Tên danh mục tin:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenDMTin)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenDMTin)
+    <div class="display">
+        <div class="display-label">
+            Mô tả:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.MoTa)
+        </div>
     </div>
-
-    <div class="display-label">
-         Mô tả:
+    <div class="display">
+        <div class="display-label">
+            Trạng thái:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThai)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.MoTa)
-    </div>
-
-    <div class="display-label">
-        Trạng thái:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThai)
-    </div>
-
-    <div class="display-label">
-         Tên không dấu:
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TenKhongDau)
+    <div class="display">
+        <div class="display-label">
+            Tên không dấu:
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenKhongDau)
+        </div>
     </div>
 </fieldset>
 <p>

@@ -5,43 +5,46 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Thêm mới danh mục tin</h2>
 
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>DanhMucTin</legend>
-
-        <div class="editor-label">
-            Tên danh mục:
+        <legend>Danh mục tin</legend>
+        <div class="editor">
+            <div class="editor-label">
+                Tên danh mục:
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TenDMTin)
+                @Html.ValidationMessageFor(model => model.TenDMTin, "Không được bỏ trống")
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TenDMTin)
-            @Html.ValidationMessageFor(model => model.TenDMTin,"Không được bỏ trống")
+        <div class="editor">
+            <div class="editor-label">
+                Mô tả:
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.MoTa)
+                @Html.ValidationMessageFor(model => model.MoTa)
+            </div>
         </div>
-
-        <div class="editor-label">
-            Mô tả:
+        <div class="editor">
+            <div class="editor-label">
+                Trạng thái:
+                <br />(Tích chọn thì danh mục sẽ được hiện lên)
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TrangThai)
+                @Html.ValidationMessageFor(model => model.TrangThai)
+            </div>
         </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.MoTa)
-            @Html.ValidationMessageFor(model => model.MoTa)
+        <div class="editor">
+            <p><input type="submit" value="Thêm" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" /></p>
         </div>
-
-        <div class="editor-label">
-            Trạng thái:
-            <br/>(Tích chọn thì danh mục sẽ được hiện lên)
-        </div>
-        <div class="editor-field">
-            @Html.EditorFor(model => model.TrangThai)
-            @Html.ValidationMessageFor(model => model.TrangThai)
-        </div>
-        <p>
-            <input type="submit" value="Create" />
-        </p>
-    </fieldset>
+</fieldset>
 }
 
 <div>
