@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShopTrongGo.Models.LoaiTaiKhoan>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ShopTrongGo.Models.LoaiTaiKhoan>
 
 @{
     ViewBag.Title = "Index";
@@ -13,13 +14,13 @@
 <table>
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TenLoai)
+            Tên loại
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TrangThaiXoa)
+            Trạng thái xóa
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NgayXoa)
+            Ngày xóa
         </th>
         <th></th>
     </tr>
@@ -44,3 +45,4 @@
 }
 
 </table>
+@Html.PagedListPager(Model,trang => Url.Action("Index",new{trang = trang}),PagedListRenderOptions.OnlyShowFivePagesAtATime)

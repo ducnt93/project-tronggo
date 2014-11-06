@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
@@ -17,14 +18,16 @@ namespace ShopTrongGo.Controllers.Admin
         // GET: /News/
 
         readonly Func fun = new Func();
-        public ActionResult Index()
+        public ActionResult Index(int? trang)
         {
             if (Session["LogedName"] == null)
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
-            var tintucs = db.TinTucs.Include(t => t.DanhMucTin);
-            return View(tintucs.ToList());
+            const int pageSize = 10;
+            int pageNum = trang ?? 1;
+            var tintucs = db.TinTucs.Include(t => t.DanhMucTin).OrderByDescending(tin => tin.NgayCapNhat);
+            return View(tintucs.ToPagedList(pageNum,pageSize));
         }
 
         //

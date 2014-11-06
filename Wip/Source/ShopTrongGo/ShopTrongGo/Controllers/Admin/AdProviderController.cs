@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
@@ -13,12 +14,14 @@ namespace ShopTrongGo.Controllers.Admin
         // GET: /NhaCungCap/
 
         WebBanTapHoaEntities db = new WebBanTapHoaEntities();
-        public ActionResult ListProvider()
+        public ActionResult ListProvider(int ? trang)
         {
             if (Session["LogedName"] != null)
             {
-                var ncc = db.NhaCungCaps.Include("DanhMuc");     
-                return View(ncc.ToList());
+                int pageSize = 10;
+                int pageNum = trang ?? 1;
+                var ncc = db.NhaCungCaps.Include("DanhMuc").OrderBy(nc => nc.NhaCungCapID);     
+                return View(ncc.ToPagedList(pageNum,pageSize));
             }
             return RedirectToAction("Login", "AdminLogin");
         }

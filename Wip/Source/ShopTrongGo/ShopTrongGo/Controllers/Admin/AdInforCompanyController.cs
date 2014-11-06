@@ -5,25 +5,29 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
 {
     public class AdInforCompanyController : Controller
-    {           
+    {
         Func func = new Func();
         private WebBanTapHoaEntities db = new WebBanTapHoaEntities();
 
         //
         // GET: /InforCompany/
 
-        public ActionResult Index()
+        public ActionResult Index(int? trang)
         {
             if (Session["LogedName"] == null)
             {
+
                 return RedirectToAction("Login", "AdminLogin");
-            }
-            return View(db.ThongTinCongTies.ToList());
+            } 
+            const int pageSize = 10;
+            int pageNum = trang ?? 1;
+            return View(db.ThongTinCongTies.OrderBy(tt => tt.CongTyID).ToPagedList(pageNum,pageSize));
         }
 
         //

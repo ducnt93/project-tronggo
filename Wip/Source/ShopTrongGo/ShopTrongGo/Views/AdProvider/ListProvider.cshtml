@@ -1,5 +1,6 @@
-﻿@using ShopTrongGo.Models
-@model System.Collections.Generic.List<ShopTrongGo.Models.NhaCungCap>
+﻿@using PagedList.Mvc
+@using ShopTrongGo.Models
+@model PagedList.IPagedList<ShopTrongGo.Models.NhaCungCap>
 
 @{
     ViewBag.Title = "DanhSachNhaCungCap";
@@ -31,3 +32,4 @@
             </tr>
         }
     </table>
+@Html.PagedListPager(Model,trang => Url.Action("ListProvider",new{trang = trang}),PagedListRenderOptions.OnlyShowFivePagesAtATime)

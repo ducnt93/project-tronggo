@@ -11,6 +11,7 @@ namespace ShopTrongGo.Controllers.Admin
     public class AdminLoginController : Controller
     {
         Func func = new Func();
+        
         #region Login
 
         public ActionResult Index()

@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
@@ -16,13 +17,15 @@ namespace ShopTrongGo.Controllers.Admin
         //
         // GET: /AdServices/
 
-        public ActionResult Index()
+        public ActionResult Index(int? trang)
         {
             if (Session["LogedName"] == null)
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
-            return View(db.DichVus.ToList());
+            int pageNum = trang ?? 1;
+            const int pageSize = 10;
+            return View(db.DichVus.OrderBy(dv => dv.DichVuID).ToPagedList(pageNum,pageSize));
         }
 
         //

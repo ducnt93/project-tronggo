@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShopTrongGo.Models.DanhMucTin>
+﻿@using PagedList.Mvc
+@model IEnumerable<ShopTrongGo.Models.DanhMucTin>
 
 @{
     ViewBag.Title = "Trang danh sách danh mục tin";
@@ -33,3 +34,4 @@
     </tr>
 }
 </table>
+@Html.PagedListPager(Model, trang => Url.Action("Index", new { trang = trang }), PagedListRenderOptions.OnlyShowFivePagesAtATime)

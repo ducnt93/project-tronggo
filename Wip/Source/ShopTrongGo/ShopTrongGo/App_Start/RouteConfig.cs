@@ -13,7 +13,15 @@ namespace ShopTrongGo
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
+            routes.MapRoute(
+              "RouteIndexNon",
+              "",
+              new
+              {
+                  controller = "Home",
+                  action = "Index",
+              }
+          );
             routes.MapRoute(
                "RouteIndex",
                "trang-chu",
@@ -344,7 +352,7 @@ namespace ShopTrongGo
             );
             routes.MapRoute(
                 "RoutDetailNews",
-                "{id}/{TenKhongDau}",
+                "{id}-{TenKhongDau}",
                 new
                 {
                     controller = "News",
@@ -363,7 +371,7 @@ namespace ShopTrongGo
             );
             routes.MapRoute(
                 "RoutDetailServices",
-                "{id}/{TenKhongDau}",
+                "{id}-{TenKhongDau}",
                 new
                 {
                     controller = "News",
@@ -476,9 +484,9 @@ namespace ShopTrongGo
              }
          );
             routes.MapRoute(
-                name: "Default",
-                url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
+                name: "Default1",
+                url: "{controller}/{action}",
+                defaults: new { controller = "Home", action = "Index" }
            );
         }
     }

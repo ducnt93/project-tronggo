@@ -1,4 +1,5 @@
-﻿@model IEnumerable<ShopTrongGo.Models.ThongTinCongTy>
+﻿@using PagedList.Mvc
+@model PagedList.IPagedList<ShopTrongGo.Models.ThongTinCongTy>
 
 @{
     ViewBag.Title = "Index";
@@ -46,3 +47,4 @@
 }
 
 </table>
+@Html.PagedListPager(Model,trang => Url.Action("Index",new{trang = trang}),PagedListRenderOptions.OnlyShowFivePagesAtATime)

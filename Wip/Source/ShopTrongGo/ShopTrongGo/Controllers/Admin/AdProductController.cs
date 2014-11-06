@@ -8,6 +8,7 @@ using System.Text.RegularExpressions;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using PagedList;
 using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
@@ -18,7 +19,7 @@ namespace ShopTrongGo.Controllers.Admin
 
         #region My Account
         public ActionResult InformationAccount()
-        {           
+        {
             if (Session["LogedName"] != null)
             {
                 var db = new WebBanTapHoaEntities();
@@ -30,11 +31,11 @@ namespace ShopTrongGo.Controllers.Admin
                     return HttpNotFound();
                 }
                 return View(taikhoan);
-                }
+            }
             else
             {
-                return RedirectToAction("Login","AdminLogin");
-            }       
+                return RedirectToAction("Login", "AdminLogin");
+            }
         }
 
         public ActionResult ChangePassword()
@@ -53,21 +54,87 @@ namespace ShopTrongGo.Controllers.Admin
             }
             else
             {
-                return RedirectToAction("Login","AdminLogin");
-            }                                          
-        }          
+                return RedirectToAction("Login", "AdminLogin");
+            }
+        }
         #endregion
 
         #region Manage Product
         private WebBanTapHoaEntities db = new WebBanTapHoaEntities();
-        public ActionResult ListProduct()
+        public ActionResult ListProduct(string sortOrder, string currentFilter, string searchString, int? trang)
         {
             if (Session["LogedName"] != null)
             {
-                var sanphams = db.SanPhams.Include("LoaiSanPham");
-                return View(sanphams.ToList());
+                ViewBag.CurrentSort = sortOrder;
+                ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+                //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+                ViewBag.TypeSortParm = sortOrder == "Loai" ? "loai_desc" : "Loai";
+                ViewBag.ViewSortParm = sortOrder == "LuotView" ? "luotview_desc" : "LuotView";
+                ViewBag.PriceSortParm = sortOrder == "Gia" ? "gia_desc" : "Gia";
+                ViewBag.StateSortParm = sortOrder == "TrangThai" ? "trangthai_desc" : "TrangThai";
+                if (searchString != null)
+                {
+                    trang = 1;
+                }
+                else
+                {
+                    searchString = currentFilter;
+                }
+
+                ViewBag.CurrentFilter = searchString;
+
+                var sanphams = from s in db.SanPhams
+                               select s;
+                if (!String.IsNullOrEmpty(searchString))
+                {
+                    sanphams = sanphams.Where(s => s.TenSp.ToUpper().Contains(searchString.ToUpper())
+                        || s.LoaiSanPham.TenLoaiSp.ToUpper().Contains(searchString.ToUpper()));
+                }
+                switch (sortOrder)
+                {
+                    case "name_desc":
+                        sanphams = sanphams.OrderByDescending(s => s.TenSp);
+                        break;
+                    //case "Date":
+                    //    sanphams = sanphams.OrderBy(s => s.NgayCapNhat);
+                    //    break;
+                    //case "date_desc":
+                    //    sanphams = sanphams.OrderByDescending(s => s.NgayCapNhat);
+                    //    break;
+                    case "LuotView":
+                        sanphams = sanphams.OrderBy(s => s.LuotView);
+                        break;
+                    case "luotview_desc":
+                        sanphams = sanphams.OrderByDescending(s => s.LuotView);
+                        break;
+                    case "Loai":
+                        sanphams = sanphams.OrderBy(s => s.LoaiSanPham.TenLoaiSp);
+                        break;
+                    case "loai_desc":
+                        sanphams = sanphams.OrderByDescending(s => s.LoaiSanPham.TenLoaiSp);
+                        break;
+                    case "Gia":
+                        sanphams = sanphams.OrderBy(s => s.Gia);
+                        break;
+                    case "gia_desc":
+                        sanphams = sanphams.OrderByDescending(s => s.Gia);
+                        break;
+                    case "TrangThai":
+                        sanphams = sanphams.OrderBy(s => s.TrangThai);
+                        break;
+                    case "trangthai_desc":
+                        sanphams = sanphams.OrderByDescending(s => s.TrangThai);
+                        break;
+                    default:  // Name ascending 
+                        sanphams = sanphams.OrderBy(s => s.TenSp);
+                        break;
+                }
+                const int pageSize = 5;
+                int pageNum = trang ?? 1;
+
+                return View(sanphams.ToPagedList(pageNum, pageSize));
             }
-            return RedirectToAction("Login","AdminLogin");
+            return RedirectToAction("Login", "AdminLogin");
         }
 
         public ActionResult AddProduct()
@@ -82,7 +149,7 @@ namespace ShopTrongGo.Controllers.Admin
                 ViewBag.LoaiSpID = new SelectList(db.LoaiSanPhams, "LoaiSpID", "TenLoaiSp");
                 return View();
             }
-            return RedirectToAction("Login","AdminLogin");
+            return RedirectToAction("Login", "AdminLogin");
         }
 
         [HttpPost]
@@ -161,7 +228,7 @@ namespace ShopTrongGo.Controllers.Admin
                 }
                 return View(sanpham);
             }
-            return RedirectToAction("Login","AdminLogin");
+            return RedirectToAction("Login", "AdminLogin");
         }
 
         public ActionResult DeleteProduct(string id = null)
@@ -175,22 +242,22 @@ namespace ShopTrongGo.Controllers.Admin
                 }
                 return View(sanpham);
             }
-            return RedirectToAction("Login","AdminLogin");
+            return RedirectToAction("Login", "AdminLogin");
         }
 
         //
         // POST: /MngProduct/Delete/5
 
         [HttpPost, ActionName("DeleteProduct")]
-        [ValidateAntiForgeryToken]                
+        [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(string id)
         {
             SanPham sanpham = db.SanPhams.Find(id);
             db.SanPhams.Remove(sanpham);
             db.SaveChanges();
-            return RedirectToAction("Index","AdminLogin");
+            return RedirectToAction("Index", "AdminLogin");
         }
-        #endregion        
+        #endregion
 
     }
 }

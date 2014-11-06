@@ -5,6 +5,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using ShopTrongGo.Models;
 
 namespace ShopTrongGo.Controllers.Admin
@@ -17,14 +18,16 @@ namespace ShopTrongGo.Controllers.Admin
         //
         // GET: /ProductCatagories/
 
-        public ActionResult ListProductCatagories()
+        public ActionResult ListProductCatagories(int? trang)
         {
             if (Session["LogedName"] == null)
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
-            var loaisanphams = db.LoaiSanPhams.Include(l => l.DanhMuc);
-            return View(loaisanphams.ToList());
+            const int pageSize = 10;
+            int pageNum = trang ?? 1;
+            var loaisanphams = db.LoaiSanPhams.Include(l => l.DanhMuc).OrderBy(c => c.DanhMucID);
+            return View(loaisanphams.ToPagedList(pageNum,pageSize));
         }
 
         //

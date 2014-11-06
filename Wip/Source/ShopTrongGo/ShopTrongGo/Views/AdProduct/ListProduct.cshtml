@@ -1,5 +1,6 @@
-﻿@using ShopTrongGo.Models
-@model System.Collections.Generic.List<SanPham>
+﻿@using PagedList.Mvc
+@using ShopTrongGo.Models
+@model PagedList.IPagedList<SanPham>
 
 @{
     ViewBag.Title = "DanhSachSanPham";
@@ -8,47 +9,68 @@
 
 <h2>Danh sách sản phẩm</h2>
 @Html.ActionLink("Thêm sản phẩm", "AddProduct")
-        <select id="SapXep" name="SapXep" style="height: 30px;width: 20%; float: right;">
-                  <option value="con">Số lượng còn</option>
-                  <option value="view">Lượt xem</option>
-                  <option value="ban">Lượt bán</option>
-        </select>
-
-<table>
-    <tr style="background: #00008b; color: white; height: 30px;">
-        <th>Tên sản phẩm</th>
-        <th>Loại sản phẩm</th>
-        <th>Ảnh đại diện</th>
-        <th>Giá</th>
-        <th>Trạng thái</th>
-        <th>Model</th>
-        <th>Xóa</th>
-        <th>Còn</th>
-        <th>Bán</th>
-        <th>Xem</th>
-        <th>Chức năng</th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>@Html.DisplayFor(modelItem => item.TenSp)</td>
-            <td>@Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSp)</td>
-            <td><img height="40px" width="60px" src="/image/cache/data/@Html.DisplayFor(modelItem => item.AnhDaiDien)" /></td>
-            <td>@Html.DisplayFor(modelItem => item.Gia)</td>
-            <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
-            <td>@Html.DisplayFor(modelItem => item.Model)</td>
-            <td>@Html.DisplayFor(modelItem => item.TrangThaiXoa)</td>
-            <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
-            <td>@Html.DisplayFor(modelItem => item.LuotBan)</td>
-            <td>@Html.DisplayFor(modelItem => item.LuotView)</td>
-            <td style="width: 15%;">
-                @Html.ActionLink("Sửa", "EditProduct", new { id = item.SanPhamID }) |
-                @Html.ActionLink("Chi tiết", "DetailsProduct", new { id = item.SanPhamID }) |
-                @Html.ActionLink("Xóa", "DeleteProduct", new { id = item.SanPhamID })
-            </td>
+<br/>
+@using (Html.BeginForm("ListProduct", "AdProduct", FormMethod.Get))
+{
+    <div class="col-sm-offset-3">
+        Tìm theo tên hoặc loại: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Tìm kiếm" />
+    </div>
+    <br/>
+    <table>
+        <tr style="background: #00008b; color: white; height: 30px;">
+            <th>
+                @Html.ActionLink("Tên sản phẩm", "ListProduct", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Loại sản phẩm", "ListProduct", new { sortOrder = ViewBag.TypeSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>Ảnh đại diện</th>
+            <th>
+                @Html.ActionLink("Giá", "ListProduct", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Trạng thái", "ListProduct", new { sortOrder = ViewBag.StateSortParm, currentFilter = ViewBag.CurrentFilter })
+              
+            </th>
+            <th>Model</th>
+            <th>Xóa</th>
+            <th>Còn</th>
+            <th>Bán</th>
+            <th>
+                @Html.ActionLink("Lượt view", "ListProduct", new { sortOrder = ViewBag.ViewSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>Chức năng</th>
         </tr>
-    }
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.TenSp)</td>
+                <td>@Html.DisplayFor(modelItem => item.LoaiSanPham.TenLoaiSp)</td>
+                <td><img height="40px" width="60px" src="/image/cache/data/@Html.DisplayFor(modelItem => item.AnhDaiDien)" /></td>
+                <td>@*@Html.DisplayFor(modelItem => item.Gia.ToString("N0"))*@ @item.Gia.ToString("N0") VNĐ</td>
+                <td>@Html.DisplayFor(modelItem => item.TrangThai)</td>
+                <td>@Html.DisplayFor(modelItem => item.Model)</td>
+                <td>@Html.DisplayFor(modelItem => item.TrangThaiXoa)</td>
+                <td>@Html.DisplayFor(modelItem => item.SoLuong)</td>
+                <td>@Html.DisplayFor(modelItem => item.LuotBan)</td>
+                <td>@Html.DisplayFor(modelItem => item.LuotView)</td>
+                <td style="width: 15%;">
+                    @Html.ActionLink("Sửa", "EditProduct", new { id = item.SanPhamID }) |
+                    @Html.ActionLink("Chi tiết", "DetailsProduct", new { id = item.SanPhamID }) |
+                    @Html.ActionLink("Xóa", "DeleteProduct", new { id = item.SanPhamID })
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="col-sm-offset-6">
+        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, trang => Url.Action("ListProduct",
+    new { trang, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+}
+
 
