@@ -1,13 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
-using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using ShopTrongGo.Models;
-using PagedList.Mvc;
+
 namespace ShopTrongGo.Controllers
 {
     public class ProductController : Controller

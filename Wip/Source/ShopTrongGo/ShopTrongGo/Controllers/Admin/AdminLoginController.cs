@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Linq;
 using System.Web.Mvc;
 using System.Web.Security;
 using ShopTrongGo.Models;
@@ -40,9 +37,9 @@ namespace ShopTrongGo.Controllers.Admin
             //{
                 using (var m = new WebBanTapHoaEntities())
                 {
-
+                    string pass = func.GetMd5(user.MatKhau);
                     var v =
-                        m.TaiKhoans.FirstOrDefault(u => u.TenDangNhap.Equals(user.TenDangNhap) && u.MatKhau.Equals(user.MatKhau));
+                        m.TaiKhoans.FirstOrDefault(u => u.TenDangNhap.Equals(user.TenDangNhap) && u.MatKhau.Equals(pass));
                     if (v != null)
                     {
                         Session["LogedName"] = v.TenDangNhap;

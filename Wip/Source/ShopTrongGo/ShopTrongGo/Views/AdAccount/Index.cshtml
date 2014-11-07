@@ -17,12 +17,8 @@
         <th>Tên người dùng</th>
         <th>Email</th>
         <th>Tên đăng nhập</th>
-        <th>Mật khẩu</th>
-        <th>Phone</th>
-        <th>Địa chỉ</th>
-        <th>Trạng thái xóa</th>
-        <th>Ngày xóa</th>
-        <th></th>
+        <th>Trạng thái</th>
+        <th>Thao tác</th>
     </tr>
 
 @foreach (var item in Model) {
@@ -40,19 +36,7 @@
             @Html.DisplayFor(modelItem => item.TenDangNhap)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MatKhau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Phone)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
             @Html.DisplayFor(modelItem => item.TrangThaiXoa)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayXoa)
         </td>
         <td style="width: 15%;">
             @Html.ActionLink("Sửa", "Edit", new { id = item.TaiKhoanID }) |

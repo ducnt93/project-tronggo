@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using ShopTrongGo.Models;
@@ -18,16 +15,50 @@ namespace ShopTrongGo.Controllers.Admin
         //
         // GET: /CategoryNews/
 
-        public ActionResult Index(int? trang)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? trang)
         {
             if (Session["LogedName"] == null)
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
+            ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
+            ViewBag.StatusSortParm = sortOrder == "true" ? "false_desc" : "Category";
+
+            if (searchString != null)
+            {
+                trang = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var dmTins = from s in db.DanhMucTins
+                          select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dmTins = dmTins.Where(s => s.TenDMTin.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "id_desc":
+                    dmTins = dmTins.OrderByDescending(s => s.TenDMTin);
+                    break;
+                case "true":
+                    dmTins = dmTins.OrderBy(s => s.TrangThai);
+                    break;
+                case "false_desc":
+                    dmTins = dmTins.OrderByDescending(s => s.TrangThai);
+                    break;
+                default:  // Name ascending 
+                    dmTins = dmTins.OrderBy(s => s.TenDMTin);
+                    break;
+            }
             const int pageSize = 10;
             int pageNum = trang ?? 1;
-
-            return View(db.DanhMucTins.OrderBy(dm => dm.Id).ToPagedList(pageNum,pageSize));
+            return View(dmTins.ToPagedList(pageNum,pageSize));
         }
 
         //

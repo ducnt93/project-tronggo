@@ -2,7 +2,7 @@
 @model PagedList.IPagedList<ShopTrongGo.Models.LoaiSanPham>
 
 @{
-    ViewBag.Title = "Thêm mới một loại sản phẩm";
+    ViewBag.Title = "Danh sách các loại sản phẩm";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -11,37 +11,57 @@
 <p>
     @Html.ActionLink("Thêm mới", "Create")
 </p>
-<table>
-    <tr style="background: #00008b; color: white; height: 30px;">
-        <th>Mã</th>
-        <th>Tên Loại</th>
-        <th>Xóa</th>
-        <th>Danh mục</th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.LoaiSpID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TenLoaiSp)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThaiXoa)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
-            </td>
-            <td style="width: 15%;">
-                @Html.ActionLink("Sửa", "Edit", new { id=item.LoaiSpID}) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.LoaiSpID }) |
-                @Html.ActionLink("Xóa", "Delete", new { id = item.LoaiSpID })
-            </td>
+@using (Html.BeginForm("ListProductCatagories", "AdProductCatagories", FormMethod.Get))
+{
+    <div class="col-sm-offset-3">
+        Tìm theo tên danh mục: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Tìm kiếm" />
+    </div>
+    <br />
+    <table>
+        <tr style="background: #00008b; color: white; height: 30px;">
+            <th>
+                @Html.ActionLink("Mã sản phẩm", "ListProductCatagories", new { sortOrder = ViewBag.IDSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Tên", "ListProductCatagories", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>Xóa</th>
+            <th>
+                @Html.ActionLink("Danh mục", "ListProductCatagories", new { sortOrder = ViewBag.CategorySortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
         </tr>
-    }
 
-</table>
-@Html.PagedListPager(Model,trang => Url.Action("ListProductCatagories",new{trang = trang}),PagedListRenderOptions.OnlyShowFivePagesAtATime)
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiSpID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenLoaiSp)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThaiXoa)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DanhMuc.TenDanhMuc)
+                </td>
+                <td style="width: 15%;">
+                    @Html.ActionLink("Sửa", "Edit", new {id = item.LoaiSpID}) |
+                    @Html.ActionLink("Chi tiết", "Details", new {id = item.LoaiSpID}) |
+                    @Html.ActionLink("Xóa", "Delete", new {id = item.LoaiSpID})
+                </td>
+            </tr>
+        }
+
+    </table>
+    <div class="col-sm-offset-6">
+        Trang: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, trang => Url.Action("ListProductCatagories",
+    new { trang, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
+
+}

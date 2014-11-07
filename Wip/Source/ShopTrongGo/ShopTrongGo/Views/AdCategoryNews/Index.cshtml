@@ -1,5 +1,5 @@
 ﻿@using PagedList.Mvc
-@model IEnumerable<ShopTrongGo.Models.DanhMucTin>
+@model PagedList.IPagedList<ShopTrongGo.Models.DanhMucTin>
 
 @{
     ViewBag.Title = "Trang danh sách danh mục tin";
@@ -11,27 +11,45 @@
 <p>
     @Html.ActionLink("Thêm mới danh mục tin", "Create")
 </p>
-<table>
-    <tr style="background: #00008b; color: white; height: 30px;">
-        <th>Tên danh mục tin</th>
-        <th>Trạng thái</th>
-        <th></th>
-    </tr>
+@using (Html.BeginForm("ListProductCatagories", "AdProductCatagories", FormMethod.Get))
+{
+    <div class="col-sm-offset-3">
+        Tìm theo tên danh mục: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Tìm kiếm" />
+    </div>
+    <br />
+    <table>
+        <tr style="background: #00008b; color: white; height: 30px;">
+            <th>
+                @Html.ActionLink("Danh mục tin", "Index", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Trạng thái", "Index", new { sortOrder = ViewBag.StatusSortParm, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th></th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenDMTin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td style="width: 15%;">
-            @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
-            @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
-            @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
-        </td>
-    </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenDMTin)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai)
+                </td>
+                <td style="width: 15%;">
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </table>
+    <div class="col-sm-offset-6">
+        Trang: @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+
+        @Html.PagedListPager(Model, trang => Url.Action("Index",
+    new { trang, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+    </div>
 }
-</table>
-@Html.PagedListPager(Model, trang => Url.Action("Index", new { trang = trang }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
