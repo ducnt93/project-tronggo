@@ -20,17 +20,17 @@
     <table>
         <tr style="background: #00008b; color: white; height: 30px;">
             <th>
-                @Html.ActionLink("Tên sản phẩm", "ListProduct", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Tên sản phẩm", "ListProduct", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
             </th>
             <th>
-                @Html.ActionLink("Loại sản phẩm", "ListProduct", new { sortOrder = ViewBag.TypeSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Loại sản phẩm", "ListProduct", new { sortOrder = ViewBag.TypeSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
             </th>
             <th>Ảnh đại diện</th>
             <th>
-                @Html.ActionLink("Giá", "ListProduct", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Giá", "ListProduct", new { sortOrder = ViewBag.PriceSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
             </th>
             <th>
-                @Html.ActionLink("Trạng thái", "ListProduct", new { sortOrder = ViewBag.StateSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Trạng thái", "ListProduct", new { sortOrder = ViewBag.StateSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
               
             </th>
             <th>Model</th>
@@ -38,7 +38,7 @@
             <th>Còn</th>
             <th>Bán</th>
             <th>
-                @Html.ActionLink("Lượt view", "ListProduct", new { sortOrder = ViewBag.ViewSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Lượt view", "ListProduct", new { sortOrder = ViewBag.ViewSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
             </th>
             <th>Chức năng</th>
         </tr>
