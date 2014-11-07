@@ -22,7 +22,8 @@ namespace ShopTrongGo.Controllers.Admin
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
-            ViewBag.IDSortParm = sortOrder == "Id" ? "id_desc" : "Id";
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.IDSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
             ViewBag.CategorySortParm = sortOrder == "Category" ? "category_desc" : "Category";
      

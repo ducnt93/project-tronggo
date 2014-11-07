@@ -16,15 +16,15 @@ namespace ShopTrongGo.Controllers.Admin
         // GET: /News/
 
         readonly Func fun = new Func();
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? trang)
+        public ActionResult Index(string currentFilter, string searchString, int? trang)
         {
             if (Session["LogedName"] == null)
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
-           
-            ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
-            ViewBag.StatusSortParm = sortOrder == "true" ? "false_desc" : "Category";
+
+            //ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
+            //ViewBag.StatusSortParm = sortOrder == "true" ? "false_desc" : "Category";
 
             if (searchString != null)
             {
@@ -38,11 +38,11 @@ namespace ShopTrongGo.Controllers.Admin
             ViewBag.CurrentFilter = searchString;
 
             var tintucs = from s in db.TinTucs
-                         select s;
-            //if (!String.IsNullOrEmpty(searchString))
-            //{
-            //    tintucs = tintucs.Where(s => s.TenLoaiSp.ToUpper().Contains(searchString.ToUpper()));
-            //}
+                          select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                tintucs = tintucs.Where(s => s.TenTin.ToUpper().Contains(searchString.ToUpper()));
+            }
             //switch (sortOrder)
             //{
             //    case "id_desc":
@@ -66,7 +66,7 @@ namespace ShopTrongGo.Controllers.Admin
             //}
             const int pageSize = 10;
             int pageNum = trang ?? 1;
-            return View(tintucs.ToPagedList(pageNum,pageSize));
+            return View(tintucs.OrderBy(tt => tt.NgayCapNhat).ToPagedList(pageNum, pageSize));
         }
 
         //
@@ -159,7 +159,7 @@ namespace ShopTrongGo.Controllers.Admin
                 else
                 {
                     tintuc.NgayXoaTin = null;
-                }                                                                          
+                }
                 tintuc.TenKhongDau = fun.ConvertToUnSign3(tintuc.TenTin);
                 tintuc.AnhDaiDien = fun.LinkImage(tintuc.AnhDaiDien);
                 db.SaveChanges();

@@ -21,14 +21,14 @@
     <table>
         <tr style="background: #00008b; color: white; height: 30px;">
             <th>
-                @Html.ActionLink("Mã sản phẩm", "ListProductCatagories", new { sortOrder = ViewBag.IDSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Mã sản phẩm", "ListProductCatagories", new { sortOrder = ViewBag.IDSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
             </th>
             <th>
-                @Html.ActionLink("Tên", "ListProductCatagories", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Tên", "ListProductCatagories", new { sortOrder = ViewBag.NameSortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
             </th>
             <th>Xóa</th>
             <th>
-                @Html.ActionLink("Danh mục", "ListProductCatagories", new { sortOrder = ViewBag.CategorySortParm, currentFilter = ViewBag.CurrentFilter })
+                @Html.ActionLink("Danh mục", "ListProductCatagories", new { sortOrder = ViewBag.CategorySortParm, currentFilter = ViewBag.CurrentFilter }, new { @class = "a" })
             </th>
             <th></th>
         </tr>

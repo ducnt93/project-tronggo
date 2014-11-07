@@ -21,8 +21,9 @@ namespace ShopTrongGo.Controllers.Admin
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
-            ViewBag.NameSortParm = sortOrder == "Name" ? "name_desc" : "Name";
-            ViewBag.StatusSortParm = sortOrder == "true" ? "false_desc" : "Category";
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.StatusSortParm = sortOrder == "true" ? "false_desc" : "true";
 
             if (searchString != null)
             {
@@ -43,7 +44,7 @@ namespace ShopTrongGo.Controllers.Admin
             }
             switch (sortOrder)
             {
-                case "id_desc":
+                case "name_desc":
                     dmTins = dmTins.OrderByDescending(s => s.TenDMTin);
                     break;
                 case "true":

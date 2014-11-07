@@ -11,77 +11,41 @@
 <p>
     @Html.ActionLink("Thêm tin tức", "Create")
 </p>
-@foreach (var item in Model)
+@using (Html.BeginForm("Index", "AdNews", FormMethod.Get))
 {
-    <div class="box">
-        <div class="left">
-            <img src="/image/cache/data/@Html.DisplayFor(modelItem => item.AnhDaiDien) " />
-        </div>
-        <div class="right">
-            <div class="title">Tiêu đề: @Html.DisplayFor(modelItem => item.TenTin)</div>
-            <div class="news">Danh mục: @Html.DisplayFor(modelItem => item.DanhMucTin.TenDMTin)</div>
-            <div class="main">
-                @Html.DisplayFor(modelItem => item.MieuTaNgan)
-            </div>
-            <div class="author">
-               <div style="float: right"> Tác giả: @Html.DisplayFor(modelItem => item.NguoiDang)</div>
-            </div>
-            <div class="func">
-                <div class="defunc">
-                    @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
-                </div>
-                <div class="defunc">
-                    @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
-                </div>
-                <div class="defunc">
-                    @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
-                </div>
-            </div>
-        </div>
+    <div class="col-sm-offset-3">
+        Tìm theo tiêu đề tin: @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+        <input type="submit" value="Tìm kiếm" />
     </div>
+    <br />
+    foreach (var item in Model)
+    {
+        <div class="box">
+            <div class="left">
+                <img src="/image/cache/data/@Html.DisplayFor(modelItem => item.AnhDaiDien) " />
+            </div>
+            <div class="right">
+                <div class="title">Tiêu đề: @Html.DisplayFor(modelItem => item.TenTin)</div>
+                <div class="news">Danh mục: @Html.DisplayFor(modelItem => item.DanhMucTin.TenDMTin)</div>
+                <div class="main">
+                    @Html.DisplayFor(modelItem => item.MieuTaNgan)
+                </div>
+                <div class="author">
+                    <div style="float: right"> Tác giả: @Html.DisplayFor(modelItem => item.NguoiDang)</div>
+                </div>
+                <div class="func">
+                    <div class="defunc">
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.Id })
+                    </div>
+                    <div class="defunc">
+                        @Html.ActionLink("Chi tiết", "Details", new { id = item.Id }) |
+                    </div>
+                    <div class="defunc">
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.Id }) |
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    @Html.PagedListPager(Model, trang => Url.Action("Index", new { trang = trang }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
 }
-
-@*<table>
-    <tr style ="background: #00008b; color: white; height: 30px;">
-        <th>Danh mục tin</th>
-        <th>TIn bài</th>
-        <th>Miêu tả ngắn</th>
-        <th>Trạng thái</th>
-        <th>Ngày cập nhật</th>
-        <th>Người đăng bài</th>
-        <th>Ảnh đại diện</th>
-        <th></th>
-    </tr>
-    
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.DanhMucTin.TenDMTin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenTin)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.MieuTaNgan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TrangThai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayCapNhat)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NguoiDang)
-        </td>
-        <td><img height="40px" width="60px" src="/image/cache/data/@Html.DisplayFor(modelItem => item.AnhDaiDien) "/>
-        </td>
-        <td>
-            @Html.ActionLink("Sửa", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Chi tiết", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.Id })
-        </td>
-    </tr>
-}
-
-</table>*@
-@Html.PagedListPager(Model, trang => Url.Action("Index", new { trang = trang }), PagedListRenderOptions.OnlyShowFivePagesAtATime)

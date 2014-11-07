@@ -62,7 +62,6 @@ namespace ShopTrongGo.Controllers.Admin
             {
                 ViewBag.CurrentSort = sortOrder;
                 ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-                //ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
                 ViewBag.TypeSortParm = sortOrder == "Loai" ? "loai_desc" : "Loai";
                 ViewBag.ViewSortParm = sortOrder == "LuotView" ? "luotview_desc" : "LuotView";
                 ViewBag.PriceSortParm = sortOrder == "Gia" ? "gia_desc" : "Gia";
@@ -90,12 +89,6 @@ namespace ShopTrongGo.Controllers.Admin
                     case "name_desc":
                         sanphams = sanphams.OrderByDescending(s => s.TenSp);
                         break;
-                    //case "Date":
-                    //    sanphams = sanphams.OrderBy(s => s.NgayCapNhat);
-                    //    break;
-                    //case "date_desc":
-                    //    sanphams = sanphams.OrderByDescending(s => s.NgayCapNhat);
-                    //    break;
                     case "LuotView":
                         sanphams = sanphams.OrderBy(s => s.LuotView);
                         break;

@@ -14,15 +14,57 @@ namespace ShopTrongGo.Controllers.Admin
         //
         // GET: /AdServices/
 
-        public ActionResult Index(int? trang)
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? trang)
         {
             if (Session["LogedName"] == null)
             {
                 return RedirectToAction("Login", "AdminLogin");
             }
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Ngay" ? "ngay_desc" : "Loai";
+            ViewBag.PeopleSortParm = sortOrder == "Nguoidang" ? "nguoidang_desc" : "LuotView";
+            if (searchString != null)
+            {
+                trang = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var dichvus = from s in db.DichVus
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                dichvus = dichvus.Where(s => s.TenDichVu.ToUpper().Contains(searchString.ToUpper()));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    dichvus = dichvus.OrderByDescending(s => s.TenDichVu);
+                    break;
+                case "Ngay":
+                    dichvus = dichvus.OrderBy(s => s.NgayDang);
+                    break;
+                case "ngay_desc":
+                    dichvus = dichvus.OrderByDescending(s => s.NgayDang);
+                    break;
+                case "Nguoidang":
+                    dichvus = dichvus.OrderBy(s => s.NguoiDang);
+                    break;
+                case "nguoidang_desc":
+                    dichvus = dichvus.OrderByDescending(s => s.NguoiDang);
+                    break;
+                default:  // Name ascending 
+                    dichvus = dichvus.OrderBy(s => s.TenDichVu);
+                    break;
+            }
             int pageNum = trang ?? 1;
             const int pageSize = 10;
-            return View(db.DichVus.OrderBy(dv => dv.DichVuID).ToPagedList(pageNum,pageSize));
+            return View(dichvus.ToPagedList(pageNum,pageSize));
         }
 
         //
