@@ -17,8 +17,8 @@
                 @foreach (var tinTuc in Model)
                 {              
                     <div>
+                        <div class="TieuDe"><a href="@tinTuc.Id@tinTuc.TenKhongDau" style="font-size: 14px;">@tinTuc.TenTin </a><br /></div>
                         <div class="LeftNew">
-                            <a href="@tinTuc.Id@tinTuc.TenKhongDau" style="font-size: 14px;">@tinTuc.TenTin </a><br/>
                             <a href="@tinTuc.Id@tinTuc.TenKhongDau"><img class="imgTT" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>  
                         </div>
                         <div class="RightNew">
