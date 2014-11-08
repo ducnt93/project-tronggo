@@ -15,13 +15,13 @@ namespace ShopTrongGo.Controllers
         {
             const int pageSize = 15;
             int pageNum = page ?? 1;
-            var listNews = _dbBanTapHoaEntities.TinTucs.Where(tt => tt.TrangThai).OrderByDescending(tt => tt.NgayCapNhat);
+            var listNews = _dbBanTapHoaEntities.TinTucs.Where(tt => tt.TrangThai == false).OrderByDescending(tt => tt.NgayCapNhat);
             return View(listNews.ToPagedList(pageNum, pageSize));
         }
 
         public ActionResult DetailNews(int? id)
         {
-            var tinTuc = _dbBanTapHoaEntities.TinTucs.SingleOrDefault(tt => tt.TrangThai & tt.Id == id);
+            var tinTuc = _dbBanTapHoaEntities.TinTucs.SingleOrDefault(tt => tt.TrangThai==false & tt.Id == id);
             ViewBag.DanhSachTin =
                 _dbBanTapHoaEntities.TinTucs.Where(tt => !tt.TrangThai & tt.Id != id)
                     .OrderByDescending(tt => tt.NgayCapNhat)
@@ -40,7 +40,7 @@ namespace ShopTrongGo.Controllers
 
         public ActionResult DetailServices(int id)
         {
-            var dichVu = _dbBanTapHoaEntities.DichVus.SingleOrDefault(dv => !dv.TrangThaiXoa & dv.DichVuID == id);
+            var dichVu = _dbBanTapHoaEntities.DichVus.SingleOrDefault(dv => !dv.TrangThaiXoa == false & dv.DichVuID == id);
             ViewBag.DanhSachDichVu =
                 _dbBanTapHoaEntities.DichVus.Where(dv => !dv.TrangThaiXoa & dv.DichVuID != id)
                     .OrderByDescending(tt => tt.NgayDang)
