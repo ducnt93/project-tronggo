@@ -62,7 +62,7 @@
         <div class="editor">
             <div class="editor-label">Chi tiết</div>
             <div class="editor-field">
-                @Html.TextArea("MieuTaChiTiet", new { @id = "ckeditorMT" })
+                @Html.TextAreaFor(model => model.MieuTaChiTiet, new { @id = "ckeContent" })
                 @Html.ValidationMessageFor(model => model.MieuTaChiTiet)
             </div>
         </div>
