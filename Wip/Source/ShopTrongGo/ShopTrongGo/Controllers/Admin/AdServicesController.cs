@@ -10,6 +10,7 @@ namespace ShopTrongGo.Controllers.Admin
     public class AdServicesController : Controller
     {
         private WebBanTapHoaEntities db = new WebBanTapHoaEntities();
+        Func func = new Func();
 
         //
         // GET: /AdServices/
@@ -101,11 +102,14 @@ namespace ShopTrongGo.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Create(DichVu dichvu)
         {
             if (ModelState.IsValid)
             {
                 dichvu.NgayDang = DateTime.Now.Date;
+                dichvu.TenKhongDau = func.ConvertToUnSign3(dichvu.TenDichVu);
+                dichvu.AnhDaiDien = func.LinkImage(dichvu.AnhDaiDien);
                 db.DichVus.Add(dichvu);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -136,6 +140,7 @@ namespace ShopTrongGo.Controllers.Admin
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult Edit(DichVu dichvu)
         {
             if (Session["LogedName"] == null)
@@ -152,6 +157,8 @@ namespace ShopTrongGo.Controllers.Admin
                 {
                     dichvu.NgayXoa = null;
                 }
+                dichvu.TenKhongDau = func.ConvertToUnSign3(dichvu.TenDichVu);
+                dichvu.AnhDaiDien = func.LinkImage(dichvu.AnhDaiDien);
                 db.Entry(dichvu).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
