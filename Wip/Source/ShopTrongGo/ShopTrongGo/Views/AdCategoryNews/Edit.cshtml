@@ -20,7 +20,7 @@
                 Tên danh mục:
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.TenDMTin)
+                @Html.TextBoxFor(model => model.TenDMTin,new {@class="txt"})
                 @Html.ValidationMessageFor(model => model.TenDMTin)
             </div>
         </div>
@@ -29,7 +29,7 @@
                 Mô tả:
             </div>
             <div class="editor-field">
-                @Html.EditorFor(model => model.MoTa)
+                @Html.TextAreaFor(model => model.MoTa)
                 @Html.ValidationMessageFor(model => model.MoTa)
             </div>
         </div>
