@@ -1,0 +1,45 @@
+﻿@model ShopTrongGo.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Xóa</h2>
+
+<h3>Bạn thực sự muốn xóa danh mục này?</h3>
+<fieldset>
+    <legend>Danh mục</legend>
+    <div class="display">
+        <div class="display-label">Tên danh mục</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenDanhMuc)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">Tên nhà cung cấp</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NhaCungCap1.TenNcc)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">Ẩn</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)
+        </div>
+    </div>
+    <div class="display">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            <p>
+                <input type="submit" value="Thêm" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" />
+            </p>
+        }
+    </div>
+
+</fieldset>
+
+        
+       
+@Html.ActionLink("Danh sách danh mục", "Index")

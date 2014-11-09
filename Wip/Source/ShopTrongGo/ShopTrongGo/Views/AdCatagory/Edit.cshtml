@@ -1,0 +1,53 @@
+﻿@model ShopTrongGo.Models.DanhMuc
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Sửa thông tin</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Danh mục</legend>
+
+        @Html.HiddenFor(model => model.DanhMucID)
+        <div class="editor">
+            <div class="editor-label">Tên danh mục</div>
+            <div class="editor-field">
+                @Html.TextBoxFor(model => model.TenDanhMuc,new {@class="txt"})
+                @Html.ValidationMessageFor(model => model.TenDanhMuc)
+            </div>
+        </div>
+        <div class="editor">
+            <div class="editor-label">Nhà cung cấp</div>
+            <div class="editor-field">
+                @Html.DropDownList("NhaCungCapID", (IEnumerable<SelectListItem>)ViewBag.PriorityID, new { @class = "drl" })
+                @Html.ValidationMessageFor(model => model.NhaCungCapID)
+            </div>
+        </div>
+        <div class="editor">
+            <div class="editor-label">Ẩn</div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TrangThaiXoa)
+                @Html.ValidationMessageFor(model => model.TrangThaiXoa)
+            </div>
+        </div>
+        <div class="editor">
+            <p>
+                <input type="submit" value="Sửa" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" />
+            </p>
+        </div>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Danh sách danh mục", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
