@@ -5,7 +5,7 @@
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Edit Product</h2>
+<h2>Sửa thông tin</h2>
 
 @using (Html.BeginForm())
 {
@@ -13,7 +13,7 @@
     @Html.ValidationSummary(true)
 
     <fieldset>
-        <legend>Sửa thông tin sản phẩm</legend>
+        <legend>Sản phẩm</legend>
 
         @Html.HiddenFor(model => model.SanPhamID)
         <div class="editor">
@@ -138,7 +138,7 @@
 </fieldset>
 }
 
-<script language="javascript" type="text/javascript">
+@*<script language="javascript" type="text/javascript">
     $(function () {
         $("#btnBrowserImage").click(function () {
             var ckfinder = new CKFinder();
@@ -151,10 +151,10 @@
 </script>
 <script language="javascript" type="text/javascript">
     CKEDITOR.replace("ckeContent");
-</script>
+</script>*@
 
 <div>
-    @Html.ActionLink("Back to List", "ListProduct")
+    @Html.ActionLink("Danh sách sản phẩm", "ListProduct")
 </div>
 
 @section Scripts {

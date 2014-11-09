@@ -1,12 +1,13 @@
 ﻿@model  ShopTrongGo.Models.SanPham
 
 @{
-    ViewBag.Title = "ChiTietSanPham";
+    ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
-
+<h2>Chi tiết</h2>
 <fieldset>
-    <legend style="text-align: center;">Thông tin chi tiết sản phẩm</legend>
+    
+    <legend>Sản phẩm</legend>
     <div class="display">
         <div class="display-label">Tên sản phẩm</div>
         <div class="display-field">@Html.DisplayFor(model => model.TenSp)</div>
@@ -78,6 +79,6 @@
 
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "EditProduct", new { id = Model.SanPhamID }) |
-    @Html.ActionLink("Back", "ListProduct")
+    @Html.ActionLink("Sửa", "EditProduct", new { id = Model.SanPhamID }) |
+    @Html.ActionLink("Danh sách sản phẩm", "ListProduct")
 </p>
