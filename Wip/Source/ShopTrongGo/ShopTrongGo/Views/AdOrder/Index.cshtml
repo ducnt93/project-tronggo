@@ -1,28 +1,17 @@
 ﻿@model IEnumerable<ShopTrongGo.Models.HoaDon>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Danh sách đặt hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Đặt hàng</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table>
     <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayMua)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TaiKhoan.TenNguoiDung)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.TrangThaiXoa)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayXoa)
-        </th>
+        <th>Ngày mua</th>
+        <th>Tên người mua</th>
+        <th>Ẩn</th>
         <th></th>
     </tr>
 
@@ -38,12 +27,8 @@
             @Html.DisplayFor(modelItem => item.TrangThaiXoa)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.NgayXoa)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.HoaDonID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.HoaDonID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.HoaDonID })
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.HoaDonID }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.HoaDonID })
         </td>
     </tr>
 }

@@ -1,43 +1,36 @@
 ﻿@model ShopTrongGo.Models.HoaDon
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Chi tiết đặt hàng";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h2>Details</h2>
+<h2>Chi tiết</h2>
 
 <fieldset>
-    <legend>HoaDon</legend>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayMua)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayMua)
-    </div>
-
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TaiKhoan.TenNguoiDung)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TaiKhoan.TenNguoiDung)
+    <legend>Hóa đơn</legend>
+    <div class="display">
+        <div class="display-label">Ngày mua</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.NgayMua)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.TrangThaiXoa)
-    </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.TrangThaiXoa)
+    <div class="display">
+        <div class="display-label">Tên người mua</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TaiKhoan.TenNguoiDung)
+        </div>
     </div>
 
-    <div class="display-label">
-         @Html.DisplayNameFor(model => model.NgayXoa)
+    <div class="display">
+        <div class="display-label">Ẩn</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)
+        </div>
     </div>
-    <div class="display-field">
-        @Html.DisplayFor(model => model.NgayXoa)
-    </div>
+
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.HoaDonID }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Danh sách hóa đơn", "Index")
 </p>
