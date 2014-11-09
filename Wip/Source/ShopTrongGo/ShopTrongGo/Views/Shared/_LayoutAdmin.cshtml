@@ -57,7 +57,7 @@
                 <div class="row">
                     <div class="col-sm-3">
                         <div class="left-sidebar">
-                            <h2>Quản lý</h2>
+                            <h2>Chức năng</h2>
                             <div class="panel-group category-products" id="accordian">
                                 <!--category-productsr-->
                                 <div class="panel panel-default">
@@ -76,6 +76,7 @@
                                                 <li>@Html.ActionLink("Danh sách sản phẩm", "ListProduct", "AdProduct")</li>
                                                 <li>@Html.ActionLink("Loại sản phẩm", "ListProductCatagories", "AdProductCatagories")</li>
                                                 <li>@Html.ActionLink("Nhà cung cấp", "ListProvider", "AdProvider")</li>
+                                                <li>@Html.ActionLink("Danh mục ảnh","Index","AdCatagoryImage")</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -94,6 +95,8 @@
                                             <ul>
                                                 <li>@Html.ActionLink("Thêm khách hàng mới", "Create", "AdAccount")</li>
                                                 <li>@Html.ActionLink("Danh sách khách hàng", "Index", "AdAccount")</li>
+                                                <li>@Html.ActionLink("Danh sách liên hệ","","")</li>
+                                                <li>@Html.ActionLink("Danh sách đặt hàng","Index","AdOrderDetails")</li>
                                                 <li>@Html.ActionLink("Loại tài khoản", "Index", "AdTypeOfAcc")</li>
                                             </ul>
                                         </div>
@@ -113,6 +116,7 @@
                                             <ul>
                                                 <li>@Html.ActionLink("Quản lý danh mục tin", "Index", "AdCategoryNews")</li>
                                                 <li>@Html.ActionLink("Quản lý tin tức", "Index", "AdNews")</li>
+                                                <li>@Html.ActionLink("Quản lý danh mục", "Index", "AdCatagory")</li>
                                                 <li>@Html.ActionLink("Danh sách dịch vụ", "Index", "AdServices")</li>
                                                 <li>@Html.ActionLink("Danh sách đối tác", "Index", "AdPartners")</li>
                                                 <li>@Html.ActionLink("Thông tin công ty", "Index", "AdInforCompany")</li>
@@ -154,7 +158,7 @@
 
 
         </section>
-        <footer></footer>
+       
         <script src="~/Content/ckeditor/ckeditor.js"></script>
         <script src="~/Content/ckfinder/ckfinder.js"></script>
         <script src="~/Scripts/jquery-1.8.2.min.js"></script>
@@ -168,20 +172,22 @@
         <script src="~/Scripts/js/main.js"></script>
         <script src="~/Scripts/js/price-range.js"></script>
         <script language="javascript" type="text/javascript">
-    $(function () {
-        $("#btnBrowserImage").click(function () {
-            var ckfinder = new CKFinder();
-            ckfinder.selectActionFunction = function (fileUrl) {
-                $("#AnhDaiDien").val(fileUrl);
-            };
-            ckfinder.popup();
-        });
-    });
+            $(function () {
+                $("#btnBrowserImage").click(function () {
+                    var ckfinder = new CKFinder();
+                    ckfinder.selectActionFunction = function (fileUrl) {
+                        $("#AnhDaiDien").val(fileUrl);
+                    };
+                    ckfinder.popup();
+                });
+            });
         </script>
         <script language="javascript" type="text/javascript">
             CKEDITOR.replace("ckeContent");
         </script>
         @*<script src="~/Scripts/jquery-ui-1.8.24.min.js"></script>*@
     </header>
+    <footer style="height: 100px;">
+    </footer>
 </body>
 </html>
