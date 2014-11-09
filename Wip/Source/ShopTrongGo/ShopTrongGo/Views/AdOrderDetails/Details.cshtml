@@ -1,0 +1,57 @@
+﻿@model ShopTrongGo.Models.ChiTietHoaDon
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>ChiTietHoaDon</legend>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SanPham.TenSp)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SanPham.TenSp)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.HoaDon.HoaDonID)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.HoaDon.HoaDonID)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.SoLuongMua)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.SoLuongMua)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Gia)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Gia)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.TrangThaiXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.TrangThaiXoa)
+    </div>
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.NgayXoa)
+    </div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.NgayXoa)
+    </div>
+</fieldset>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { /* id=Model.PrimaryKey */ }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

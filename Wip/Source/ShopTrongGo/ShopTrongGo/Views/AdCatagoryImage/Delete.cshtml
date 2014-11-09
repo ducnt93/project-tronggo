@@ -1,0 +1,42 @@
+﻿@model ShopTrongGo.Models.DanhMucAnh
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Xóa ảnh</h2>
+
+<h3>Bạn có muốn xóa ảnh này?</h3>
+<fieldset>
+    <legend>Danh mục ảnh</legend>
+
+    <div class="display">
+        <div class="display-label">Tên sản phẩm</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SanPham.TenSp)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">Ảnh</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenAnh)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">
+            Ẩn
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)
+        </div>
+    </div>
+    <div class="display">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+    <p><input type="submit" value="Xóa" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" /></p>
+        }
+
+    </div>
+</fieldset>
+@Html.ActionLink("Danh sách ảnh", "Index")

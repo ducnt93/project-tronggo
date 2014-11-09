@@ -1,0 +1,36 @@
+﻿@model ShopTrongGo.Models.DanhMucAnh
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Chi tiết</h2>
+
+<fieldset>
+    <legend>Danh mục ảnh</legend>
+    <div class="display">
+        <div class="display-label">Tên sản phẩm</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.SanPham.TenSp)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">Ảnh</div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TenAnh)
+        </div>
+    </div>
+    <div class="display">
+        <div class="display-label">
+            Ẩn
+        </div>
+        <div class="display-field">
+            @Html.DisplayFor(model => model.TrangThaiXoa) @Html.DisplayFor(model => model.NgayXoa)
+        </div>
+    </div>
+
+</fieldset>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id=Model.DanhMucAnhID }) |
+    @Html.ActionLink("Danh sách ảnh", "Index")
+</p>

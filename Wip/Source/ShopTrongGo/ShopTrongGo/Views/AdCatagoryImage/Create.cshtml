@@ -1,0 +1,52 @@
+﻿@model ShopTrongGo.Models.DanhMucAnh
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm()) {
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <fieldset>
+        <legend>Danh mục ảnh</legend>
+        <div class="editor">
+            <div class="editor-label">Sản phẩm</div>
+            <div class="editor-field">
+                @Html.DropDownList("SanPhamID", String.Empty)
+                @Html.ValidationMessageFor(model => model.SanPhamID)
+            </div>
+        </div>
+
+        <div class="editor">
+            <div class="editor-label">
+                Ảnh
+            </div>
+            <div class="editor-field">
+                @Html.EditorFor(model => model.TenAnh)
+                @Html.ValidationMessageFor(model => model.TenAnh)
+            </div>
+        </div>
+
+        <div class="editor">
+            <div class="editor-label"></div>
+            <div class="editor-field">
+                <input type="button" id="btnBrowserImage" value="Browser" />
+            </div>
+        </div>
+
+            <div class="editor">
+                <p><input type="submit" value="Thêm" style="float: right; height: 40px; width: 80px; background: #ff4500; color: white; border-radius: 5px;" /></p>
+            </div>
+</fieldset>
+}
+
+<div>
+    @Html.ActionLink("Danh sách ảnh", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
