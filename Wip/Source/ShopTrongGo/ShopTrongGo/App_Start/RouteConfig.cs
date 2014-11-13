@@ -234,7 +234,7 @@ namespace ShopTrongGo
                id = UrlParameter.Optional
            }
            );
-   
+
 
             routes.MapRoute(
                "RouteListProductCatalogies",
@@ -339,43 +339,6 @@ namespace ShopTrongGo
                     controller = "Product",
                     action = "All",
                     id = "idDm"
-                }
-            );
-            routes.MapRoute(
-                "RouteAllNews",
-                "danh-sach-tin-tuc",
-                new
-                {
-                    controller = "News",
-                    action = "AllNews"
-                }
-            );
-            routes.MapRoute(
-                "RoutDetailNews",
-                "{id}-{TenKhongDau}",
-                new
-                {
-                    controller = "News",
-                    action = "DetailNews",
-                    id = "{id}"
-                }
-            );
-            routes.MapRoute(
-                "RouteAllService",
-                "danh-sach-dich-vu",
-                new
-                {
-                    controller = "News",
-                    action = "AllServices"
-                }
-            );
-            routes.MapRoute(
-                "RoutDetailServices",
-                "{id}-{TenKhongDau}",
-                new
-                {
-                    controller = "News",
-                    action = "DetailServices"
                 }
             );
 
@@ -483,11 +446,50 @@ namespace ShopTrongGo
                  action = "Create"
              }
          );
+
             routes.MapRoute(
-                name: "Default1",
-                url: "{controller}/{action}",
-                defaults: new { controller = "Home", action = "Index" }
-           );
+              "RouteAllNews",
+              "danh-sach-tin-tuc",
+              new
+              {
+                  controller = "News",
+                  action = "AllNews"
+              }
+          );
+            routes.MapRoute(
+                "RoutDetailNews",
+                "{id}/{TenKhongDau}",
+                new
+                {
+                    controller = "News",
+                    action = "DetailNews",
+                    id = UrlParameter.Optional
+                }
+            );
+            routes.MapRoute(
+                "RouteAllServices",
+                "danh-sach-dich-vu",
+                new
+                {
+                    controller = "News",
+                    action = "AllServices"
+                }
+            );
+            routes.MapRoute(
+                "RouteDetailServices",
+                "danh-vu/{id}/{TenKhongDau}",
+                new
+                {
+                    controller = "News",
+                    action = "DetailServices",
+                    id = UrlParameter.Optional
+                }
+            );
+            routes.MapRoute(
+    name: "Default1",
+    url: "{controller}/{action}",
+    defaults: new { controller = "Home", action = "Index" }
+);
         }
     }
 }

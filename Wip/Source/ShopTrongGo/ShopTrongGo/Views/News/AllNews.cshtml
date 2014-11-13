@@ -12,26 +12,28 @@
 </div>
 @if (Model != null)
 {
-        <div class="middle" style="padding:0px;">
+        <div class="middle" style="padding: 0px;">
             <div class="list">
                 @foreach (var tinTuc in Model)
-                {              
+                {
                     <div>
-                        <div class="TieuDe"><a href="@tinTuc.Id@tinTuc.TenKhongDau" style="font-size: 14px;">@tinTuc.TenTin </a><br /></div>
+                        <div class="TieuDe">
+                            @*<a href="~/@tinTuc.Id@tinTuc.TenKhongDau" style="font-size: 14px;">@tinTuc.TenTin </a><br />*@
+                            @Html.ActionLink(@tinTuc.TenTin, "DetailNews", "News", new { @id = @tinTuc.Id, @tinTuc.TenKhongDau }, new { @style = "font-size: 14px;" })<br />
+                        </div>
                         <div class="LeftNew">
-                            <a href="@tinTuc.Id@tinTuc.TenKhongDau"><img class="imgTT" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>  
+                            <a href="~/@tinTuc.Id/@tinTuc.TenKhongDau"><img class="imgTT" src="~/image/cache/data/@tinTuc.AnhDaiDien" /></a>
                         </div>
                         <div class="RightNew">
-                            <br/>
-                            <p style=" color: #a9a9a9;">Ngày đăng:@tinTuc.NgayCapNhat.ToString("d")</p>
-                            <p>@Html.Raw(tinTuc.MieuTaNgan) <a href="@tinTuc.Id/@tinTuc.TenKhongDau" style="font-size: 12px;">Chi tiết</a></p>
+                            <br />
+                            <p style="color: #a9a9a9;">Ngày đăng:@tinTuc.NgayCapNhat.ToString("d")</p>
+                            <p>@Html.Raw(tinTuc.MieuTaNgan) <a href="~/@tinTuc.Id/@tinTuc.TenKhongDau" style="font-size: 12px;">Chi tiết</a></p>
                             <p style="text-align: right;">@tinTuc.NguoiDang</p>
 
                         </div>
                     </div>
                 }
-                @Html.PagedListPager(Model, page => Url.Action("AllNews", new { page = page }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
+                @Html.PagedListPager(Model, trang => Url.Action("AllNews", new { trang = trang }), PagedListRenderOptions.OnlyShowFivePagesAtATime)
             </div>
         </div>
 }
-
