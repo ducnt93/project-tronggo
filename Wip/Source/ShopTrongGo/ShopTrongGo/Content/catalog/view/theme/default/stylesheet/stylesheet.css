@@ -161,18 +161,20 @@ form {
     display: inline;
 }
 
-form>.middle>.list>table>tbody>tr>td>input {
+    form > .middle > .list > table > tbody > tr > td > input {
+        width: 180px;
+        height: 20px;
+    }
+
+.middle > .list > form > div > table > tbody > tr > td > input {
     width: 180px;
     height: 20px;
 }
- .middle>.list>form>div>table>tbody>tr>td>input {
-    width: 180px;
-    height: 20px;
-}
- .middle>.list>form>div>table>tbody>tr>td>textarea {
-      width: 172px;
+
+.middle > .list > form > div > table > tbody > tr > td > textarea {
+    width: 172px;
     height: 40px;
- }
+}
 
 input, textarea, select {
     margin: 0px 0px;
@@ -300,7 +302,7 @@ p {
         display: none;
         position: absolute;
         clear: both;
-        width: 155px;
+        width: 160px;
     }
 
     #header > .div1 > .menu > ul > li:hover ul {
@@ -332,7 +334,7 @@ p {
         border-bottom: 1px dotted #bdb76b;
         width: 155px;
         position: relative;
-       /*background: url(../image/BG/menu.png) repeat left center;*/
+        /*background: url(../image/BG/menu.png) repeat left center;*/
         background: #111D4E;
     }
 
@@ -402,9 +404,9 @@ p {
 
 #header .div1 #search {
     overflow: hidden;
-    float: right;
+    float: left;
     padding-top: 8px;
-    margin-right: 1px;
+    margin-left: 25px;
 }
 
 #filter_keyword {
@@ -534,17 +536,18 @@ p {
     height: 120px;
     margin-top: 10px;
 }
-.ChitietTin>.middle>p>img {
-     width: 450px;
-height: 350px;
-margin-top: 20px;
+
+.ChitietTin > .middle > p > img {
+    width: 450px;
+    height: 350px;
+    margin-top: 20px;
 }
 /*#content .middle img {
   
 }*/
 
 #column_left .box {
-   /*background: url(../image/BG/menu.png) repeat left center;*/
+    /*background: url(../image/BG/menu.png) repeat left center;*/
     background: #111D4E;
 }
 
@@ -694,6 +697,8 @@ a.button:hover {
 .giasp {
     font-size: 14px;
     color: #e90f07;
+    max-height: 20px;
+    overflow: hidden;
     /*margin-top: 5px;*/
 }
 
@@ -1009,12 +1014,20 @@ a.button:hover {
     width: 75%;
     float: left;
 }
+
 .sendEmail {
-    border: 1px solid #d3d3d3; border-radius: 5px; margin-top: 20px; padding-bottom: 20px;
+    border: 1px solid #d3d3d3;
+    border-radius: 5px;
+    margin-top: 20px;
+    padding-bottom: 20px;
 }
+
 .tableSendEmail {
-    width: 320px; margin: auto; margin-top: 10px;
+    width: 320px;
+    margin: auto;
+    margin-top: 10px;
 }
+
 .quantity {
     width: 45px;
 }
