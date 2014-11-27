@@ -3,13 +3,13 @@
 @using ShopTrongGo.Models
 <div class="menu">
     <ul>
-        <li>
+        <li style="width: 119px">
             @Html.ActionLink("Trang chủ", "Index", "Home", null, null)
         </li>
         <li>@Html.ActionLink("Giới thiệu","Information","Home",null,null) </li>
         @*<li>@Html.ActionLink("Tin tức","AllNews","News",null,null)</li>*@
-        <li><a href="~/danh-sach-tin-tuc">Tin tức</a></li>
-        <li>
+        <li style="width:95px; "><a href="~/danh-sach-tin-tuc">Tin tức</a></li>
+        <li style="width: 126px;">
             <a href="#" style="padding-right: 10px;">Sản phẩm</a>
             <ul>
                 @if (Model != null)
@@ -40,9 +40,9 @@
             </ul>
             <i class="fa fa-angle-double-down" style="margin-right: 10px; font-size: 15px; color: #d3d3d3; line-height: 46px;"></i>
         </li>
-        <li>
+        <li style="width:95px; ">
             <a href="~/danh-sach-dich-vu">Dịch vụ</a>
-            @*@Html.ActionLink("Dịch vụ","AllServices","News",null,null)*@ 
+            @*@Html.ActionLink("Dịch vụ","AllServices","News",null,null)*@
         </li>
         <li>@Html.ActionLink("Liên hệ", "Contact", "Home", null, null) </li>
     </ul>
