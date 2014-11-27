@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Security.Policy;
-using System.Web;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 using System.Web.Routing;
 
 namespace ShopTrongGo
@@ -61,18 +56,10 @@ namespace ShopTrongGo
                     id = UrlParameter.Optional
                 }
             );
-            routes.MapRoute(
-               "RouteListProduct",
-               "AdProduct/ListProduct",
-               new
-               {
-                   controller = "AdProduct",
-                   action = "ListProduct",
-                   id = UrlParameter.Optional
-               }
-           );
+
             //Trang quan tri admin
             #region ==Admin==
+            #region ==Provider==
             routes.MapRoute(
              "RouteAdProvider",
              "AdProvider/Index",
@@ -94,6 +81,18 @@ namespace ShopTrongGo
             }
         );
             routes.MapRoute(
+            "RouteDeleteProvider",
+            "AdProvider/DeleteProvider",
+            new
+            {
+                controller = "AdProvider",
+                action = "DeleteProvider",
+                id = UrlParameter.Optional
+            }
+        );
+            #endregion
+            #region ==News==
+            routes.MapRoute(
               "RouteAdNews",
               "AdNews/Index",
               new
@@ -113,6 +112,38 @@ namespace ShopTrongGo
                   id = UrlParameter.Optional
               }
           );
+            routes.MapRoute(
+              "RouteEditNew",
+              "AdNews/Edit",
+              new
+              {
+                  controller = "AdNews",
+                  action = "Edit",
+                  id = UrlParameter.Optional
+              }
+          );
+            routes.MapRoute(
+             "RouteDetailsNew",
+             "AdNews/Details",
+             new
+             {
+                 controller = "AdNews",
+                 action = "Details",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteDeleteNew",
+             "AdNews/Delete",
+             new
+             {
+                 controller = "AdNews",
+                 action = "Delete",
+                 id = UrlParameter.Optional
+             }
+         );
+            #endregion
+            #region ==CatagoryNews==
             routes.MapRoute(
              "RouteAdCategoryNews",
              "AdCategoryNews/Index",
@@ -134,6 +165,38 @@ namespace ShopTrongGo
             }
         );
             routes.MapRoute(
+            "RouteEditCategoryNews",
+            "AdCategoryNews/Edit",
+            new
+            {
+                controller = "AdCategoryNews",
+                action = "Edit",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDeleteCategoryNews",
+            "AdCategoryNews/Delete",
+            new
+            {
+                controller = "AdCategoryNews",
+                action = "Delete",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDetailsCategoryNews",
+            "AdCategoryNews/Details",
+            new
+            {
+                controller = "AdCategoryNews",
+                action = "Details",
+                id = UrlParameter.Optional
+            }
+        );
+            #endregion
+            #region ==Account==
+            routes.MapRoute(
              "RouteAdAccount",
              "AdAccount/Index",
              new
@@ -153,6 +216,8 @@ namespace ShopTrongGo
                  id = UrlParameter.Optional
              }
          );
+            #endregion
+            #region ==Company==
             routes.MapRoute(
              "RouteAdInforCompany",
              "AdInforCompany/Index",
@@ -174,6 +239,38 @@ namespace ShopTrongGo
              }
          );
             routes.MapRoute(
+            "RouteEditCompany",
+            "AdInforCompany/Edit",
+            new
+            {
+                controller = "AdInforCompany",
+                action = "Edit",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDeleteCompany",
+            "AdInforCompany/Delete",
+            new
+            {
+                controller = "AdInforCompany",
+                action = "Delete",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDetailsCompany",
+            "AdInforCompany/Details",
+            new
+            {
+                controller = "AdInforCompany",
+                action = "Details",
+                id = UrlParameter.Optional
+            }
+        );
+            #endregion
+            #region ==Partner==
+            routes.MapRoute(
              "RouteAdPartner",
              "AdPartners/Index",
              new
@@ -194,6 +291,38 @@ namespace ShopTrongGo
              }
          );
             routes.MapRoute(
+             "RouteEditPartners",
+             "AdPartners/Edit",
+             new
+             {
+                 controller = "AdPartners",
+                 action = "Edit",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteDeletePartners",
+             "AdPartners/Delete",
+             new
+             {
+                 controller = "AdPartners",
+                 action = "Delete",
+                 id = UrlParameter.Optional
+             }
+         );
+            routes.MapRoute(
+             "RouteDetailsPartners",
+             "AdPartners/Details",
+             new
+             {
+                 controller = "AdPartners",
+                 action = "Details",
+                 id = UrlParameter.Optional
+             }
+         );
+            #endregion
+            #region ==Services==
+            routes.MapRoute(
                 "RouteAdServices",
                 "AdServices/Index",
                 new
@@ -213,7 +342,38 @@ namespace ShopTrongGo
                     id = UrlParameter.Optional
                 }
                 );
-
+            routes.MapRoute(
+              "RouteEditServices",
+              "AdServices/Edit",
+              new
+              {
+                  controller = "AdServices",
+                  action = "Edit",
+                  id = UrlParameter.Optional
+              }
+              );
+            routes.MapRoute(
+                "RouteDeleteServices",
+                "AdServices/Delete",
+                new
+                {
+                    controller = "AdServices",
+                    action = "Delete",
+                    id = UrlParameter.Optional
+                }
+                );
+            routes.MapRoute(
+                "RouteDetailsServices",
+                "AdServices/Details",
+                new
+                {
+                    controller = "AdServices",
+                    action = "Details",
+                    id = UrlParameter.Optional
+                }
+                );
+            #endregion
+            #region ==CatagoryAccounts==
             routes.MapRoute(
                 "RouteAdTypeOfAcc",
                 "AdTypeOfAcc/Index",
@@ -234,38 +394,101 @@ namespace ShopTrongGo
                id = UrlParameter.Optional
            }
            );
-
-
+            routes.MapRoute(
+           "RouteDeleteTypeOfAcc",
+           "AdTypeOfAcc/Delete",
+           new
+           {
+               controller = "AdTypeOfAcc",
+               action = "Delete",
+               id = UrlParameter.Optional
+           }
+           );
+            routes.MapRoute(
+           "RouteDetailsTypeOfAcc",
+           "AdTypeOfAcc/Details",
+           new
+           {
+               controller = "AdTypeOfAcc",
+               action = "Details",
+               id = UrlParameter.Optional
+           }
+           );
+            routes.MapRoute(
+           "RouteEditTypeOfAcc",
+           "AdTypeOfAcc/Edit",
+           new
+           {
+               controller = "AdTypeOfAcc",
+               action = "Edit",
+               id = UrlParameter.Optional
+           }
+           );
+            #endregion
+            #region ==CatagoryListProduct==
             routes.MapRoute(
                "RouteListProductCatalogies",
-               "ProductCatagories/ListProductCatagories",
+               "AdProductCatagories/ListProductCatagories",
                new
                {
-                   controller = "ProductCatagories",
+                   controller = "AdProductCatagories",
                    action = "ListProductCatagories",
                    id = UrlParameter.Optional
                }
            );
             routes.MapRoute(
               "RouteAddProductCatalogies",
-              "ProductCatagories/Create",
+              "AdProductCatagories/Create",
               new
               {
-                  controller = "ProductCatagories",
+                  controller = "AdProductCatagories",
                   action = "Create",
                   id = UrlParameter.Optional
               }
           );
             routes.MapRoute(
-               "RouteListProvider",
-               "Provider/ListProvider",
+              "RouteEditProductCatalogies",
+              "AdProductCatagories/Edit",
+              new
+              {
+                  controller = "AdProductCatagories",
+                  action = "Edit",
+                  id = UrlParameter.Optional
+              }
+          );
+            routes.MapRoute(
+              "RouteDeleteProductCatalogies",
+              "AdProductCatagories/Delete",
+              new
+              {
+                  controller = "AdProductCatagories",
+                  action = "Delete",
+                  id = UrlParameter.Optional
+              }
+          );
+            routes.MapRoute(
+              "RouteDetailsProductCatalogies",
+              "AdProductCatagories/Details",
+              new
+              {
+                  controller = "AdProductCatagories",
+                  action = "Details",
+                  id = UrlParameter.Optional
+              }
+          );
+            #endregion
+            #region ==Product==
+            routes.MapRoute(
+               "RouteListProduct",
+               "AdProduct/ListProduct",
                new
                {
-                   controller = "Provider",
-                   action = "ListProvider",
+                   controller = "AdProduct",
+                   action = "ListProduct",
                    id = UrlParameter.Optional
                }
             );
+
             routes.MapRoute(
               "RouteAddProduct",
               "AdProduct/AddProduct",
@@ -276,7 +499,199 @@ namespace ShopTrongGo
                   id = UrlParameter.Optional
               }
           );
+            routes.MapRoute(
+                "RouteEditProduct",
+                "AdProduct/EditProduct",
+                new
+                {
+                    controller = "AdProduct",
+                    action = "EditProduct",
+                    id = UrlParameter.Optional
+                }
+                );
+            routes.MapRoute(
+                "RouteDetailsProduct",
+                "AdProduct/DetailsProduct",
+                new
+                {
+                    controller = "AdProduct",
+                    action = "DetailsProduct",
+                    id = UrlParameter.Optional
+                }
+                );
+            routes.MapRoute(
+                "RouteDeleteProduct",
+                "AdProduct/DeleteProduct",
+                new
+                {
+                    controller = "AdProduct",
+                    action = "DeleteProduct",
+                    id = UrlParameter.Optional
+                }
+                );
             #endregion
+            #region ==Order==
+            routes.MapRoute(
+            "RouteAdOrder",
+            "AdOrder/Index",
+            new
+            {
+                controller = "AdOrderDetails",
+                action = "Index",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteCreateOrder",
+            "AdOrder/Create",
+            new
+            {
+                controller = "AdOrderDetails",
+                action = "Create",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteEditOrder",
+            "AdOrder/Edit",
+            new
+            {
+                controller = "AdOrderDetails",
+                action = "Edit",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDeleteOrder",
+            "AdOrder/Delete",
+            new
+            {
+                controller = "AdOrderDetails",
+                action = "Delete",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDetailsOrder",
+            "AdOrder/Details",
+            new
+            {
+                controller = "AdOrderDetails",
+                action = "Details",
+                id = UrlParameter.Optional
+            }
+        );
+            #endregion
+            #region ==CatagoryImages==
+            routes.MapRoute(
+            "RouteAdCatagoryImage",
+            "AdCatagoryImage/Index",
+            new
+            {
+                controller = "AdCatagoryImage",
+                action = "Index",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteAddCatagoryImage",
+            "AdCatagoryImage/Create",
+            new
+            {
+                controller = "AdCatagoryImage",
+                action = "Create",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteEditCatagoryImage",
+            "AdCatagoryImage/Edit",
+            new
+            {
+                controller = "AdCatagoryImage",
+                action = "Edit",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDeleteCatagoryImage",
+            "AdCatagoryImage/Delete",
+            new
+            {
+                controller = "AdCatagoryImage",
+                action = "Delete",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+            "RouteDetailsCatagoryImage",
+            "AdCatagoryImage/Details",
+            new
+            {
+                controller = "AdCatagoryImage",
+                action = "Details",
+                id = UrlParameter.Optional
+            }
+        );
+
+            #endregion
+            #region ==Catagory==
+            routes.MapRoute(
+            "RouteAddCatagory",
+            "AdCatagory/Create",
+            new
+            {
+                controller = "AdCatagory",
+                action = "Create",
+                id = UrlParameter.Optional
+            }
+        );
+            routes.MapRoute(
+           "RouteAdCatagory",
+           "AdCatagory/Index",
+           new
+           {
+               controller = "AdCatagory",
+               action = "Index",
+               id = UrlParameter.Optional
+           }
+       );
+                               routes.MapRoute(
+           "RouteDeleteCatagory",
+           "AdCatagory/Delete",
+           new
+           {
+               controller = "AdCatagory",
+               action = "Delete",
+               id = UrlParameter.Optional
+           }
+       );
+                routes.MapRoute(
+           "RouteEditCatagory",
+           "AdCatagory/Edit",
+           new
+           {
+               controller = "AdCatagory",
+               action = "Edit",
+               id = UrlParameter.Optional
+           }
+       );
+
+                routes.MapRoute(
+           "RouteDetailsCatagory",
+           "AdCatagory/Details",
+           new
+           {
+               controller = "AdCatagory",
+               action = "Details",
+               id = UrlParameter.Optional
+           }
+       );
+
+            #endregion
+            #endregion
+
+
             routes.MapRoute(
                "RouteRegisterAccount",
                "tai-khoan/dang-ky",
@@ -477,7 +892,7 @@ namespace ShopTrongGo
             );
             routes.MapRoute(
                 "RouteDetailServices",
-                "danh-vu/{id}/{TenKhongDau}",
+                "dich-vu/{id}/{TenKhongDau}",
                 new
                 {
                     controller = "News",
