@@ -195,6 +195,7 @@ namespace ShopTrongGo.Controllers.Admin
                     }
                     else sanpham.NgayXoa = null;
                     sanpham.TenKhongDau = func.ConvertToUnSign3(sanpham.TenSp);
+                    sanpham.AnhDaiDien = func.LinkImage(sanpham.AnhDaiDien);
                     db.Entry(sanpham).State = EntityState.Modified;
                     db.SaveChanges();
                     return RedirectToAction("ListProduct", "AdProduct");

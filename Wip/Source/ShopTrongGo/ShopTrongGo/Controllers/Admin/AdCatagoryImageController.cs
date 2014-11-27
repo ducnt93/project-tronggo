@@ -85,6 +85,14 @@ namespace ShopTrongGo.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                if (danhmucanh.TrangThaiXoa == false)
+                {
+                    danhmucanh.NgayXoa = null;
+                }
+                else
+                {
+                    danhmucanh.NgayXoa = DateTime.Now.Date;
+                }
                 db.Entry(danhmucanh).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

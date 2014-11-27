@@ -58,6 +58,7 @@ namespace ShopTrongGo.Controllers.Admin
 
         [HttpPost, ActionName("DeleteProduct")]
         [ValidateAntiForgeryToken]
+        [ValidateInput(false)]
         public ActionResult DeleteConfirmed(string id)
         {
             SanPham sanpham = db.SanPhams.Find(id);
